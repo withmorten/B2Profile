@@ -123,88 +123,43 @@ namespace B2Profile
         {
 			uint numEntries = reader.ReadUInt32();
 
-#if DEBUG
-			Console.WriteLine("numEntries: " + numEntries);
-			Console.WriteLine();
-#endif
-
 			Array.Resize(ref Entries, (int)numEntries);
 
 			for (uint i = 0; i < numEntries; i++)
 			{
-#if DEBUG
-				Console.WriteLine("Entry nr: " + i);
-				Console.WriteLine("Position: " + reader.Position);
-#endif
 
 				Entries[i].StartByte = reader.ReadByte();
 
 				Entries[i].ID = reader.ReadUInt32();
 				Entries[i].DataType = (DataType)reader.ReadByte();
 
-#if DEBUG
-				Console.WriteLine("ID: " + Entries[i].ID);
-				Console.WriteLine("DataType: " + Entries[i].DataType);
-#endif
-
 				switch (Entries[i].DataType)
 				{
 				case DataType.Int32:
 					Entries[i].Int32 = reader.ReadInt32();
-
-#if DEBUG
-					Console.WriteLine("Value: " + Entries[i].Int32);
-#endif
 
 					break;
 				case DataType.String:
 					Entries[i].Length = (uint)reader.ReadInt32();
 					Entries[i].String = reader.ReadASCII((int)Entries[i].Length);
 
-#if DEBUG
-					Console.WriteLine("Value: " + Entries[i].String);
-#endif
-
 					break;
 				case DataType.Single:
 					Entries[i].Single = reader.ReadSingle();
-
-#if DEBUG
-					Console.WriteLine("Value: " + Entries[i].Single);
-#endif
 
 					break;
 				case DataType.Binary:
 					Entries[i].Length = (uint)reader.ReadInt32();
 					Entries[i].Bin = reader.ReadBytes((int)Entries[i].Length, Endian.Little);
 
-#if DEBUG
-					Console.Write("Value: ");
-
-					for (int j = 0; j < Entries[i].Bin.Length; j++)
-					{
-						Console.Write(Entries[i].Bin[j] + " ");
-					}
-
-					Console.WriteLine();
-#endif
-
 					break;
 				case DataType.Int8:
 					Entries[i].Int8 = reader.ReadByte();
-
-#if DEBUG
-					Console.WriteLine("Value: " + Entries[i].Int8);
-#endif
 
 					break;
 				}
 
 				Entries[i].EndByte = reader.ReadByte();
-
-#if DEBUG
-				Console.WriteLine();
-#endif
 			}
         }
 
