@@ -16,5 +16,10 @@ namespace B2Profile
 		{
 			InitializeComponent();
 		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+		}
 	}
 }
