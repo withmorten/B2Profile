@@ -19,7 +19,17 @@ namespace B2Profile
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+			// Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+		}
+
+		private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void toolStripMenuItem2_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

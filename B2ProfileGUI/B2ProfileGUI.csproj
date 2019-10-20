@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>res\B2ProfileGUI.ico</ApplicationIcon>
@@ -81,6 +83,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="res\B2ProfileGUI.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +99,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\B2ProfileGUI.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MainMenu_About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MainMenu_Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MainMenu_Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MainMenu_Save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
