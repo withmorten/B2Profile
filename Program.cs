@@ -15,8 +15,10 @@ namespace B2Profile
 
 			B2Profile profile = new B2Profile();
 
-			if (profile.Read(args[0]) == false)
+			if (profile.Load(args[0]) == false)
 			{
+				Console.WriteLine("Error loading " + args[0]);
+
 				return 1;
 			}
 
@@ -42,8 +44,19 @@ namespace B2Profile
 			Console.WriteLine("Bonus Elemental Effect Damage: " + profile.GetElementalEffectDamage());
 			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamage());
 
-			if (profile.Write("profile_out.bin") == false)
+			profile.BadassTokens = 10;
+			profile.BadassTokensEarned = 10;
+			profile.BadassRank = 73; // just before 11th token
+
+			for (int i = 0; i < B2Profile.NumBonusStats; i++)
 			{
+				profile.BonusStats[i] = 0;
+			}
+
+			if (profile.Save("profile_out.bin") == false)
+			{
+				Console.WriteLine("Error saving profile_out.bin");
+
 				return 1;
 			}
 

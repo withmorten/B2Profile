@@ -164,7 +164,8 @@ namespace B2Profile
 		public int BadassTokensUsed;
 		public int BadassTokensEarned;
 		public byte GoldenKeys;
-		public double[] BonusStats;
+		public int[] BonusStats;
+		public double[] BonusStatsPercent;
 
 		public B2Profile()
 		{
@@ -177,13 +178,13 @@ namespace B2Profile
 			BadassTokensEarned = 0;
 			GoldenKeys = 0;
 			Array.Resize(ref BonusStats, 0);
+			Array.Resize(ref BonusStatsPercent, 0);
 		}
 
-		public bool Read(string path)
+		public bool Load(string path)
 		{
 			FileStream inputFile = File.OpenRead(path); // TODO exception handling
 
-			// BinaryReader inputFileStream = new BinaryReader(inputFile, Encoding.ASCII, true);
 			BinaryReader inputFileStream = new BinaryReader(inputFile);
 
 			inputFileStream.ReadBytes(20); // read SHA1 hash into nothing
@@ -207,22 +208,22 @@ namespace B2Profile
 				return false;
 			}
 
-			FileStream decompressedFile = File.OpenWrite(path + ".dat");
+			FileStream decompressedFile = File.Create(path + ".dat");
 			decompressedFile.Write(uncompressedBytes, 0, (int)uncompressedSize); // dump the file for debugging purposes
 			decompressedFile.Close();
 
-			ReadEntries(new Reader(new MemoryStream(uncompressedBytes), Endian.Big));
+			LoadEntries(new Reader(new MemoryStream(uncompressedBytes), Endian.Big));
 
 			return true;
 		}
 
-		public bool Write(string path)
+		public bool Save(string path)
 		{
 			MemoryStream uncompressedStream = new MemoryStream();
 
-			WriteEntries(new Writer(uncompressedStream, Endian.Big));
+			SaveEntries(new Writer(uncompressedStream, Endian.Big));
 
-			FileStream uncompressedFile = File.OpenWrite(path + ".dat");
+			FileStream uncompressedFile = File.Create(path + ".dat");
 			uncompressedFile.Write(uncompressedStream.ToArray(), 0, (int)uncompressedStream.Length); // dump the file for debugging purposes
 			uncompressedFile.Close();
 
@@ -234,9 +235,8 @@ namespace B2Profile
 			SHA1Managed sha1 = new SHA1Managed();
 			byte[] hash = sha1.ComputeHash(compressedBytes, 0, actualCompressedLength);
 
-			FileStream outputFile = File.OpenWrite(path); // TODO exception handling
+			FileStream outputFile = File.Create(path); // TODO exception handling
 
-			// BinaryWriter outputFileStream = new BinaryWriter(outputFile, Encoding.ASCII, true);
 			BinaryWriter outputFileStream = new BinaryWriter(outputFile);
 
 			outputFileStream.Write(hash); // write SHA1 hash
@@ -251,7 +251,7 @@ namespace B2Profile
 			return true;
 		}
 
-        private void ReadEntries(Reader reader)
+        private void LoadEntries(Reader reader)
         {
 			uint numEntries = reader.ReadUInt32();
 
@@ -297,7 +297,7 @@ namespace B2Profile
 			LoadEntryData();
 		}
 
-		private void WriteEntries(Writer writer)
+		private void SaveEntries(Writer writer)
 		{
 			SaveEntryData();
 
@@ -342,13 +342,16 @@ namespace B2Profile
 
 		private static string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 		private static uint MagicNumber = 0x9A3652D9;
+		public static int NumBonusStats = 14;
 
 		private unsafe void LoadEntryData()
 		{
 			BadassRank = (GetBadassRank1Entry().GetInt32Data() + GetBadassRank2Entry().GetInt32Data()) / 10;
 			BadassTokens = GetBadassTokensEntry().GetInt32Data();
+			BadassTokensEarned = GetBadassTokensEarnedEntry().GetInt32Data(); // This value is WRONG! It gets rounded instead of floored
+			// BadassTokensUsed = BadassTokensEarned - BadassTokens;
 
-			BadassTokensUsed = (int)Math.Round(Math.Pow(BadassRank, 1 / 1.8)) - BadassTokens; // floor or round? that is the question. seems to actually be round
+			BadassTokensUsed = (int)Math.Floor(Math.Pow(BadassRank, 1 / 1.8)) - BadassTokens; // floor or round? that is the question. seems to actually be round
 
 			// Console.WriteLine("Test1: " + ((int)Math.Round(Math.Pow(11, 1.8))));
 			// Console.WriteLine("Test2: " + ((int)Math.Floor(Math.Pow(11, 1.8))));
@@ -359,11 +362,11 @@ namespace B2Profile
 			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(386, 1.8))));
 			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(386, 1.8))));
 
-			Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(74, 1 / 1.8))));
-			Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(74, 1 / 1.8))));
-
-			Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(75, 1 / 1.8))));
-			Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(75, 1 / 1.8))));
+			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(74, 1 / 1.8))));
+			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(74, 1 / 1.8))));
+			// 
+			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(75, 1 / 1.8))));
+			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(75, 1 / 1.8))));
 
 			GoldenKeys = 0;
 
@@ -376,42 +379,27 @@ namespace B2Profile
 				int numKeyEntries = goldenKeysBin.Length / 3;
 				Array.Resize(ref GoldenKeyEntries, numKeyEntries);
 
-				// Console.WriteLine("numKeyEntries: " + numKeyEntries);
-
-				// Console.Write("Golden Keys Bin Data: ");
-
 				for (int i = 0; i < numKeyEntries; i++)
 				{
 					GoldenKeyEntries[i].Data[0] = goldenKeysBin[0 + i * 3];
 					GoldenKeyEntries[i].Data[1] = goldenKeysBin[1 + i * 3];
 					GoldenKeyEntries[i].Data[2] = goldenKeysBin[2 + i * 3];
-
-					// Console.Write(GoldenKeyEntries[i].Data[0] + " " + GoldenKeyEntries[i].Data[1] + " " + GoldenKeyEntries[i].Data[2] + " ");
 				}
-
-				// Console.WriteLine();
-
-				// Console.WriteLine();
 
 				for (int i = 0; i < numKeyEntries; i++)
 				{
 					GoldenKeys += (byte)(GoldenKeyEntries[i].Data[1] - GoldenKeyEntries[i].Data[2]);
-
-					// Console.WriteLine("numKeys: " + GoldenKeys);
 				}
-
-				// Console.WriteLine("finalNumKeys: " + GoldenKeys);
-
-				// Console.WriteLine();
 			}
 
 			if (GetBonusStatsEntry().Length > 0)
 			{
-				Array.Resize(ref BonusStats, 14);
+				Array.Resize(ref BonusStats, NumBonusStats);
+				Array.Resize(ref BonusStatsPercent, NumBonusStats);
 
 				string code = GetBonusStatsEntry().GetStringData();
 
-				byte index;
+				uint index = 0;
 				uint value = MagicNumber;
 				int shift = 0;
 
@@ -419,70 +407,35 @@ namespace B2Profile
 
 				for (int i = 0; i < code.Length; i++)
 				{
-					index = (byte)Alphabet.IndexOf(code[i]);
+					index = (uint)Alphabet.IndexOf(code[i]);
 
-					value ^= (uint)(index << shift);
-
-					shift += 5;
-
-					if (shift > 31)
-					{
-						BonusStats[j++] = Math.Round(Math.Pow(value, 0.75), 1);
-
-						shift &= 7;
-						value = (uint)((MagicNumber) ^ index >> 5 - shift);
-					}
-				}
-			}
-
-			if (GetInterestingEntry().Length > 0)
-			{
-				string code = GetInterestingEntry().GetStringData();
-
-				byte index;
-				uint value = MagicNumber;
-				int shift = 0;
-
-				uint j = 0;
-
-				for (int i = 0; i < code.Length; i++)
-				{
-					index = (byte)Alphabet.IndexOf(code[i]);
-
-					value ^= (uint)(index << shift);
+					value ^= index << shift;
 
 					shift += 5;
 
 					if (shift > 31)
 					{
-						// BonusStats[j++] = Math.Round(Math.Pow(value, 0.75), 1);
-
-						// Console.WriteLine(Math.Round(Math.Pow(value, 0.75), 1));
 						Console.WriteLine(value);
-						// Console.WriteLine();
+
+						BonusStats[j] = (int)value;
+						BonusStatsPercent[j] = Math.Round(Math.Pow(BonusStats[j], 0.75), 1);
+						j++;
 
 						shift &= 7;
-						value = (uint)((MagicNumber) ^ index >> 5 - shift);
+						value = (MagicNumber) ^ index >> 5 - shift;
 					}
 				}
-
-				Console.WriteLine();
 			}
 		}
 
 		private unsafe void SaveEntryData()
 		{
-			Entry goldenKeysEntry = GetGoldenKeysEntry(); // Bin
-			Entry bonusStatsEntry = GetBonusStatsEntry(); // String
-			Entry badassRankEntry1 = GetBadassRank1Entry(); // Int32
-			Entry badassRankEntry2 = GetBadassRank2Entry(); // Int32
-			Entry badassTokensEntry = GetBadassTokensEntry(); // Int32
-
 			int badassRankData = (BadassRank * 10) / 2;
 
-			badassRankEntry1.SetInt32Data(badassRankData);
-			badassRankEntry2.SetInt32Data(badassRankData);
-			badassTokensEntry.SetInt32Data(BadassTokens);
+			GetBadassRank1Entry().SetInt32Data(badassRankData);
+			GetBadassRank2Entry().SetInt32Data(badassRankData);
+			GetBadassTokensEntry().SetInt32Data(BadassTokens);
+			GetBadassTokensEarnedEntry().SetInt32Data(BadassTokensEarned);
 
 			if (GoldenKeys > 0)
 			{
@@ -490,6 +443,49 @@ namespace B2Profile
 				// idea: first value is for non shift codes, second is the real value
 				// leave the first value untouched, increase the second value (if it exists, if not, touch the first value)
 				// they may not exceed 255 in total
+			}
+
+			if (BonusStatsPercent.Length == NumBonusStats)
+			{
+				string code = "";
+
+				uint index = 0;
+				int shift = 0;
+
+				for (int i = 0; i < NumBonusStats; i++)
+				{
+					// uint value = (uint)Math.Round(Math.Pow(BonusStatsPercent[i], 1 / 0.75));
+					uint value = (uint)BonusStats[i];
+
+					value ^= MagicNumber;
+
+					if (shift > 0)
+					{
+						index = ((index | (value << shift)) & 0x1F);
+						shift = 5 - shift;
+
+						code += Alphabet[(int)index];
+					}
+
+					for (; shift < 28; shift += 5)
+					{
+						index = ((value >> shift) & 0x1F);
+
+						code += Alphabet[(int)index];
+					}
+
+					index = value >> shift;
+					shift = 32 - shift;
+				}
+
+				if (shift > 0)
+				{
+					code += Alphabet[(int)index];
+				}
+
+				GetBonusStatsEntry().SetStringData(code);
+
+				Console.WriteLine(code);
 			}
 		}
 
@@ -545,159 +541,144 @@ namespace B2Profile
 			return ref GetFromID(300);
 		}
 
-		// String (Encoded)
-		public ref Entry GetInterestingEntry()
-		{
-			return ref GetFromID(164);
-		}
-
 		public void SetMaximumHealth(double d)
 		{
-			BonusStats[0] = d;
+			BonusStatsPercent[0] = d;
 		}
 
 		public double GetMaximumHealth()
 		{
-			return BonusStats[0];
-		}
-
-		public int GetMaximumHealthTokensInvested()
-		{
-			double d = GetMaximumHealth();
-
-
-
-			return 0;
+			return BonusStatsPercent[0];
 		}
 
 		public void SetShieldCapacity(double d)
 		{
-			BonusStats[1] = d;
+			BonusStatsPercent[1] = d;
 		}
 
 		public double GetShieldCapacity()
 		{
-			return BonusStats[1];
+			return BonusStatsPercent[1];
 		}
 
 		public void SetShieldRechargeDelay(double d)
 		{
-			BonusStats[2] = d;
+			BonusStatsPercent[2] = d;
 		}
 
 		public double GetShieldRechargeDelay()
 		{
-			return BonusStats[2];
+			return BonusStatsPercent[2];
 		}
 
 		public void SetShieldRechargeRate(double d)
 		{
-			BonusStats[3] = d;
+			BonusStatsPercent[3] = d;
 		}
 
 		public double GetShieldRechargeRate()
 		{
-			return BonusStats[3];
+			return BonusStatsPercent[3];
 		}
 
 		public void SetMeleeDamage(double d)
 		{
-			BonusStats[4] = d;
+			BonusStatsPercent[4] = d;
 		}
 
 		public double GetMeleeDamage()
 		{
-			return BonusStats[4];
+			return BonusStatsPercent[4];
 		}
 
 		public void SetGrenadeDamage(double d)
 		{
-			BonusStats[5] = d;
+			BonusStatsPercent[5] = d;
 		}
 
 		public double GetGrenadeDamage()
 		{
-			return BonusStats[5];
+			return BonusStatsPercent[5];
 		}
 
 		public void SetGunAccuracy(double d)
 		{
-			BonusStats[6] = d;
+			BonusStatsPercent[6] = d;
 		}
 
 		public double GetGunAccuracy()
 		{
-			return BonusStats[6];
+			return BonusStatsPercent[6];
 		}
 
 		public void SetGunDamage(double d)
 		{
-			BonusStats[7] = d;
+			BonusStatsPercent[7] = d;
 		}
 
 		public double GetGunDamage()
 		{
-			return BonusStats[7];
+			return BonusStatsPercent[7];
 		}
 
 		public void SetFireRate(double d)
 		{
-			BonusStats[8] = d;
+			BonusStatsPercent[8] = d;
 		}
 
 		public double GetFireRate()
 		{
-			return BonusStats[8];
+			return BonusStatsPercent[8];
 		}
 
 		public void SetRecoilReduction(double d)
 		{
-			BonusStats[9] = d;
+			BonusStatsPercent[9] = d;
 		}
 
 		public double GetRecoilReduction()
 		{
-			return BonusStats[9];
+			return BonusStatsPercent[9];
 		}
 
 		public void SetReloadSpeed(double d)
 		{
-			BonusStats[10] = d;
+			BonusStatsPercent[10] = d;
 		}
 
 		public double GetReloadSpeed()
 		{
-			return BonusStats[10];
+			return BonusStatsPercent[10];
 		}
 
 		public void SetElementalEffectChance(double d)
 		{
-			BonusStats[11] = d;
+			BonusStatsPercent[11] = d;
 		}
 
 		public double GetElementalEffectChance()
 		{
-			return BonusStats[11];
+			return BonusStatsPercent[11];
 		}
 
 		public void SetElementalEffectDamage(double d)
 		{
-			BonusStats[12] = d;
+			BonusStatsPercent[12] = d;
 		}
 
 		public double GetElementalEffectDamage()
 		{
-			return BonusStats[12];
+			return BonusStatsPercent[12];
 		}
 
 		public void SetCriticalHitDamage(double d)
 		{
-			BonusStats[13] = d;
+			BonusStatsPercent[13] = d;
 		}
 
 		public double GetCriticalHitDamage()
 		{
-			return BonusStats[13];
+			return BonusStatsPercent[13];
 		}
     }
 }
