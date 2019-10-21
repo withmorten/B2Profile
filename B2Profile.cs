@@ -8,11 +8,10 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using PackageIO;
 using PackageIO.Algorithms;
-// using BL2Kit;
 
 namespace B2Profile
 {
-    public enum DataType
+    enum DataType
     {
         Int32 = 1,
         String = 4,
@@ -21,7 +20,7 @@ namespace B2Profile
         Int8 = 8
     }
 
-    public unsafe struct Entry
+    unsafe struct Entry
     {
         public uint ID;
         public uint Length;
@@ -42,6 +41,7 @@ namespace B2Profile
 			if (DataType == DataType.Binary)
 			{
 				Bin = bin;
+				Length = (uint)bin.Length;
 
 				return;
 			}
@@ -54,6 +54,7 @@ namespace B2Profile
 			if (DataType == DataType.String)
 			{
 				String = str;
+				Length = (uint)str.Length;
 
 				return;
 			}
@@ -148,57 +149,75 @@ namespace B2Profile
 		}
     }
 
-	public unsafe struct GoldenKeyEntry
+	unsafe struct GoldenKeyEntry
 	{
-		public fixed byte Data[3];
+		public byte SourceId;
+		public byte NumKeys;
+		public byte NumKeysUsed;
+
+		public bool Valid;
+
+		public GoldenKeyEntry(byte id)
+		{
+			SourceId = id;
+			NumKeys = 0;
+			NumKeysUsed = 0;
+
+			Valid = false;
+		}
 	}
 
     class B2Profile
 	{
 		private Entry[] Entries;
 
-		private GoldenKeyEntry[] GoldenKeyEntries;
+		private GoldenKeyEntry GoldenKeysPOPremierClub;
+		private GoldenKeyEntry GoldenKeysTulip;
+		private GoldenKeyEntry GoldenKeysShift;
 
-		public int BadassRank;
-		public int BadassTokens;
-		public int BadassTokensUsed;
-		public int BadassTokensEarned;
-		public byte GoldenKeys;
-		public int[] BonusStats;
-		public double[] BonusStatsPercent;
+		private int BadassRank;
+		private int BadassTokens;
+		private int BadassTokensEarned;
+		private List<uint> BonusStats;
+		private List<uint> NextBonusStats;
 
 		public B2Profile()
 		{
 			Array.Resize(ref Entries, 0);
-			Array.Resize(ref GoldenKeyEntries, 0);
+
+			GoldenKeysPOPremierClub = new GoldenKeyEntry(254);
+			GoldenKeysTulip = new GoldenKeyEntry(173);
+			GoldenKeysShift = new GoldenKeyEntry(0);
 
 			BadassRank = 0;
 			BadassTokens = 0;
-			BadassTokensUsed = 0;
 			BadassTokensEarned = 0;
-			GoldenKeys = 0;
-			Array.Resize(ref BonusStats, 0);
-			Array.Resize(ref BonusStatsPercent, 0);
+			BonusStats = new List<uint>();
+			NextBonusStats = new List<uint>();
 		}
 
 		public bool Load(string path)
 		{
+			// open input file
 			FileStream inputFile = File.OpenRead(path); // TODO exception handling
-
 			BinaryReader inputFileStream = new BinaryReader(inputFile);
 
-			inputFileStream.ReadBytes(20); // read SHA1 hash into nothing
+			// read SHA1 hash into nothing
+			inputFileStream.ReadBytes(20);
 
-			uint uncompressedSize = inputFileStream.ReadUInt32().Swap(); // Big Endian, so we need to swap it
+			// prepare uncompressed data
+			uint uncompressedSize = inputFileStream.ReadUInt32().Swap(); // bswap for Big Endian
 			byte[] uncompressedBytes = new byte[uncompressedSize];
 
+			// read the compressed data
 			uint compressedSize = (uint)inputFile.Length - 20 - sizeof(uint);
 			byte[] compressedBytes = inputFileStream.ReadBytes((int)compressedSize);
 
-			inputFileStream.Close(); // no longer needed at this point
+			// and close the inptut file, no longer needed at this point
+			inputFileStream.Close();
 
+			// decompress the data
 			int actualUncompressedSize = (int)uncompressedSize;
-
 			MiniLZO.ErrorCode result = MiniLZO.LZO.DecompressSafe(compressedBytes, 0, (int)compressedSize, uncompressedBytes, 0, ref actualUncompressedSize);
 
 			if (result != MiniLZO.ErrorCode.Success)
@@ -208,47 +227,184 @@ namespace B2Profile
 				return false;
 			}
 
+			// dump the file for debugging purposes
 			FileStream decompressedFile = File.Create(path + ".dat");
-			decompressedFile.Write(uncompressedBytes, 0, (int)uncompressedSize); // dump the file for debugging purposes
+			decompressedFile.Write(uncompressedBytes, 0, (int)uncompressedSize);
 			decompressedFile.Close();
 
+			// parse the entries
 			LoadEntries(new Reader(new MemoryStream(uncompressedBytes), Endian.Big));
+
+			// and store the relevant data in our class
+			LoadEntryData();
 
 			return true;
 		}
 
 		public bool Save(string path)
 		{
-			MemoryStream uncompressedStream = new MemoryStream();
+			// add our class data back to the entries
+			SaveEntryData();
 
+			// store entries and prepare the uncompressed data
+			MemoryStream uncompressedStream = new MemoryStream();
 			SaveEntries(new Writer(uncompressedStream, Endian.Big));
 
+			// dump the file for debugging purposes
 			FileStream uncompressedFile = File.Create(path + ".dat");
-			uncompressedFile.Write(uncompressedStream.ToArray(), 0, (int)uncompressedStream.Length); // dump the file for debugging purposes
+			uncompressedFile.Write(uncompressedStream.ToArray(), 0, (int)uncompressedStream.Length);
 			uncompressedFile.Close();
 
+			// prepare the compressed data
 			byte[] compressedBytes = new byte[uncompressedStream.Length];
 			int actualCompressedLength = (int)uncompressedStream.Length;
 
+			// LZO compress the data
 			MiniLZO.LZO.Compress(uncompressedStream.ToArray(), 0, (int)uncompressedStream.Length, compressedBytes, 0, ref actualCompressedLength, new MiniLZO.CompressWorkBuffer());
 
+			// prepare the hashed data (length + compressed data)
+			int actualUncompressedLength = (int)uncompressedStream.Length;
+			byte[] hashedData = BitConverter.GetBytes(actualUncompressedLength.Swap()); // bswap for Big Endian
+			Array.Resize(ref hashedData, 4 + actualCompressedLength);
+			Array.Copy(compressedBytes, 0, hashedData, 4, actualCompressedLength);
+
+			// hash the data
 			SHA1Managed sha1 = new SHA1Managed();
-			byte[] hash = sha1.ComputeHash(compressedBytes, 0, actualCompressedLength);
+			byte[] hash = sha1.ComputeHash(hashedData);
 
+			// create output file and writer
 			FileStream outputFile = File.Create(path); // TODO exception handling
-
 			BinaryWriter outputFileStream = new BinaryWriter(outputFile);
 
-			outputFileStream.Write(hash); // write SHA1 hash
+			// write SHA1 hash and hashed data
+			outputFileStream.Write(hash);
+			outputFileStream.Write(hashedData);
 
-			int actualUncompressedLength = (int)uncompressedStream.Length;
-			outputFileStream.Write(actualUncompressedLength.Swap());
-
-			outputFileStream.Write(compressedBytes, 0, actualCompressedLength);
-
+			// and close the file
 			outputFileStream.Close();
 
 			return true;
+		}
+
+		public void SetBadassRank(int i)
+		{
+			BadassRank = i;
+		}
+
+		public int GetBadassRank()
+		{
+			return BadassRank;
+		}
+
+		public void SetBadassTokens(int i)
+		{
+			BadassTokens = i;
+		}
+
+		public int GetBadassTokens()
+		{
+			return BadassTokens;
+		}
+
+		public void SetBadassTokensEarned(int i)
+		{
+			BadassTokensEarned = i;
+		}
+
+		public int GetBadassTokensEarned()
+		{
+			return BadassTokensEarned;
+		}
+
+		public ref List<uint> GetBonusStats()
+		{
+			return ref BonusStats;
+		}
+
+		public ref List<uint> GetNextBonusStats()
+		{
+			return ref NextBonusStats;
+		}
+
+		public ref Entry GetEntryFromID(uint ID)
+		{
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				if (Entries[i].ID == ID) return ref Entries[i];
+			}
+
+			throw new Exception("Entry with ID " + ID + " not found!");
+		}
+
+		private static string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+		private static uint MagicNumber = 0x9A3652D9;
+
+		private List<uint> DecodeString(string code)
+		{
+			List<uint> list = new List<uint>();
+
+			uint index = 0;
+			uint value = MagicNumber;
+			int shift = 0;
+
+			for (int i = 0; i < code.Length; i++)
+			{
+				index = (uint)Alphabet.IndexOf(code[i]);
+
+				value ^= index << shift;
+
+				shift += 5;
+
+				if (shift > 31)
+				{
+					list.Add(value);
+
+					shift &= 7;
+					value = (MagicNumber) ^ index >> 5 - shift;
+				}
+			}
+
+			return list;
+		}
+
+		private string EncodeString(List<uint> list)
+		{
+			String code = "";
+
+			uint index = 0;
+			int shift = 0;
+
+			for (int i = 0; i < list.Count; i++)
+			{
+				uint value = list[i];
+
+				value ^= MagicNumber;
+
+				if (shift > 0)
+				{
+					index = ((index | (value << shift)) & 0x1F);
+					shift = 5 - shift;
+
+					code += Alphabet[(int)index];
+				}
+
+				for (; shift < 28; shift += 5)
+				{
+					index = ((value >> shift) & 0x1F);
+
+					code += Alphabet[(int)index];
+				}
+
+				index = value >> shift;
+				shift = 32 - shift;
+			}
+
+			if (shift > 0)
+			{
+				code += Alphabet[(int)index];
+			}
+
+			return code;
 		}
 
         private void LoadEntries(Reader reader)
@@ -272,7 +428,7 @@ namespace B2Profile
 
 					break;
 				case DataType.String:
-					Entries[i].Length = (uint)reader.ReadInt32();
+					Entries[i].Length = reader.ReadUInt32();
 					Entries[i].String = reader.ReadASCII((int)Entries[i].Length);
 
 					break;
@@ -281,7 +437,7 @@ namespace B2Profile
 
 					break;
 				case DataType.Binary:
-					Entries[i].Length = (uint)reader.ReadInt32();
+					Entries[i].Length = reader.ReadUInt32();
 					Entries[i].Bin = reader.ReadBytes((int)Entries[i].Length, Endian.Little);
 
 					break;
@@ -293,14 +449,10 @@ namespace B2Profile
 
 				Entries[i].EndByte = reader.ReadByte();
 			}
-
-			LoadEntryData();
 		}
 
 		private void SaveEntries(Writer writer)
 		{
-			SaveEntryData();
-
 			writer.WriteUInt32((uint)Entries.Length);
 
 			for (int i = 0; i < Entries.Length; i++)
@@ -317,7 +469,7 @@ namespace B2Profile
 
 					break;
 				case DataType.String:
-					writer.WriteInt32((int)Entries[i].Length);
+					writer.WriteUInt32(Entries[i].Length);
 					writer.WriteASCII(Entries[i].String, (int)Entries[i].Length);
 
 					break;
@@ -326,7 +478,7 @@ namespace B2Profile
 
 					break;
 				case DataType.Binary:
-					writer.WriteInt32((int)Entries[i].Length);
+					writer.WriteUInt32(Entries[i].Length);
 					writer.WriteBytes(Entries[i].Bin, (int)Entries[i].Length, Endian.Little);
 
 					break;
@@ -340,345 +492,439 @@ namespace B2Profile
 			}
 		}
 
-		private static string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
-		private static uint MagicNumber = 0x9A3652D9;
-		public static int NumBonusStats = 14;
+		private static int NumBonusStats = 14;
+		private static int NumNextBonusStats = 5;
 
 		private unsafe void LoadEntryData()
 		{
+			// the badass rank seems to be stored in two entries and the final result calculated like this
 			BadassRank = (GetBadassRank1Entry().GetInt32Data() + GetBadassRank2Entry().GetInt32Data()) / 10;
+
+			// the current badass tokens available to invest
 			BadassTokens = GetBadassTokensEntry().GetInt32Data();
-			BadassTokensEarned = GetBadassTokensEarnedEntry().GetInt32Data(); // This value is WRONG! It gets rounded instead of floored
-			// BadassTokensUsed = BadassTokensEarned - BadassTokens;
 
-			BadassTokensUsed = (int)Math.Floor(Math.Pow(BadassRank, 1 / 1.8)) - BadassTokens; // floor or round? that is the question. seems to actually be round
+			// the badass tokens earned from increasing the badass rank (note: rounded, not floored)
+			BadassTokensEarned = GetBadassTokensEarnedEntry().GetInt32Data();
 
-			// Console.WriteLine("Test1: " + ((int)Math.Round(Math.Pow(11, 1.8))));
-			// Console.WriteLine("Test2: " + ((int)Math.Floor(Math.Pow(11, 1.8))));
-			// 
-			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(387, 1.8))));
-			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(387, 1.8))));
-			// 
-			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(386, 1.8))));
-			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(386, 1.8))));
-
-			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(74, 1 / 1.8))));
-			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(74, 1 / 1.8))));
-			// 
-			// Console.WriteLine("Test3: " + ((int)Math.Round(Math.Pow(75, 1 / 1.8))));
-			// Console.WriteLine("Test4: " + ((int)Math.Floor(Math.Pow(75, 1 / 1.8))));
-
-			GoldenKeys = 0;
-
+			// golden keys:
+			// there can be 3 (or more?) entries
+			// ID 000: shift keys (SHiFT)
+			// ID 173: mechromancer dlc (Tulip) ???
+			// ID 254: pre order keys (POPremierClub)
 			if (GetGoldenKeysEntry().Length > 0)
 			{
-				// Golden Keys hackiness, TODO understand
-
 				byte[] goldenKeysBin = GetGoldenKeysEntry().GetBinData();
 
 				int numKeyEntries = goldenKeysBin.Length / 3;
-				Array.Resize(ref GoldenKeyEntries, numKeyEntries);
 
+				// only get the valid entries - odd things happen if others are used
 				for (int i = 0; i < numKeyEntries; i++)
 				{
-					GoldenKeyEntries[i].Data[0] = goldenKeysBin[0 + i * 3];
-					GoldenKeyEntries[i].Data[1] = goldenKeysBin[1 + i * 3];
-					GoldenKeyEntries[i].Data[2] = goldenKeysBin[2 + i * 3];
-				}
+					byte sourceId = goldenKeysBin[0 + i * 3];
+					byte numKeys = goldenKeysBin[1 + i * 3];
+					byte numKeysUsed = goldenKeysBin[2 + i * 3];
 
-				for (int i = 0; i < numKeyEntries; i++)
-				{
-					GoldenKeys += (byte)(GoldenKeyEntries[i].Data[1] - GoldenKeyEntries[i].Data[2]);
+					switch (sourceId)
+					{
+					case 254:
+						GoldenKeysPOPremierClub.SourceId = sourceId;
+						GoldenKeysPOPremierClub.NumKeys = numKeys;
+						GoldenKeysPOPremierClub.NumKeysUsed = numKeysUsed;
+
+						GoldenKeysPOPremierClub.Valid = true;
+
+						break;
+					case 173:
+						GoldenKeysTulip.SourceId = sourceId;
+						GoldenKeysTulip.NumKeys = numKeys;
+						GoldenKeysTulip.NumKeysUsed = numKeysUsed;
+
+						GoldenKeysTulip.Valid = true;
+
+						break;
+					case 0:
+						GoldenKeysShift.SourceId = sourceId;
+						GoldenKeysShift.NumKeys = numKeys;
+						GoldenKeysShift.NumKeysUsed = numKeysUsed;
+
+						GoldenKeysShift.Valid = true;
+
+						break;
+					}
 				}
 			}
 
+			// the invested bonus tokens, always 14 statss, fixed order, very weird encoding
 			if (GetBonusStatsEntry().Length > 0)
 			{
-				Array.Resize(ref BonusStats, NumBonusStats);
-				Array.Resize(ref BonusStatsPercent, NumBonusStats);
-
-				string code = GetBonusStatsEntry().GetStringData();
-
-				uint index = 0;
-				uint value = MagicNumber;
-				int shift = 0;
-
-				uint j = 0;
-
-				for (int i = 0; i < code.Length; i++)
+				BonusStats = DecodeString(GetBonusStatsEntry().GetStringData());
+			}
+			else
+			{
+				for (int i = 0; i < NumBonusStats; i++)
 				{
-					index = (uint)Alphabet.IndexOf(code[i]);
+					BonusStats.Add(0);
+				}
+			}
 
-					value ^= index << shift;
+			// the next bonus tokens you'll be offered, same indexes as the bonus stats list, very weird encoding
+			if (GetNextBonusStatsEntry().Length > 0)
+			{
+				NextBonusStats = DecodeString(GetNextBonusStatsEntry().GetStringData());
+			}
+			else
+			{
+				Random random = new Random();
 
-					shift += 5;
+				for (int i = 0; i < NumNextBonusStats; i++)
+				{
+					uint nextBonusStat = (uint)random.Next(0, NumBonusStats);
 
-					if (shift > 31)
+					while (NextBonusStats.Contains(nextBonusStat) == true)
 					{
-						Console.WriteLine(value);
-
-						BonusStats[j] = (int)value;
-						BonusStatsPercent[j] = Math.Round(Math.Pow(BonusStats[j], 0.75), 1);
-						j++;
-
-						shift &= 7;
-						value = (MagicNumber) ^ index >> 5 - shift;
+						nextBonusStat = (uint)random.Next(0, NumBonusStats);
 					}
+
+					NextBonusStats.Add(nextBonusStat);
 				}
 			}
 		}
 
 		private unsafe void SaveEntryData()
 		{
+			// "split" the badass rank again ... no idea why this was done
 			int badassRankData = (BadassRank * 10) / 2;
-
 			GetBadassRank1Entry().SetInt32Data(badassRankData);
 			GetBadassRank2Entry().SetInt32Data(badassRankData);
+
 			GetBadassTokensEntry().SetInt32Data(BadassTokens);
 			GetBadassTokensEarnedEntry().SetInt32Data(BadassTokensEarned);
 
-			if (GoldenKeys > 0)
+			byte[] goldenKeysBin = new byte[0];
+			int numKeyEntries = 0;
+
+			if (GoldenKeysPOPremierClub.Valid == true)
 			{
-				// TODO investigate the two different values
-				// idea: first value is for non shift codes, second is the real value
-				// leave the first value untouched, increase the second value (if it exists, if not, touch the first value)
-				// they may not exceed 255 in total
+				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
+
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysPOPremierClub.SourceId;
+				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysPOPremierClub.NumKeys;
+				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysPOPremierClub.NumKeysUsed;
+
+				numKeyEntries++;
 			}
 
-			if (BonusStatsPercent.Length == NumBonusStats)
+			if (GoldenKeysTulip.Valid == true)
 			{
-				string code = "";
+				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				uint index = 0;
-				int shift = 0;
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysTulip.SourceId;
+				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysTulip.NumKeys;
+				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysTulip.NumKeysUsed;
 
-				for (int i = 0; i < NumBonusStats; i++)
-				{
-					// uint value = (uint)Math.Round(Math.Pow(BonusStatsPercent[i], 1 / 0.75));
-					uint value = (uint)BonusStats[i];
-
-					value ^= MagicNumber;
-
-					if (shift > 0)
-					{
-						index = ((index | (value << shift)) & 0x1F);
-						shift = 5 - shift;
-
-						code += Alphabet[(int)index];
-					}
-
-					for (; shift < 28; shift += 5)
-					{
-						index = ((value >> shift) & 0x1F);
-
-						code += Alphabet[(int)index];
-					}
-
-					index = value >> shift;
-					shift = 32 - shift;
-				}
-
-				if (shift > 0)
-				{
-					code += Alphabet[(int)index];
-				}
-
-				GetBonusStatsEntry().SetStringData(code);
-
-				Console.WriteLine(code);
-			}
-		}
-
-		public ref Entry GetFromID(uint ID)
-		{
-			for (int i = 0; i < Entries.Length; i++)
-			{
-				if (Entries[i].ID == ID) return ref Entries[i];
+				numKeyEntries++;
 			}
 
-			throw new Exception("Entry with ID " + ID + " not found!");
+			if (GoldenKeysShift.Valid == true)
+			{
+				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
+
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysShift.SourceId;
+				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysShift.NumKeys;
+				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysShift.NumKeysUsed;
+
+				numKeyEntries++;
+			}
+
+			GetGoldenKeysEntry().SetBinData(goldenKeysBin);
+
+			if (BonusStats.Count == NumBonusStats)
+			{
+				GetBonusStatsEntry().SetStringData(EncodeString(BonusStats));
+			}
+
+			if (NextBonusStats.Count == NumNextBonusStats)
+			{
+				GetNextBonusStatsEntry().SetStringData(EncodeString(NextBonusStats));
+			}
 		}
 
 		// String (Encoded)
 		public ref Entry GetBonusStatsEntry()
 		{
-			return ref GetFromID(143);
+			return ref GetEntryFromID(143);
+		}
+
+		// String (Encoded)
+		public ref Entry GetNextBonusStatsEntry()
+		{
+			return ref GetEntryFromID(164);
 		}
 
 		// Bin (Array)
 		public ref Entry GetGoldenKeysEntry()
 		{
-			return ref GetFromID(162);
+			return ref GetEntryFromID(162);
 		}
 
 		// Int32
 		public ref Entry GetBadassRank1Entry()
 		{
-			return ref GetFromID(136);
+			return ref GetEntryFromID(136);
 		}
 
 		// Int32
 		public ref Entry GetBadassRank2Entry()
 		{
-			return ref GetFromID(137);
+			return ref GetEntryFromID(137);
 		}
 
 		// Int32
 		public ref Entry GetBadassTokensEntry()
 		{
-			return ref GetFromID(138);
+			return ref GetEntryFromID(138);
 		}
 
 		// Int32
 		public ref Entry GetBadassTokensEarnedEntry()
 		{
-			return ref GetFromID(139);
+			return ref GetEntryFromID(139);
 		}
 
 		// Bin
 		public ref Entry GetCustomizationsEntry()
 		{
-			return ref GetFromID(300);
+			return ref GetEntryFromID(300);
 		}
 
-		public void SetMaximumHealth(double d)
+		public ref GoldenKeyEntry GetGoldenKeysPOPremierClubEntry()
 		{
-			BonusStatsPercent[0] = d;
+			return ref GoldenKeysPOPremierClub;
 		}
 
-		public double GetMaximumHealth()
+		public ref GoldenKeyEntry GetGoldenKeysTulipEntry()
 		{
-			return BonusStatsPercent[0];
+			return ref GoldenKeysTulip;
 		}
 
-		public void SetShieldCapacity(double d)
+		public ref GoldenKeyEntry GetGoldenKeysShiftEntry()
 		{
-			BonusStatsPercent[1] = d;
+			return ref GoldenKeysShift;
 		}
 
-		public double GetShieldCapacity()
+		public double GetBonusFromTokens(uint t)
 		{
-			return BonusStatsPercent[1];
+			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
 
-		public void SetShieldRechargeDelay(double d)
+		public void SetMaximumHealthTokens(uint t)
 		{
-			BonusStatsPercent[2] = d;
+			BonusStats[0] = t;
 		}
 
-		public double GetShieldRechargeDelay()
+		public uint GetMaximumHealthTokens()
 		{
-			return BonusStatsPercent[2];
+			return BonusStats[0];
 		}
 
-		public void SetShieldRechargeRate(double d)
+		public double GetMaximumHealthBonus()
 		{
-			BonusStatsPercent[3] = d;
+			return GetBonusFromTokens(BonusStats[0]);
 		}
 
-		public double GetShieldRechargeRate()
+		public void SetShieldCapacityTokens(uint t)
 		{
-			return BonusStatsPercent[3];
+			BonusStats[1] = t;
 		}
 
-		public void SetMeleeDamage(double d)
+		public uint GetShieldCapacityTokens()
 		{
-			BonusStatsPercent[4] = d;
+			return BonusStats[1];
 		}
 
-		public double GetMeleeDamage()
+		public double GetShieldCapacityBonus()
 		{
-			return BonusStatsPercent[4];
+			return GetBonusFromTokens(BonusStats[1]);
 		}
 
-		public void SetGrenadeDamage(double d)
+		public void SetShieldRechargeDelayTokens(uint t)
 		{
-			BonusStatsPercent[5] = d;
+			BonusStats[2] = t;
 		}
 
-		public double GetGrenadeDamage()
+		public uint GetShieldRechargeDelayTokens()
 		{
-			return BonusStatsPercent[5];
+			return BonusStats[2];
 		}
 
-		public void SetGunAccuracy(double d)
+		public double GetShieldRechargeDelayBonus()
 		{
-			BonusStatsPercent[6] = d;
+			return GetBonusFromTokens(BonusStats[2]);
 		}
 
-		public double GetGunAccuracy()
+		public void SetShieldRechargeRateTokens(uint t)
 		{
-			return BonusStatsPercent[6];
+			BonusStats[3] = t;
 		}
 
-		public void SetGunDamage(double d)
+		public uint GetShieldRechargeRateTokens()
 		{
-			BonusStatsPercent[7] = d;
+			return BonusStats[3];
 		}
 
-		public double GetGunDamage()
+		public double GetShieldRechargeRateBonus()
 		{
-			return BonusStatsPercent[7];
+			return GetBonusFromTokens(BonusStats[3]);
 		}
 
-		public void SetFireRate(double d)
+		public void SetMeleeDamageTokens(uint t)
 		{
-			BonusStatsPercent[8] = d;
+			BonusStats[4] = t;
 		}
 
-		public double GetFireRate()
+		public uint GetMeleeDamageTokens()
 		{
-			return BonusStatsPercent[8];
+			return BonusStats[4];
 		}
 
-		public void SetRecoilReduction(double d)
+		public double GetMeleeDamageBonus()
 		{
-			BonusStatsPercent[9] = d;
+			return GetBonusFromTokens(BonusStats[4]);
 		}
 
-		public double GetRecoilReduction()
+		public void SetGrenadeDamageTokens(uint t)
 		{
-			return BonusStatsPercent[9];
+			BonusStats[5] = t;
 		}
 
-		public void SetReloadSpeed(double d)
+		public uint GetGrenadeDamageTokens()
 		{
-			BonusStatsPercent[10] = d;
+			return BonusStats[5];
 		}
 
-		public double GetReloadSpeed()
+		public double GetGrenadeDamageBonus()
 		{
-			return BonusStatsPercent[10];
+			return GetBonusFromTokens(BonusStats[5]);
 		}
 
-		public void SetElementalEffectChance(double d)
+		public void SetGunAccuracyTokens(uint t)
 		{
-			BonusStatsPercent[11] = d;
+			BonusStats[6] = t;
 		}
 
-		public double GetElementalEffectChance()
+		public uint GetGunAccuracyTokens()
 		{
-			return BonusStatsPercent[11];
+			return BonusStats[6];
 		}
 
-		public void SetElementalEffectDamage(double d)
+		public double GetGunAccuracyBonus()
 		{
-			BonusStatsPercent[12] = d;
+			return GetBonusFromTokens(BonusStats[6]);
 		}
 
-		public double GetElementalEffectDamage()
+		public void SetGunDamageTokens(uint t)
 		{
-			return BonusStatsPercent[12];
+			BonusStats[7] = t;
 		}
 
-		public void SetCriticalHitDamage(double d)
+		public uint GetGunDamageTokens()
 		{
-			BonusStatsPercent[13] = d;
+			return BonusStats[7];
 		}
 
-		public double GetCriticalHitDamage()
+		public double GetGunDamageBonus()
 		{
-			return BonusStatsPercent[13];
+			return GetBonusFromTokens(BonusStats[7]);
+		}
+
+		public void SetFireRateTokens(uint t)
+		{
+			BonusStats[8] = t;
+		}
+
+		public uint GetFireRateTokens()
+		{
+			return BonusStats[8];
+		}
+
+		public double GetFireRateBonus()
+		{
+			return GetBonusFromTokens(BonusStats[8]);
+		}
+
+		public void SetRecoilReductionTokens(uint t)
+		{
+			BonusStats[9] = t;
+		}
+
+		public uint GetRecoilReductionTokens()
+		{
+			return BonusStats[9];
+		}
+
+		public double GetRecoilReductionBonus()
+		{
+			return GetBonusFromTokens(BonusStats[9]);
+		}
+
+		public void SetReloadSpeedTokens(uint t)
+		{
+			BonusStats[10] = t;
+		}
+
+		public uint GetReloadSpeedTokens()
+		{
+			return BonusStats[10];
+		}
+
+		public double GetReloadSpeedBonus()
+		{
+			return GetBonusFromTokens(BonusStats[10]);
+		}
+
+		public void SetElementalEffectChanceTokens(uint t)
+		{
+			BonusStats[11] = t;
+		}
+
+		public uint GetElementalEffectChanceTokens()
+		{
+			return BonusStats[11];
+		}
+
+		public double GetElementalEffectChanceBonus()
+		{
+			return GetBonusFromTokens(BonusStats[11]);
+		}
+
+		public void SetElementalEffectDamageTokens(uint t)
+		{
+			BonusStats[12] = t;
+		}
+
+		public uint GetElementalEffectDamageTokens()
+		{
+			return BonusStats[12];
+		}
+
+		public double GetElementalEffectDamageBonus()
+		{
+			return GetBonusFromTokens(BonusStats[12]);
+		}
+
+		public void SetCriticalHitDamageTokens(uint t)
+		{
+			BonusStats[13] = t;
+		}
+
+		public uint GetCriticalHitDamageTokens()
+		{
+			return BonusStats[13];
+		}
+
+		public double GetCriticalHitDamageBonus()
+		{
+			return GetBonusFromTokens(BonusStats[13]);
 		}
     }
 }

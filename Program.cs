@@ -22,40 +22,91 @@ namespace B2Profile
 				return 1;
 			}
 
-			Console.WriteLine("Golden Keys: " + profile.GoldenKeys);
-			Console.WriteLine("Badass Rank: " + profile.BadassRank);
-			Console.WriteLine("Badass Tokens: " + profile.BadassTokens);
-			Console.WriteLine("Used Badass Tokens: " + profile.BadassTokensUsed);
-			Console.WriteLine("Earned Badass Tokens: " + profile.BadassTokensEarned);
+#if true
+			Console.WriteLine("Input:");
 			Console.WriteLine();
 
-			Console.WriteLine("Bonus Maximum Health: " + profile.GetMaximumHealth());
-			Console.WriteLine("Bonus Shield Capacity: " + profile.GetShieldCapacity());
-			Console.WriteLine("Bonus Shield Recharge Delay: " + profile.GetShieldRechargeDelay());
-			Console.WriteLine("Bonus Shield Recharge Rate: " + profile.GetShieldRechargeRate());
-			Console.WriteLine("Bonus Melee Damage: " + profile.GetMeleeDamage());
-			Console.WriteLine("Bonus Grenade Damage: " + profile.GetGrenadeDamage());
-			Console.WriteLine("Bonus Gun Accuracy: " + profile.GetGunAccuracy());
-			Console.WriteLine("Bonus Gun Damage: " + profile.GetGunDamage());
-			Console.WriteLine("Bonus Fire Rate: " + profile.GetFireRate());
-			Console.WriteLine("Bonus Recoil Reduction: " + profile.GetRecoilReduction());
-			Console.WriteLine("Bonus Reload Speed: " + profile.GetReloadSpeed());
-			Console.WriteLine("Bonus Elemental Effect Chance: " + profile.GetElementalEffectChance());
-			Console.WriteLine("Bonus Elemental Effect Damage: " + profile.GetElementalEffectDamage());
-			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamage());
+			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().Valid);
+			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeys);
+			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeysUsed);
+			Console.WriteLine();
 
-			profile.BadassTokens = 10;
-			profile.BadassTokensEarned = 10;
-			profile.BadassRank = 73; // just before 11th token
+			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().Valid);
+			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().NumKeys);
+			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().NumKeysUsed);
+			Console.WriteLine();
 
-			for (int i = 0; i < B2Profile.NumBonusStats; i++)
+			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().Valid);
+			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().NumKeys);
+			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().NumKeysUsed);
+			Console.WriteLine();
+
+			Console.WriteLine("Badass Rank: " + profile.GetBadassRank());
+			Console.WriteLine("Badass Tokens: " + profile.GetBadassTokens());
+			Console.WriteLine("Earned Badass Tokens: " + profile.GetBadassTokensEarned());
+			Console.WriteLine();
+
+			Console.WriteLine("Bonus Maximum Health: " + profile.GetMaximumHealthBonus());
+			Console.WriteLine("Bonus Shield Capacity: " + profile.GetShieldCapacityBonus());
+			Console.WriteLine("Bonus Shield Recharge Delay: " + profile.GetShieldRechargeDelayBonus());
+			Console.WriteLine("Bonus Shield Recharge Rate: " + profile.GetShieldRechargeRateBonus());
+			Console.WriteLine("Bonus Melee Damage: " + profile.GetMeleeDamageBonus());
+			Console.WriteLine("Bonus Grenade Damage: " + profile.GetGrenadeDamageBonus());
+			Console.WriteLine("Bonus Gun Accuracy: " + profile.GetGunAccuracyBonus());
+			Console.WriteLine("Bonus Gun Damage: " + profile.GetGunDamageBonus());
+			Console.WriteLine("Bonus Fire Rate: " + profile.GetFireRateBonus());
+			Console.WriteLine("Bonus Recoil Reduction: " + profile.GetRecoilReductionBonus());
+			Console.WriteLine("Bonus Reload Speed: " + profile.GetReloadSpeedBonus());
+			Console.WriteLine("Bonus Elemental Effect Chance: " + profile.GetElementalEffectChanceBonus());
+			Console.WriteLine("Bonus Elemental Effect Damage: " + profile.GetElementalEffectDamageBonus());
+			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamageBonus());
+#endif
+
+#if false
+			Console.WriteLine();
+
+			Console.WriteLine("Output:");
+			Console.WriteLine();
+
+			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().Valid);
+			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeys);
+			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeysUsed);
+			Console.WriteLine();
+
+			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().Valid);
+			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().NumKeys);
+			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().NumKeysUsed);
+			Console.WriteLine();
+
+			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().Valid);
+			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().NumKeys);
+			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().NumKeysUsed);
+			Console.WriteLine();
+
+			Console.WriteLine("Badass Rank: " + profile.GetBadassRank());
+			Console.WriteLine("Badass Tokens: " + profile.GetBadassTokens());
+			Console.WriteLine("Earned Badass Tokens: " + profile.GetBadassTokensEarned());
+			Console.WriteLine();
+
+			Console.WriteLine("Bonus Maximum Health: " + profile.GetMaximumHealthBonus());
+			Console.WriteLine("Bonus Shield Capacity: " + profile.GetShieldCapacityBonus());
+			Console.WriteLine("Bonus Shield Recharge Delay: " + profile.GetShieldRechargeDelayBonus());
+			Console.WriteLine("Bonus Shield Recharge Rate: " + profile.GetShieldRechargeRateBonus());
+			Console.WriteLine("Bonus Melee Damage: " + profile.GetMeleeDamageBonus());
+			Console.WriteLine("Bonus Grenade Damage: " + profile.GetGrenadeDamageBonus());
+			Console.WriteLine("Bonus Gun Accuracy: " + profile.GetGunAccuracyBonus());
+			Console.WriteLine("Bonus Gun Damage: " + profile.GetGunDamageBonus());
+			Console.WriteLine("Bonus Fire Rate: " + profile.GetFireRateBonus());
+			Console.WriteLine("Bonus Recoil Reduction: " + profile.GetRecoilReductionBonus());
+			Console.WriteLine("Bonus Reload Speed: " + profile.GetReloadSpeedBonus());
+			Console.WriteLine("Bonus Elemental Effect Chance: " + profile.GetElementalEffectChanceBonus());
+			Console.WriteLine("Bonus Elemental Effect Damage: " + profile.GetElementalEffectDamageBonus());
+			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamageBonus());
+#endif
+
+			if (profile.Save("profile.bin") == false)
 			{
-				profile.BonusStats[i] = 0;
-			}
-
-			if (profile.Save("profile_out.bin") == false)
-			{
-				Console.WriteLine("Error saving profile_out.bin");
+				Console.WriteLine("Error saving profile.bin");
 
 				return 1;
 			}

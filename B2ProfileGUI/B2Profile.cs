@@ -8,7 +8,6 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using PackageIO;
 using PackageIO.Algorithms;
-using BL2Kit;
 
 namespace B2Profile
 {

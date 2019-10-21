@@ -38,9 +38,6 @@
     <ApplicationIcon>res\B2ProfileGUI.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BL2Kit">
-      <HintPath>..\lib\BL2Kit.dll</HintPath>
-    </Reference>
     <Reference Include="MiniLZO">
       <HintPath>..\lib\MiniLZO.dll</HintPath>
     </Reference>
