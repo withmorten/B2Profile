@@ -26,19 +26,19 @@ namespace B2Profile
 			Console.WriteLine("Input:");
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().Valid);
-			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeys);
-			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeysUsed);
+			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().IsValid());
+			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys());
+			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().Valid);
-			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().NumKeys);
-			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().NumKeysUsed);
+			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().IsValid());
+			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().GetNumKeys());
+			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().Valid);
-			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().NumKeys);
-			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().NumKeysUsed);
+			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().IsValid());
+			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().GetNumKeys());
+			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
 			Console.WriteLine("Badass Rank: " + profile.GetBadassRank());
@@ -68,19 +68,19 @@ namespace B2Profile
 			Console.WriteLine("Output:");
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().Valid);
-			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeys);
-			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().NumKeysUsed);
+			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().GetValid());
+			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys());
+			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().Valid);
-			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().NumKeys);
-			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().NumKeysUsed);
+			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().GetValid());
+			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().GetNumKeys());
+			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().Valid);
-			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().NumKeys);
-			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().NumKeysUsed);
+			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().GetValid());
+			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().GetNumKeys());
+			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
 			Console.WriteLine("Badass Rank: " + profile.GetBadassRank());

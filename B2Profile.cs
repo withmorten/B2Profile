@@ -151,11 +151,11 @@ namespace B2Profile
 
 	unsafe struct GoldenKeyEntry
 	{
-		public byte SourceId;
-		public byte NumKeys;
-		public byte NumKeysUsed;
+		private byte SourceId;
+		private byte NumKeys;
+		private byte NumKeysUsed;
 
-		public bool Valid;
+		private bool Valid;
 
 		public GoldenKeyEntry(byte id)
 		{
@@ -164,6 +164,40 @@ namespace B2Profile
 			NumKeysUsed = 0;
 
 			Valid = false;
+		}
+
+		public byte GetSourceId()
+		{
+			return SourceId;
+		}
+
+		public void SetNumKeys(byte b)
+		{
+			NumKeys = b;
+
+			Valid = true;
+		}
+
+		public byte GetNumKeys()
+		{
+			return NumKeys;
+		}
+
+		public void SetNumKeysUsed(byte b)
+		{
+			NumKeysUsed = b;
+
+			Valid = true;
+		}
+
+		public byte GetNumKeysUsed()
+		{
+			return NumKeysUsed;
+		}
+
+		public bool IsValid()
+		{
+			return Valid;
 		}
 	}
 
@@ -527,27 +561,18 @@ namespace B2Profile
 					switch (sourceId)
 					{
 					case 254:
-						GoldenKeysPOPremierClub.SourceId = sourceId;
-						GoldenKeysPOPremierClub.NumKeys = numKeys;
-						GoldenKeysPOPremierClub.NumKeysUsed = numKeysUsed;
-
-						GoldenKeysPOPremierClub.Valid = true;
+						GoldenKeysPOPremierClub.SetNumKeys(numKeys);
+						GoldenKeysPOPremierClub.SetNumKeysUsed(numKeysUsed);
 
 						break;
 					case 173:
-						GoldenKeysTulip.SourceId = sourceId;
-						GoldenKeysTulip.NumKeys = numKeys;
-						GoldenKeysTulip.NumKeysUsed = numKeysUsed;
-
-						GoldenKeysTulip.Valid = true;
+						GoldenKeysTulip.SetNumKeys(numKeys);
+						GoldenKeysTulip.SetNumKeysUsed(numKeysUsed);
 
 						break;
 					case 0:
-						GoldenKeysShift.SourceId = sourceId;
-						GoldenKeysShift.NumKeys = numKeys;
-						GoldenKeysShift.NumKeysUsed = numKeysUsed;
-
-						GoldenKeysShift.Valid = true;
+						GoldenKeysShift.SetNumKeys(numKeys);
+						GoldenKeysShift.SetNumKeysUsed(numKeysUsed);
 
 						break;
 					}
@@ -603,35 +628,35 @@ namespace B2Profile
 			byte[] goldenKeysBin = new byte[0];
 			int numKeyEntries = 0;
 
-			if (GoldenKeysPOPremierClub.Valid == true)
+			if (GoldenKeysPOPremierClub.IsValid() == true)
 			{
 				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysPOPremierClub.SourceId;
-				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysPOPremierClub.NumKeys;
-				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysPOPremierClub.NumKeysUsed;
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetSourceId();
+				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetNumKeys();
+				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetNumKeysUsed();
 
 				numKeyEntries++;
 			}
 
-			if (GoldenKeysTulip.Valid == true)
+			if (GoldenKeysTulip.IsValid() == true)
 			{
 				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysTulip.SourceId;
-				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysTulip.NumKeys;
-				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysTulip.NumKeysUsed;
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysTulip.GetSourceId();
+				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysTulip.GetNumKeys();
+				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysTulip.GetNumKeysUsed();
 
 				numKeyEntries++;
 			}
 
-			if (GoldenKeysShift.Valid == true)
+			if (GoldenKeysShift.IsValid() == true)
 			{
 				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysShift.SourceId;
-				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysShift.NumKeys;
-				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysShift.NumKeysUsed;
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysShift.GetSourceId();
+				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysShift.GetNumKeys();
+				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysShift.GetNumKeysUsed();
 
 				numKeyEntries++;
 			}
