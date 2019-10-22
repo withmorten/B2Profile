@@ -11,7 +11,7 @@ using PackageIO.Algorithms;
 
 namespace B2Profile
 {
-    enum DataType
+    public enum DataType
     {
         Int32 = 1,
         String = 4,
@@ -20,7 +20,7 @@ namespace B2Profile
         Int8 = 8
     }
 
-    unsafe struct Entry
+    unsafe public struct Entry
     {
         public uint ID;
         public uint Length;
@@ -149,7 +149,7 @@ namespace B2Profile
 		}
     }
 
-	unsafe struct GoldenKeyEntry
+	unsafe public struct GoldenKeyEntry
 	{
 		private byte SourceId;
 		private byte NumKeys;
@@ -201,7 +201,7 @@ namespace B2Profile
 		}
 	}
 
-    class B2Profile
+    public class Profile
 	{
 		private Entry[] Entries;
 
@@ -215,7 +215,7 @@ namespace B2Profile
 		private List<uint> BonusStats;
 		private List<uint> NextBonusStats;
 
-		public B2Profile()
+		public Profile()
 		{
 			Array.Resize(ref Entries, 0);
 

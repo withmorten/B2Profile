@@ -1,4 +1,4 @@
-﻿namespace B2Profile
+﻿namespace B2ProfileGUI
 {
 	partial class MainForm
 	{
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.MainMenuStrip = new System.Windows.Forms.ToolStrip();
+			this.MainMenuBar = new System.Windows.Forms.ToolStrip();
 			this.MainMenuOpenButton = new System.Windows.Forms.ToolStripButton();
 			this.MainMenuSaveButton = new System.Windows.Forms.ToolStripButton();
 			this.MainMenuAboutButton = new System.Windows.Forms.ToolStripButton();
@@ -57,28 +57,28 @@
 			this.BonusPercentLabel = new System.Windows.Forms.Label();
 			this.BonusTokensLabel = new System.Windows.Forms.Label();
 			this.BonusStatLabel = new System.Windows.Forms.Label();
-			this.MaximumHealthBonusPercent = new System.Windows.Forms.NumericUpDown();
-			this.MaximumHealthBonusTokensInput = new System.Windows.Forms.NumericUpDown();
-			this.MainMenuStrip.SuspendLayout();
+			this.MaximumHealthBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.MaximumHealthBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.MainMenuBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensEarnedInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercent)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercentInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusTokensInput)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// MainMenuStrip
+			// MainMenuBar
 			// 
-			this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.MainMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MainMenuOpenButton,
             this.MainMenuSaveButton,
             this.MainMenuAboutButton,
             this.MainMenuCloseButton});
-			this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
-			this.MainMenuStrip.Name = "MainMenuStrip";
-			this.MainMenuStrip.Size = new System.Drawing.Size(584, 25);
-			this.MainMenuStrip.TabIndex = 0;
-			this.MainMenuStrip.Text = "Main Menu";
+			this.MainMenuBar.Location = new System.Drawing.Point(0, 0);
+			this.MainMenuBar.Name = "MainMenuStrip";
+			this.MainMenuBar.Size = new System.Drawing.Size(584, 25);
+			this.MainMenuBar.TabIndex = 0;
+			this.MainMenuBar.Text = "Main Menu";
 			// 
 			// MainMenuOpenButton
 			// 
@@ -335,21 +335,21 @@
 			this.BonusStatLabel.TabIndex = 22;
 			this.BonusStatLabel.Text = "Bonus Stat";
 			// 
-			// MaximumHealthBonusPercent
+			// MaximumHealthBonusPercentInput
 			// 
-			this.MaximumHealthBonusPercent.DecimalPlaces = 1;
-			this.MaximumHealthBonusPercent.Enabled = false;
-			this.MaximumHealthBonusPercent.Location = new System.Drawing.Point(174, 137);
-			this.MaximumHealthBonusPercent.Maximum = new decimal(new int[] {
+			this.MaximumHealthBonusPercentInput.DecimalPlaces = 1;
+			this.MaximumHealthBonusPercentInput.Enabled = false;
+			this.MaximumHealthBonusPercentInput.Location = new System.Drawing.Point(174, 137);
+			this.MaximumHealthBonusPercentInput.Maximum = new decimal(new int[] {
             16777216,
             0,
             0,
             0});
-			this.MaximumHealthBonusPercent.Name = "MaximumHealthBonusPercent";
-			this.MaximumHealthBonusPercent.ReadOnly = true;
-			this.MaximumHealthBonusPercent.Size = new System.Drawing.Size(81, 20);
-			this.MaximumHealthBonusPercent.TabIndex = 23;
-			this.MaximumHealthBonusPercent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MaximumHealthBonusPercentInput.Name = "MaximumHealthBonusPercentInput";
+			this.MaximumHealthBonusPercentInput.ReadOnly = true;
+			this.MaximumHealthBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.MaximumHealthBonusPercentInput.TabIndex = 23;
+			this.MaximumHealthBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// MaximumHealthBonusTokensInput
 			// 
@@ -370,7 +370,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(584, 536);
 			this.Controls.Add(this.MaximumHealthBonusTokensInput);
-			this.Controls.Add(this.MaximumHealthBonusPercent);
+			this.Controls.Add(this.MaximumHealthBonusPercentInput);
 			this.Controls.Add(this.BonusStatLabel);
 			this.Controls.Add(this.BonusTokensLabel);
 			this.Controls.Add(this.BonusPercentLabel);
@@ -394,7 +394,7 @@
 			this.Controls.Add(this.BadassTokensLabel);
 			this.Controls.Add(this.BadassRankInput);
 			this.Controls.Add(this.BadassRankLabel);
-			this.Controls.Add(this.MainMenuStrip);
+			this.Controls.Add(this.MainMenuBar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(6);
@@ -402,12 +402,12 @@
 			this.Name = "MainForm";
 			this.Text = "B2ProfileGUI";
 			this.Load += new System.EventHandler(this.MainForm_Load);
-			this.MainMenuStrip.ResumeLayout(false);
-			this.MainMenuStrip.PerformLayout();
+			this.MainMenuBar.ResumeLayout(false);
+			this.MainMenuBar.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensEarnedInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercent)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercentInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusTokensInput)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -416,7 +416,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.ToolStrip MainMenuStrip;
+		private System.Windows.Forms.ToolStrip MainMenuBar;
 		private System.Windows.Forms.ToolStripButton MainMenuOpenButton;
 		private System.Windows.Forms.ToolStripButton MainMenuSaveButton;
 		private System.Windows.Forms.ToolStripButton MainMenuAboutButton;
@@ -444,8 +444,7 @@
 		private System.Windows.Forms.Label BonusPercentLabel;
 		private System.Windows.Forms.Label BonusTokensLabel;
 		private System.Windows.Forms.Label BonusStatLabel;
-		private System.Windows.Forms.NumericUpDown MaximumHealthBonusPercent;
-		private System.Windows.Forms.NumericUpDown MaximumHealthBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown MaximumHealthBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown MaximumHealthBonusTokensInput;
 	}
 }
-

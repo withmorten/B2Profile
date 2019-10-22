@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using B2Profile;
 
-namespace B2Profile
+namespace B2ProfileCMD
 {
 	class Program
 	{
@@ -13,7 +14,7 @@ namespace B2Profile
 		{
 			if (args.Length < 1) return 1;
 
-			B2Profile profile = new B2Profile();
+			Profile profile = new Profile();
 
 			if (profile.Load(args[0]) == false)
 			{

@@ -38,11 +38,8 @@
     <ApplicationIcon>res\B2ProfileGUI.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MiniLZO">
-      <HintPath>..\lib\MiniLZO.dll</HintPath>
-    </Reference>
-    <Reference Include="PackageIO">
-      <HintPath>..\lib\PackageIO.dll</HintPath>
+    <Reference Include="B2Profile">
+      <HintPath>..\B2Profile\bin\Release\B2Profile.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,15 +54,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="B2Profile.cs" />
+    <Compile Include="BonusStatUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="B2ProfileGUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

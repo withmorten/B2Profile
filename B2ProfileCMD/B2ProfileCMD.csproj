@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5517D7BB-37C8-497F-90B4-0C32CA7B8FEB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>b2profile</RootNamespace>
-    <AssemblyName>b2profile</AssemblyName>
+    <RootNamespace>B2ProfileCMD</RootNamespace>
+    <AssemblyName>B2ProfileCMD</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,15 +35,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BL2Kit">
-      <HintPath>lib\BL2Kit.dll</HintPath>
-    </Reference>
-    <Reference Include="MiniLZO, Version=2.10.6409.37196, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="B2Profile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MiniLZO.dll</HintPath>
-    </Reference>
-    <Reference Include="PackageIO">
-      <HintPath>lib\PackageIO.dll</HintPath>
+      <HintPath>..\B2Profile\bin\Release\B2Profile.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,9 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="B2Profile.cs" />
-    <Compile Include="Helpers.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="B2ProfileCMD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +57,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y b2profile.exe "C:\users\morten\My Documents\bin" &amp; copy /Y b2profile.exe.config "C:\users\morten\My Documents\bin"</PostBuildEvent>
+    <PostBuildEvent>copy /Y B2ProfileCMD.exe "C:\users\morten\My Documents\bin" &amp; copy /Y B2ProfileCMD.exe.config "C:\users\morten\My Documents\bin"</PostBuildEvent>
   </PropertyGroup>
 </Project>
