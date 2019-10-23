@@ -210,7 +210,7 @@ namespace B2Profile
 		private GoldenKeyEntry GoldenKeysShift;
 
 		private int BadassRank;
-		private int BadassTokens;
+		private int BadassTokensAvailable;
 		private int BadassTokensEarned;
 		private List<uint> BonusStats;
 		private List<uint> NextBonusStats;
@@ -224,7 +224,7 @@ namespace B2Profile
 			GoldenKeysShift = new GoldenKeyEntry(0);
 
 			BadassRank = 0;
-			BadassTokens = 0;
+			BadassTokensAvailable = 0;
 			BadassTokensEarned = 0;
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
@@ -330,14 +330,14 @@ namespace B2Profile
 			return BadassRank;
 		}
 
-		public void SetBadassTokens(int i)
+		public void SetBadassTokensAvailable(int i)
 		{
-			BadassTokens = i;
+			BadassTokensAvailable = i;
 		}
 
-		public int GetBadassTokens()
+		public int GetBadassTokensAvailable()
 		{
-			return BadassTokens;
+			return BadassTokensAvailable;
 		}
 
 		public void SetBadassTokensEarned(int i)
@@ -535,15 +535,16 @@ namespace B2Profile
 			BadassRank = (GetBadassRank1Entry().GetInt32Data() + GetBadassRank2Entry().GetInt32Data()) / 10;
 
 			// the current badass tokens available to invest
-			BadassTokens = GetBadassTokensEntry().GetInt32Data();
+			BadassTokensAvailable = GetBadassTokensEntry().GetInt32Data();
 
 			// the badass tokens earned from increasing the badass rank (note: rounded, not floored)
 			BadassTokensEarned = GetBadassTokensEarnedEntry().GetInt32Data();
 
 			// golden keys:
-			// there can be 3 (or more?) entries
+			// there can be any numbers entries
+			// only these 3 however, are written by the game
 			// ID 000: shift keys (SHiFT)
-			// ID 173: mechromancer dlc (Tulip) ???
+			// ID 173: mechromancer dlc (Tulip)
 			// ID 254: pre order keys (POPremierClub)
 			if (GetGoldenKeysEntry().Length > 0)
 			{
@@ -551,7 +552,7 @@ namespace B2Profile
 
 				int numKeyEntries = goldenKeysBin.Length / 3;
 
-				// only get the valid entries - odd things happen if others are used
+				// only get the 3 known entries - odd things happen if you have more than 999 (and who needs that anyway)
 				for (int i = 0; i < numKeyEntries; i++)
 				{
 					byte sourceId = goldenKeysBin[0 + i * 3];
@@ -622,7 +623,7 @@ namespace B2Profile
 			GetBadassRank1Entry().SetInt32Data(badassRankData);
 			GetBadassRank2Entry().SetInt32Data(badassRankData);
 
-			GetBadassTokensEntry().SetInt32Data(BadassTokens);
+			GetBadassTokensEntry().SetInt32Data(BadassTokensAvailable);
 			GetBadassTokensEarnedEntry().SetInt32Data(BadassTokensEarned);
 
 			byte[] goldenKeysBin = new byte[0];

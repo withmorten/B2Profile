@@ -23,7 +23,7 @@ namespace B2ProfileCMD
 				return 1;
 			}
 
-#if true
+#if false
 			Console.WriteLine("Input:");
 			Console.WriteLine();
 
@@ -64,22 +64,33 @@ namespace B2ProfileCMD
 #endif
 
 #if false
+			profile.GetGoldenKeysPOPremierClubEntry().SetNumKeys(255);
+			profile.GetGoldenKeysPOPremierClubEntry().SetNumKeysUsed(0);
+
+			profile.GetGoldenKeysTulipEntry().SetNumKeys(255);
+			profile.GetGoldenKeysTulipEntry().SetNumKeysUsed(0);
+
+			profile.GetGoldenKeysShiftEntry().SetNumKeys(255);
+			profile.GetGoldenKeysShiftEntry().SetNumKeysUsed(0);
+#endif
+
+#if false
 			Console.WriteLine();
 
 			Console.WriteLine("Output:");
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().GetValid());
+			Console.WriteLine("Golden Keys POPremierClub Valid: " + profile.GetGoldenKeysPOPremierClubEntry().IsValid());
 			Console.WriteLine("Golden Keys POPremierClub NumKeys: " + profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys());
 			Console.WriteLine("Golden Keys POPremierClub NumKeysUsed: " + profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().GetValid());
+			Console.WriteLine("Golden Keys Tulip Valid: " + profile.GetGoldenKeysTulipEntry().IsValid());
 			Console.WriteLine("Golden Keys Tulip NumKeys: " + profile.GetGoldenKeysTulipEntry().GetNumKeys());
 			Console.WriteLine("Golden Keys Tulip NumKeysUsed: " + profile.GetGoldenKeysTulipEntry().GetNumKeysUsed());
 			Console.WriteLine();
 
-			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().GetValid());
+			Console.WriteLine("Golden Keys SHiFT Valid: " + profile.GetGoldenKeysShiftEntry().IsValid());
 			Console.WriteLine("Golden Keys SHiFT NumKeys: " + profile.GetGoldenKeysShiftEntry().GetNumKeys());
 			Console.WriteLine("Golden Keys SHiFT NumKeysUsed: " + profile.GetGoldenKeysShiftEntry().GetNumKeysUsed());
 			Console.WriteLine();

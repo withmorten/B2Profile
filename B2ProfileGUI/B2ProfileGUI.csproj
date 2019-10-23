@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BonusStatUpDown.cs">
+    <Compile Include="GUIHelpers.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
