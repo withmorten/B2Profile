@@ -59,64 +59,64 @@
 			this.BonusStatLabel = new System.Windows.Forms.Label();
 			this.MaximumHealthBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
 			this.MaximumHealthBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatPercentUpDown1 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown1 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown2 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown2 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown3 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown3 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown4 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown4 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown5 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown5 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown6 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown6 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown7 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown7 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown8 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown8 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown9 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown9 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown10 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown10 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown11 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown11 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown12 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown12 = new B2ProfileGUI.BonusStatTokenUpDown();
-			this.bonusStatPercentUpDown13 = new B2ProfileGUI.BonusStatPercentUpDown();
-			this.bonusStatTokenUpDown13 = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.ShieldCapacityBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.ShieldCapacityBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.ShieldRechargeDelayBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.ShieldRechargeDelayBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.ShieldRechargeRateBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.ShieldRechargeRateBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.MeleeDamageBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.MeleeDamageBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.GrenadeDamageBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.GrenadeDamageBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.GunAccuracyBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.GunAccuracyBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.GunDamageBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.GunDamageBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.FireRateBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.FireRateBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.RecoilReductionBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.RecoilReductionBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.ReloadSpeedBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.ReloadSpeedBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.ElementalEffectChanceBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.ElementalEffectChanceBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.ElementalEffectDamageBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.ElementalEffectDamageBonusTokensInput = new B2ProfileGUI.BonusStatTokenUpDown();
+			this.CriticalHitDamageBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
+			this.B = new B2ProfileGUI.BonusStatTokenUpDown();
 			this.MainMenuBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensAvailableInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensEarnedInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusTokensInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercentInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown4)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown4)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown5)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown5)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown6)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown6)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown7)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown7)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown8)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown8)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown9)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown9)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown10)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown10)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown11)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown11)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown12)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown12)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown13)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown13)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldCapacityBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldCapacityBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeDelayBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeDelayBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeRateBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeRateBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.MeleeDamageBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.MeleeDamageBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GrenadeDamageBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GrenadeDamageBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunAccuracyBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunAccuracyBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunDamageBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunDamageBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.FireRateBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.FireRateBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.RecoilReductionBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.RecoilReductionBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ReloadSpeedBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ReloadSpeedBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectChanceBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectChanceBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectDamageBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectDamageBonusTokensInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.CriticalHitDamageBonusPercentInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.B)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainMenuBar
@@ -171,7 +171,7 @@
 			// BadassRankLabel
 			// 
 			this.BadassRankLabel.AutoSize = true;
-			this.BadassRankLabel.Location = new System.Drawing.Point(12, 31);
+			this.BadassRankLabel.Location = new System.Drawing.Point(12, 38);
 			this.BadassRankLabel.Name = "BadassRankLabel";
 			this.BadassRankLabel.Size = new System.Drawing.Size(74, 13);
 			this.BadassRankLabel.TabIndex = 1;
@@ -179,7 +179,7 @@
 			// 
 			// BadassRankInput
 			// 
-			this.BadassRankInput.Location = new System.Drawing.Point(148, 29);
+			this.BadassRankInput.Location = new System.Drawing.Point(169, 36);
 			this.BadassRankInput.Maximum = new decimal(new int[] {
             0,
             1,
@@ -193,7 +193,7 @@
 			// BadassTokensAvailableLabel
 			// 
 			this.BadassTokensAvailableLabel.AutoSize = true;
-			this.BadassTokensAvailableLabel.Location = new System.Drawing.Point(249, 66);
+			this.BadassTokensAvailableLabel.Location = new System.Drawing.Point(12, 92);
 			this.BadassTokensAvailableLabel.Name = "BadassTokensAvailableLabel";
 			this.BadassTokensAvailableLabel.Size = new System.Drawing.Size(130, 13);
 			this.BadassTokensAvailableLabel.TabIndex = 3;
@@ -201,7 +201,7 @@
 			// 
 			// BadassTokensAvailableInput
 			// 
-			this.BadassTokensAvailableInput.Location = new System.Drawing.Point(392, 64);
+			this.BadassTokensAvailableInput.Location = new System.Drawing.Point(169, 92);
 			this.BadassTokensAvailableInput.Maximum = new decimal(new int[] {
             0,
             1,
@@ -215,7 +215,7 @@
 			// BadassTokensEarnedLabel
 			// 
 			this.BadassTokensEarnedLabel.AutoSize = true;
-			this.BadassTokensEarnedLabel.Location = new System.Drawing.Point(12, 66);
+			this.BadassTokensEarnedLabel.Location = new System.Drawing.Point(12, 65);
 			this.BadassTokensEarnedLabel.Name = "BadassTokensEarnedLabel";
 			this.BadassTokensEarnedLabel.Size = new System.Drawing.Size(121, 13);
 			this.BadassTokensEarnedLabel.TabIndex = 5;
@@ -223,7 +223,7 @@
 			// 
 			// BadassTokensEarnedInput
 			// 
-			this.BadassTokensEarnedInput.Location = new System.Drawing.Point(148, 64);
+			this.BadassTokensEarnedInput.Location = new System.Drawing.Point(169, 65);
 			this.BadassTokensEarnedInput.Maximum = new decimal(new int[] {
             0,
             1,
@@ -237,7 +237,7 @@
 			// MaximumHealthLabel
 			// 
 			this.MaximumHealthLabel.AutoSize = true;
-			this.MaximumHealthLabel.Location = new System.Drawing.Point(12, 139);
+			this.MaximumHealthLabel.Location = new System.Drawing.Point(12, 162);
 			this.MaximumHealthLabel.Name = "MaximumHealthLabel";
 			this.MaximumHealthLabel.Size = new System.Drawing.Size(88, 13);
 			this.MaximumHealthLabel.TabIndex = 7;
@@ -246,7 +246,7 @@
 			// ShieldCapacityLabel
 			// 
 			this.ShieldCapacityLabel.AutoSize = true;
-			this.ShieldCapacityLabel.Location = new System.Drawing.Point(12, 166);
+			this.ShieldCapacityLabel.Location = new System.Drawing.Point(12, 189);
 			this.ShieldCapacityLabel.Name = "ShieldCapacityLabel";
 			this.ShieldCapacityLabel.Size = new System.Drawing.Size(83, 13);
 			this.ShieldCapacityLabel.TabIndex = 8;
@@ -255,7 +255,7 @@
 			// ShieldRechargeDelayLabel
 			// 
 			this.ShieldRechargeDelayLabel.AutoSize = true;
-			this.ShieldRechargeDelayLabel.Location = new System.Drawing.Point(12, 193);
+			this.ShieldRechargeDelayLabel.Location = new System.Drawing.Point(12, 216);
 			this.ShieldRechargeDelayLabel.Name = "ShieldRechargeDelayLabel";
 			this.ShieldRechargeDelayLabel.Size = new System.Drawing.Size(119, 13);
 			this.ShieldRechargeDelayLabel.TabIndex = 9;
@@ -264,7 +264,7 @@
 			// ShieldRechargeRateLabel
 			// 
 			this.ShieldRechargeRateLabel.AutoSize = true;
-			this.ShieldRechargeRateLabel.Location = new System.Drawing.Point(12, 220);
+			this.ShieldRechargeRateLabel.Location = new System.Drawing.Point(12, 243);
 			this.ShieldRechargeRateLabel.Name = "ShieldRechargeRateLabel";
 			this.ShieldRechargeRateLabel.Size = new System.Drawing.Size(115, 13);
 			this.ShieldRechargeRateLabel.TabIndex = 10;
@@ -273,7 +273,7 @@
 			// MeleeDamageLabel
 			// 
 			this.MeleeDamageLabel.AutoSize = true;
-			this.MeleeDamageLabel.Location = new System.Drawing.Point(12, 247);
+			this.MeleeDamageLabel.Location = new System.Drawing.Point(12, 270);
 			this.MeleeDamageLabel.Name = "MeleeDamageLabel";
 			this.MeleeDamageLabel.Size = new System.Drawing.Size(82, 13);
 			this.MeleeDamageLabel.TabIndex = 11;
@@ -282,7 +282,7 @@
 			// GrenadeDamageLabel
 			// 
 			this.GrenadeDamageLabel.AutoSize = true;
-			this.GrenadeDamageLabel.Location = new System.Drawing.Point(12, 274);
+			this.GrenadeDamageLabel.Location = new System.Drawing.Point(12, 297);
 			this.GrenadeDamageLabel.Name = "GrenadeDamageLabel";
 			this.GrenadeDamageLabel.Size = new System.Drawing.Size(94, 13);
 			this.GrenadeDamageLabel.TabIndex = 12;
@@ -291,7 +291,7 @@
 			// GunAccuracyLabel
 			// 
 			this.GunAccuracyLabel.AutoSize = true;
-			this.GunAccuracyLabel.Location = new System.Drawing.Point(12, 301);
+			this.GunAccuracyLabel.Location = new System.Drawing.Point(12, 324);
 			this.GunAccuracyLabel.Name = "GunAccuracyLabel";
 			this.GunAccuracyLabel.Size = new System.Drawing.Size(78, 13);
 			this.GunAccuracyLabel.TabIndex = 13;
@@ -300,7 +300,7 @@
 			// GunDamageLabel
 			// 
 			this.GunDamageLabel.AutoSize = true;
-			this.GunDamageLabel.Location = new System.Drawing.Point(12, 328);
+			this.GunDamageLabel.Location = new System.Drawing.Point(12, 351);
 			this.GunDamageLabel.Name = "GunDamageLabel";
 			this.GunDamageLabel.Size = new System.Drawing.Size(73, 13);
 			this.GunDamageLabel.TabIndex = 14;
@@ -309,7 +309,7 @@
 			// FireRateLabel
 			// 
 			this.FireRateLabel.AutoSize = true;
-			this.FireRateLabel.Location = new System.Drawing.Point(12, 355);
+			this.FireRateLabel.Location = new System.Drawing.Point(12, 378);
 			this.FireRateLabel.Name = "FireRateLabel";
 			this.FireRateLabel.Size = new System.Drawing.Size(53, 13);
 			this.FireRateLabel.TabIndex = 15;
@@ -318,7 +318,7 @@
 			// RecoilReductionLabel
 			// 
 			this.RecoilReductionLabel.AutoSize = true;
-			this.RecoilReductionLabel.Location = new System.Drawing.Point(12, 382);
+			this.RecoilReductionLabel.Location = new System.Drawing.Point(12, 405);
 			this.RecoilReductionLabel.Name = "RecoilReductionLabel";
 			this.RecoilReductionLabel.Size = new System.Drawing.Size(92, 13);
 			this.RecoilReductionLabel.TabIndex = 16;
@@ -327,7 +327,7 @@
 			// ReloadSpeedLabel
 			// 
 			this.ReloadSpeedLabel.AutoSize = true;
-			this.ReloadSpeedLabel.Location = new System.Drawing.Point(12, 409);
+			this.ReloadSpeedLabel.Location = new System.Drawing.Point(12, 432);
 			this.ReloadSpeedLabel.Name = "ReloadSpeedLabel";
 			this.ReloadSpeedLabel.Size = new System.Drawing.Size(78, 13);
 			this.ReloadSpeedLabel.TabIndex = 17;
@@ -336,7 +336,7 @@
 			// ElementalEffectChanceLabel
 			// 
 			this.ElementalEffectChanceLabel.AutoSize = true;
-			this.ElementalEffectChanceLabel.Location = new System.Drawing.Point(12, 436);
+			this.ElementalEffectChanceLabel.Location = new System.Drawing.Point(12, 459);
 			this.ElementalEffectChanceLabel.Name = "ElementalEffectChanceLabel";
 			this.ElementalEffectChanceLabel.Size = new System.Drawing.Size(127, 13);
 			this.ElementalEffectChanceLabel.TabIndex = 0;
@@ -345,7 +345,7 @@
 			// ElementalEffectDamageLabel
 			// 
 			this.ElementalEffectDamageLabel.AutoSize = true;
-			this.ElementalEffectDamageLabel.Location = new System.Drawing.Point(12, 463);
+			this.ElementalEffectDamageLabel.Location = new System.Drawing.Point(12, 486);
 			this.ElementalEffectDamageLabel.Name = "ElementalEffectDamageLabel";
 			this.ElementalEffectDamageLabel.Size = new System.Drawing.Size(130, 13);
 			this.ElementalEffectDamageLabel.TabIndex = 18;
@@ -354,7 +354,7 @@
 			// CriticalHitDamageLabel
 			// 
 			this.CriticalHitDamageLabel.AutoSize = true;
-			this.CriticalHitDamageLabel.Location = new System.Drawing.Point(12, 490);
+			this.CriticalHitDamageLabel.Location = new System.Drawing.Point(12, 513);
 			this.CriticalHitDamageLabel.Name = "CriticalHitDamageLabel";
 			this.CriticalHitDamageLabel.Size = new System.Drawing.Size(100, 13);
 			this.CriticalHitDamageLabel.TabIndex = 19;
@@ -363,7 +363,7 @@
 			// BonusPercentLabel
 			// 
 			this.BonusPercentLabel.AutoSize = true;
-			this.BonusPercentLabel.Location = new System.Drawing.Point(175, 104);
+			this.BonusPercentLabel.Location = new System.Drawing.Point(170, 127);
 			this.BonusPercentLabel.Name = "BonusPercentLabel";
 			this.BonusPercentLabel.Size = new System.Drawing.Size(77, 13);
 			this.BonusPercentLabel.TabIndex = 20;
@@ -372,7 +372,7 @@
 			// BonusTokensLabel
 			// 
 			this.BonusTokensLabel.AutoSize = true;
-			this.BonusTokensLabel.Location = new System.Drawing.Point(303, 104);
+			this.BonusTokensLabel.Location = new System.Drawing.Point(298, 127);
 			this.BonusTokensLabel.Name = "BonusTokensLabel";
 			this.BonusTokensLabel.Size = new System.Drawing.Size(76, 13);
 			this.BonusTokensLabel.TabIndex = 21;
@@ -381,7 +381,7 @@
 			// BonusStatLabel
 			// 
 			this.BonusStatLabel.AutoSize = true;
-			this.BonusStatLabel.Location = new System.Drawing.Point(12, 104);
+			this.BonusStatLabel.Location = new System.Drawing.Point(12, 127);
 			this.BonusStatLabel.Name = "BonusStatLabel";
 			this.BonusStatLabel.Size = new System.Drawing.Size(59, 13);
 			this.BonusStatLabel.TabIndex = 22;
@@ -389,7 +389,7 @@
 			// 
 			// MaximumHealthBonusTokensInput
 			// 
-			this.MaximumHealthBonusTokensInput.Location = new System.Drawing.Point(302, 137);
+			this.MaximumHealthBonusTokensInput.Location = new System.Drawing.Point(297, 160);
 			this.MaximumHealthBonusTokensInput.Maximum = new decimal(new int[] {
             0,
             1,
@@ -404,7 +404,7 @@
 			// 
 			this.MaximumHealthBonusPercentInput.DecimalPlaces = 1;
 			this.MaximumHealthBonusPercentInput.Enabled = false;
-			this.MaximumHealthBonusPercentInput.Location = new System.Drawing.Point(174, 137);
+			this.MaximumHealthBonusPercentInput.Location = new System.Drawing.Point(169, 160);
 			this.MaximumHealthBonusPercentInput.Maximum = new decimal(new int[] {
             16777216,
             0,
@@ -416,284 +416,284 @@
 			this.MaximumHealthBonusPercentInput.TabIndex = 23;
 			this.MaximumHealthBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown1
+			// ShieldCapacityBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown1.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown1.Enabled = false;
-			this.bonusStatPercentUpDown1.Location = new System.Drawing.Point(174, 164);
-			this.bonusStatPercentUpDown1.Name = "bonusStatPercentUpDown1";
-			this.bonusStatPercentUpDown1.ReadOnly = true;
-			this.bonusStatPercentUpDown1.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown1.TabIndex = 25;
-			this.bonusStatPercentUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShieldCapacityBonusPercentInput.DecimalPlaces = 1;
+			this.ShieldCapacityBonusPercentInput.Enabled = false;
+			this.ShieldCapacityBonusPercentInput.Location = new System.Drawing.Point(169, 187);
+			this.ShieldCapacityBonusPercentInput.Name = "ShieldCapacityBonusPercentInput";
+			this.ShieldCapacityBonusPercentInput.ReadOnly = true;
+			this.ShieldCapacityBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.ShieldCapacityBonusPercentInput.TabIndex = 25;
+			this.ShieldCapacityBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown1
+			// ShieldCapacityBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown1.Location = new System.Drawing.Point(302, 164);
-			this.bonusStatTokenUpDown1.Name = "bonusStatTokenUpDown1";
-			this.bonusStatTokenUpDown1.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown1.TabIndex = 26;
-			this.bonusStatTokenUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShieldCapacityBonusTokensInput.Location = new System.Drawing.Point(297, 187);
+			this.ShieldCapacityBonusTokensInput.Name = "ShieldCapacityBonusTokensInput";
+			this.ShieldCapacityBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.ShieldCapacityBonusTokensInput.TabIndex = 26;
+			this.ShieldCapacityBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown2
+			// ShieldRechargeDelayBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown2.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown2.Enabled = false;
-			this.bonusStatPercentUpDown2.Location = new System.Drawing.Point(174, 191);
-			this.bonusStatPercentUpDown2.Name = "bonusStatPercentUpDown2";
-			this.bonusStatPercentUpDown2.ReadOnly = true;
-			this.bonusStatPercentUpDown2.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown2.TabIndex = 27;
-			this.bonusStatPercentUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShieldRechargeDelayBonusPercentInput.DecimalPlaces = 1;
+			this.ShieldRechargeDelayBonusPercentInput.Enabled = false;
+			this.ShieldRechargeDelayBonusPercentInput.Location = new System.Drawing.Point(169, 214);
+			this.ShieldRechargeDelayBonusPercentInput.Name = "ShieldRechargeDelayBonusPercentInput";
+			this.ShieldRechargeDelayBonusPercentInput.ReadOnly = true;
+			this.ShieldRechargeDelayBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.ShieldRechargeDelayBonusPercentInput.TabIndex = 27;
+			this.ShieldRechargeDelayBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown2
+			// ShieldRechargeDelayBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown2.Location = new System.Drawing.Point(302, 191);
-			this.bonusStatTokenUpDown2.Name = "bonusStatTokenUpDown2";
-			this.bonusStatTokenUpDown2.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown2.TabIndex = 28;
-			this.bonusStatTokenUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShieldRechargeDelayBonusTokensInput.Location = new System.Drawing.Point(297, 214);
+			this.ShieldRechargeDelayBonusTokensInput.Name = "ShieldRechargeDelayBonusTokensInput";
+			this.ShieldRechargeDelayBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.ShieldRechargeDelayBonusTokensInput.TabIndex = 28;
+			this.ShieldRechargeDelayBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown3
+			// ShieldRechargeRateBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown3.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown3.Enabled = false;
-			this.bonusStatPercentUpDown3.Location = new System.Drawing.Point(174, 218);
-			this.bonusStatPercentUpDown3.Name = "bonusStatPercentUpDown3";
-			this.bonusStatPercentUpDown3.ReadOnly = true;
-			this.bonusStatPercentUpDown3.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown3.TabIndex = 29;
-			this.bonusStatPercentUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShieldRechargeRateBonusPercentInput.DecimalPlaces = 1;
+			this.ShieldRechargeRateBonusPercentInput.Enabled = false;
+			this.ShieldRechargeRateBonusPercentInput.Location = new System.Drawing.Point(169, 241);
+			this.ShieldRechargeRateBonusPercentInput.Name = "ShieldRechargeRateBonusPercentInput";
+			this.ShieldRechargeRateBonusPercentInput.ReadOnly = true;
+			this.ShieldRechargeRateBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.ShieldRechargeRateBonusPercentInput.TabIndex = 29;
+			this.ShieldRechargeRateBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown3
+			// ShieldRechargeRateBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown3.Location = new System.Drawing.Point(302, 218);
-			this.bonusStatTokenUpDown3.Name = "bonusStatTokenUpDown3";
-			this.bonusStatTokenUpDown3.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown3.TabIndex = 30;
-			this.bonusStatTokenUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ShieldRechargeRateBonusTokensInput.Location = new System.Drawing.Point(297, 241);
+			this.ShieldRechargeRateBonusTokensInput.Name = "ShieldRechargeRateBonusTokensInput";
+			this.ShieldRechargeRateBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.ShieldRechargeRateBonusTokensInput.TabIndex = 30;
+			this.ShieldRechargeRateBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown4
+			// MeleeDamageBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown4.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown4.Enabled = false;
-			this.bonusStatPercentUpDown4.Location = new System.Drawing.Point(174, 245);
-			this.bonusStatPercentUpDown4.Name = "bonusStatPercentUpDown4";
-			this.bonusStatPercentUpDown4.ReadOnly = true;
-			this.bonusStatPercentUpDown4.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown4.TabIndex = 31;
-			this.bonusStatPercentUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MeleeDamageBonusPercentInput.DecimalPlaces = 1;
+			this.MeleeDamageBonusPercentInput.Enabled = false;
+			this.MeleeDamageBonusPercentInput.Location = new System.Drawing.Point(169, 268);
+			this.MeleeDamageBonusPercentInput.Name = "MeleeDamageBonusPercentInput";
+			this.MeleeDamageBonusPercentInput.ReadOnly = true;
+			this.MeleeDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.MeleeDamageBonusPercentInput.TabIndex = 31;
+			this.MeleeDamageBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown4
+			// MeleeDamageBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown4.Location = new System.Drawing.Point(302, 245);
-			this.bonusStatTokenUpDown4.Name = "bonusStatTokenUpDown4";
-			this.bonusStatTokenUpDown4.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown4.TabIndex = 32;
-			this.bonusStatTokenUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.MeleeDamageBonusTokensInput.Location = new System.Drawing.Point(297, 268);
+			this.MeleeDamageBonusTokensInput.Name = "MeleeDamageBonusTokensInput";
+			this.MeleeDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.MeleeDamageBonusTokensInput.TabIndex = 32;
+			this.MeleeDamageBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown5
+			// GrenadeDamageBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown5.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown5.Enabled = false;
-			this.bonusStatPercentUpDown5.Location = new System.Drawing.Point(174, 272);
-			this.bonusStatPercentUpDown5.Name = "bonusStatPercentUpDown5";
-			this.bonusStatPercentUpDown5.ReadOnly = true;
-			this.bonusStatPercentUpDown5.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown5.TabIndex = 33;
-			this.bonusStatPercentUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GrenadeDamageBonusPercentInput.DecimalPlaces = 1;
+			this.GrenadeDamageBonusPercentInput.Enabled = false;
+			this.GrenadeDamageBonusPercentInput.Location = new System.Drawing.Point(169, 295);
+			this.GrenadeDamageBonusPercentInput.Name = "GrenadeDamageBonusPercentInput";
+			this.GrenadeDamageBonusPercentInput.ReadOnly = true;
+			this.GrenadeDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.GrenadeDamageBonusPercentInput.TabIndex = 33;
+			this.GrenadeDamageBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown5
+			// GrenadeDamageBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown5.Location = new System.Drawing.Point(302, 272);
-			this.bonusStatTokenUpDown5.Name = "bonusStatTokenUpDown5";
-			this.bonusStatTokenUpDown5.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown5.TabIndex = 34;
-			this.bonusStatTokenUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GrenadeDamageBonusTokensInput.Location = new System.Drawing.Point(297, 295);
+			this.GrenadeDamageBonusTokensInput.Name = "GrenadeDamageBonusTokensInput";
+			this.GrenadeDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.GrenadeDamageBonusTokensInput.TabIndex = 34;
+			this.GrenadeDamageBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown6
+			// GunAccuracyBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown6.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown6.Enabled = false;
-			this.bonusStatPercentUpDown6.Location = new System.Drawing.Point(174, 299);
-			this.bonusStatPercentUpDown6.Name = "bonusStatPercentUpDown6";
-			this.bonusStatPercentUpDown6.ReadOnly = true;
-			this.bonusStatPercentUpDown6.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown6.TabIndex = 35;
-			this.bonusStatPercentUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GunAccuracyBonusPercentInput.DecimalPlaces = 1;
+			this.GunAccuracyBonusPercentInput.Enabled = false;
+			this.GunAccuracyBonusPercentInput.Location = new System.Drawing.Point(169, 322);
+			this.GunAccuracyBonusPercentInput.Name = "GunAccuracyBonusPercentInput";
+			this.GunAccuracyBonusPercentInput.ReadOnly = true;
+			this.GunAccuracyBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.GunAccuracyBonusPercentInput.TabIndex = 35;
+			this.GunAccuracyBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown6
+			// GunAccuracyBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown6.Location = new System.Drawing.Point(302, 299);
-			this.bonusStatTokenUpDown6.Name = "bonusStatTokenUpDown6";
-			this.bonusStatTokenUpDown6.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown6.TabIndex = 36;
-			this.bonusStatTokenUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GunAccuracyBonusTokensInput.Location = new System.Drawing.Point(297, 322);
+			this.GunAccuracyBonusTokensInput.Name = "GunAccuracyBonusTokensInput";
+			this.GunAccuracyBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.GunAccuracyBonusTokensInput.TabIndex = 36;
+			this.GunAccuracyBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown7
+			// GunDamageBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown7.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown7.Enabled = false;
-			this.bonusStatPercentUpDown7.Location = new System.Drawing.Point(174, 326);
-			this.bonusStatPercentUpDown7.Name = "bonusStatPercentUpDown7";
-			this.bonusStatPercentUpDown7.ReadOnly = true;
-			this.bonusStatPercentUpDown7.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown7.TabIndex = 37;
-			this.bonusStatPercentUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GunDamageBonusPercentInput.DecimalPlaces = 1;
+			this.GunDamageBonusPercentInput.Enabled = false;
+			this.GunDamageBonusPercentInput.Location = new System.Drawing.Point(169, 349);
+			this.GunDamageBonusPercentInput.Name = "GunDamageBonusPercentInput";
+			this.GunDamageBonusPercentInput.ReadOnly = true;
+			this.GunDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.GunDamageBonusPercentInput.TabIndex = 37;
+			this.GunDamageBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown7
+			// GunDamageBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown7.Location = new System.Drawing.Point(302, 326);
-			this.bonusStatTokenUpDown7.Name = "bonusStatTokenUpDown7";
-			this.bonusStatTokenUpDown7.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown7.TabIndex = 38;
-			this.bonusStatTokenUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GunDamageBonusTokensInput.Location = new System.Drawing.Point(297, 349);
+			this.GunDamageBonusTokensInput.Name = "GunDamageBonusTokensInput";
+			this.GunDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.GunDamageBonusTokensInput.TabIndex = 38;
+			this.GunDamageBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown8
+			// FireRateBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown8.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown8.Enabled = false;
-			this.bonusStatPercentUpDown8.Location = new System.Drawing.Point(174, 353);
-			this.bonusStatPercentUpDown8.Name = "bonusStatPercentUpDown8";
-			this.bonusStatPercentUpDown8.ReadOnly = true;
-			this.bonusStatPercentUpDown8.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown8.TabIndex = 39;
-			this.bonusStatPercentUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.FireRateBonusPercentInput.DecimalPlaces = 1;
+			this.FireRateBonusPercentInput.Enabled = false;
+			this.FireRateBonusPercentInput.Location = new System.Drawing.Point(169, 376);
+			this.FireRateBonusPercentInput.Name = "FireRateBonusPercentInput";
+			this.FireRateBonusPercentInput.ReadOnly = true;
+			this.FireRateBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.FireRateBonusPercentInput.TabIndex = 39;
+			this.FireRateBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown8
+			// FireRateBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown8.Location = new System.Drawing.Point(302, 353);
-			this.bonusStatTokenUpDown8.Name = "bonusStatTokenUpDown8";
-			this.bonusStatTokenUpDown8.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown8.TabIndex = 40;
-			this.bonusStatTokenUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.FireRateBonusTokensInput.Location = new System.Drawing.Point(297, 376);
+			this.FireRateBonusTokensInput.Name = "FireRateBonusTokensInput";
+			this.FireRateBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.FireRateBonusTokensInput.TabIndex = 40;
+			this.FireRateBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown9
+			// RecoilReductionBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown9.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown9.Enabled = false;
-			this.bonusStatPercentUpDown9.Location = new System.Drawing.Point(174, 380);
-			this.bonusStatPercentUpDown9.Name = "bonusStatPercentUpDown9";
-			this.bonusStatPercentUpDown9.ReadOnly = true;
-			this.bonusStatPercentUpDown9.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown9.TabIndex = 41;
-			this.bonusStatPercentUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.RecoilReductionBonusPercentInput.DecimalPlaces = 1;
+			this.RecoilReductionBonusPercentInput.Enabled = false;
+			this.RecoilReductionBonusPercentInput.Location = new System.Drawing.Point(169, 403);
+			this.RecoilReductionBonusPercentInput.Name = "RecoilReductionBonusPercentInput";
+			this.RecoilReductionBonusPercentInput.ReadOnly = true;
+			this.RecoilReductionBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.RecoilReductionBonusPercentInput.TabIndex = 41;
+			this.RecoilReductionBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown9
+			// RecoilReductionBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown9.Location = new System.Drawing.Point(302, 380);
-			this.bonusStatTokenUpDown9.Name = "bonusStatTokenUpDown9";
-			this.bonusStatTokenUpDown9.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown9.TabIndex = 42;
-			this.bonusStatTokenUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.RecoilReductionBonusTokensInput.Location = new System.Drawing.Point(297, 403);
+			this.RecoilReductionBonusTokensInput.Name = "RecoilReductionBonusTokensInput";
+			this.RecoilReductionBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.RecoilReductionBonusTokensInput.TabIndex = 42;
+			this.RecoilReductionBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown10
+			// ReloadSpeedBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown10.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown10.Enabled = false;
-			this.bonusStatPercentUpDown10.Location = new System.Drawing.Point(174, 407);
-			this.bonusStatPercentUpDown10.Name = "bonusStatPercentUpDown10";
-			this.bonusStatPercentUpDown10.ReadOnly = true;
-			this.bonusStatPercentUpDown10.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown10.TabIndex = 43;
-			this.bonusStatPercentUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ReloadSpeedBonusPercentInput.DecimalPlaces = 1;
+			this.ReloadSpeedBonusPercentInput.Enabled = false;
+			this.ReloadSpeedBonusPercentInput.Location = new System.Drawing.Point(169, 430);
+			this.ReloadSpeedBonusPercentInput.Name = "ReloadSpeedBonusPercentInput";
+			this.ReloadSpeedBonusPercentInput.ReadOnly = true;
+			this.ReloadSpeedBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.ReloadSpeedBonusPercentInput.TabIndex = 43;
+			this.ReloadSpeedBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown10
+			// ReloadSpeedBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown10.Location = new System.Drawing.Point(302, 407);
-			this.bonusStatTokenUpDown10.Name = "bonusStatTokenUpDown10";
-			this.bonusStatTokenUpDown10.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown10.TabIndex = 44;
-			this.bonusStatTokenUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ReloadSpeedBonusTokensInput.Location = new System.Drawing.Point(297, 430);
+			this.ReloadSpeedBonusTokensInput.Name = "ReloadSpeedBonusTokensInput";
+			this.ReloadSpeedBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.ReloadSpeedBonusTokensInput.TabIndex = 44;
+			this.ReloadSpeedBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown11
+			// ElementalEffectChanceBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown11.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown11.Enabled = false;
-			this.bonusStatPercentUpDown11.Location = new System.Drawing.Point(174, 434);
-			this.bonusStatPercentUpDown11.Name = "bonusStatPercentUpDown11";
-			this.bonusStatPercentUpDown11.ReadOnly = true;
-			this.bonusStatPercentUpDown11.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown11.TabIndex = 45;
-			this.bonusStatPercentUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ElementalEffectChanceBonusPercentInput.DecimalPlaces = 1;
+			this.ElementalEffectChanceBonusPercentInput.Enabled = false;
+			this.ElementalEffectChanceBonusPercentInput.Location = new System.Drawing.Point(169, 457);
+			this.ElementalEffectChanceBonusPercentInput.Name = "ElementalEffectChanceBonusPercentInput";
+			this.ElementalEffectChanceBonusPercentInput.ReadOnly = true;
+			this.ElementalEffectChanceBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.ElementalEffectChanceBonusPercentInput.TabIndex = 45;
+			this.ElementalEffectChanceBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown11
+			// ElementalEffectChanceBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown11.Location = new System.Drawing.Point(302, 434);
-			this.bonusStatTokenUpDown11.Name = "bonusStatTokenUpDown11";
-			this.bonusStatTokenUpDown11.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown11.TabIndex = 46;
-			this.bonusStatTokenUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ElementalEffectChanceBonusTokensInput.Location = new System.Drawing.Point(297, 457);
+			this.ElementalEffectChanceBonusTokensInput.Name = "ElementalEffectChanceBonusTokensInput";
+			this.ElementalEffectChanceBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.ElementalEffectChanceBonusTokensInput.TabIndex = 46;
+			this.ElementalEffectChanceBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown12
+			// ElementalEffectDamageBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown12.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown12.Enabled = false;
-			this.bonusStatPercentUpDown12.Location = new System.Drawing.Point(174, 461);
-			this.bonusStatPercentUpDown12.Name = "bonusStatPercentUpDown12";
-			this.bonusStatPercentUpDown12.ReadOnly = true;
-			this.bonusStatPercentUpDown12.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown12.TabIndex = 47;
-			this.bonusStatPercentUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ElementalEffectDamageBonusPercentInput.DecimalPlaces = 1;
+			this.ElementalEffectDamageBonusPercentInput.Enabled = false;
+			this.ElementalEffectDamageBonusPercentInput.Location = new System.Drawing.Point(169, 484);
+			this.ElementalEffectDamageBonusPercentInput.Name = "ElementalEffectDamageBonusPercentInput";
+			this.ElementalEffectDamageBonusPercentInput.ReadOnly = true;
+			this.ElementalEffectDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.ElementalEffectDamageBonusPercentInput.TabIndex = 47;
+			this.ElementalEffectDamageBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown12
+			// ElementalEffectDamageBonusTokensInput
 			// 
-			this.bonusStatTokenUpDown12.Location = new System.Drawing.Point(302, 461);
-			this.bonusStatTokenUpDown12.Name = "bonusStatTokenUpDown12";
-			this.bonusStatTokenUpDown12.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown12.TabIndex = 48;
-			this.bonusStatTokenUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ElementalEffectDamageBonusTokensInput.Location = new System.Drawing.Point(297, 484);
+			this.ElementalEffectDamageBonusTokensInput.Name = "ElementalEffectDamageBonusTokensInput";
+			this.ElementalEffectDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
+			this.ElementalEffectDamageBonusTokensInput.TabIndex = 48;
+			this.ElementalEffectDamageBonusTokensInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatPercentUpDown13
+			// CriticalHitDamageBonusPercentInput
 			// 
-			this.bonusStatPercentUpDown13.DecimalPlaces = 1;
-			this.bonusStatPercentUpDown13.Enabled = false;
-			this.bonusStatPercentUpDown13.Location = new System.Drawing.Point(174, 488);
-			this.bonusStatPercentUpDown13.Name = "bonusStatPercentUpDown13";
-			this.bonusStatPercentUpDown13.ReadOnly = true;
-			this.bonusStatPercentUpDown13.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatPercentUpDown13.TabIndex = 49;
-			this.bonusStatPercentUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.CriticalHitDamageBonusPercentInput.DecimalPlaces = 1;
+			this.CriticalHitDamageBonusPercentInput.Enabled = false;
+			this.CriticalHitDamageBonusPercentInput.Location = new System.Drawing.Point(169, 511);
+			this.CriticalHitDamageBonusPercentInput.Name = "CriticalHitDamageBonusPercentInput";
+			this.CriticalHitDamageBonusPercentInput.ReadOnly = true;
+			this.CriticalHitDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
+			this.CriticalHitDamageBonusPercentInput.TabIndex = 49;
+			this.CriticalHitDamageBonusPercentInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// bonusStatTokenUpDown13
+			// B
 			// 
-			this.bonusStatTokenUpDown13.Location = new System.Drawing.Point(302, 488);
-			this.bonusStatTokenUpDown13.Name = "bonusStatTokenUpDown13";
-			this.bonusStatTokenUpDown13.Size = new System.Drawing.Size(81, 20);
-			this.bonusStatTokenUpDown13.TabIndex = 50;
-			this.bonusStatTokenUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.B.Location = new System.Drawing.Point(297, 511);
+			this.B.Name = "B";
+			this.B.Size = new System.Drawing.Size(81, 20);
+			this.B.TabIndex = 50;
+			this.B.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(947, 536);
-			this.Controls.Add(this.bonusStatTokenUpDown13);
-			this.Controls.Add(this.bonusStatPercentUpDown13);
-			this.Controls.Add(this.bonusStatTokenUpDown12);
-			this.Controls.Add(this.bonusStatPercentUpDown12);
-			this.Controls.Add(this.bonusStatTokenUpDown11);
-			this.Controls.Add(this.bonusStatPercentUpDown11);
-			this.Controls.Add(this.bonusStatTokenUpDown10);
-			this.Controls.Add(this.bonusStatPercentUpDown10);
-			this.Controls.Add(this.bonusStatTokenUpDown9);
-			this.Controls.Add(this.bonusStatPercentUpDown9);
-			this.Controls.Add(this.bonusStatTokenUpDown8);
-			this.Controls.Add(this.bonusStatPercentUpDown8);
-			this.Controls.Add(this.bonusStatTokenUpDown7);
-			this.Controls.Add(this.bonusStatPercentUpDown7);
-			this.Controls.Add(this.bonusStatTokenUpDown6);
-			this.Controls.Add(this.bonusStatPercentUpDown6);
-			this.Controls.Add(this.bonusStatTokenUpDown5);
-			this.Controls.Add(this.bonusStatPercentUpDown5);
-			this.Controls.Add(this.bonusStatTokenUpDown4);
-			this.Controls.Add(this.bonusStatPercentUpDown4);
-			this.Controls.Add(this.bonusStatTokenUpDown3);
-			this.Controls.Add(this.bonusStatPercentUpDown3);
-			this.Controls.Add(this.bonusStatTokenUpDown2);
-			this.Controls.Add(this.bonusStatPercentUpDown2);
-			this.Controls.Add(this.bonusStatTokenUpDown1);
-			this.Controls.Add(this.bonusStatPercentUpDown1);
+			this.ClientSize = new System.Drawing.Size(947, 551);
+			this.Controls.Add(this.B);
+			this.Controls.Add(this.CriticalHitDamageBonusPercentInput);
+			this.Controls.Add(this.ElementalEffectDamageBonusTokensInput);
+			this.Controls.Add(this.ElementalEffectDamageBonusPercentInput);
+			this.Controls.Add(this.ElementalEffectChanceBonusTokensInput);
+			this.Controls.Add(this.ElementalEffectChanceBonusPercentInput);
+			this.Controls.Add(this.ReloadSpeedBonusTokensInput);
+			this.Controls.Add(this.ReloadSpeedBonusPercentInput);
+			this.Controls.Add(this.RecoilReductionBonusTokensInput);
+			this.Controls.Add(this.RecoilReductionBonusPercentInput);
+			this.Controls.Add(this.FireRateBonusTokensInput);
+			this.Controls.Add(this.FireRateBonusPercentInput);
+			this.Controls.Add(this.GunDamageBonusTokensInput);
+			this.Controls.Add(this.GunDamageBonusPercentInput);
+			this.Controls.Add(this.GunAccuracyBonusTokensInput);
+			this.Controls.Add(this.GunAccuracyBonusPercentInput);
+			this.Controls.Add(this.GrenadeDamageBonusTokensInput);
+			this.Controls.Add(this.GrenadeDamageBonusPercentInput);
+			this.Controls.Add(this.MeleeDamageBonusTokensInput);
+			this.Controls.Add(this.MeleeDamageBonusPercentInput);
+			this.Controls.Add(this.ShieldRechargeRateBonusTokensInput);
+			this.Controls.Add(this.ShieldRechargeRateBonusPercentInput);
+			this.Controls.Add(this.ShieldRechargeDelayBonusTokensInput);
+			this.Controls.Add(this.ShieldRechargeDelayBonusPercentInput);
+			this.Controls.Add(this.ShieldCapacityBonusTokensInput);
+			this.Controls.Add(this.ShieldCapacityBonusPercentInput);
 			this.Controls.Add(this.MaximumHealthBonusTokensInput);
 			this.Controls.Add(this.MaximumHealthBonusPercentInput);
 			this.Controls.Add(this.BonusStatLabel);
@@ -734,32 +734,32 @@
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensEarnedInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusTokensInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercentInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown4)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown4)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown5)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown5)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown6)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown6)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown7)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown7)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown8)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown8)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown9)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown9)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown10)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown10)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown11)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown11)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown12)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown12)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatPercentUpDown13)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.bonusStatTokenUpDown13)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldCapacityBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldCapacityBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeDelayBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeDelayBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeRateBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ShieldRechargeRateBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.MeleeDamageBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.MeleeDamageBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GrenadeDamageBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GrenadeDamageBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunAccuracyBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunAccuracyBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunDamageBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GunDamageBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.FireRateBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.FireRateBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.RecoilReductionBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.RecoilReductionBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ReloadSpeedBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ReloadSpeedBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectChanceBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectChanceBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectDamageBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ElementalEffectDamageBonusTokensInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.CriticalHitDamageBonusPercentInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.B)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -797,31 +797,31 @@
 		private System.Windows.Forms.Label BonusStatLabel;
 		private B2ProfileGUI.BonusStatPercentUpDown MaximumHealthBonusPercentInput;
 		private B2ProfileGUI.BonusStatTokenUpDown MaximumHealthBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown1;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown1;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown2;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown2;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown3;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown3;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown4;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown4;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown5;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown5;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown6;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown6;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown7;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown7;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown8;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown8;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown9;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown9;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown10;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown10;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown11;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown11;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown12;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown12;
-		private B2ProfileGUI.BonusStatPercentUpDown bonusStatPercentUpDown13;
-		private B2ProfileGUI.BonusStatTokenUpDown bonusStatTokenUpDown13;
+		private B2ProfileGUI.BonusStatPercentUpDown ShieldCapacityBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown ShieldCapacityBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown ShieldRechargeDelayBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown ShieldRechargeDelayBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown ShieldRechargeRateBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown ShieldRechargeRateBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown MeleeDamageBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown MeleeDamageBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown GrenadeDamageBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown GrenadeDamageBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown GunAccuracyBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown GunAccuracyBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown GunDamageBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown GunDamageBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown FireRateBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown FireRateBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown RecoilReductionBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown RecoilReductionBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown ReloadSpeedBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown ReloadSpeedBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown ElementalEffectChanceBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown ElementalEffectChanceBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown ElementalEffectDamageBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown ElementalEffectDamageBonusTokensInput;
+		private B2ProfileGUI.BonusStatPercentUpDown CriticalHitDamageBonusPercentInput;
+		private B2ProfileGUI.BonusStatTokenUpDown B;
 	}
 }
