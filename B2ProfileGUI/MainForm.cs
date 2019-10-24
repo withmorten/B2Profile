@@ -197,5 +197,23 @@ namespace B2ProfileGUI
 				}
 			}
 		}
+
+		private void UnlockAllCustomizationsButton_Click(object sender, EventArgs e)
+		{
+			if (Profile == null) return;
+
+			Profile.UnlockAllCustomizations();
+
+			MessageBox.Show("All Customizations Unlocked!", "Unlocked All Customizations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void LockAllCustomizationsButton_Click(object sender, EventArgs e)
+		{
+			if (Profile == null) return;
+
+			Profile.LockAllCustomizations();
+
+			MessageBox.Show("All Customizations Locked!", "Locked All Customizations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
 	}
 }
