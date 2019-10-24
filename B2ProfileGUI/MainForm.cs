@@ -136,6 +136,23 @@ namespace B2ProfileGUI
 
 				CriticalHitDamageBonusPercentInput.Value = (decimal)Profile.GetCriticalHitDamageBonus();
 				CriticalHitDamageBonusTokensInput.Value = Profile.GetCriticalHitDamageTokens();
+
+				GoldenKeysShiftInput.Value = Profile.GetGoldenKeysShiftEntry().GetNumKeys();
+				GoldenKeysShiftUsedInput.Value = Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed();
+				GoldenKeysShiftSourceIDInput.Value = Profile.GetGoldenKeysShiftEntry().GetSourceID();
+
+				GoldenKeysPOPremierClubInput.Value = Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys();
+				GoldenKeysPOPremierClubUsedInput.Value = Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed();
+				GoldenKeysPOPremierClubSourceIDInput.Value = Profile.GetGoldenKeysPOPremierClubEntry().GetSourceID();
+
+				GoldenKeysTulipInput.Value = Profile.GetGoldenKeysTulipEntry().GetNumKeys();
+				GoldenKeysTulipUsedInput.Value = Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed();
+				GoldenKeysTulipSourceIDInput.Value = Profile.GetGoldenKeysTulipEntry().GetSourceID();
+
+				GoldenKeysTotalInput.Value
+					= (Profile.GetGoldenKeysShiftEntry().GetNumKeys() - Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed())
+					+ (Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys() - Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed())
+					+ (Profile.GetGoldenKeysTulipEntry().GetNumKeys() - Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed());
 			}
 		}
 
@@ -149,6 +166,7 @@ namespace B2ProfileGUI
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
 		{
+			MessageBox.Show("Borderlands 2 - Profile Editor v1.0.0.0\r\nCreator: withmorten\r\n\r\nSpecial thanks to: Philymaster, Feudalnate", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)

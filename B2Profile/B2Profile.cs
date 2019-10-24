@@ -151,7 +151,7 @@ namespace B2Profile
 
 	unsafe public struct GoldenKeyEntry
 	{
-		private byte SourceId;
+		private byte SourceID;
 		private byte NumKeys;
 		private byte NumKeysUsed;
 
@@ -159,16 +159,16 @@ namespace B2Profile
 
 		public GoldenKeyEntry(byte id)
 		{
-			SourceId = id;
+			SourceID = id;
 			NumKeys = 0;
 			NumKeysUsed = 0;
 
 			Valid = false;
 		}
 
-		public byte GetSourceId()
+		public byte GetSourceID()
 		{
-			return SourceId;
+			return SourceID;
 		}
 
 		public void SetNumKeys(byte b)
@@ -394,6 +394,30 @@ namespace B2Profile
 			}
 
 			throw new Exception("Entry with ID " + ID + " not found!");
+		}
+
+		public void UnlockAllCustomizations()
+		{
+			byte[] customizationsBin = GetCustomizationsEntry().GetBinData();
+
+			for (int i = 0; i < customizationsBin.Length; i++)
+			{
+				customizationsBin[i] = 255;
+			}
+
+			GetCustomizationsEntry().SetBinData(customizationsBin);
+		}
+
+		public void LockAllCustomizations()
+		{
+			byte[] customizationsBin = GetCustomizationsEntry().GetBinData();
+
+			for (int i = 0; i < customizationsBin.Length; i++)
+			{
+				customizationsBin[i] = 0;
+			}
+
+			GetCustomizationsEntry().SetBinData(customizationsBin);
 		}
 
 		private static string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
@@ -659,7 +683,7 @@ namespace B2Profile
 			{
 				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetSourceId();
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetSourceID();
 				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetNumKeys();
 				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysPOPremierClub.GetNumKeysUsed();
 
@@ -670,7 +694,7 @@ namespace B2Profile
 			{
 				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysTulip.GetSourceId();
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysTulip.GetSourceID();
 				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysTulip.GetNumKeys();
 				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysTulip.GetNumKeysUsed();
 
@@ -681,7 +705,7 @@ namespace B2Profile
 			{
 				Array.Resize(ref goldenKeysBin, goldenKeysBin.Length + 3);
 
-				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysShift.GetSourceId();
+				goldenKeysBin[0 + numKeyEntries * 3] = GoldenKeysShift.GetSourceID();
 				goldenKeysBin[1 + numKeyEntries * 3] = GoldenKeysShift.GetNumKeys();
 				goldenKeysBin[2 + numKeyEntries * 3] = GoldenKeysShift.GetNumKeysUsed();
 

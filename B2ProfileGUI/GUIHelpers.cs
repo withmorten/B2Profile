@@ -27,4 +27,14 @@ namespace B2ProfileGUI
 	{
 
 	}
+
+	public class GoldenKeysUpDown : NumericUpDown
+	{
+
+	}
+
+	public class GoldenKeysUsedUpDown : NumericUpDown
+	{
+
+	}
 }
