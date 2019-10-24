@@ -16,7 +16,7 @@ namespace B2ProfileCMD
 
 			Profile profile = new Profile();
 
-			if (profile.Load(args[0]) == false)
+			if (profile.Load(args[0], true) == false)
 			{
 				Console.WriteLine("Error loading " + args[0]);
 
@@ -116,7 +116,7 @@ namespace B2ProfileCMD
 			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamageBonus());
 #endif
 
-			if (profile.Save("profile.bin") == false)
+			if (profile.Save("profile.bin", true) == false)
 			{
 				Console.WriteLine("Error saving profile.bin");
 

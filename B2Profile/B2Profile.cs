@@ -230,8 +230,28 @@ namespace B2Profile
 			NextBonusStats = new List<uint>();
 		}
 
-		public bool Load(string path)
+		public Profile(string path, bool dumpUncompressed = false)
 		{
+			Array.Resize(ref Entries, 0);
+
+			GoldenKeysPOPremierClub = new GoldenKeyEntry(254);
+			GoldenKeysTulip = new GoldenKeyEntry(173);
+			GoldenKeysShift = new GoldenKeyEntry(0);
+
+			BadassRank = 0;
+			BadassTokensAvailable = 0;
+			BadassTokensEarned = 0;
+			BonusStats = new List<uint>();
+			NextBonusStats = new List<uint>();
+
+			Load(path, dumpUncompressed);
+		}
+
+		public bool Load(string path, bool dumpUncompressed = false)
+		{
+			// for security reasons, create a backup of the file upon loading
+			File.Copy(path, path + ".bak", true);
+
 			// open input file
 			FileStream inputFile = File.OpenRead(path); // TODO exception handling
 			BinaryReader inputFileStream = new BinaryReader(inputFile);
@@ -262,9 +282,12 @@ namespace B2Profile
 			}
 
 			// dump the file for debugging purposes
-			FileStream decompressedFile = File.Create(path + ".dat");
-			decompressedFile.Write(uncompressedBytes, 0, (int)uncompressedSize);
-			decompressedFile.Close();
+			if (dumpUncompressed == true)
+			{
+				FileStream decompressedFile = File.Create(path + ".bak.dat");
+				decompressedFile.Write(uncompressedBytes, 0, (int)uncompressedSize);
+				decompressedFile.Close();
+			}
 
 			// parse the entries
 			LoadEntries(new Reader(new MemoryStream(uncompressedBytes), Endian.Big));
@@ -275,7 +298,7 @@ namespace B2Profile
 			return true;
 		}
 
-		public bool Save(string path)
+		public bool Save(string path, bool dumpUncompressed = false)
 		{
 			// add our class data back to the entries
 			SaveEntryData();
@@ -285,9 +308,12 @@ namespace B2Profile
 			SaveEntries(new Writer(uncompressedStream, Endian.Big));
 
 			// dump the file for debugging purposes
-			FileStream uncompressedFile = File.Create(path + ".dat");
-			uncompressedFile.Write(uncompressedStream.ToArray(), 0, (int)uncompressedStream.Length);
-			uncompressedFile.Close();
+			if (dumpUncompressed == true)
+			{
+				FileStream uncompressedFile = File.Create(path + ".dat");
+				uncompressedFile.Write(uncompressedStream.ToArray(), 0, (int)uncompressedStream.Length);
+				uncompressedFile.Close();
+			}
 
 			// prepare the compressed data
 			byte[] compressedBytes = new byte[uncompressedStream.Length];
