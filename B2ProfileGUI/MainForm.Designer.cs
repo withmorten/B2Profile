@@ -929,7 +929,7 @@
 			// 
 			// UnlockAllCustomizationsButton
 			// 
-			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(286, 44);
+			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(283, 44);
 			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
 			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
 			this.UnlockAllCustomizationsButton.TabIndex = 71;
@@ -939,7 +939,7 @@
 			// 
 			// LockAllCustomizationsButton
 			// 
-			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(286, 81);
+			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(283, 81);
 			this.LockAllCustomizationsButton.Name = "LockAllCustomizationsButton";
 			this.LockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
 			this.LockAllCustomizationsButton.TabIndex = 72;
