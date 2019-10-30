@@ -737,7 +737,7 @@ namespace B2Profile
 			return ref GetEntryFromID(164);
 		}
 
-		// Bin (Array)
+		// Bin (GoldenKeyEntry)
 		public ref Entry GetGoldenKeysEntry()
 		{
 			return ref GetEntryFromID(162);

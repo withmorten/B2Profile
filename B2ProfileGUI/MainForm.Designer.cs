@@ -84,29 +84,23 @@
 			this.MaximumHealthBonusPercentInput = new B2ProfileGUI.BonusStatPercentUpDown();
 			this.BadassTokensEarnedInput = new B2ProfileGUI.BadassTokensEarnedUpDown();
 			this.BadassTokensAvailableInput = new B2ProfileGUI.BadassTokensAvailableUpDown();
-			this.BadassRankInput = new B2ProfileGUI.BadassRankUpDown();
-			this.GoldenKeysShiftLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysShiftUsedLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysShiftSourceIDLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysShiftSourceIDInput = new System.Windows.Forms.NumericUpDown();
-			this.GoldenKeysShiftInput = new B2ProfileGUI.GoldenKeysUpDown();
-			this.GoldenKeysShiftUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
 			this.GoldenKeysPOPremierClubLabel = new System.Windows.Forms.Label();
 			this.GoldenKeysPOPremierClubUsedLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysPOPremierClubSourceIDLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysPOPremierClubSourceIDInput = new System.Windows.Forms.NumericUpDown();
 			this.GoldenKeysPOPremierClubInput = new B2ProfileGUI.GoldenKeysUpDown();
 			this.GoldenKeysPOPremierClubUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
 			this.GoldenKeysTulipLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysTulipUsedLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysTulipSourceIDLabel = new System.Windows.Forms.Label();
-			this.GoldenKeysTulipSourceIDInput = new System.Windows.Forms.NumericUpDown();
 			this.GoldenKeysTulipInput = new B2ProfileGUI.GoldenKeysUpDown();
-			this.GoldenKeysTulipUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
+			this.GoldenKeysShiftLabel = new System.Windows.Forms.Label();
+			this.GoldenKeysShiftUsedLabel = new System.Windows.Forms.Label();
+			this.GoldenKeysShiftInput = new B2ProfileGUI.GoldenKeysUpDown();
+			this.GoldenKeysShiftUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
 			this.GoldenKeysTotalLabel = new System.Windows.Forms.Label();
 			this.GoldenKeysTotalInput = new System.Windows.Forms.NumericUpDown();
-			this.UnlockAllCustomizationsButton = new System.Windows.Forms.Button();
 			this.LockAllCustomizationsButton = new System.Windows.Forms.Button();
+			this.GoldenKeysTulipUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
+			this.GoldenKeysTulipUsedLabel = new System.Windows.Forms.Label();
+			this.BadassRankInput = new B2ProfileGUI.BadassRankUpDown();
+			this.UnlockAllCustomizationsButton = new System.Windows.Forms.Button();
 			this.MainMenuBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CriticalHitDamageBonusTokensInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CriticalHitDamageBonusPercentInput)).BeginInit();
@@ -138,17 +132,14 @@
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercentInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensEarnedInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensAvailableInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftSourceIDInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftUsedInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysPOPremierClubSourceIDInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysPOPremierClubInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysPOPremierClubUsedInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipSourceIDInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipInput)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipUsedInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftUsedInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTotalInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipUsedInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainMenuBar
@@ -177,6 +168,7 @@
 			// MainMenuSaveButton
 			// 
 			this.MainMenuSaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.MainMenuSaveButton.Enabled = false;
 			this.MainMenuSaveButton.Image = global::B2ProfileGUI.Properties.Resources.MainMenu_Save;
 			this.MainMenuSaveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.MainMenuSaveButton.Name = "MainMenuSaveButton";
@@ -386,6 +378,7 @@
 			// 
 			// CriticalHitDamageBonusTokensInput
 			// 
+			this.CriticalHitDamageBonusTokensInput.Enabled = false;
 			this.CriticalHitDamageBonusTokensInput.Location = new System.Drawing.Point(297, 511);
 			this.CriticalHitDamageBonusTokensInput.Name = "CriticalHitDamageBonusTokensInput";
 			this.CriticalHitDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -405,6 +398,7 @@
 			// 
 			// ElementalEffectDamageBonusTokensInput
 			// 
+			this.ElementalEffectDamageBonusTokensInput.Enabled = false;
 			this.ElementalEffectDamageBonusTokensInput.Location = new System.Drawing.Point(297, 484);
 			this.ElementalEffectDamageBonusTokensInput.Name = "ElementalEffectDamageBonusTokensInput";
 			this.ElementalEffectDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -424,6 +418,7 @@
 			// 
 			// ElementalEffectChanceBonusTokensInput
 			// 
+			this.ElementalEffectChanceBonusTokensInput.Enabled = false;
 			this.ElementalEffectChanceBonusTokensInput.Location = new System.Drawing.Point(297, 457);
 			this.ElementalEffectChanceBonusTokensInput.Name = "ElementalEffectChanceBonusTokensInput";
 			this.ElementalEffectChanceBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -443,6 +438,7 @@
 			// 
 			// ReloadSpeedBonusTokensInput
 			// 
+			this.ReloadSpeedBonusTokensInput.Enabled = false;
 			this.ReloadSpeedBonusTokensInput.Location = new System.Drawing.Point(297, 430);
 			this.ReloadSpeedBonusTokensInput.Name = "ReloadSpeedBonusTokensInput";
 			this.ReloadSpeedBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -462,6 +458,7 @@
 			// 
 			// RecoilReductionBonusTokensInput
 			// 
+			this.RecoilReductionBonusTokensInput.Enabled = false;
 			this.RecoilReductionBonusTokensInput.Location = new System.Drawing.Point(297, 403);
 			this.RecoilReductionBonusTokensInput.Name = "RecoilReductionBonusTokensInput";
 			this.RecoilReductionBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -481,6 +478,7 @@
 			// 
 			// FireRateBonusTokensInput
 			// 
+			this.FireRateBonusTokensInput.Enabled = false;
 			this.FireRateBonusTokensInput.Location = new System.Drawing.Point(297, 376);
 			this.FireRateBonusTokensInput.Name = "FireRateBonusTokensInput";
 			this.FireRateBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -500,6 +498,7 @@
 			// 
 			// GunDamageBonusTokensInput
 			// 
+			this.GunDamageBonusTokensInput.Enabled = false;
 			this.GunDamageBonusTokensInput.Location = new System.Drawing.Point(297, 349);
 			this.GunDamageBonusTokensInput.Name = "GunDamageBonusTokensInput";
 			this.GunDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -519,6 +518,7 @@
 			// 
 			// GunAccuracyBonusTokensInput
 			// 
+			this.GunAccuracyBonusTokensInput.Enabled = false;
 			this.GunAccuracyBonusTokensInput.Location = new System.Drawing.Point(297, 322);
 			this.GunAccuracyBonusTokensInput.Name = "GunAccuracyBonusTokensInput";
 			this.GunAccuracyBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -538,6 +538,7 @@
 			// 
 			// GrenadeDamageBonusTokensInput
 			// 
+			this.GrenadeDamageBonusTokensInput.Enabled = false;
 			this.GrenadeDamageBonusTokensInput.Location = new System.Drawing.Point(297, 295);
 			this.GrenadeDamageBonusTokensInput.Name = "GrenadeDamageBonusTokensInput";
 			this.GrenadeDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -557,6 +558,7 @@
 			// 
 			// MeleeDamageBonusTokensInput
 			// 
+			this.MeleeDamageBonusTokensInput.Enabled = false;
 			this.MeleeDamageBonusTokensInput.Location = new System.Drawing.Point(297, 268);
 			this.MeleeDamageBonusTokensInput.Name = "MeleeDamageBonusTokensInput";
 			this.MeleeDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -576,6 +578,7 @@
 			// 
 			// ShieldRechargeRateBonusTokensInput
 			// 
+			this.ShieldRechargeRateBonusTokensInput.Enabled = false;
 			this.ShieldRechargeRateBonusTokensInput.Location = new System.Drawing.Point(297, 241);
 			this.ShieldRechargeRateBonusTokensInput.Name = "ShieldRechargeRateBonusTokensInput";
 			this.ShieldRechargeRateBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -595,6 +598,7 @@
 			// 
 			// ShieldRechargeDelayBonusTokensInput
 			// 
+			this.ShieldRechargeDelayBonusTokensInput.Enabled = false;
 			this.ShieldRechargeDelayBonusTokensInput.Location = new System.Drawing.Point(297, 214);
 			this.ShieldRechargeDelayBonusTokensInput.Name = "ShieldRechargeDelayBonusTokensInput";
 			this.ShieldRechargeDelayBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -614,6 +618,7 @@
 			// 
 			// ShieldCapacityBonusTokensInput
 			// 
+			this.ShieldCapacityBonusTokensInput.Enabled = false;
 			this.ShieldCapacityBonusTokensInput.Location = new System.Drawing.Point(297, 187);
 			this.ShieldCapacityBonusTokensInput.Name = "ShieldCapacityBonusTokensInput";
 			this.ShieldCapacityBonusTokensInput.Size = new System.Drawing.Size(81, 20);
@@ -633,6 +638,7 @@
 			// 
 			// MaximumHealthBonusTokensInput
 			// 
+			this.MaximumHealthBonusTokensInput.Enabled = false;
 			this.MaximumHealthBonusTokensInput.Location = new System.Drawing.Point(297, 160);
 			this.MaximumHealthBonusTokensInput.Maximum = new decimal(new int[] {
             0,
@@ -662,6 +668,7 @@
 			// 
 			// BadassTokensEarnedInput
 			// 
+			this.BadassTokensEarnedInput.Enabled = false;
 			this.BadassTokensEarnedInput.Location = new System.Drawing.Point(169, 65);
 			this.BadassTokensEarnedInput.Maximum = new decimal(new int[] {
             0,
@@ -675,6 +682,7 @@
 			// 
 			// BadassTokensAvailableInput
 			// 
+			this.BadassTokensAvailableInput.Enabled = false;
 			this.BadassTokensAvailableInput.Location = new System.Drawing.Point(169, 92);
 			this.BadassTokensAvailableInput.Maximum = new decimal(new int[] {
             0,
@@ -686,132 +694,28 @@
 			this.BadassTokensAvailableInput.TabIndex = 6;
 			this.BadassTokensAvailableInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// BadassRankInput
-			// 
-			this.BadassRankInput.Location = new System.Drawing.Point(169, 36);
-			this.BadassRankInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
-			this.BadassRankInput.Name = "BadassRankInput";
-			this.BadassRankInput.Size = new System.Drawing.Size(81, 20);
-			this.BadassRankInput.TabIndex = 2;
-			this.BadassRankInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// GoldenKeysShiftLabel
-			// 
-			this.GoldenKeysShiftLabel.AutoSize = true;
-			this.GoldenKeysShiftLabel.Location = new System.Drawing.Point(453, 38);
-			this.GoldenKeysShiftLabel.Name = "GoldenKeysShiftLabel";
-			this.GoldenKeysShiftLabel.Size = new System.Drawing.Size(104, 13);
-			this.GoldenKeysShiftLabel.TabIndex = 51;
-			this.GoldenKeysShiftLabel.Text = "Golden Keys SH!FT:";
-			// 
-			// GoldenKeysShiftUsedLabel
-			// 
-			this.GoldenKeysShiftUsedLabel.AutoSize = true;
-			this.GoldenKeysShiftUsedLabel.Location = new System.Drawing.Point(453, 65);
-			this.GoldenKeysShiftUsedLabel.Name = "GoldenKeysShiftUsedLabel";
-			this.GoldenKeysShiftUsedLabel.Size = new System.Drawing.Size(132, 13);
-			this.GoldenKeysShiftUsedLabel.TabIndex = 52;
-			this.GoldenKeysShiftUsedLabel.Text = "Golden Keys SH!FT Used:";
-			// 
-			// GoldenKeysShiftSourceIDLabel
-			// 
-			this.GoldenKeysShiftSourceIDLabel.AutoSize = true;
-			this.GoldenKeysShiftSourceIDLabel.Location = new System.Drawing.Point(453, 92);
-			this.GoldenKeysShiftSourceIDLabel.Name = "GoldenKeysShiftSourceIDLabel";
-			this.GoldenKeysShiftSourceIDLabel.Size = new System.Drawing.Size(155, 13);
-			this.GoldenKeysShiftSourceIDLabel.TabIndex = 53;
-			this.GoldenKeysShiftSourceIDLabel.Text = "Golden Keys SH!FT Source ID:";
-			// 
-			// GoldenKeysShiftSourceIDInput
-			// 
-			this.GoldenKeysShiftSourceIDInput.Enabled = false;
-			this.GoldenKeysShiftSourceIDInput.Location = new System.Drawing.Point(662, 92);
-			this.GoldenKeysShiftSourceIDInput.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.GoldenKeysShiftSourceIDInput.Name = "GoldenKeysShiftSourceIDInput";
-			this.GoldenKeysShiftSourceIDInput.ReadOnly = true;
-			this.GoldenKeysShiftSourceIDInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftSourceIDInput.TabIndex = 56;
-			this.GoldenKeysShiftSourceIDInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// GoldenKeysShiftInput
-			// 
-			this.GoldenKeysShiftInput.Location = new System.Drawing.Point(662, 36);
-			this.GoldenKeysShiftInput.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.GoldenKeysShiftInput.Name = "GoldenKeysShiftInput";
-			this.GoldenKeysShiftInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftInput.TabIndex = 54;
-			this.GoldenKeysShiftInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// GoldenKeysShiftUsedInput
-			// 
-			this.GoldenKeysShiftUsedInput.Location = new System.Drawing.Point(662, 65);
-			this.GoldenKeysShiftUsedInput.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.GoldenKeysShiftUsedInput.Name = "GoldenKeysShiftUsedInput";
-			this.GoldenKeysShiftUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftUsedInput.TabIndex = 55;
-			this.GoldenKeysShiftUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
 			// GoldenKeysPOPremierClubLabel
 			// 
 			this.GoldenKeysPOPremierClubLabel.AutoSize = true;
-			this.GoldenKeysPOPremierClubLabel.Location = new System.Drawing.Point(453, 127);
+			this.GoldenKeysPOPremierClubLabel.Location = new System.Drawing.Point(453, 38);
 			this.GoldenKeysPOPremierClubLabel.Name = "GoldenKeysPOPremierClubLabel";
 			this.GoldenKeysPOPremierClubLabel.Size = new System.Drawing.Size(144, 13);
-			this.GoldenKeysPOPremierClubLabel.TabIndex = 57;
+			this.GoldenKeysPOPremierClubLabel.TabIndex = 51;
 			this.GoldenKeysPOPremierClubLabel.Text = "Golden Keys POPremierClub:";
 			// 
 			// GoldenKeysPOPremierClubUsedLabel
 			// 
 			this.GoldenKeysPOPremierClubUsedLabel.AutoSize = true;
-			this.GoldenKeysPOPremierClubUsedLabel.Location = new System.Drawing.Point(453, 154);
+			this.GoldenKeysPOPremierClubUsedLabel.Location = new System.Drawing.Point(453, 65);
 			this.GoldenKeysPOPremierClubUsedLabel.Name = "GoldenKeysPOPremierClubUsedLabel";
 			this.GoldenKeysPOPremierClubUsedLabel.Size = new System.Drawing.Size(172, 13);
-			this.GoldenKeysPOPremierClubUsedLabel.TabIndex = 58;
+			this.GoldenKeysPOPremierClubUsedLabel.TabIndex = 52;
 			this.GoldenKeysPOPremierClubUsedLabel.Text = "Golden Keys POPremierClub Used:";
-			// 
-			// GoldenKeysPOPremierClubSourceIDLabel
-			// 
-			this.GoldenKeysPOPremierClubSourceIDLabel.AutoSize = true;
-			this.GoldenKeysPOPremierClubSourceIDLabel.Location = new System.Drawing.Point(453, 181);
-			this.GoldenKeysPOPremierClubSourceIDLabel.Name = "GoldenKeysPOPremierClubSourceIDLabel";
-			this.GoldenKeysPOPremierClubSourceIDLabel.Size = new System.Drawing.Size(195, 13);
-			this.GoldenKeysPOPremierClubSourceIDLabel.TabIndex = 59;
-			this.GoldenKeysPOPremierClubSourceIDLabel.Text = "Golden Keys POPremierClub Source ID:";
-			// 
-			// GoldenKeysPOPremierClubSourceIDInput
-			// 
-			this.GoldenKeysPOPremierClubSourceIDInput.Enabled = false;
-			this.GoldenKeysPOPremierClubSourceIDInput.Location = new System.Drawing.Point(662, 179);
-			this.GoldenKeysPOPremierClubSourceIDInput.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.GoldenKeysPOPremierClubSourceIDInput.Name = "GoldenKeysPOPremierClubSourceIDInput";
-			this.GoldenKeysPOPremierClubSourceIDInput.ReadOnly = true;
-			this.GoldenKeysPOPremierClubSourceIDInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubSourceIDInput.TabIndex = 62;
-			this.GoldenKeysPOPremierClubSourceIDInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysPOPremierClubInput
 			// 
-			this.GoldenKeysPOPremierClubInput.Location = new System.Drawing.Point(662, 125);
+			this.GoldenKeysPOPremierClubInput.Enabled = false;
+			this.GoldenKeysPOPremierClubInput.Location = new System.Drawing.Point(662, 36);
 			this.GoldenKeysPOPremierClubInput.Maximum = new decimal(new int[] {
             255,
             0,
@@ -819,12 +723,13 @@
             0});
 			this.GoldenKeysPOPremierClubInput.Name = "GoldenKeysPOPremierClubInput";
 			this.GoldenKeysPOPremierClubInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubInput.TabIndex = 60;
+			this.GoldenKeysPOPremierClubInput.TabIndex = 54;
 			this.GoldenKeysPOPremierClubInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysPOPremierClubUsedInput
 			// 
-			this.GoldenKeysPOPremierClubUsedInput.Location = new System.Drawing.Point(662, 152);
+			this.GoldenKeysPOPremierClubUsedInput.Enabled = false;
+			this.GoldenKeysPOPremierClubUsedInput.Location = new System.Drawing.Point(662, 65);
 			this.GoldenKeysPOPremierClubUsedInput.Maximum = new decimal(new int[] {
             255,
             0,
@@ -832,54 +737,22 @@
             0});
 			this.GoldenKeysPOPremierClubUsedInput.Name = "GoldenKeysPOPremierClubUsedInput";
 			this.GoldenKeysPOPremierClubUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 61;
+			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 55;
 			this.GoldenKeysPOPremierClubUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTulipLabel
 			// 
 			this.GoldenKeysTulipLabel.AutoSize = true;
-			this.GoldenKeysTulipLabel.Location = new System.Drawing.Point(453, 216);
+			this.GoldenKeysTulipLabel.Location = new System.Drawing.Point(453, 100);
 			this.GoldenKeysTulipLabel.Name = "GoldenKeysTulipLabel";
 			this.GoldenKeysTulipLabel.Size = new System.Drawing.Size(96, 13);
-			this.GoldenKeysTulipLabel.TabIndex = 63;
+			this.GoldenKeysTulipLabel.TabIndex = 57;
 			this.GoldenKeysTulipLabel.Text = "Golden Keys Tulip:";
-			// 
-			// GoldenKeysTulipUsedLabel
-			// 
-			this.GoldenKeysTulipUsedLabel.AutoSize = true;
-			this.GoldenKeysTulipUsedLabel.Location = new System.Drawing.Point(453, 243);
-			this.GoldenKeysTulipUsedLabel.Name = "GoldenKeysTulipUsedLabel";
-			this.GoldenKeysTulipUsedLabel.Size = new System.Drawing.Size(124, 13);
-			this.GoldenKeysTulipUsedLabel.TabIndex = 64;
-			this.GoldenKeysTulipUsedLabel.Text = "Golden Keys Tulip Used:";
-			// 
-			// GoldenKeysTulipSourceIDLabel
-			// 
-			this.GoldenKeysTulipSourceIDLabel.AutoSize = true;
-			this.GoldenKeysTulipSourceIDLabel.Location = new System.Drawing.Point(453, 270);
-			this.GoldenKeysTulipSourceIDLabel.Name = "GoldenKeysTulipSourceIDLabel";
-			this.GoldenKeysTulipSourceIDLabel.Size = new System.Drawing.Size(147, 13);
-			this.GoldenKeysTulipSourceIDLabel.TabIndex = 65;
-			this.GoldenKeysTulipSourceIDLabel.Text = "Golden Keys Tulip Source ID:";
-			// 
-			// GoldenKeysTulipSourceIDInput
-			// 
-			this.GoldenKeysTulipSourceIDInput.Enabled = false;
-			this.GoldenKeysTulipSourceIDInput.Location = new System.Drawing.Point(662, 268);
-			this.GoldenKeysTulipSourceIDInput.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.GoldenKeysTulipSourceIDInput.Name = "GoldenKeysTulipSourceIDInput";
-			this.GoldenKeysTulipSourceIDInput.ReadOnly = true;
-			this.GoldenKeysTulipSourceIDInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipSourceIDInput.TabIndex = 68;
-			this.GoldenKeysTulipSourceIDInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTulipInput
 			// 
-			this.GoldenKeysTulipInput.Location = new System.Drawing.Point(662, 214);
+			this.GoldenKeysTulipInput.Enabled = false;
+			this.GoldenKeysTulipInput.Location = new System.Drawing.Point(662, 98);
 			this.GoldenKeysTulipInput.Maximum = new decimal(new int[] {
             255,
             0,
@@ -887,26 +760,59 @@
             0});
 			this.GoldenKeysTulipInput.Name = "GoldenKeysTulipInput";
 			this.GoldenKeysTulipInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipInput.TabIndex = 66;
+			this.GoldenKeysTulipInput.TabIndex = 60;
 			this.GoldenKeysTulipInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// GoldenKeysTulipUsedInput
+			// GoldenKeysShiftLabel
 			// 
-			this.GoldenKeysTulipUsedInput.Location = new System.Drawing.Point(662, 241);
-			this.GoldenKeysTulipUsedInput.Maximum = new decimal(new int[] {
+			this.GoldenKeysShiftLabel.AutoSize = true;
+			this.GoldenKeysShiftLabel.Location = new System.Drawing.Point(453, 162);
+			this.GoldenKeysShiftLabel.Name = "GoldenKeysShiftLabel";
+			this.GoldenKeysShiftLabel.Size = new System.Drawing.Size(104, 13);
+			this.GoldenKeysShiftLabel.TabIndex = 63;
+			this.GoldenKeysShiftLabel.Text = "Golden Keys SH!FT:";
+			// 
+			// GoldenKeysShiftUsedLabel
+			// 
+			this.GoldenKeysShiftUsedLabel.AutoSize = true;
+			this.GoldenKeysShiftUsedLabel.Location = new System.Drawing.Point(453, 189);
+			this.GoldenKeysShiftUsedLabel.Name = "GoldenKeysShiftUsedLabel";
+			this.GoldenKeysShiftUsedLabel.Size = new System.Drawing.Size(132, 13);
+			this.GoldenKeysShiftUsedLabel.TabIndex = 64;
+			this.GoldenKeysShiftUsedLabel.Text = "Golden Keys SH!FT Used:";
+			// 
+			// GoldenKeysShiftInput
+			// 
+			this.GoldenKeysShiftInput.Enabled = false;
+			this.GoldenKeysShiftInput.Location = new System.Drawing.Point(662, 160);
+			this.GoldenKeysShiftInput.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-			this.GoldenKeysTulipUsedInput.Name = "GoldenKeysTulipUsedInput";
-			this.GoldenKeysTulipUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipUsedInput.TabIndex = 67;
-			this.GoldenKeysTulipUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.GoldenKeysShiftInput.Name = "GoldenKeysShiftInput";
+			this.GoldenKeysShiftInput.Size = new System.Drawing.Size(81, 20);
+			this.GoldenKeysShiftInput.TabIndex = 66;
+			this.GoldenKeysShiftInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// GoldenKeysShiftUsedInput
+			// 
+			this.GoldenKeysShiftUsedInput.Enabled = false;
+			this.GoldenKeysShiftUsedInput.Location = new System.Drawing.Point(662, 187);
+			this.GoldenKeysShiftUsedInput.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.GoldenKeysShiftUsedInput.Name = "GoldenKeysShiftUsedInput";
+			this.GoldenKeysShiftUsedInput.Size = new System.Drawing.Size(81, 20);
+			this.GoldenKeysShiftUsedInput.TabIndex = 67;
+			this.GoldenKeysShiftUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTotalLabel
 			// 
 			this.GoldenKeysTotalLabel.AutoSize = true;
-			this.GoldenKeysTotalLabel.Location = new System.Drawing.Point(453, 305);
+			this.GoldenKeysTotalLabel.Location = new System.Drawing.Point(453, 224);
 			this.GoldenKeysTotalLabel.Name = "GoldenKeysTotalLabel";
 			this.GoldenKeysTotalLabel.Size = new System.Drawing.Size(97, 13);
 			this.GoldenKeysTotalLabel.TabIndex = 69;
@@ -915,7 +821,7 @@
 			// GoldenKeysTotalInput
 			// 
 			this.GoldenKeysTotalInput.Enabled = false;
-			this.GoldenKeysTotalInput.Location = new System.Drawing.Point(662, 303);
+			this.GoldenKeysTotalInput.Location = new System.Drawing.Point(662, 222);
 			this.GoldenKeysTotalInput.Maximum = new decimal(new int[] {
             755,
             0,
@@ -927,18 +833,9 @@
 			this.GoldenKeysTotalInput.TabIndex = 70;
 			this.GoldenKeysTotalInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// UnlockAllCustomizationsButton
-			// 
-			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(283, 44);
-			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
-			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
-			this.UnlockAllCustomizationsButton.TabIndex = 71;
-			this.UnlockAllCustomizationsButton.Text = "Unlock All Customizations";
-			this.UnlockAllCustomizationsButton.UseVisualStyleBackColor = true;
-			this.UnlockAllCustomizationsButton.Click += new System.EventHandler(this.UnlockAllCustomizationsButton_Click);
-			// 
 			// LockAllCustomizationsButton
 			// 
+			this.LockAllCustomizationsButton.Enabled = false;
 			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(283, 81);
 			this.LockAllCustomizationsButton.Name = "LockAllCustomizationsButton";
 			this.LockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
@@ -946,6 +843,54 @@
 			this.LockAllCustomizationsButton.Text = "Lock All Customizations";
 			this.LockAllCustomizationsButton.UseVisualStyleBackColor = true;
 			this.LockAllCustomizationsButton.Click += new System.EventHandler(this.LockAllCustomizationsButton_Click);
+			// 
+			// GoldenKeysTulipUsedInput
+			// 
+			this.GoldenKeysTulipUsedInput.Enabled = false;
+			this.GoldenKeysTulipUsedInput.Location = new System.Drawing.Point(662, 125);
+			this.GoldenKeysTulipUsedInput.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.GoldenKeysTulipUsedInput.Name = "GoldenKeysTulipUsedInput";
+			this.GoldenKeysTulipUsedInput.Size = new System.Drawing.Size(81, 20);
+			this.GoldenKeysTulipUsedInput.TabIndex = 61;
+			this.GoldenKeysTulipUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// GoldenKeysTulipUsedLabel
+			// 
+			this.GoldenKeysTulipUsedLabel.AutoSize = true;
+			this.GoldenKeysTulipUsedLabel.Location = new System.Drawing.Point(453, 127);
+			this.GoldenKeysTulipUsedLabel.Name = "GoldenKeysTulipUsedLabel";
+			this.GoldenKeysTulipUsedLabel.Size = new System.Drawing.Size(124, 13);
+			this.GoldenKeysTulipUsedLabel.TabIndex = 58;
+			this.GoldenKeysTulipUsedLabel.Text = "Golden Keys Tulip Used:";
+			// 
+			// BadassRankInput
+			// 
+			this.BadassRankInput.Enabled = false;
+			this.BadassRankInput.Location = new System.Drawing.Point(169, 36);
+			this.BadassRankInput.Maximum = new decimal(new int[] {
+            0,
+            1,
+            0,
+            0});
+			this.BadassRankInput.Name = "BadassRankInput";
+			this.BadassRankInput.Size = new System.Drawing.Size(81, 20);
+			this.BadassRankInput.TabIndex = 2;
+			this.BadassRankInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// UnlockAllCustomizationsButton
+			// 
+			this.UnlockAllCustomizationsButton.Enabled = false;
+			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(283, 44);
+			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
+			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
+			this.UnlockAllCustomizationsButton.TabIndex = 71;
+			this.UnlockAllCustomizationsButton.Text = "Unlock All Customizations";
+			this.UnlockAllCustomizationsButton.UseVisualStyleBackColor = true;
+			this.UnlockAllCustomizationsButton.Click += new System.EventHandler(this.UnlockAllCustomizationsButton_Click);
 			// 
 			// MainForm
 			// 
@@ -956,24 +901,18 @@
 			this.Controls.Add(this.UnlockAllCustomizationsButton);
 			this.Controls.Add(this.GoldenKeysTotalInput);
 			this.Controls.Add(this.GoldenKeysTotalLabel);
-			this.Controls.Add(this.GoldenKeysTulipSourceIDInput);
-			this.Controls.Add(this.GoldenKeysTulipUsedInput);
-			this.Controls.Add(this.GoldenKeysTulipInput);
-			this.Controls.Add(this.GoldenKeysTulipSourceIDLabel);
-			this.Controls.Add(this.GoldenKeysTulipUsedLabel);
-			this.Controls.Add(this.GoldenKeysTulipLabel);
-			this.Controls.Add(this.GoldenKeysPOPremierClubSourceIDInput);
-			this.Controls.Add(this.GoldenKeysPOPremierClubUsedInput);
-			this.Controls.Add(this.GoldenKeysPOPremierClubInput);
-			this.Controls.Add(this.GoldenKeysPOPremierClubSourceIDLabel);
-			this.Controls.Add(this.GoldenKeysPOPremierClubUsedLabel);
-			this.Controls.Add(this.GoldenKeysPOPremierClubLabel);
-			this.Controls.Add(this.GoldenKeysShiftSourceIDInput);
 			this.Controls.Add(this.GoldenKeysShiftUsedInput);
 			this.Controls.Add(this.GoldenKeysShiftInput);
-			this.Controls.Add(this.GoldenKeysShiftSourceIDLabel);
 			this.Controls.Add(this.GoldenKeysShiftUsedLabel);
 			this.Controls.Add(this.GoldenKeysShiftLabel);
+			this.Controls.Add(this.GoldenKeysTulipUsedInput);
+			this.Controls.Add(this.GoldenKeysTulipInput);
+			this.Controls.Add(this.GoldenKeysTulipUsedLabel);
+			this.Controls.Add(this.GoldenKeysTulipLabel);
+			this.Controls.Add(this.GoldenKeysPOPremierClubUsedInput);
+			this.Controls.Add(this.GoldenKeysPOPremierClubInput);
+			this.Controls.Add(this.GoldenKeysPOPremierClubUsedLabel);
+			this.Controls.Add(this.GoldenKeysPOPremierClubLabel);
 			this.Controls.Add(this.CriticalHitDamageBonusTokensInput);
 			this.Controls.Add(this.CriticalHitDamageBonusPercentInput);
 			this.Controls.Add(this.ElementalEffectDamageBonusTokensInput);
@@ -1066,35 +1005,27 @@
 			((System.ComponentModel.ISupportInitialize)(this.MaximumHealthBonusPercentInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensEarnedInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BadassTokensAvailableInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftSourceIDInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftUsedInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysPOPremierClubSourceIDInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysPOPremierClubInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysPOPremierClubUsedInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipSourceIDInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipInput)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipUsedInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysShiftUsedInput)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTotalInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GoldenKeysTulipUsedInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.BadassRankInput)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.ToolStrip MainMenuBar;
 		private System.Windows.Forms.ToolStripButton MainMenuOpenButton;
 		private System.Windows.Forms.ToolStripButton MainMenuSaveButton;
 		private System.Windows.Forms.ToolStripButton MainMenuAboutButton;
 		private System.Windows.Forms.ToolStripButton MainMenuCloseButton;
 		private System.Windows.Forms.Label BadassRankLabel;
-		private B2ProfileGUI.BadassRankUpDown BadassRankInput;
 		private System.Windows.Forms.Label BadassTokensAvailableLabel;
-		private B2ProfileGUI.BadassTokensAvailableUpDown BadassTokensAvailableInput;
 		private System.Windows.Forms.Label BadassTokensEarnedLabel;
-		private B2ProfileGUI.BadassTokensEarnedUpDown BadassTokensEarnedInput;
 		private System.Windows.Forms.Label MaximumHealthLabel;
 		private System.Windows.Forms.Label ShieldCapacityLabel;
 		private System.Windows.Forms.Label ShieldRechargeDelayLabel;
@@ -1112,55 +1043,53 @@
 		private System.Windows.Forms.Label BonusPercentLabel;
 		private System.Windows.Forms.Label BonusTokensLabel;
 		private System.Windows.Forms.Label BonusStatLabel;
-		private B2ProfileGUI.BonusStatPercentUpDown MaximumHealthBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown MaximumHealthBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown ShieldCapacityBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown ShieldCapacityBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown ShieldRechargeDelayBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown ShieldRechargeDelayBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown ShieldRechargeRateBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown ShieldRechargeRateBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown MeleeDamageBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown MeleeDamageBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown GrenadeDamageBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown GrenadeDamageBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown GunAccuracyBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown GunAccuracyBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown GunDamageBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown GunDamageBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown FireRateBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown FireRateBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown RecoilReductionBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown RecoilReductionBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown ReloadSpeedBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown ReloadSpeedBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown ElementalEffectChanceBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown ElementalEffectChanceBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown ElementalEffectDamageBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown ElementalEffectDamageBonusTokensInput;
-		private B2ProfileGUI.BonusStatPercentUpDown CriticalHitDamageBonusPercentInput;
-		private B2ProfileGUI.BonusStatTokenUpDown CriticalHitDamageBonusTokensInput;
-		private System.Windows.Forms.Label GoldenKeysShiftLabel;
-		private System.Windows.Forms.Label GoldenKeysShiftUsedLabel;
-		private System.Windows.Forms.Label GoldenKeysShiftSourceIDLabel;
-		private B2ProfileGUI.GoldenKeysUpDown GoldenKeysShiftInput;
-		private B2ProfileGUI.GoldenKeysUsedUpDown GoldenKeysShiftUsedInput;
-		private System.Windows.Forms.NumericUpDown GoldenKeysShiftSourceIDInput;
 		private System.Windows.Forms.Label GoldenKeysPOPremierClubLabel;
 		private System.Windows.Forms.Label GoldenKeysPOPremierClubUsedLabel;
-		private System.Windows.Forms.Label GoldenKeysPOPremierClubSourceIDLabel;
-		private B2ProfileGUI.GoldenKeysUpDown GoldenKeysPOPremierClubInput;
-		private B2ProfileGUI.GoldenKeysUsedUpDown GoldenKeysPOPremierClubUsedInput;
-		private System.Windows.Forms.NumericUpDown GoldenKeysPOPremierClubSourceIDInput;
 		private System.Windows.Forms.Label GoldenKeysTulipLabel;
-		private System.Windows.Forms.Label GoldenKeysTulipUsedLabel;
-		private System.Windows.Forms.Label GoldenKeysTulipSourceIDLabel;
-		private B2ProfileGUI.GoldenKeysUpDown GoldenKeysTulipInput;
-		private B2ProfileGUI.GoldenKeysUsedUpDown GoldenKeysTulipUsedInput;
-		private System.Windows.Forms.NumericUpDown GoldenKeysTulipSourceIDInput;
+		private System.Windows.Forms.Label GoldenKeysShiftLabel;
+		private System.Windows.Forms.Label GoldenKeysShiftUsedLabel;
 		private System.Windows.Forms.Label GoldenKeysTotalLabel;
-		private System.Windows.Forms.NumericUpDown GoldenKeysTotalInput;
-		private System.Windows.Forms.Button UnlockAllCustomizationsButton;
 		private System.Windows.Forms.Button LockAllCustomizationsButton;
+		private System.Windows.Forms.Label GoldenKeysTulipUsedLabel;
+		public BadassRankUpDown BadassRankInput;
+		public BadassTokensAvailableUpDown BadassTokensAvailableInput;
+		public BadassTokensEarnedUpDown BadassTokensEarnedInput;
+		public BonusStatPercentUpDown MaximumHealthBonusPercentInput;
+		public BonusStatTokenUpDown MaximumHealthBonusTokensInput;
+		public BonusStatPercentUpDown ShieldCapacityBonusPercentInput;
+		public BonusStatTokenUpDown ShieldCapacityBonusTokensInput;
+		public BonusStatPercentUpDown ShieldRechargeDelayBonusPercentInput;
+		public BonusStatTokenUpDown ShieldRechargeDelayBonusTokensInput;
+		public BonusStatPercentUpDown ShieldRechargeRateBonusPercentInput;
+		public BonusStatTokenUpDown ShieldRechargeRateBonusTokensInput;
+		public BonusStatPercentUpDown MeleeDamageBonusPercentInput;
+		public BonusStatTokenUpDown MeleeDamageBonusTokensInput;
+		public BonusStatPercentUpDown GrenadeDamageBonusPercentInput;
+		public BonusStatTokenUpDown GrenadeDamageBonusTokensInput;
+		public BonusStatPercentUpDown GunAccuracyBonusPercentInput;
+		public BonusStatTokenUpDown GunAccuracyBonusTokensInput;
+		public BonusStatPercentUpDown GunDamageBonusPercentInput;
+		public BonusStatTokenUpDown GunDamageBonusTokensInput;
+		public BonusStatPercentUpDown FireRateBonusPercentInput;
+		public BonusStatTokenUpDown FireRateBonusTokensInput;
+		public BonusStatPercentUpDown RecoilReductionBonusPercentInput;
+		public BonusStatTokenUpDown RecoilReductionBonusTokensInput;
+		public BonusStatPercentUpDown ReloadSpeedBonusPercentInput;
+		public BonusStatTokenUpDown ReloadSpeedBonusTokensInput;
+		public BonusStatPercentUpDown ElementalEffectChanceBonusPercentInput;
+		public BonusStatTokenUpDown ElementalEffectChanceBonusTokensInput;
+		public BonusStatPercentUpDown ElementalEffectDamageBonusPercentInput;
+		public BonusStatTokenUpDown ElementalEffectDamageBonusTokensInput;
+		public BonusStatPercentUpDown CriticalHitDamageBonusPercentInput;
+		public BonusStatTokenUpDown CriticalHitDamageBonusTokensInput;
+		public GoldenKeysUpDown GoldenKeysPOPremierClubInput;
+		public GoldenKeysUsedUpDown GoldenKeysPOPremierClubUsedInput;
+		public GoldenKeysUpDown GoldenKeysTulipInput;
+		public GoldenKeysUpDown GoldenKeysShiftInput;
+		public GoldenKeysUsedUpDown GoldenKeysShiftUsedInput;
+		public System.Windows.Forms.NumericUpDown GoldenKeysTotalInput;
+		public GoldenKeysUsedUpDown GoldenKeysTulipUsedInput;
+		private System.Windows.Forms.ToolStrip MainMenuBar;
+		private System.Windows.Forms.Button UnlockAllCustomizationsButton;
 	}
 }

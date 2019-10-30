@@ -13,37 +13,188 @@ namespace B2ProfileGUI
 {
 	public partial class MainForm : Form
 	{
-		private Profile Profile;
-		private string ProfilePath;
-		bool ProfileDirty;
+		private string ProfileFilePath;
 
 		public MainForm()
 		{
 			InitializeComponent();
 		}
 
+		private void MainForm_LoadProfile()
+		{
+			Program.Profile = new Profile(ProfileFilePath);
+
+			BadassRankInput.Value = Program.Profile.GetBadassRank();
+			BadassTokensEarnedInput.Value = Program.Profile.GetBadassTokensEarned();
+			BadassTokensAvailableInput.Value = Program.Profile.GetBadassTokensAvailable();
+
+			MaximumHealthBonusPercentInput.Value = (decimal)Program.Profile.GetMaximumHealthBonus();
+			MaximumHealthBonusTokensInput.Value = Program.Profile.GetMaximumHealthTokens();
+
+			ShieldCapacityBonusPercentInput.Value = (decimal)Program.Profile.GetShieldCapacityBonus();
+			ShieldCapacityBonusTokensInput.Value = Program.Profile.GetShieldCapacityTokens();
+
+			ShieldRechargeDelayBonusPercentInput.Value = (decimal)Program.Profile.GetShieldRechargeDelayBonus();
+			ShieldRechargeDelayBonusTokensInput.Value = Program.Profile.GetShieldRechargeDelayTokens();
+
+			ShieldRechargeRateBonusPercentInput.Value = (decimal)Program.Profile.GetShieldRechargeRateBonus();
+			ShieldRechargeRateBonusTokensInput.Value = Program.Profile.GetShieldRechargeRateTokens();
+
+			MeleeDamageBonusPercentInput.Value = (decimal)Program.Profile.GetMeleeDamageBonus();
+			MeleeDamageBonusTokensInput.Value = Program.Profile.GetMeleeDamageTokens();
+
+			GrenadeDamageBonusPercentInput.Value = (decimal)Program.Profile.GetGrenadeDamageBonus();
+			GrenadeDamageBonusTokensInput.Value = Program.Profile.GetGrenadeDamageTokens();
+
+			GunAccuracyBonusPercentInput.Value = (decimal)Program.Profile.GetGunAccuracyBonus();
+			GunAccuracyBonusTokensInput.Value = Program.Profile.GetGunAccuracyTokens();
+
+			GunDamageBonusPercentInput.Value = (decimal)Program.Profile.GetGunDamageBonus();
+			GunDamageBonusTokensInput.Value = Program.Profile.GetGunDamageTokens();
+
+			FireRateBonusPercentInput.Value = (decimal)Program.Profile.GetFireRateBonus();
+			FireRateBonusTokensInput.Value = Program.Profile.GetFireRateTokens();
+
+			RecoilReductionBonusPercentInput.Value = (decimal)Program.Profile.GetRecoilReductionBonus();
+			RecoilReductionBonusTokensInput.Value = Program.Profile.GetRecoilReductionTokens();
+
+			ReloadSpeedBonusPercentInput.Value = (decimal)Program.Profile.GetReloadSpeedBonus();
+			ReloadSpeedBonusTokensInput.Value = Program.Profile.GetReloadSpeedTokens();
+
+			ElementalEffectChanceBonusPercentInput.Value = (decimal)Program.Profile.GetElementalEffectChanceBonus();
+			ElementalEffectChanceBonusTokensInput.Value = Program.Profile.GetElementalEffectChanceTokens();
+
+			ElementalEffectDamageBonusPercentInput.Value = (decimal)Program.Profile.GetElementalEffectDamageBonus();
+			ElementalEffectDamageBonusTokensInput.Value = Program.Profile.GetElementalEffectDamageTokens();
+
+			CriticalHitDamageBonusPercentInput.Value = (decimal)Program.Profile.GetCriticalHitDamageBonus();
+			CriticalHitDamageBonusTokensInput.Value = Program.Profile.GetCriticalHitDamageTokens();
+
+			GoldenKeysPOPremierClubInput.Value = Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys();
+			GoldenKeysPOPremierClubUsedInput.Value = Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed();
+
+			GoldenKeysTulipInput.Value = Program.Profile.GetGoldenKeysTulipEntry().GetNumKeys();
+			GoldenKeysTulipUsedInput.Value = Program.Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed();
+
+			GoldenKeysShiftInput.Value = Program.Profile.GetGoldenKeysShiftEntry().GetNumKeys();
+			GoldenKeysShiftUsedInput.Value = Program.Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed();
+
+			GoldenKeysTotalInput.Value
+				= (Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys() - Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed())
+				+ (Program.Profile.GetGoldenKeysTulipEntry().GetNumKeys() - Program.Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed())
+				+ (Program.Profile.GetGoldenKeysShiftEntry().GetNumKeys() - Program.Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed());
+		}
+
+		private void MainForm_SaveProfile()
+		{
+			Program.Profile.SetBadassRank((int)BadassRankInput.Value);
+			Program.Profile.SetBadassTokensEarned((int)BadassTokensEarnedInput.Value);
+			Program.Profile.SetBadassTokensAvailable((int)BadassTokensAvailableInput.Value);
+
+			Program.Profile.SetMaximumHealthTokens((uint)MaximumHealthBonusTokensInput.Value);
+			Program.Profile.SetShieldCapacityTokens((uint)ShieldCapacityBonusTokensInput.Value);
+			Program.Profile.SetShieldRechargeDelayTokens((uint)ShieldRechargeDelayBonusTokensInput.Value);
+			Program.Profile.SetShieldRechargeRateTokens((uint)ShieldRechargeRateBonusTokensInput.Value);
+			Program.Profile.SetMeleeDamageTokens((uint)MeleeDamageBonusTokensInput.Value);
+			Program.Profile.SetGrenadeDamageTokens((uint)GrenadeDamageBonusTokensInput.Value);
+			Program.Profile.SetGunAccuracyTokens((uint)GunAccuracyBonusTokensInput.Value);
+			Program.Profile.SetGunDamageTokens((uint)GunDamageBonusTokensInput.Value);
+			Program.Profile.SetFireRateTokens((uint)FireRateBonusTokensInput.Value);
+			Program.Profile.SetRecoilReductionTokens((uint)RecoilReductionBonusTokensInput.Value);
+			Program.Profile.SetReloadSpeedTokens((uint)ReloadSpeedBonusTokensInput.Value);
+			Program.Profile.SetElementalEffectChanceTokens((uint)ElementalEffectChanceBonusTokensInput.Value);
+			Program.Profile.SetElementalEffectDamageTokens((uint)ElementalEffectDamageBonusTokensInput.Value);
+			Program.Profile.SetCriticalHitDamageTokens((uint)CriticalHitDamageBonusTokensInput.Value);
+
+			Program.Profile.GetGoldenKeysPOPremierClubEntry().SetNumKeys((byte)GoldenKeysPOPremierClubInput.Value);
+			Program.Profile.GetGoldenKeysPOPremierClubEntry().SetNumKeysUsed((byte)GoldenKeysPOPremierClubUsedInput.Value);
+
+			Program.Profile.GetGoldenKeysTulipEntry().SetNumKeys((byte)GoldenKeysTulipInput.Value);
+			Program.Profile.GetGoldenKeysTulipEntry().SetNumKeysUsed((byte)GoldenKeysTulipUsedInput.Value);
+
+			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeys((byte)GoldenKeysShiftInput.Value);
+			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeysUsed((byte)GoldenKeysShiftUsedInput.Value);
+
+			Program.Profile.Save(ProfileFilePath);
+
+			MessageBox.Show("Profile saved!\r\n\r\nIf you want revert the changes, go to your SaveData directory and rename the profile.bin.bak generated by this tool to profile.bin!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void MainForm_EnableGUI()
+		{
+			MainMenuSaveButton.Enabled = true;
+
+			UnlockAllCustomizationsButton.Enabled = true;
+			LockAllCustomizationsButton.Enabled = true;
+
+			BadassRankInput.Enabled = true;
+			BadassTokensAvailableInput.Enabled = true;
+			BadassTokensEarnedInput.Enabled = true;
+
+			MaximumHealthBonusPercentInput.Enabled = true;
+			ShieldCapacityBonusPercentInput.Enabled = true;
+			ShieldRechargeDelayBonusPercentInput.Enabled = true;
+			ShieldRechargeRateBonusPercentInput.Enabled = true;
+			MeleeDamageBonusPercentInput.Enabled = true;
+			GrenadeDamageBonusPercentInput.Enabled = true;
+			GunAccuracyBonusPercentInput.Enabled = true;
+			GunDamageBonusPercentInput.Enabled = true;
+			FireRateBonusPercentInput.Enabled = true;
+			RecoilReductionBonusPercentInput.Enabled = true;
+			ReloadSpeedBonusPercentInput.Enabled = true;
+			ElementalEffectChanceBonusPercentInput.Enabled = true;
+			ElementalEffectDamageBonusPercentInput.Enabled = true;
+			CriticalHitDamageBonusPercentInput.Enabled = true;
+
+			MaximumHealthBonusTokensInput.Enabled = true;
+			ShieldCapacityBonusTokensInput.Enabled = true;
+			ShieldRechargeDelayBonusTokensInput.Enabled = true;
+			ShieldRechargeRateBonusTokensInput.Enabled = true;
+			MeleeDamageBonusTokensInput.Enabled = true;
+			GrenadeDamageBonusTokensInput.Enabled = true;
+			GunAccuracyBonusTokensInput.Enabled = true;
+			GunDamageBonusTokensInput.Enabled = true;
+			FireRateBonusTokensInput.Enabled = true;
+			RecoilReductionBonusTokensInput.Enabled = true;
+			ReloadSpeedBonusTokensInput.Enabled = true;
+			ElementalEffectChanceBonusTokensInput.Enabled = true;
+			ElementalEffectDamageBonusTokensInput.Enabled = true;
+			CriticalHitDamageBonusTokensInput.Enabled = true;
+
+			GoldenKeysTulipInput.Enabled = true;
+			GoldenKeysTulipUsedInput.Enabled = true;
+
+			GoldenKeysShiftInput.Enabled = true;
+			GoldenKeysShiftUsedInput.Enabled = true;
+
+			GoldenKeysPOPremierClubInput.Enabled = true;
+			GoldenKeysPOPremierClubUsedInput.Enabled = true;
+
+			GoldenKeysTotalInput.Enabled = true;
+		}
+
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			Profile = null;
-			ProfilePath = null;
-			ProfileDirty = false;
+			Program.MainForm = this;
+			Program.Profile = null;
+			ProfileFilePath = null;
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (Profile != null)
+			if (Program.Profile != null)
 			{
 				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
 				case DialogResult.Yes:
-					Profile.Save(ProfilePath);
+					MainForm_SaveProfile();
 
-					Profile = null;
+					Program.Profile = null;
 
 					break;
 
 				case DialogResult.No:
-					Profile = null;
+					Program.Profile = null;
 
 					break;
 
@@ -57,19 +208,19 @@ namespace B2ProfileGUI
 
 		private void MainMenuOpenButton_Click(object sender, EventArgs e)
 		{
-			if (Profile != null)
+			if (Program.Profile != null)
 			{
 				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
 				case DialogResult.Yes:
-					Profile.Save(ProfilePath);
+					MainForm_SaveProfile();
 
-					Profile = null;
+					Program.Profile = null;
 
 					break;
 
 				case DialogResult.No:
-					Profile = null;
+					Program.Profile = null;
 
 					break;
 
@@ -82,86 +233,23 @@ namespace B2ProfileGUI
 
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 
-			openFileDialog.Title = "Select BL2 Profile";
-			openFileDialog.Filter = "BL2 Profile|*.bin";
+			openFileDialog.Title = "Select BL2 profile";
+			openFileDialog.Filter = "BL2 profile|*.bin";
 			openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Borderlands 2\\WillowGame\\SaveData";
 
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				Profile = new Profile(openFileDialog.FileName);
-				ProfilePath = openFileDialog.FileName;
+				ProfileFilePath = openFileDialog.FileName;
 
-				BadassRankInput.Value = Profile.GetBadassRank();
-				BadassTokensEarnedInput.Value = Profile.GetBadassTokensEarned();
-				BadassTokensAvailableInput.Value = Profile.GetBadassTokensAvailable();
+				MainForm_LoadProfile();
 
-				MaximumHealthBonusPercentInput.Value = (decimal)Profile.GetMaximumHealthBonus();
-				MaximumHealthBonusTokensInput.Value = Profile.GetMaximumHealthTokens();
-
-				ShieldCapacityBonusPercentInput.Value = (decimal)Profile.GetShieldCapacityBonus();
-				ShieldCapacityBonusTokensInput.Value = Profile.GetShieldCapacityTokens();
-
-				ShieldRechargeDelayBonusPercentInput.Value = (decimal)Profile.GetShieldRechargeDelayBonus();
-				ShieldRechargeDelayBonusTokensInput.Value = Profile.GetShieldRechargeDelayTokens();
-
-				ShieldRechargeRateBonusPercentInput.Value = (decimal)Profile.GetShieldRechargeRateBonus();
-				ShieldRechargeRateBonusTokensInput.Value = Profile.GetShieldRechargeRateTokens();
-
-				MeleeDamageBonusPercentInput.Value = (decimal)Profile.GetMeleeDamageBonus();
-				MeleeDamageBonusTokensInput.Value = Profile.GetMeleeDamageTokens();
-
-				GrenadeDamageBonusPercentInput.Value = (decimal)Profile.GetGrenadeDamageBonus();
-				GrenadeDamageBonusTokensInput.Value = Profile.GetGrenadeDamageTokens();
-
-				GunAccuracyBonusPercentInput.Value = (decimal)Profile.GetGunAccuracyBonus();
-				GunAccuracyBonusTokensInput.Value = Profile.GetGunAccuracyTokens();
-
-				GunDamageBonusPercentInput.Value = (decimal)Profile.GetGunDamageBonus();
-				GunDamageBonusTokensInput.Value = Profile.GetGunDamageTokens();
-
-				FireRateBonusPercentInput.Value = (decimal)Profile.GetFireRateBonus();
-				FireRateBonusTokensInput.Value = Profile.GetFireRateTokens();
-
-				RecoilReductionBonusPercentInput.Value = (decimal)Profile.GetRecoilReductionBonus();
-				RecoilReductionBonusTokensInput.Value = Profile.GetRecoilReductionTokens();
-
-				ReloadSpeedBonusPercentInput.Value = (decimal)Profile.GetReloadSpeedBonus();
-				ReloadSpeedBonusTokensInput.Value = Profile.GetReloadSpeedTokens();
-
-				ElementalEffectChanceBonusPercentInput.Value = (decimal)Profile.GetElementalEffectChanceBonus();
-				ElementalEffectChanceBonusTokensInput.Value = Profile.GetElementalEffectChanceTokens();
-
-				ElementalEffectDamageBonusPercentInput.Value = (decimal)Profile.GetElementalEffectDamageBonus();
-				ElementalEffectDamageBonusTokensInput.Value = Profile.GetElementalEffectDamageTokens();
-
-				CriticalHitDamageBonusPercentInput.Value = (decimal)Profile.GetCriticalHitDamageBonus();
-				CriticalHitDamageBonusTokensInput.Value = Profile.GetCriticalHitDamageTokens();
-
-				GoldenKeysShiftInput.Value = Profile.GetGoldenKeysShiftEntry().GetNumKeys();
-				GoldenKeysShiftUsedInput.Value = Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed();
-				GoldenKeysShiftSourceIDInput.Value = Profile.GetGoldenKeysShiftEntry().GetSourceID();
-
-				GoldenKeysPOPremierClubInput.Value = Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys();
-				GoldenKeysPOPremierClubUsedInput.Value = Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed();
-				GoldenKeysPOPremierClubSourceIDInput.Value = Profile.GetGoldenKeysPOPremierClubEntry().GetSourceID();
-
-				GoldenKeysTulipInput.Value = Profile.GetGoldenKeysTulipEntry().GetNumKeys();
-				GoldenKeysTulipUsedInput.Value = Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed();
-				GoldenKeysTulipSourceIDInput.Value = Profile.GetGoldenKeysTulipEntry().GetSourceID();
-
-				GoldenKeysTotalInput.Value
-					= (Profile.GetGoldenKeysShiftEntry().GetNumKeys() - Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed())
-					+ (Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys() - Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed())
-					+ (Profile.GetGoldenKeysTulipEntry().GetNumKeys() - Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed());
+				MainForm_EnableGUI();
 			}
 		}
 
 		private void MainMenuSaveButton_Click(object sender, EventArgs e)
 		{
-			if (Profile != null)
-			{
-				Profile.Save(ProfilePath);
-			}
+			MainForm_SaveProfile();
 		}
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
@@ -171,21 +259,21 @@ namespace B2ProfileGUI
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)
 		{
-			if (Profile != null)
+			if (Program.Profile != null)
 			{
 				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
 				case DialogResult.Yes:
-					Profile.Save(ProfilePath);
+					Program.Profile.Save(ProfileFilePath);
 
-					Profile = null;
+					Program.Profile = null;
 
 					Application.Exit();
 
 					break;
 
 				case DialogResult.No:
-					Profile = null;
+					Program.Profile = null;
 
 					Application.Exit();
 
@@ -196,24 +284,24 @@ namespace B2ProfileGUI
 					break;
 				}
 			}
+			else
+			{
+				Application.Exit();
+			}
 		}
 
 		private void UnlockAllCustomizationsButton_Click(object sender, EventArgs e)
 		{
-			if (Profile == null) return;
+			Program.Profile.UnlockAllCustomizations();
 
-			Profile.UnlockAllCustomizations();
-
-			MessageBox.Show("All Customizations Unlocked!", "Unlocked All Customizations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("All customizations unlocked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void LockAllCustomizationsButton_Click(object sender, EventArgs e)
 		{
-			if (Profile == null) return;
+			Program.Profile.LockAllCustomizations();
 
-			Profile.LockAllCustomizations();
-
-			MessageBox.Show("All Customizations Locked!", "Locked All Customizations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("All customizations locked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }

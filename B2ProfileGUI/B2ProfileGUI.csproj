@@ -38,11 +38,11 @@
     <ApplicationIcon>res\B2ProfileGUI.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="B2GUIHelpers">
-      <HintPath>..\B2GUIHelpers\bin\Release\B2GUIHelpers.dll</HintPath>
-    </Reference>
     <Reference Include="B2Profile">
       <HintPath>..\B2Profile\bin\Release\B2Profile.dll</HintPath>
+    </Reference>
+    <Reference Include="B2ProfileGUIHelpers">
+      <HintPath>..\B2ProfileGUIHelpers\bin\Release\B2ProfileGUIHelpers.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="B2ProfileGUIHelpers.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

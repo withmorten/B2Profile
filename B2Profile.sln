@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2ProfileCMD", "B2ProfileCM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2ProfileGUI", "B2ProfileGUI\B2ProfileGUI.csproj", "{731207D3-E97E-40BD-BDE8-976B0446B11F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2GUIHelpers", "B2GUIHelpers\B2GUIHelpers.csproj", "{DCCBF48F-C291-4C8A-B2F9-FFBB12C2F223}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2ProfileGUIHelpers", "B2ProfileGUIHelpers\B2ProfileGUIHelpers.csproj", "{DCCBF48F-C291-4C8A-B2F9-FFBB12C2F223}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using B2Profile;
 
 namespace B2ProfileGUI
 {
-	static class Program
+	public static class Program
 	{
+		public static MainForm MainForm;
+		public static Profile Profile;
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
