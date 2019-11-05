@@ -157,4 +157,9 @@ namespace B2ProfileGUI
 	{
 
 	}
+
+	public class GoldenKeysTotalUpDown : NumericUpDown
+	{
+
+	}
 }

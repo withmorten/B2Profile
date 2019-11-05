@@ -1,4 +1,8 @@
-﻿using System;
+﻿// This file only exists to provide dummy classes for the Designer
+// It has twice now deleted various inputs because it couldn't find the compiled assembly
+// So now these will keep the Designer happy, and the actual classes plus content live in the GUI exe
+
+using System;
 using System.Windows.Forms;
 
 namespace B2ProfileGUI
@@ -34,6 +38,11 @@ namespace B2ProfileGUI
 	}
 
 	public class GoldenKeysUsedUpDown : NumericUpDown
+	{
+
+	}
+
+	public class GoldenKeysTotalUpDown : NumericUpDown
 	{
 
 	}
