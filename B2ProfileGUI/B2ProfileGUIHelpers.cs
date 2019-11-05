@@ -140,26 +140,116 @@ namespace B2ProfileGUI
 
 	public class BonusStatPercentUpDown : NumericUpDown
 	{
+		public void Inc()
+		{
+			base.UpButton();
+		}
 
+		public override void UpButton()
+		{
+			base.UpButton();
+		}
+
+		public void Dec()
+		{
+			base.DownButton();
+		}
+
+		public override void DownButton()
+		{
+			base.DownButton();
+		}
 	}
 
 	public class BonusStatTokenUpDown : NumericUpDown
 	{
+		public void Inc()
+		{
+			base.UpButton();
+		}
 
+		public override void UpButton()
+		{
+			base.UpButton();
+		}
+
+		public void Dec()
+		{
+			base.DownButton();
+		}
+
+		public override void DownButton()
+		{
+			base.DownButton();
+		}
 	}
 
 	public class GoldenKeysUpDown : NumericUpDown
 	{
+		public void Inc()
+		{
+			base.UpButton();
+		}
 
+		public override void UpButton()
+		{
+			base.UpButton();
+		}
+
+		public void Dec()
+		{
+			base.DownButton();
+		}
+
+		public override void DownButton()
+		{
+			base.DownButton();
+		}
 	}
 
 	public class GoldenKeysUsedUpDown : NumericUpDown
 	{
+		public void Inc()
+		{
+			base.UpButton();
+		}
 
+		public override void UpButton()
+		{
+			base.UpButton();
+		}
+
+		public void Dec()
+		{
+			base.DownButton();
+		}
+
+		public override void DownButton()
+		{
+			base.DownButton();
+		}
 	}
 
 	public class GoldenKeysTotalUpDown : NumericUpDown
 	{
+		public void Inc()
+		{
+			base.UpButton();
+		}
 
+		public override void UpButton()
+		{
+			base.UpButton();
+		}
+
+		public void Dec()
+		{
+			base.DownButton();
+		}
+
+		public override void DownButton()
+		{
+			base.DownButton();
+		}
 	}
 }
