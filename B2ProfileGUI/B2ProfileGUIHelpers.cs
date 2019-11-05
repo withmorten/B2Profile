@@ -32,15 +32,9 @@ namespace B2ProfileGUI
 
 			base.Increment = base.Value - prevRank;
 
-			// MessageBox.Show(prevRank.ToString(), "prevRank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 			if (prevRank == base.Value)
 			{
-				// Program.MainForm.BadassTokensEarnedInput.Dec();
-
 				prevRank = (decimal)Math.Floor(Math.Pow((double)Program.MainForm.BadassTokensEarnedInput.Value, 1.8));
-
-				// Program.MainForm.BadassTokensEarnedInput.Inc();
 
 				base.Increment = base.Value - prevRank;
 			}
@@ -51,8 +45,6 @@ namespace B2ProfileGUI
 		public override void DownButton()
 		{
 			decimal prevRank = (decimal)Math.Floor(Math.Pow((double)Program.MainForm.BadassTokensEarnedInput.Value, 1.8));
-
-			// MessageBox.Show(prevRank.ToString(), "prevRank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 			base.Increment = base.Value - prevRank;
 
@@ -74,21 +66,45 @@ namespace B2ProfileGUI
 	{
 		public void Inc()
 		{
+			if (base.Value == 0)
+			{
+				// TODO this needs to be in the badass token updown
+				// Program.MainForm.BadassRankInput.Inc();
+				// Program.MainForm.BadassTokensEarnedInput.Inc();
+			}
+
 			base.UpButton();
 		}
 
 		public override void UpButton()
 		{
+			if (base.Value == 0)
+			{
+				// TODO this needs to be in the badass token updown
+				// Program.MainForm.BadassRankInput.Inc();
+				// Program.MainForm.BadassTokensEarnedInput.Inc();
+			}
+
 			base.UpButton();
 		}
 
 		public void Dec()
 		{
+			if (base.Value == 0)
+			{
+				Program.MainForm.MainForm_DecreaseNextBonusStat();
+			}
+
 			base.DownButton();
 		}
 
 		public override void DownButton()
 		{
+			if (base.Value == 0)
+			{
+				Program.MainForm.MainForm_DecreaseNextBonusStat();
+			}
+
 			base.DownButton();
 		}
 	}
@@ -103,6 +119,7 @@ namespace B2ProfileGUI
 		public override void UpButton()
 		{
 			Program.MainForm.BadassRankInput.Inc();
+			Program.MainForm.BadassTokensAvailableInput.Inc();
 
 			base.UpButton();
 		}
@@ -117,8 +134,7 @@ namespace B2ProfileGUI
 			base.DownButton();
 
 			Program.MainForm.BadassRankInput.Dec();
-
-			// base.DownButton();
+			Program.MainForm.BadassTokensAvailableInput.Dec();
 		}
 	}
 

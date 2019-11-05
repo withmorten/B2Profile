@@ -215,6 +215,8 @@ namespace B2Profile
 		private List<uint> BonusStats;
 		private List<uint> NextBonusStats;
 
+		private int LastBonusStat;
+
 		public Profile()
 		{
 			Array.Resize(ref Entries, 0);
@@ -228,6 +230,8 @@ namespace B2Profile
 			BadassTokensEarned = 0;
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
+
+			LastBonusStat = 0;
 		}
 
 		public Profile(string path, bool dumpUncompressed = false)
@@ -243,6 +247,8 @@ namespace B2Profile
 			BadassTokensEarned = 0;
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
+
+			LastBonusStat = 0;
 
 			Load(path, dumpUncompressed);
 		}
@@ -421,6 +427,13 @@ namespace B2Profile
 					BadassTokensAvailable--;
 				}
 			}
+		}
+
+		public void DecreaseNextBonusStat()
+		{
+			BonusStats[LastBonusStat++]--;
+
+			if (LastBonusStat == NumBonusStats) LastBonusStat = 0;
 		}
 
 		public void UnlockAllCustomizations()
