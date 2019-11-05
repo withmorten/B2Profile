@@ -396,6 +396,33 @@ namespace B2Profile
 			throw new Exception("Entry with ID " + ID + " not found!");
 		}
 
+		public void ResetBonusStats()
+		{
+			for (int i = 0; i < NumBonusStats; i++)
+			{
+				BadassTokensAvailable += (int)BonusStats[i];
+
+				BonusStats[i] = 0;
+			}
+		}
+
+		public void EvenlyDistributeBonusStats()
+		{
+			ResetBonusStats();
+
+			while (BadassTokensAvailable > 0)
+			{
+				for (int i = 0; i < NumBonusStats; i++)
+				{
+					if (BadassTokensAvailable == 0) break;
+
+					BonusStats[i]++;
+
+					BadassTokensAvailable--;
+				}
+			}
+		}
+
 		public void UnlockAllCustomizations()
 		{
 			byte[] customizationsBin = GetCustomizationsEntry().GetBinData();

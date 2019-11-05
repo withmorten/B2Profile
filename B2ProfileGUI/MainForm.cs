@@ -20,10 +20,8 @@ namespace B2ProfileGUI
 			InitializeComponent();
 		}
 
-		private void MainForm_LoadProfile()
+		private void MainForm_TransferFromProfile()
 		{
-			Program.Profile = new Profile(ProfileFilePath);
-
 			BadassRankInput.Value = Program.Profile.GetBadassRank();
 			BadassTokensEarnedInput.Value = Program.Profile.GetBadassTokensEarned();
 			BadassTokensAvailableInput.Value = Program.Profile.GetBadassTokensAvailable();
@@ -80,12 +78,12 @@ namespace B2ProfileGUI
 			GoldenKeysShiftUsedInput.Value = Program.Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed();
 
 			GoldenKeysTotalInput.Value
-				= (Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys() - Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed())
-				+ (Program.Profile.GetGoldenKeysTulipEntry().GetNumKeys() - Program.Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed())
-				+ (Program.Profile.GetGoldenKeysShiftEntry().GetNumKeys() - Program.Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed());
+				= (GoldenKeysPOPremierClubInput.Value - GoldenKeysPOPremierClubUsedInput.Value)
+				+ (GoldenKeysTulipInput.Value - GoldenKeysTulipUsedInput.Value)
+				+ (GoldenKeysShiftInput.Value - GoldenKeysShiftUsedInput.Value);
 		}
 
-		private void MainForm_SaveProfile()
+		private void MainForm_TransferToProfile()
 		{
 			Program.Profile.SetBadassRank((int)BadassRankInput.Value);
 			Program.Profile.SetBadassTokensEarned((int)BadassTokensEarnedInput.Value);
@@ -114,6 +112,18 @@ namespace B2ProfileGUI
 
 			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeys((byte)GoldenKeysShiftInput.Value);
 			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeysUsed((byte)GoldenKeysShiftUsedInput.Value);
+		}
+
+		private void MainForm_LoadProfile()
+		{
+			Program.Profile = new Profile(ProfileFilePath);
+
+			MainForm_TransferFromProfile();
+		}
+
+		private void MainForm_SaveProfile()
+		{
+			MainForm_TransferToProfile();
 
 			Program.Profile.Save(ProfileFilePath);
 
@@ -126,6 +136,9 @@ namespace B2ProfileGUI
 
 			UnlockAllCustomizationsButton.Enabled = true;
 			LockAllCustomizationsButton.Enabled = true;
+
+			ResetBonusStatsButton.Enabled = true;
+			EvenlyDistributeBonusStatsButton.Enabled = true;
 
 			BadassRankInput.Enabled = true;
 			BadassTokensAvailableInput.Enabled = true;
@@ -210,7 +223,7 @@ namespace B2ProfileGUI
 		{
 			if (Program.Profile != null)
 			{
-				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning))
 				{
 				case DialogResult.Yes:
 					MainForm_SaveProfile();
@@ -261,7 +274,7 @@ namespace B2ProfileGUI
 		{
 			if (Program.Profile != null)
 			{
-				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+				switch (MessageBox.Show("A profile is loaded, do you want to save it?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning))
 				{
 				case DialogResult.Yes:
 					Program.Profile.Save(ProfileFilePath);
@@ -302,6 +315,44 @@ namespace B2ProfileGUI
 			Program.Profile.LockAllCustomizations();
 
 			MessageBox.Show("All customizations locked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void ResetBonusStatsButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will reset all bonus stats, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				MainForm_TransferToProfile();
+
+				Program.Profile.ResetBonusStats();
+
+				MainForm_TransferFromProfile();
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void EvenlyDistributeBonusStatsButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will overwrite the current bonus stats, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				MainForm_TransferToProfile();
+
+				Program.Profile.EvenlyDistributeBonusStats();
+
+				MainForm_TransferFromProfile();
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
 		}
 	}
 }

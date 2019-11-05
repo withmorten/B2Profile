@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace B2ProfileGUI
 {
-	public partial class BadassRankUpDown : NumericUpDown
+	public class BadassRankUpDown : NumericUpDown
 	{
 		
 	}

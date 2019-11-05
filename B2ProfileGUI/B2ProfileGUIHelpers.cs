@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace B2ProfileGUI
 {
-	public partial class BadassRankUpDown : NumericUpDown
+	public class BadassRankUpDown : NumericUpDown
 	{
 		public void Inc()
 		{
@@ -32,9 +32,15 @@ namespace B2ProfileGUI
 
 			base.Increment = base.Value - prevRank;
 
+			// MessageBox.Show(prevRank.ToString(), "prevRank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 			if (prevRank == base.Value)
 			{
+				// Program.MainForm.BadassTokensEarnedInput.Dec();
+
 				prevRank = (decimal)Math.Floor(Math.Pow((double)Program.MainForm.BadassTokensEarnedInput.Value, 1.8));
+
+				// Program.MainForm.BadassTokensEarnedInput.Inc();
 
 				base.Increment = base.Value - prevRank;
 			}
@@ -45,6 +51,8 @@ namespace B2ProfileGUI
 		public override void DownButton()
 		{
 			decimal prevRank = (decimal)Math.Floor(Math.Pow((double)Program.MainForm.BadassTokensEarnedInput.Value, 1.8));
+
+			// MessageBox.Show(prevRank.ToString(), "prevRank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 			base.Increment = base.Value - prevRank;
 
@@ -106,9 +114,11 @@ namespace B2ProfileGUI
 
 		public override void DownButton()
 		{
+			base.DownButton();
+
 			Program.MainForm.BadassRankInput.Dec();
 
-			base.DownButton();
+			// base.DownButton();
 		}
 	}
 

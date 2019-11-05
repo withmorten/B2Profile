@@ -101,6 +101,8 @@
 			this.GoldenKeysTulipUsedLabel = new System.Windows.Forms.Label();
 			this.BadassRankInput = new B2ProfileGUI.BadassRankUpDown();
 			this.UnlockAllCustomizationsButton = new System.Windows.Forms.Button();
+			this.ResetBonusStatsButton = new System.Windows.Forms.Button();
+			this.EvenlyDistributeBonusStatsButton = new System.Windows.Forms.Button();
 			this.MainMenuBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CriticalHitDamageBonusTokensInput)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.CriticalHitDamageBonusPercentInput)).BeginInit();
@@ -836,7 +838,7 @@
 			// LockAllCustomizationsButton
 			// 
 			this.LockAllCustomizationsButton.Enabled = false;
-			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(283, 81);
+			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(528, 301);
 			this.LockAllCustomizationsButton.Name = "LockAllCustomizationsButton";
 			this.LockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
 			this.LockAllCustomizationsButton.TabIndex = 72;
@@ -884,7 +886,7 @@
 			// UnlockAllCustomizationsButton
 			// 
 			this.UnlockAllCustomizationsButton.Enabled = false;
-			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(283, 44);
+			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(528, 264);
 			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
 			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
 			this.UnlockAllCustomizationsButton.TabIndex = 71;
@@ -892,11 +894,35 @@
 			this.UnlockAllCustomizationsButton.UseVisualStyleBackColor = true;
 			this.UnlockAllCustomizationsButton.Click += new System.EventHandler(this.UnlockAllCustomizationsButton_Click);
 			// 
+			// ResetBonusStatsButton
+			// 
+			this.ResetBonusStatsButton.Enabled = false;
+			this.ResetBonusStatsButton.Location = new System.Drawing.Point(283, 44);
+			this.ResetBonusStatsButton.Name = "ResetBonusStatsButton";
+			this.ResetBonusStatsButton.Size = new System.Drawing.Size(141, 23);
+			this.ResetBonusStatsButton.TabIndex = 73;
+			this.ResetBonusStatsButton.Text = "Reset Bonus Stats";
+			this.ResetBonusStatsButton.UseVisualStyleBackColor = true;
+			this.ResetBonusStatsButton.Click += new System.EventHandler(this.ResetBonusStatsButton_Click);
+			// 
+			// EvenlyDistributeBonusStatsButton
+			// 
+			this.EvenlyDistributeBonusStatsButton.Enabled = false;
+			this.EvenlyDistributeBonusStatsButton.Location = new System.Drawing.Point(283, 81);
+			this.EvenlyDistributeBonusStatsButton.Name = "EvenlyDistributeBonusStatsButton";
+			this.EvenlyDistributeBonusStatsButton.Size = new System.Drawing.Size(141, 23);
+			this.EvenlyDistributeBonusStatsButton.TabIndex = 74;
+			this.EvenlyDistributeBonusStatsButton.Text = "Evenly Distribute Stats";
+			this.EvenlyDistributeBonusStatsButton.UseVisualStyleBackColor = true;
+			this.EvenlyDistributeBonusStatsButton.Click += new System.EventHandler(this.EvenlyDistributeBonusStatsButton_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(765, 551);
+			this.Controls.Add(this.EvenlyDistributeBonusStatsButton);
+			this.Controls.Add(this.ResetBonusStatsButton);
 			this.Controls.Add(this.LockAllCustomizationsButton);
 			this.Controls.Add(this.UnlockAllCustomizationsButton);
 			this.Controls.Add(this.GoldenKeysTotalInput);
@@ -1091,5 +1117,7 @@
 		public GoldenKeysUsedUpDown GoldenKeysTulipUsedInput;
 		private System.Windows.Forms.ToolStrip MainMenuBar;
 		private System.Windows.Forms.Button UnlockAllCustomizationsButton;
+		private System.Windows.Forms.Button ResetBonusStatsButton;
+		private System.Windows.Forms.Button EvenlyDistributeBonusStatsButton;
 	}
 }
