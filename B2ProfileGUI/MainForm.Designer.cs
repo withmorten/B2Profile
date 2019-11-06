@@ -692,6 +692,7 @@
             0,
             0});
 			this.BadassTokensAvailableInput.Name = "BadassTokensAvailableInput";
+			this.BadassTokensAvailableInput.ReadOnly = true;
 			this.BadassTokensAvailableInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassTokensAvailableInput.TabIndex = 6;
 			this.BadassTokensAvailableInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

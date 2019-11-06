@@ -215,9 +215,6 @@ namespace B2Profile
 		private List<uint> BonusStats;
 		private List<uint> NextBonusStats;
 
-		private int LastIncreasedBonusStat;
-		private int LastDecreasedBonusStat;
-
 		public Profile()
 		{
 			Array.Resize(ref Entries, 0);
@@ -231,9 +228,6 @@ namespace B2Profile
 			BadassTokensEarned = 0;
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
-
-			LastIncreasedBonusStat = 0;
-			LastDecreasedBonusStat = 0;
 		}
 
 		public Profile(string path, bool dumpUncompressed = false)
@@ -249,9 +243,6 @@ namespace B2Profile
 			BadassTokensEarned = 0;
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
-
-			LastIncreasedBonusStat = 0;
-			LastDecreasedBonusStat = 0;
 
 			Load(path, dumpUncompressed);
 		}
@@ -385,6 +376,18 @@ namespace B2Profile
 			return BadassTokensEarned;
 		}
 
+		public int GetBadassTokensInvested()
+		{
+			int r = 0;
+
+			for (int i = 0; i < NumBonusStats; i++)
+			{
+				r += (int)BonusStats[i];
+			}
+
+			return r;
+		}
+
 		public ref List<uint> GetBonusStats()
 		{
 			return ref BonusStats;
@@ -430,20 +433,6 @@ namespace B2Profile
 					BadassTokensAvailable--;
 				}
 			}
-		}
-
-		public void IncreaseNextBonusStat()
-		{
-			BonusStats[LastIncreasedBonusStat++]++;
-
-			if (LastIncreasedBonusStat == NumBonusStats) LastIncreasedBonusStat = 0;
-		}
-
-		public void DecreaseNextBonusStat()
-		{
-			if (BonusStats[LastDecreasedBonusStat] > 0) BonusStats[LastDecreasedBonusStat++]--;
-
-			if (LastDecreasedBonusStat == NumBonusStats) LastDecreasedBonusStat = 0;
 		}
 
 		public void UnlockAllCustomizations()

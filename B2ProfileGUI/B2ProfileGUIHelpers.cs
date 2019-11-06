@@ -19,7 +19,7 @@ namespace B2ProfileGUI
 			Program.MainForm.BadassTokensEarnedInput.Inc();
 			Program.MainForm.BadassTokensAvailableInput.Inc();
 
-			decimal nextRank = (decimal)Math.Floor(Math.Pow((double)Program.MainForm.BadassTokensEarnedInput.Value + 1, 1.8));
+			decimal nextRank = (decimal)Math.Floor(Math.Pow((double)Program.MainForm.BadassTokensEarnedInput.Value, 1.8));
 
 			base.Increment = nextRank - base.Value;
 
@@ -100,38 +100,17 @@ namespace B2ProfileGUI
 
 		public override void UpButton()
 		{
-			Program.MainForm.BadassTokensEarnedInput.Inc();
-			Program.MainForm.BadassRankInput.Inc();
 
-			base.UpButton();
 		}
 
 		public void Dec()
 		{
 			base.DownButton();
-
-			if (Program.MainForm.BadassTokensEarnedInput.Value > base.Value && base.Value + 1 >= 1)
-			{
-				Program.MainForm.MainForm_IncreaseNextBonusStat();
-			}
-			else if (base.Value == 0)
-			{
-				Program.MainForm.MainForm_DecreaseNextBonusStat();
-			}
 		}
 
 		public override void DownButton()
 		{
-			base.DownButton();
 
-			if (Program.MainForm.BadassTokensEarnedInput.Value > base.Value && base.Value + 1 >= 1)
-			{
-				Program.MainForm.MainForm_IncreaseNextBonusStat();
-			}
-			else if (base.Value == 0)
-			{
-				Program.MainForm.MainForm_DecreaseNextBonusStat();
-			}
 		}
 	}
 
@@ -141,6 +120,10 @@ namespace B2ProfileGUI
 
 		public void Inc()
 		{
+			decimal nextPercent = (decimal)Math.Round(Math.Pow((double)TokenUpDown.Value, 0.75), 1);
+
+			base.Increment = nextPercent - base.Value;
+
 			base.UpButton();
 		}
 
@@ -167,20 +150,27 @@ namespace B2ProfileGUI
 
 		public void Dec()
 		{
+			decimal prevPercent = (decimal)Math.Round(Math.Pow((double)TokenUpDown.Value, 0.75), 1);
+
+			base.Increment = base.Value - prevPercent;
+
 			base.DownButton();
 		}
 
 		public override void DownButton()
 		{
-			base.DownButton();
-
-			Program.MainForm.BadassTokensAvailableInput.Inc();
+			if (base.Value > 0)
+			{
+				Program.MainForm.BadassTokensAvailableInput.Inc();
+			}
 
 			TokenUpDown.Dec();
 
 			decimal prevPercent = (decimal)Math.Round(Math.Pow((double)TokenUpDown.Value, 0.75), 1);
 
 			base.Increment = base.Value - prevPercent;
+
+			base.DownButton();
 		}
 	}
 
@@ -201,11 +191,13 @@ namespace B2ProfileGUI
 			}
 			else
 			{
-				Program.MainForm.BadassRankInput.Inc();
 				Program.MainForm.BadassTokensEarnedInput.Inc();
+				Program.MainForm.BadassRankInput.Inc();
 			}
 
 			base.UpButton();
+
+			PercentUpDown.Inc();
 		}
 
 		public void Dec()
@@ -215,9 +207,14 @@ namespace B2ProfileGUI
 
 		public override void DownButton()
 		{
+			if (base.Value > 0)
+			{
+				Program.MainForm.BadassTokensAvailableInput.Inc();
+			}
+
 			base.DownButton();
 
-			Program.MainForm.BadassTokensAvailableInput.Inc();
+			PercentUpDown.Dec();
 		}
 	}
 
