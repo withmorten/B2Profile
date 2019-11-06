@@ -215,7 +215,8 @@ namespace B2Profile
 		private List<uint> BonusStats;
 		private List<uint> NextBonusStats;
 
-		private int LastBonusStat;
+		private int LastIncreasedBonusStat;
+		private int LastDecreasedBonusStat;
 
 		public Profile()
 		{
@@ -231,7 +232,8 @@ namespace B2Profile
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
 
-			LastBonusStat = 0;
+			LastIncreasedBonusStat = 0;
+			LastDecreasedBonusStat = 0;
 		}
 
 		public Profile(string path, bool dumpUncompressed = false)
@@ -248,7 +250,8 @@ namespace B2Profile
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
 
-			LastBonusStat = 0;
+			LastIncreasedBonusStat = 0;
+			LastDecreasedBonusStat = 0;
 
 			Load(path, dumpUncompressed);
 		}
@@ -429,11 +432,18 @@ namespace B2Profile
 			}
 		}
 
+		public void IncreaseNextBonusStat()
+		{
+			BonusStats[LastIncreasedBonusStat++]++;
+
+			if (LastIncreasedBonusStat == NumBonusStats) LastIncreasedBonusStat = 0;
+		}
+
 		public void DecreaseNextBonusStat()
 		{
-			BonusStats[LastBonusStat++]--;
+			if (BonusStats[LastDecreasedBonusStat] > 0) BonusStats[LastDecreasedBonusStat++]--;
 
-			if (LastBonusStat == NumBonusStats) LastBonusStat = 0;
+			if (LastDecreasedBonusStat == NumBonusStats) LastDecreasedBonusStat = 0;
 		}
 
 		public void UnlockAllCustomizations()

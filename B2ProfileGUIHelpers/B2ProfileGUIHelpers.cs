@@ -9,15 +9,15 @@ namespace B2ProfileGUI
 {
 	public class BadassRankUpDown : NumericUpDown
 	{
-		
-	}
-
-	public class BadassTokensAvailableUpDown : NumericUpDown
-	{
 
 	}
 
 	public class BadassTokensEarnedUpDown : NumericUpDown
+	{
+
+	}
+
+	public class BadassTokensAvailableUpDown : NumericUpDown
 	{
 
 	}
