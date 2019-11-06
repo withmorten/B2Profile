@@ -1043,6 +1043,7 @@
             0,
             0});
 			this.BadassRankInput.Name = "BadassRankInput";
+			this.BadassRankInput.ReadOnly = true;
 			this.BadassRankInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassRankInput.TabIndex = 2;
 			this.BadassRankInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
