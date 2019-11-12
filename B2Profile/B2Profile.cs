@@ -157,13 +157,9 @@ namespace B2Profile
 
 		private bool Valid;
 
-		public GoldenKeyEntry(byte id)
+		public GoldenKeyEntry(byte id) : this()
 		{
 			SourceID = id;
-			NumKeys = 0;
-			NumKeysUsed = 0;
-
-			Valid = false;
 		}
 
 		public byte GetSourceID()
@@ -223,27 +219,12 @@ namespace B2Profile
 			GoldenKeysTulip = new GoldenKeyEntry(173);
 			GoldenKeysShift = new GoldenKeyEntry(0);
 
-			BadassRank = 0;
-			BadassTokensAvailable = 0;
-			BadassTokensEarned = 0;
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
 		}
 
-		public Profile(string path, bool dumpUncompressed = false)
+		public Profile(string path, bool dumpUncompressed = false) : this()
 		{
-			Array.Resize(ref Entries, 0);
-
-			GoldenKeysPOPremierClub = new GoldenKeyEntry(254);
-			GoldenKeysTulip = new GoldenKeyEntry(173);
-			GoldenKeysShift = new GoldenKeyEntry(0);
-
-			BadassRank = 0;
-			BadassTokensAvailable = 0;
-			BadassTokensEarned = 0;
-			BonusStats = new List<uint>();
-			NextBonusStats = new List<uint>();
-
 			Load(path, dumpUncompressed);
 		}
 
@@ -418,7 +399,7 @@ namespace B2Profile
 			}
 		}
 
-		public void EvenlyDistributeBonusStats()
+		public void EvenlyDistributeTokens()
 		{
 			ResetBonusStats();
 

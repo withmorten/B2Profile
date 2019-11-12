@@ -118,6 +118,25 @@ namespace B2ProfileGUI
 		{
 			Program.Profile = new Profile(ProfileFilePath);
 
+			BadassRankInput.PrevValue = 0;
+			BadassTokensEarnedInput.PrevValue = 0;
+			BadassTokensAvailableInput.PrevValue = 0;
+
+			MaximumHealthBonusTokensInput.PrevValue = 0;
+			ShieldCapacityBonusTokensInput.PrevValue = 0;
+			ShieldRechargeDelayBonusTokensInput.PrevValue = 0;
+			ShieldRechargeRateBonusTokensInput.PrevValue = 0;
+			MeleeDamageBonusTokensInput.PrevValue = 0;
+			GrenadeDamageBonusTokensInput.PrevValue = 0;
+			GunAccuracyBonusTokensInput.PrevValue = 0;
+			GunDamageBonusTokensInput.PrevValue = 0;
+			FireRateBonusTokensInput.PrevValue = 0;
+			RecoilReductionBonusTokensInput.PrevValue = 0;
+			ReloadSpeedBonusTokensInput.PrevValue = 0;
+			ElementalEffectChanceBonusTokensInput.PrevValue = 0;
+			ElementalEffectDamageBonusTokensInput.PrevValue = 0;
+			CriticalHitDamageBonusTokensInput.PrevValue = 0;
+
 			TransferFromProfile();
 		}
 
@@ -138,11 +157,13 @@ namespace B2ProfileGUI
 			LockAllCustomizationsButton.Enabled = true;
 
 			ResetBonusStatsButton.Enabled = true;
-			EvenlyDistributeBonusStatsButton.Enabled = true;
+			EvenlyDistributeTokensButton.Enabled = true;
 
 			BadassRankInput.Enabled = true;
 			BadassTokensAvailableInput.Enabled = true;
 			BadassTokensEarnedInput.Enabled = true;
+
+			SyncedModeCheckBox.Enabled = true;
 
 			MaximumHealthBonusPercentInput.Enabled = true;
 			ShieldCapacityBonusPercentInput.Enabled = true;
@@ -186,6 +207,29 @@ namespace B2ProfileGUI
 			GoldenKeysTotalInput.Enabled = true;
 		}
 
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == (Keys.Control | Keys.O))
+			{
+				MainMenuOpenButton_Click(null, null);
+
+				return true;
+			}
+			else if (keyData == (Keys.Control | Keys.S))
+			{
+				if (MainMenuSaveButton.Enabled == true)
+				{
+					MainMenuSaveButton_Click(null, null);
+
+					return true;
+				}
+
+				return false;
+			}
+
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
+
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			Program.MainForm = this;
@@ -195,7 +239,7 @@ namespace B2ProfileGUI
 			MaximumHealthBonusPercentInput.TokenUpDown = MaximumHealthBonusTokensInput;
 			MaximumHealthBonusTokensInput.PercentUpDown = MaximumHealthBonusPercentInput;
 
-			ShieldCapacityBonusPercentInput.TokenUpDown = ShieldRechargeDelayBonusTokensInput;
+			ShieldCapacityBonusPercentInput.TokenUpDown = ShieldCapacityBonusTokensInput;
 			ShieldCapacityBonusTokensInput.PercentUpDown = ShieldCapacityBonusPercentInput;
 
 			ShieldRechargeDelayBonusPercentInput.TokenUpDown = ShieldRechargeDelayBonusTokensInput;
@@ -309,7 +353,7 @@ namespace B2ProfileGUI
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Borderlands 2 - Profile Editor v1.0.0.0\r\nCreator: withmorten\r\n\r\nSpecial thanks to: Philymaster, Feudalnate", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("Borderlands 2 - Profile Editor\r\nCreator: withmorten\r\n\r\nSpecial thanks to:\r\nPhilymaster (original profile editor)\r\nFeudalnate (PackageIO)\r\ngibbed (MiniLZO)", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)
@@ -347,16 +391,36 @@ namespace B2ProfileGUI
 
 		private void UnlockAllCustomizationsButton_Click(object sender, EventArgs e)
 		{
-			Program.Profile.UnlockAllCustomizations();
+			switch (MessageBox.Show("This will unlock all customizations (heads, skins), do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				Program.Profile.UnlockAllCustomizations();
 
-			MessageBox.Show("All customizations unlocked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("All customizations unlocked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
 		}
 
 		private void LockAllCustomizationsButton_Click(object sender, EventArgs e)
 		{
-			Program.Profile.LockAllCustomizations();
+			switch (MessageBox.Show("This willlock all customizations (heads, skins), do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				Program.Profile.LockAllCustomizations();
 
-			MessageBox.Show("All customizations locked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("All customizations locked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
 		}
 
 		private void ResetBonusStatsButton_Click(object sender, EventArgs e)
@@ -378,14 +442,14 @@ namespace B2ProfileGUI
 			}
 		}
 
-		private void EvenlyDistributeBonusStatsButton_Click(object sender, EventArgs e)
+		private void EvenlyDistributeTokensButton_Click(object sender, EventArgs e)
 		{
 			switch (MessageBox.Show("This will overwrite the current bonus stats, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
 				TransferToProfile();
 
-				Program.Profile.EvenlyDistributeBonusStats();
+				Program.Profile.EvenlyDistributeTokens();
 
 				TransferFromProfile();
 
@@ -394,6 +458,15 @@ namespace B2ProfileGUI
 			case DialogResult.No:
 
 				break;
+			}
+		}
+
+		private void SyncedModeCheckBox_MouseHover(object sender, MouseEventArgs e)
+		{
+			if (SyncedModeToolTip.GetToolTip(SyncedModeCheckBox).Length == 0)
+			{
+				SyncedModeToolTip.SetToolTip(SyncedModeCheckBox,
+					"Checking this will increase the badass rank automatically when you run out of available tokens!");
 			}
 		}
 	}
