@@ -6,8 +6,6 @@ namespace B2ProfileGUI
 {
 	public class BadassRankUpDown : NumericUpDown
 	{
-		// public decimal PrevValue;
-
 		public void Inc()
 		{
 			decimal nextRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
@@ -15,8 +13,6 @@ namespace B2ProfileGUI
 			base.Increment = nextRank - base.Value;
 
 			base.UpButton();
-
-			// PrevValue = base.Value;
 		}
 
 		public override void UpButton()
@@ -29,8 +25,6 @@ namespace B2ProfileGUI
 			base.Increment = nextRank - base.Value;
 
 			base.UpButton();
-
-			// PrevValue = base.Value;
 		}
 
 		public void Dec()
@@ -47,8 +41,6 @@ namespace B2ProfileGUI
 			}
 
 			base.DownButton();
-
-			// PrevValue = base.Value;
 		}
 
 		public override void DownButton()
@@ -68,35 +60,7 @@ namespace B2ProfileGUI
 			}
 
 			base.DownButton();
-
-			// PrevValue = base.Value;
 		}
-
-#if false
-		protected override void OnLostFocus(EventArgs e)
-		{
-			PrevValue = base.Value;
-
-			base.OnLostFocus(e);
-		}
-
-		protected override void OnValueChanged(EventArgs e)
-		{
-			base.OnValueChanged(e);
-
-			if (base.UserEdit == true)
-			{
-				Program.MainForm.BadassTokensEarnedInput.Value = Profile.GetBadassTokensEarnedFromRank((int)base.Value);
-
-				Program.MainForm.TransferToProfile();
-
-				if (base.Value > PrevValue)
-				{
-					Program.MainForm.BadassTokensAvailableInput.Value += (Program.MainForm.BadassTokensEarnedInput.Value - Program.MainForm.BadassTokensEarnedInput.PrevValue) - Program.Profile.GetBadassTokensInvested();
-				}
-			}
-		}
-#endif
 	}
 
 	public class BadassTokensEarnedUpDown : NumericUpDown

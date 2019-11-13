@@ -815,11 +815,6 @@ namespace B2Profile
 			return (int)Math.Floor(Math.Pow(t, 1.8));
 		}
 
-		public static int GetBadassTokensEarnedFromRank(int r)
-		{
-			return (int)Math.Floor(Math.Pow(r, 1 / 1.8));
-		}
-
 		public static double GetBonusPercentFromTokens(uint t)
 		{
 			return Math.Round(Math.Pow(t, 0.75), 1);
