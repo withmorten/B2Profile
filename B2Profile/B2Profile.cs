@@ -395,6 +395,8 @@ namespace B2Profile
 			{
 				BadassTokensAvailable += (int)BonusStats[i];
 
+				if (BadassTokensAvailable > BadassTokensEarned) BadassTokensAvailable = BadassTokensEarned;
+
 				BonusStats[i] = 0;
 			}
 		}
@@ -443,7 +445,7 @@ namespace B2Profile
 		private static string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 		private static uint MagicNumber = 0x9A3652D9;
 
-		private List<uint> DecodeString(string code)
+		private static List<uint> DecodeString(string code)
 		{
 			List<uint> list = new List<uint>();
 
@@ -471,7 +473,7 @@ namespace B2Profile
 			return list;
 		}
 
-		private string EncodeString(List<uint> list)
+		private static string EncodeString(List<uint> list)
 		{
 			String code = "";
 
@@ -607,15 +609,15 @@ namespace B2Profile
 			// the current badass tokens available to invest
 			BadassTokensAvailable = GetBadassTokensEntry().GetInt32Data();
 
-			// the badass tokens earned from increasing the badass rank (note: rounded, not floored)
+			// the badass tokens earned from increasing the badass rank
 			BadassTokensEarned = GetBadassTokensEarnedEntry().GetInt32Data();
 
 			// golden keys:
-			// there can be any numbers entries
+			// there can be any number of entries
 			// only these 3 however, are written by the game
-			// ID 000: shift keys (SHiFT)
+			// ID   0: shift keys (SHiFT)
 			// ID 173: mechromancer dlc (Tulip)
-			// ID 254: pre order keys (POPremierClub)
+			// ID 254: preorder keys (POPremierClub)
 			if (GetGoldenKeysEntry().Length > 0)
 			{
 				byte[] goldenKeysBin = GetGoldenKeysEntry().GetBinData();
@@ -808,12 +810,17 @@ namespace B2Profile
 			return ref GoldenKeysShift;
 		}
 
-		public int GetBadassRankFromTokens(uint t)
+		public static int GetBadassRankFromTokens(uint t)
 		{
 			return (int)Math.Floor(Math.Pow(t, 1.8));
 		}
 
-		public double GetBonusPercentFromTokens(uint t)
+		public static int GetBadassTokensEarnedFromRank(int r)
+		{
+			return (int)Math.Floor(Math.Pow(r, 1 / 1.8));
+		}
+
+		public static double GetBonusPercentFromTokens(uint t)
 		{
 			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
@@ -830,7 +837,7 @@ namespace B2Profile
 
 		public double GetMaximumHealthBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[0]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[0]);
 		}
 
 		public void SetShieldCapacityTokens(uint t)
@@ -845,7 +852,7 @@ namespace B2Profile
 
 		public double GetShieldCapacityBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[1]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[1]);
 		}
 
 		public void SetShieldRechargeDelayTokens(uint t)
@@ -860,7 +867,7 @@ namespace B2Profile
 
 		public double GetShieldRechargeDelayBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[2]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[2]);
 		}
 
 		public void SetShieldRechargeRateTokens(uint t)
@@ -875,7 +882,7 @@ namespace B2Profile
 
 		public double GetShieldRechargeRateBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[3]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[3]);
 		}
 
 		public void SetMeleeDamageTokens(uint t)
@@ -890,7 +897,7 @@ namespace B2Profile
 
 		public double GetMeleeDamageBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[4]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[4]);
 		}
 
 		public void SetGrenadeDamageTokens(uint t)
@@ -905,7 +912,7 @@ namespace B2Profile
 
 		public double GetGrenadeDamageBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[5]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[5]);
 		}
 
 		public void SetGunAccuracyTokens(uint t)
@@ -920,7 +927,7 @@ namespace B2Profile
 
 		public double GetGunAccuracyBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[6]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[6]);
 		}
 
 		public void SetGunDamageTokens(uint t)
@@ -935,7 +942,7 @@ namespace B2Profile
 
 		public double GetGunDamageBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[7]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[7]);
 		}
 
 		public void SetFireRateTokens(uint t)
@@ -950,7 +957,7 @@ namespace B2Profile
 
 		public double GetFireRateBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[8]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[8]);
 		}
 
 		public void SetRecoilReductionTokens(uint t)
@@ -965,7 +972,7 @@ namespace B2Profile
 
 		public double GetRecoilReductionBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[9]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[9]);
 		}
 
 		public void SetReloadSpeedTokens(uint t)
@@ -980,7 +987,7 @@ namespace B2Profile
 
 		public double GetReloadSpeedBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[10]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[10]);
 		}
 
 		public void SetElementalEffectChanceTokens(uint t)
@@ -995,7 +1002,7 @@ namespace B2Profile
 
 		public double GetElementalEffectChanceBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[11]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[11]);
 		}
 
 		public void SetElementalEffectDamageTokens(uint t)
@@ -1010,7 +1017,7 @@ namespace B2Profile
 
 		public double GetElementalEffectDamageBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[12]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[12]);
 		}
 
 		public void SetCriticalHitDamageTokens(uint t)
@@ -1025,7 +1032,7 @@ namespace B2Profile
 
 		public double GetCriticalHitDamageBonus()
 		{
-			return GetBonusPercentFromTokens(BonusStats[13]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[13]);
 		}
-    }
+	}
 }

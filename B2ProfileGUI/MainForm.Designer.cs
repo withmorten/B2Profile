@@ -441,7 +441,7 @@
 			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(603, 260);
 			this.LockAllCustomizationsButton.Name = "LockAllCustomizationsButton";
 			this.LockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
-			this.LockAllCustomizationsButton.TabIndex = 61;
+			this.LockAllCustomizationsButton.TabIndex = 71;
 			this.LockAllCustomizationsButton.Text = "Lock All Customizations";
 			this.LockAllCustomizationsButton.UseVisualStyleBackColor = true;
 			this.LockAllCustomizationsButton.Click += new System.EventHandler(this.LockAllCustomizationsButton_Click);
@@ -461,7 +461,7 @@
 			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(455, 260);
 			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
 			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
-			this.UnlockAllCustomizationsButton.TabIndex = 60;
+			this.UnlockAllCustomizationsButton.TabIndex = 70;
 			this.UnlockAllCustomizationsButton.Text = "Unlock All Customizations";
 			this.UnlockAllCustomizationsButton.UseVisualStyleBackColor = true;
 			this.UnlockAllCustomizationsButton.Click += new System.EventHandler(this.UnlockAllCustomizationsButton_Click);
@@ -514,7 +514,7 @@
 			this.GoldenKeysTotalInput.Name = "GoldenKeysTotalInput";
 			this.GoldenKeysTotalInput.ReadOnly = true;
 			this.GoldenKeysTotalInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTotalInput.TabIndex = 56;
+			this.GoldenKeysTotalInput.TabIndex = 66;
 			this.GoldenKeysTotalInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysShiftUsedInput
@@ -528,7 +528,7 @@
             0});
 			this.GoldenKeysShiftUsedInput.Name = "GoldenKeysShiftUsedInput";
 			this.GoldenKeysShiftUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftUsedInput.TabIndex = 55;
+			this.GoldenKeysShiftUsedInput.TabIndex = 65;
 			this.GoldenKeysShiftUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysShiftInput
@@ -542,7 +542,7 @@
             0});
 			this.GoldenKeysShiftInput.Name = "GoldenKeysShiftInput";
 			this.GoldenKeysShiftInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftInput.TabIndex = 54;
+			this.GoldenKeysShiftInput.TabIndex = 64;
 			this.GoldenKeysShiftInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTulipUsedInput
@@ -556,7 +556,7 @@
             0});
 			this.GoldenKeysTulipUsedInput.Name = "GoldenKeysTulipUsedInput";
 			this.GoldenKeysTulipUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipUsedInput.TabIndex = 53;
+			this.GoldenKeysTulipUsedInput.TabIndex = 63;
 			this.GoldenKeysTulipUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTulipInput
@@ -570,7 +570,7 @@
             0});
 			this.GoldenKeysTulipInput.Name = "GoldenKeysTulipInput";
 			this.GoldenKeysTulipInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipInput.TabIndex = 52;
+			this.GoldenKeysTulipInput.TabIndex = 62;
 			this.GoldenKeysTulipInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysPOPremierClubUsedInput
@@ -584,7 +584,7 @@
             0});
 			this.GoldenKeysPOPremierClubUsedInput.Name = "GoldenKeysPOPremierClubUsedInput";
 			this.GoldenKeysPOPremierClubUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 51;
+			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 61;
 			this.GoldenKeysPOPremierClubUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysPOPremierClubInput
@@ -598,7 +598,7 @@
             0});
 			this.GoldenKeysPOPremierClubInput.Name = "GoldenKeysPOPremierClubInput";
 			this.GoldenKeysPOPremierClubInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubInput.TabIndex = 50;
+			this.GoldenKeysPOPremierClubInput.TabIndex = 60;
 			this.GoldenKeysPOPremierClubInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// CriticalHitDamageBonusTokensInput
@@ -1059,6 +1059,7 @@
             0,
             0});
 			this.BadassRankInput.Name = "BadassRankInput";
+			this.BadassRankInput.ReadOnly = true;
 			this.BadassRankInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassRankInput.TabIndex = 1;
 			this.BadassRankInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

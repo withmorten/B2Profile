@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Windows.Forms;
+using B2Profile;
 
 namespace B2ProfileGUI
 {
 	public class BadassRankUpDown : NumericUpDown
 	{
-		public decimal PrevValue;
+		// public decimal PrevValue;
 
 		public void Inc()
 		{
-			decimal nextRank = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+			decimal nextRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 
 			base.Increment = nextRank - base.Value;
 
 			base.UpButton();
 
-			PrevValue = base.Value;
+			// PrevValue = base.Value;
 		}
 
 		public override void UpButton()
@@ -23,36 +24,36 @@ namespace B2ProfileGUI
 			Program.MainForm.BadassTokensEarnedInput.Inc();
 			Program.MainForm.BadassTokensAvailableInput.Inc();
 
-			decimal nextRank = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+			decimal nextRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 
 			base.Increment = nextRank - base.Value;
 
 			base.UpButton();
 
-			PrevValue = base.Value;
+			// PrevValue = base.Value;
 		}
 
 		public void Dec()
 		{
-			decimal prevRank = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+			decimal prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 
 			base.Increment = base.Value - prevRank;
 
 			if (prevRank == base.Value)
 			{
-				prevRank = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+				prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 
 				base.Increment = base.Value - prevRank;
 			}
 
 			base.DownButton();
 
-			PrevValue = base.Value;
+			// PrevValue = base.Value;
 		}
 
 		public override void DownButton()
 		{
-			decimal prevRank = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+			decimal prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 
 			base.Increment = base.Value - prevRank;
 
@@ -61,15 +62,41 @@ namespace B2ProfileGUI
 				Program.MainForm.BadassTokensEarnedInput.Dec();
 				Program.MainForm.BadassTokensAvailableInput.Dec();
 
-				prevRank = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+				prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 
 				base.Increment = base.Value - prevRank;
 			}
 
 			base.DownButton();
 
-			PrevValue = base.Value;
+			// PrevValue = base.Value;
 		}
+
+#if false
+		protected override void OnLostFocus(EventArgs e)
+		{
+			PrevValue = base.Value;
+
+			base.OnLostFocus(e);
+		}
+
+		protected override void OnValueChanged(EventArgs e)
+		{
+			base.OnValueChanged(e);
+
+			if (base.UserEdit == true)
+			{
+				Program.MainForm.BadassTokensEarnedInput.Value = Profile.GetBadassTokensEarnedFromRank((int)base.Value);
+
+				Program.MainForm.TransferToProfile();
+
+				if (base.Value > PrevValue)
+				{
+					Program.MainForm.BadassTokensAvailableInput.Value += (Program.MainForm.BadassTokensEarnedInput.Value - Program.MainForm.BadassTokensEarnedInput.PrevValue) - Program.Profile.GetBadassTokensInvested();
+				}
+			}
+		}
+#endif
 	}
 
 	public class BadassTokensEarnedUpDown : NumericUpDown
@@ -119,19 +146,19 @@ namespace B2ProfileGUI
 
 		protected override void OnValueChanged(EventArgs e)
 		{
+			base.OnValueChanged(e);
+
 			if (base.UserEdit == true)
 			{
-				Program.MainForm.BadassRankInput.Value = Program.Profile.GetBadassRankFromTokens((uint)base.Value);
+				Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)base.Value);
 
 				Program.MainForm.TransferToProfile();
 
 				if (base.Value > PrevValue)
 				{
-					Program.MainForm.BadassTokensAvailableInput.Value += base.Value - Program.Profile.GetBadassTokensInvested();
+					Program.MainForm.BadassTokensAvailableInput.Value += (base.Value - PrevValue) - Program.Profile.GetBadassTokensInvested();
 				}
 			}
-
-			base.OnValueChanged(e);
 		}
 	}
 
@@ -150,8 +177,16 @@ namespace B2ProfileGUI
 		{
 			base.UpButton();
 
-			// Program.MainForm.BadassTokensEarnedInput.Inc();
-			// Program.MainForm.BadassRankInput.Inc();
+			Program.MainForm.TransferToProfile();
+
+			if ((base.Value + Program.Profile.GetBadassTokensInvested()) > Program.MainForm.BadassTokensEarnedInput.Value)
+			{
+				if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+				{
+					Program.MainForm.BadassTokensEarnedInput.Inc();
+					Program.MainForm.BadassRankInput.Inc();
+				}
+			}
 
 			PrevValue = base.Value;
 		}
@@ -168,6 +203,31 @@ namespace B2ProfileGUI
 			base.DownButton();
 
 			PrevValue = base.Value;
+		}
+
+		protected override void OnLostFocus(EventArgs e)
+		{
+			PrevValue = base.Value;
+
+			base.OnLostFocus(e);
+		}
+
+		protected override void OnValueChanged(EventArgs e)
+		{
+			base.OnValueChanged(e);
+
+			if (base.UserEdit == true)
+			{
+				if (base.Value > PrevValue)
+				{
+					if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+					{
+						Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue);
+
+						Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+					}
+				}
+			}
 		}
 	}
 
@@ -296,9 +356,11 @@ namespace B2ProfileGUI
 
 		protected override void OnValueChanged(EventArgs e)
 		{
+			base.OnValueChanged(e);
+
 			if (base.UserEdit == true)
 			{
-				PercentUpDown.Value = (decimal)Program.Profile.GetBonusPercentFromTokens((uint)base.Value);
+				PercentUpDown.Value = (decimal)Profile.GetBonusPercentFromTokens((uint)base.Value);
 
 				if (PrevValue > base.Value)
 				{
@@ -306,15 +368,33 @@ namespace B2ProfileGUI
 				}
 				else if (PrevValue < base.Value)
 				{
-					if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+					if (Program.MainForm.BadassTokensAvailableInput.Value > 0)
 					{
-						Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue);
-						Program.MainForm.BadassRankInput.Value = Program.Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+						if (Program.MainForm.BadassTokensAvailableInput.Value - (base.Value - PrevValue) < 0)
+						{
+							if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+							{
+								Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue) - Program.MainForm.BadassTokensAvailableInput.Value;
+								Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+							}
+
+							Program.MainForm.BadassTokensAvailableInput.Value = 0;
+						}
+						else
+						{
+							Program.MainForm.BadassTokensAvailableInput.Value -= (base.Value - PrevValue);
+						}
+					}
+					else
+					{
+						if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+						{
+							Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue);
+							Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+						}
 					}
 				}
 			}
-
-			base.OnValueChanged(e);
 		}
 	}
 

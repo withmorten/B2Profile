@@ -118,7 +118,7 @@ namespace B2ProfileGUI
 		{
 			Program.Profile = new Profile(ProfileFilePath);
 
-			BadassRankInput.PrevValue = 0;
+			// BadassRankInput.PrevValue = 0;
 			BadassTokensEarnedInput.PrevValue = 0;
 			BadassTokensAvailableInput.PrevValue = 0;
 
