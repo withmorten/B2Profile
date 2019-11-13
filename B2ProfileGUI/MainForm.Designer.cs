@@ -68,6 +68,22 @@
 			this.EvenlyDistributeTokensButton = new System.Windows.Forms.Button();
 			this.SyncedModeCheckBox = new System.Windows.Forms.CheckBox();
 			this.SyncedModeToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.IgnoreBonusStatLabel = new System.Windows.Forms.Label();
+			this.MaximumHealthIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.ShieldCapacityIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.ShieldRechargeDelayIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.ShieldRechargeRateIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.MeleeDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.GrenadeDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.GunAccuracyIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.GunDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.FireRateIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.RecoilReductionIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.ReloadSpeedIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.ElementalEffectChanceIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.ElementalEffectDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.CriticalHitDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
+			this.IgnoreBonusStatLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.GoldenKeysTotalInput = new B2ProfileGUI.GoldenKeysTotalUpDown();
 			this.GoldenKeysShiftUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
 			this.GoldenKeysShiftInput = new B2ProfileGUI.GoldenKeysUpDown();
@@ -491,8 +507,6 @@
 			// SyncedModeCheckBox
 			// 
 			this.SyncedModeCheckBox.AutoSize = true;
-			this.SyncedModeCheckBox.Checked = true;
-			this.SyncedModeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.SyncedModeCheckBox.Enabled = false;
 			this.SyncedModeCheckBox.Location = new System.Drawing.Point(284, 92);
 			this.SyncedModeCheckBox.Name = "SyncedModeCheckBox";
@@ -501,6 +515,168 @@
 			this.SyncedModeCheckBox.Text = "Synced Mode";
 			this.SyncedModeCheckBox.UseVisualStyleBackColor = true;
 			this.SyncedModeCheckBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SyncedModeCheckBox_MouseHover);
+			// 
+			// SyncedModeToolTip
+			// 
+			this.SyncedModeToolTip.AutoPopDelay = 10000;
+			this.SyncedModeToolTip.InitialDelay = 100;
+			this.SyncedModeToolTip.ReshowDelay = 100;
+			// 
+			// IgnoreBonusStatLabel
+			// 
+			this.IgnoreBonusStatLabel.AutoSize = true;
+			this.IgnoreBonusStatLabel.Location = new System.Drawing.Point(394, 127);
+			this.IgnoreBonusStatLabel.Name = "IgnoreBonusStatLabel";
+			this.IgnoreBonusStatLabel.Size = new System.Drawing.Size(37, 13);
+			this.IgnoreBonusStatLabel.TabIndex = 0;
+			this.IgnoreBonusStatLabel.Text = "Ignore";
+			this.IgnoreBonusStatLabel.MouseHover += new System.EventHandler(this.IgnoreBonusStatLabel_MouseHover);
+			// 
+			// MaximumHealthIgnoreCheckBox
+			// 
+			this.MaximumHealthIgnoreCheckBox.AutoSize = true;
+			this.MaximumHealthIgnoreCheckBox.Enabled = false;
+			this.MaximumHealthIgnoreCheckBox.Location = new System.Drawing.Point(404, 162);
+			this.MaximumHealthIgnoreCheckBox.Name = "MaximumHealthIgnoreCheckBox";
+			this.MaximumHealthIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.MaximumHealthIgnoreCheckBox.TabIndex = 50;
+			this.MaximumHealthIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ShieldCapacityIgnoreCheckBox
+			// 
+			this.ShieldCapacityIgnoreCheckBox.AutoSize = true;
+			this.ShieldCapacityIgnoreCheckBox.Enabled = false;
+			this.ShieldCapacityIgnoreCheckBox.Location = new System.Drawing.Point(404, 189);
+			this.ShieldCapacityIgnoreCheckBox.Name = "ShieldCapacityIgnoreCheckBox";
+			this.ShieldCapacityIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.ShieldCapacityIgnoreCheckBox.TabIndex = 72;
+			this.ShieldCapacityIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ShieldRechargeDelayIgnoreCheckBox
+			// 
+			this.ShieldRechargeDelayIgnoreCheckBox.AutoSize = true;
+			this.ShieldRechargeDelayIgnoreCheckBox.Enabled = false;
+			this.ShieldRechargeDelayIgnoreCheckBox.Location = new System.Drawing.Point(404, 216);
+			this.ShieldRechargeDelayIgnoreCheckBox.Name = "ShieldRechargeDelayIgnoreCheckBox";
+			this.ShieldRechargeDelayIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.ShieldRechargeDelayIgnoreCheckBox.TabIndex = 73;
+			this.ShieldRechargeDelayIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ShieldRechargeRateIgnoreCheckBox
+			// 
+			this.ShieldRechargeRateIgnoreCheckBox.AutoSize = true;
+			this.ShieldRechargeRateIgnoreCheckBox.Enabled = false;
+			this.ShieldRechargeRateIgnoreCheckBox.Location = new System.Drawing.Point(404, 243);
+			this.ShieldRechargeRateIgnoreCheckBox.Name = "ShieldRechargeRateIgnoreCheckBox";
+			this.ShieldRechargeRateIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.ShieldRechargeRateIgnoreCheckBox.TabIndex = 74;
+			this.ShieldRechargeRateIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// MeleeDamageIgnoreCheckBox
+			// 
+			this.MeleeDamageIgnoreCheckBox.AutoSize = true;
+			this.MeleeDamageIgnoreCheckBox.Enabled = false;
+			this.MeleeDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 270);
+			this.MeleeDamageIgnoreCheckBox.Name = "MeleeDamageIgnoreCheckBox";
+			this.MeleeDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.MeleeDamageIgnoreCheckBox.TabIndex = 75;
+			this.MeleeDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// GrenadeDamageIgnoreCheckBox
+			// 
+			this.GrenadeDamageIgnoreCheckBox.AutoSize = true;
+			this.GrenadeDamageIgnoreCheckBox.Enabled = false;
+			this.GrenadeDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 297);
+			this.GrenadeDamageIgnoreCheckBox.Name = "GrenadeDamageIgnoreCheckBox";
+			this.GrenadeDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.GrenadeDamageIgnoreCheckBox.TabIndex = 76;
+			this.GrenadeDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// GunAccuracyIgnoreCheckBox
+			// 
+			this.GunAccuracyIgnoreCheckBox.AutoSize = true;
+			this.GunAccuracyIgnoreCheckBox.Enabled = false;
+			this.GunAccuracyIgnoreCheckBox.Location = new System.Drawing.Point(404, 324);
+			this.GunAccuracyIgnoreCheckBox.Name = "GunAccuracyIgnoreCheckBox";
+			this.GunAccuracyIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.GunAccuracyIgnoreCheckBox.TabIndex = 77;
+			this.GunAccuracyIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// GunDamageIgnoreCheckBox
+			// 
+			this.GunDamageIgnoreCheckBox.AutoSize = true;
+			this.GunDamageIgnoreCheckBox.Enabled = false;
+			this.GunDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 351);
+			this.GunDamageIgnoreCheckBox.Name = "GunDamageIgnoreCheckBox";
+			this.GunDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.GunDamageIgnoreCheckBox.TabIndex = 78;
+			this.GunDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// FireRateIgnoreCheckBox
+			// 
+			this.FireRateIgnoreCheckBox.AutoSize = true;
+			this.FireRateIgnoreCheckBox.Enabled = false;
+			this.FireRateIgnoreCheckBox.Location = new System.Drawing.Point(404, 378);
+			this.FireRateIgnoreCheckBox.Name = "FireRateIgnoreCheckBox";
+			this.FireRateIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.FireRateIgnoreCheckBox.TabIndex = 79;
+			this.FireRateIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// RecoilReductionIgnoreCheckBox
+			// 
+			this.RecoilReductionIgnoreCheckBox.AutoSize = true;
+			this.RecoilReductionIgnoreCheckBox.Enabled = false;
+			this.RecoilReductionIgnoreCheckBox.Location = new System.Drawing.Point(404, 405);
+			this.RecoilReductionIgnoreCheckBox.Name = "RecoilReductionIgnoreCheckBox";
+			this.RecoilReductionIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.RecoilReductionIgnoreCheckBox.TabIndex = 80;
+			this.RecoilReductionIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ReloadSpeedIgnoreCheckBox
+			// 
+			this.ReloadSpeedIgnoreCheckBox.AutoSize = true;
+			this.ReloadSpeedIgnoreCheckBox.Enabled = false;
+			this.ReloadSpeedIgnoreCheckBox.Location = new System.Drawing.Point(404, 432);
+			this.ReloadSpeedIgnoreCheckBox.Name = "ReloadSpeedIgnoreCheckBox";
+			this.ReloadSpeedIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.ReloadSpeedIgnoreCheckBox.TabIndex = 81;
+			this.ReloadSpeedIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ElementalEffectChanceIgnoreCheckBox
+			// 
+			this.ElementalEffectChanceIgnoreCheckBox.AutoSize = true;
+			this.ElementalEffectChanceIgnoreCheckBox.Enabled = false;
+			this.ElementalEffectChanceIgnoreCheckBox.Location = new System.Drawing.Point(404, 459);
+			this.ElementalEffectChanceIgnoreCheckBox.Name = "ElementalEffectChanceIgnoreCheckBox";
+			this.ElementalEffectChanceIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.ElementalEffectChanceIgnoreCheckBox.TabIndex = 82;
+			this.ElementalEffectChanceIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// ElementalEffectDamageIgnoreCheckBox
+			// 
+			this.ElementalEffectDamageIgnoreCheckBox.AutoSize = true;
+			this.ElementalEffectDamageIgnoreCheckBox.Enabled = false;
+			this.ElementalEffectDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 486);
+			this.ElementalEffectDamageIgnoreCheckBox.Name = "ElementalEffectDamageIgnoreCheckBox";
+			this.ElementalEffectDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.ElementalEffectDamageIgnoreCheckBox.TabIndex = 83;
+			this.ElementalEffectDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// CriticalHitDamageIgnoreCheckBox
+			// 
+			this.CriticalHitDamageIgnoreCheckBox.AutoSize = true;
+			this.CriticalHitDamageIgnoreCheckBox.Enabled = false;
+			this.CriticalHitDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 513);
+			this.CriticalHitDamageIgnoreCheckBox.Name = "CriticalHitDamageIgnoreCheckBox";
+			this.CriticalHitDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
+			this.CriticalHitDamageIgnoreCheckBox.TabIndex = 84;
+			this.CriticalHitDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// IgnoreBonusStatLabelToolTip
+			// 
+			this.IgnoreBonusStatLabelToolTip.AutoPopDelay = 10000;
+			this.IgnoreBonusStatLabelToolTip.InitialDelay = 100;
+			this.IgnoreBonusStatLabelToolTip.ReshowDelay = 100;
 			// 
 			// GoldenKeysTotalInput
 			// 
@@ -1069,6 +1245,21 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(765, 551);
+			this.Controls.Add(this.CriticalHitDamageIgnoreCheckBox);
+			this.Controls.Add(this.ElementalEffectDamageIgnoreCheckBox);
+			this.Controls.Add(this.ElementalEffectChanceIgnoreCheckBox);
+			this.Controls.Add(this.ReloadSpeedIgnoreCheckBox);
+			this.Controls.Add(this.RecoilReductionIgnoreCheckBox);
+			this.Controls.Add(this.FireRateIgnoreCheckBox);
+			this.Controls.Add(this.GunDamageIgnoreCheckBox);
+			this.Controls.Add(this.GunAccuracyIgnoreCheckBox);
+			this.Controls.Add(this.GrenadeDamageIgnoreCheckBox);
+			this.Controls.Add(this.MeleeDamageIgnoreCheckBox);
+			this.Controls.Add(this.ShieldRechargeRateIgnoreCheckBox);
+			this.Controls.Add(this.ShieldRechargeDelayIgnoreCheckBox);
+			this.Controls.Add(this.ShieldCapacityIgnoreCheckBox);
+			this.Controls.Add(this.MaximumHealthIgnoreCheckBox);
+			this.Controls.Add(this.IgnoreBonusStatLabel);
 			this.Controls.Add(this.SyncedModeCheckBox);
 			this.Controls.Add(this.EvenlyDistributeTokensButton);
 			this.Controls.Add(this.ResetBonusStatsButton);
@@ -1270,5 +1461,21 @@
 		private System.Windows.Forms.Button EvenlyDistributeTokensButton;
 		public System.Windows.Forms.CheckBox SyncedModeCheckBox;
 		private System.Windows.Forms.ToolTip SyncedModeToolTip;
+		private System.Windows.Forms.Label IgnoreBonusStatLabel;
+		public System.Windows.Forms.CheckBox MaximumHealthIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox ShieldCapacityIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox ShieldRechargeDelayIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox ShieldRechargeRateIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox MeleeDamageIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox GrenadeDamageIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox GunAccuracyIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox GunDamageIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox FireRateIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox RecoilReductionIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox ReloadSpeedIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox ElementalEffectChanceIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox ElementalEffectDamageIgnoreCheckBox;
+		private System.Windows.Forms.CheckBox CriticalHitDamageIgnoreCheckBox;
+		private System.Windows.Forms.ToolTip IgnoreBonusStatLabelToolTip;
 	}
 }

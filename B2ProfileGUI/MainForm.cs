@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using B2Profile;
 
@@ -194,6 +187,21 @@ namespace B2ProfileGUI
 			ElementalEffectDamageBonusTokensInput.Enabled = true;
 			CriticalHitDamageBonusTokensInput.Enabled = true;
 
+			MaximumHealthIgnoreCheckBox.Enabled = true;
+			ShieldCapacityIgnoreCheckBox.Enabled = true;
+			ShieldRechargeDelayIgnoreCheckBox.Enabled = true;
+			ShieldRechargeRateIgnoreCheckBox.Enabled = true;
+			MeleeDamageIgnoreCheckBox.Enabled = true;
+			GrenadeDamageIgnoreCheckBox.Enabled = true;
+			GunAccuracyIgnoreCheckBox.Enabled = true;
+			GunDamageIgnoreCheckBox.Enabled = true;
+			FireRateIgnoreCheckBox.Enabled = true;
+			RecoilReductionIgnoreCheckBox.Enabled = true;
+			ReloadSpeedIgnoreCheckBox.Enabled = true;
+			ElementalEffectChanceIgnoreCheckBox.Enabled = true;
+			ElementalEffectDamageIgnoreCheckBox.Enabled = true;
+			CriticalHitDamageIgnoreCheckBox.Enabled = true;
+
 			GoldenKeysTulipInput.Enabled = true;
 			GoldenKeysTulipUsedInput.Enabled = true;
 
@@ -352,7 +360,7 @@ namespace B2ProfileGUI
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Borderlands 2 - Profile Editor\r\nCreator: withmorten\r\n\r\nSpecial thanks to:\r\nPhilymaster (original profile editor)\r\nFeudalnate (PackageIO)\r\ngibbed (MiniLZO)", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("Borderlands 2 - Profile Editor\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 - Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO)\r\n\r\nHover over \"Synced Mode\" and \"Ignore\" for additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)
@@ -390,7 +398,7 @@ namespace B2ProfileGUI
 
 		private void UnlockAllCustomizationsButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will unlock all customizations (heads, skins), do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			switch (MessageBox.Show("This will unlock all customizations (heads, skins),\r\noverwriting previous data, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
 				Program.Profile.UnlockAllCustomizations();
@@ -407,7 +415,7 @@ namespace B2ProfileGUI
 
 		private void LockAllCustomizationsButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This willlock all customizations (heads, skins), do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			switch (MessageBox.Show("This will lock all customizations (heads, skins),\r\noverwriting previous data, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
 				Program.Profile.LockAllCustomizations();
@@ -446,6 +454,21 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will overwrite the current bonus stats, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
+				Program.Profile.SetIgnoreMaximumHealth(MaximumHealthIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreShieldCapacity(ShieldCapacityIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreShieldRechargeDelay(ShieldRechargeDelayIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreShieldRechargeRate(ShieldRechargeRateIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreMeleeDamage(MeleeDamageIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreGrenadeDamage(GrenadeDamageIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreGunAccuracy(GunAccuracyIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreGunDamage(GunDamageIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreFireRate(FireRateIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreRecoilReduction(RecoilReductionIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreReloadSpeed(ReloadSpeedIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreElementalEffectChance(ElementalEffectChanceIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreElementalEffectDamage(ElementalEffectDamageIgnoreCheckBox.Checked);
+				Program.Profile.SetIgnoreCriticalHitDamage(CriticalHitDamageIgnoreCheckBox.Checked);
+
 				TransferToProfile();
 
 				Program.Profile.EvenlyDistributeTokens();
@@ -465,7 +488,16 @@ namespace B2ProfileGUI
 			if (SyncedModeToolTip.GetToolTip(SyncedModeCheckBox).Length == 0)
 			{
 				SyncedModeToolTip.SetToolTip(SyncedModeCheckBox,
-					"Checking this will increase the badass rank automatically when you run out of available tokens!");
+					"Checking this will increase the badass rank automatically\r\nwhen you run out of available tokens");
+			}
+		}
+
+		private void IgnoreBonusStatLabel_MouseHover(object sender, EventArgs e)
+		{
+			if (IgnoreBonusStatLabelToolTip.GetToolTip(IgnoreBonusStatLabel).Length == 0)
+			{
+				IgnoreBonusStatLabelToolTip.SetToolTip(IgnoreBonusStatLabel,
+					"Checking the checkboxes below will make \r\n\"Evenly Distribute Tokens\"ignore the corresponding bonus stat");
 			}
 		}
 	}

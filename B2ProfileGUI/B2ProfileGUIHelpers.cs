@@ -367,21 +367,29 @@ namespace B2ProfileGUI
 		public void Inc()
 		{
 			base.UpButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Inc();
 		}
 
 		public override void UpButton()
 		{
 			base.UpButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Inc();
 		}
 
 		public void Dec()
 		{
 			base.DownButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Dec();
 		}
 
 		public override void DownButton()
 		{
 			base.DownButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Dec();
 		}
 	}
 
@@ -390,21 +398,29 @@ namespace B2ProfileGUI
 		public void Inc()
 		{
 			base.UpButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Dec();
 		}
 
 		public override void UpButton()
 		{
 			base.UpButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Dec();
 		}
 
 		public void Dec()
 		{
 			base.DownButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Inc();
 		}
 
 		public override void DownButton()
 		{
 			base.DownButton();
+
+			Program.MainForm.GoldenKeysTotalInput.Inc();
 		}
 	}
 
@@ -417,7 +433,7 @@ namespace B2ProfileGUI
 
 		public override void UpButton()
 		{
-			base.UpButton();
+			// base.UpButton();
 		}
 
 		public void Dec()
@@ -427,7 +443,7 @@ namespace B2ProfileGUI
 
 		public override void DownButton()
 		{
-			base.DownButton();
+			// base.DownButton();
 		}
 	}
 }

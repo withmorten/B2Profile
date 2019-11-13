@@ -1,13 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
-using System.Runtime.InteropServices;
 using PackageIO;
-using PackageIO.Algorithms;
 
 namespace B2Profile
 {
@@ -197,8 +192,11 @@ namespace B2Profile
 		}
 	}
 
-    public class Profile
+	public class Profile
 	{
+		private static int NumBonusStats = 14;
+		private static int NumNextBonusStats = 5;
+
 		private Entry[] Entries;
 
 		private GoldenKeyEntry GoldenKeysPOPremierClub;
@@ -208,8 +206,11 @@ namespace B2Profile
 		private int BadassRank;
 		private int BadassTokensAvailable;
 		private int BadassTokensEarned;
+
 		private List<uint> BonusStats;
 		private List<uint> NextBonusStats;
+
+		private List<bool> IgnoreBonusStats;
 
 		public Profile()
 		{
@@ -221,6 +222,13 @@ namespace B2Profile
 
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
+
+			IgnoreBonusStats = new List<bool>(Profile.NumBonusStats);
+
+			for (int i = 0; i < Profile.NumBonusStats; i++)
+			{
+				IgnoreBonusStats.Add(false);
+			}
 		}
 
 		public Profile(string path, bool dumpUncompressed = false) : this()
@@ -359,14 +367,14 @@ namespace B2Profile
 
 		public int GetBadassTokensInvested()
 		{
-			int r = 0;
+			int t = 0;
 
 			for (int i = 0; i < NumBonusStats; i++)
 			{
-				r += (int)BonusStats[i];
+				t += (int)BonusStats[i];
 			}
 
-			return r;
+			return t;
 		}
 
 		public ref List<uint> GetBonusStats()
@@ -391,7 +399,7 @@ namespace B2Profile
 
 		public void ResetBonusStats()
 		{
-			for (int i = 0; i < NumBonusStats; i++)
+			for (int i = 0; i < Profile.NumBonusStats; i++)
 			{
 				BadassTokensAvailable += (int)BonusStats[i];
 
@@ -405,15 +413,27 @@ namespace B2Profile
 		{
 			ResetBonusStats();
 
+			bool allIsIgnored = true;
+
+			for (int i = 0; i < Profile.NumBonusStats; i++)
+			{
+				if (IgnoreBonusStats[i] == false) allIsIgnored = false;
+			}
+
+			if (allIsIgnored == true) return;
+
 			while (BadassTokensAvailable > 0)
 			{
-				for (int i = 0; i < NumBonusStats; i++)
+				for (int i = 0; i < Profile.NumBonusStats; i++)
 				{
 					if (BadassTokensAvailable == 0) break;
 
-					BonusStats[i]++;
+					if (IgnoreBonusStats[i] == false)
+					{
+						BonusStats[i]++;
 
-					BadassTokensAvailable--;
+						BadassTokensAvailable--;
+					}
 				}
 			}
 		}
@@ -450,12 +470,12 @@ namespace B2Profile
 			List<uint> list = new List<uint>();
 
 			uint index = 0;
-			uint value = MagicNumber;
+			uint value = Profile.MagicNumber;
 			int shift = 0;
 
 			for (int i = 0; i < code.Length; i++)
 			{
-				index = (uint)Alphabet.IndexOf(code[i]);
+				index = (uint)Profile.Alphabet.IndexOf(code[i]);
 
 				value ^= index << shift;
 
@@ -466,7 +486,7 @@ namespace B2Profile
 					list.Add(value);
 
 					shift &= 7;
-					value = (MagicNumber) ^ index >> 5 - shift;
+					value = (Profile.MagicNumber) ^ index >> 5 - shift;
 				}
 			}
 
@@ -484,21 +504,21 @@ namespace B2Profile
 			{
 				uint value = list[i];
 
-				value ^= MagicNumber;
+				value ^= Profile.MagicNumber;
 
 				if (shift > 0)
 				{
 					index = ((index | (value << shift)) & 0x1F);
 					shift = 5 - shift;
 
-					code += Alphabet[(int)index];
+					code += Profile.Alphabet[(int)index];
 				}
 
 				for (; shift < 28; shift += 5)
 				{
 					index = ((value >> shift) & 0x1F);
 
-					code += Alphabet[(int)index];
+					code += Profile.Alphabet[(int)index];
 				}
 
 				index = value >> shift;
@@ -507,14 +527,14 @@ namespace B2Profile
 
 			if (shift > 0)
 			{
-				code += Alphabet[(int)index];
+				code += Profile.Alphabet[(int)index];
 			}
 
 			return code;
 		}
 
-        private void LoadEntries(Reader reader)
-        {
+		private void LoadEntries(Reader reader)
+		{
 			uint numEntries = reader.ReadUInt32();
 
 			Array.Resize(ref Entries, (int)numEntries);
@@ -598,9 +618,6 @@ namespace B2Profile
 			}
 		}
 
-		private static int NumBonusStats = 14;
-		private static int NumNextBonusStats = 5;
-
 		private unsafe void LoadEntryData()
 		{
 			// the badass rank seems to be stored in two entries and the final result calculated like this
@@ -652,14 +669,14 @@ namespace B2Profile
 				}
 			}
 
-			// the invested bonus tokens, always 14 statss, fixed order, very weird encoding
+			// the invested bonus tokens, always 14 stats, fixed order, very weird encoding
 			if (GetBonusStatsEntry().Length > 0)
 			{
-				BonusStats = DecodeString(GetBonusStatsEntry().GetStringData());
+				BonusStats = Profile.DecodeString(GetBonusStatsEntry().GetStringData());
 			}
 			else
 			{
-				for (int i = 0; i < NumBonusStats; i++)
+				for (int i = 0; i < Profile.NumBonusStats; i++)
 				{
 					BonusStats.Add(0);
 				}
@@ -668,19 +685,19 @@ namespace B2Profile
 			// the next bonus tokens you'll be offered, same indexes as the bonus stats list, very weird encoding
 			if (GetNextBonusStatsEntry().Length > 0)
 			{
-				NextBonusStats = DecodeString(GetNextBonusStatsEntry().GetStringData());
+				NextBonusStats = Profile.DecodeString(GetNextBonusStatsEntry().GetStringData());
 			}
 			else
 			{
 				Random random = new Random();
 
-				for (int i = 0; i < NumNextBonusStats; i++)
+				for (int i = 0; i < Profile.NumNextBonusStats; i++)
 				{
-					uint nextBonusStat = (uint)random.Next(0, NumBonusStats);
+					uint nextBonusStat = (uint)random.Next(0, Profile.NumBonusStats);
 
 					while (NextBonusStats.Contains(nextBonusStat) == true)
 					{
-						nextBonusStat = (uint)random.Next(0, NumBonusStats);
+						nextBonusStat = (uint)random.Next(0, Profile.NumBonusStats);
 					}
 
 					NextBonusStats.Add(nextBonusStat);
@@ -736,14 +753,14 @@ namespace B2Profile
 
 			GetGoldenKeysEntry().SetBinData(goldenKeysBin);
 
-			if (BonusStats.Count == NumBonusStats)
+			if (BonusStats.Count == Profile.NumBonusStats)
 			{
-				GetBonusStatsEntry().SetStringData(EncodeString(BonusStats));
+				GetBonusStatsEntry().SetStringData(Profile.EncodeString(BonusStats));
 			}
 
-			if (NextBonusStats.Count == NumNextBonusStats)
+			if (NextBonusStats.Count == Profile.NumNextBonusStats)
 			{
-				GetNextBonusStatsEntry().SetStringData(EncodeString(NextBonusStats));
+				GetNextBonusStatsEntry().SetStringData(Profile.EncodeString(NextBonusStats));
 			}
 		}
 
@@ -835,6 +852,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[0]);
 		}
 
+		public void SetIgnoreMaximumHealth(bool b)
+		{
+			IgnoreBonusStats[0] = b;
+		}
+
 		public void SetShieldCapacityTokens(uint t)
 		{
 			BonusStats[1] = t;
@@ -848,6 +870,11 @@ namespace B2Profile
 		public double GetShieldCapacityBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[1]);
+		}
+
+		public void SetIgnoreShieldCapacity(bool b)
+		{
+			IgnoreBonusStats[1] = b;
 		}
 
 		public void SetShieldRechargeDelayTokens(uint t)
@@ -865,6 +892,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[2]);
 		}
 
+		public void SetIgnoreShieldRechargeDelay(bool b)
+		{
+			IgnoreBonusStats[2] = b;
+		}
+
 		public void SetShieldRechargeRateTokens(uint t)
 		{
 			BonusStats[3] = t;
@@ -878,6 +910,11 @@ namespace B2Profile
 		public double GetShieldRechargeRateBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[3]);
+		}
+
+		public void SetIgnoreShieldRechargeRate(bool b)
+		{
+			IgnoreBonusStats[3] = b;
 		}
 
 		public void SetMeleeDamageTokens(uint t)
@@ -895,6 +932,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[4]);
 		}
 
+		public void SetIgnoreMeleeDamage(bool b)
+		{
+			IgnoreBonusStats[4] = b;
+		}
+
 		public void SetGrenadeDamageTokens(uint t)
 		{
 			BonusStats[5] = t;
@@ -908,6 +950,11 @@ namespace B2Profile
 		public double GetGrenadeDamageBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[5]);
+		}
+
+		public void SetIgnoreGrenadeDamage(bool b)
+		{
+			IgnoreBonusStats[5] = b;
 		}
 
 		public void SetGunAccuracyTokens(uint t)
@@ -925,6 +972,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[6]);
 		}
 
+		public void SetIgnoreGunAccuracy(bool b)
+		{
+			IgnoreBonusStats[6] = b;
+		}
+
 		public void SetGunDamageTokens(uint t)
 		{
 			BonusStats[7] = t;
@@ -938,6 +990,11 @@ namespace B2Profile
 		public double GetGunDamageBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[7]);
+		}
+
+		public void SetIgnoreGunDamage(bool b)
+		{
+			IgnoreBonusStats[7] = b;
 		}
 
 		public void SetFireRateTokens(uint t)
@@ -955,6 +1012,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[8]);
 		}
 
+		public void SetIgnoreFireRate(bool b)
+		{
+			IgnoreBonusStats[8] = b;
+		}
+
 		public void SetRecoilReductionTokens(uint t)
 		{
 			BonusStats[9] = t;
@@ -968,6 +1030,11 @@ namespace B2Profile
 		public double GetRecoilReductionBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[9]);
+		}
+
+		public void SetIgnoreRecoilReduction(bool b)
+		{
+			IgnoreBonusStats[9] = b;
 		}
 
 		public void SetReloadSpeedTokens(uint t)
@@ -985,6 +1052,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[10]);
 		}
 
+		public void SetIgnoreReloadSpeed(bool b)
+		{
+			IgnoreBonusStats[10] = b;
+		}
+
 		public void SetElementalEffectChanceTokens(uint t)
 		{
 			BonusStats[11] = t;
@@ -998,6 +1070,11 @@ namespace B2Profile
 		public double GetElementalEffectChanceBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[11]);
+		}
+
+		public void SetIgnoreElementalEffectChance(bool b)
+		{
+			IgnoreBonusStats[11] = b;
 		}
 
 		public void SetElementalEffectDamageTokens(uint t)
@@ -1015,6 +1092,11 @@ namespace B2Profile
 			return Profile.GetBonusPercentFromTokens(BonusStats[12]);
 		}
 
+		public void SetIgnoreElementalEffectDamage(bool b)
+		{
+			IgnoreBonusStats[12] = b;
+		}
+
 		public void SetCriticalHitDamageTokens(uint t)
 		{
 			BonusStats[13] = t;
@@ -1028,6 +1110,11 @@ namespace B2Profile
 		public double GetCriticalHitDamageBonus()
 		{
 			return Profile.GetBonusPercentFromTokens(BonusStats[13]);
+		}
+
+		public void SetIgnoreCriticalHitDamage(bool b)
+		{
+			IgnoreBonusStats[13] = b;
 		}
 	}
 }
