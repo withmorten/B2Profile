@@ -20,6 +20,8 @@ namespace B2Profile
         public uint ID;
         public uint Length;
 
+		public long Offset;
+
 		public byte StartByte;
 		public byte EndByte;
 
@@ -411,8 +413,6 @@ namespace B2Profile
 
 		public void EvenlyDistributeTokens()
 		{
-			ResetBonusStats();
-
 			bool allIsIgnored = true;
 
 			for (int i = 0; i < Profile.NumBonusStats; i++)
@@ -546,6 +546,8 @@ namespace B2Profile
 
 				Entries[i].ID = reader.ReadUInt32();
 				Entries[i].DataType = (DataType)reader.ReadByte();
+
+				Entries[i].Offset = reader.Position;
 
 				switch (Entries[i].DataType)
 				{
@@ -810,6 +812,106 @@ namespace B2Profile
 		public ref Entry GetCustomizationsEntry()
 		{
 			return ref GetEntryFromID(300);
+		}
+
+		// Bin
+		public ref Entry GetWeaponOneEntry()
+		{
+			return ref GetEntryFromID(130);
+		}
+
+		// Bin
+		public ref Entry GetWeaponTwoEntry()
+		{
+			return ref GetEntryFromID(131);
+		}
+
+		// Bin
+		public ref Entry GetWeaponThreeEntry()
+		{
+			return ref GetEntryFromID(132);
+		}
+
+		// Bin
+		public ref Entry GetWeaponFourEntry()
+		{
+			return ref GetEntryFromID(133);
+		}
+
+		// Bin
+		public ref Entry GetWeaponEntry(int numWeapon)
+		{
+			switch (numWeapon)
+			{
+			case 1:
+				return ref GetWeaponOneEntry();
+
+			case 2:
+				return ref GetWeaponTwoEntry();
+
+				break;
+
+			case 3:
+				return ref GetWeaponThreeEntry();
+
+				break;
+
+			case 4:
+				return ref GetWeaponFourEntry();
+
+				break;
+
+			default:
+				throw new Exception("Invalid weapon index!");
+
+				break;
+			}
+		}
+
+		public bool IsWeaponEntryValid(int numWeapon)
+		{
+			byte[] weaponData = GetWeaponEntry(numWeapon).GetBinData();
+
+			for (int i = 0; i < weaponData.Length; i++)
+			{
+				if (weaponData[i] != 0x00) return true;
+			}
+
+			return false;
+		}
+
+		public string GetWeaponGibbedCode(int numWeapon)
+		{
+			return "BL2(" + Convert.ToBase64String(GetWeaponEntry(numWeapon).GetBinData()) + ")";
+		}
+
+		public bool SetWeaponGibbedCode(int numWeapon, string gibbedCode)
+		{
+			if (gibbedCode == string.Empty) return false;
+
+			if (gibbedCode.Length < 5) return false;
+
+			if (gibbedCode.Substring(0, 4) != "BL2(" && gibbedCode[gibbedCode.Length - 1] != ')') return false;
+
+			byte[] weaponData;
+
+			try
+			{
+				weaponData = Convert.FromBase64String(gibbedCode.Substring(4, gibbedCode.Length - 4 - 1));
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+
+			GetWeaponEntry(numWeapon).SetBinData(weaponData);
+
+			return true;
+		}
+
+		public void DeleteWeapon(int numWeapon)
+		{
+			SetWeaponGibbedCode(numWeapon, "BL2(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
 		}
 
 		public ref GoldenKeyEntry GetGoldenKeysPOPremierClubEntry()

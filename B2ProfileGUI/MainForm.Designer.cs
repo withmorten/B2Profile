@@ -84,6 +84,21 @@
 			this.ElementalEffectDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
 			this.CriticalHitDamageIgnoreCheckBox = new System.Windows.Forms.CheckBox();
 			this.IgnoreBonusStatLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.CopySlot1CodeButton = new System.Windows.Forms.Button();
+			this.PasteSlot1CodeButton = new System.Windows.Forms.Button();
+			this.CopySlot2CodeButton = new System.Windows.Forms.Button();
+			this.PasteSlot2CodeButton = new System.Windows.Forms.Button();
+			this.CopySlot3CodeButton = new System.Windows.Forms.Button();
+			this.PasteSlot3CodeButton = new System.Windows.Forms.Button();
+			this.CopySlot4CodeButton = new System.Windows.Forms.Button();
+			this.PasteSlot4CodeButton = new System.Windows.Forms.Button();
+			this.ClaptrapsStashLabel = new System.Windows.Forms.Label();
+			this.DeleteSlot1Button = new System.Windows.Forms.Button();
+			this.DeleteSlot2Button = new System.Windows.Forms.Button();
+			this.DeleteSlot3Button = new System.Windows.Forms.Button();
+			this.DeleteSlot4Button = new System.Windows.Forms.Button();
+			this.BadassTokensInvestedLabel = new System.Windows.Forms.Label();
+			this.BadassTokensUsedToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.GoldenKeysTotalInput = new B2ProfileGUI.GoldenKeysTotalUpDown();
 			this.GoldenKeysShiftUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
 			this.GoldenKeysShiftInput = new B2ProfileGUI.GoldenKeysUpDown();
@@ -678,6 +693,164 @@
 			this.IgnoreBonusStatLabelToolTip.InitialDelay = 100;
 			this.IgnoreBonusStatLabelToolTip.ReshowDelay = 100;
 			// 
+			// CopySlot1CodeButton
+			// 
+			this.CopySlot1CodeButton.Enabled = false;
+			this.CopySlot1CodeButton.Location = new System.Drawing.Point(455, 344);
+			this.CopySlot1CodeButton.Name = "CopySlot1CodeButton";
+			this.CopySlot1CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.CopySlot1CodeButton.TabIndex = 80;
+			this.CopySlot1CodeButton.Text = "Copy Slot 1 Gibbed Code";
+			this.CopySlot1CodeButton.UseVisualStyleBackColor = true;
+			this.CopySlot1CodeButton.Click += new System.EventHandler(this.CopySlot1CodeButton_Click);
+			// 
+			// PasteSlot1CodeButton
+			// 
+			this.PasteSlot1CodeButton.Enabled = false;
+			this.PasteSlot1CodeButton.Location = new System.Drawing.Point(603, 344);
+			this.PasteSlot1CodeButton.Name = "PasteSlot1CodeButton";
+			this.PasteSlot1CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.PasteSlot1CodeButton.TabIndex = 81;
+			this.PasteSlot1CodeButton.Text = "Paste Slot 1 Gibbed Code";
+			this.PasteSlot1CodeButton.UseVisualStyleBackColor = true;
+			this.PasteSlot1CodeButton.Click += new System.EventHandler(this.PasteSlot1CodeButton_Click);
+			// 
+			// CopySlot2CodeButton
+			// 
+			this.CopySlot2CodeButton.Enabled = false;
+			this.CopySlot2CodeButton.Location = new System.Drawing.Point(455, 373);
+			this.CopySlot2CodeButton.Name = "CopySlot2CodeButton";
+			this.CopySlot2CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.CopySlot2CodeButton.TabIndex = 82;
+			this.CopySlot2CodeButton.Text = "Copy Slot 2 Gibbed Code";
+			this.CopySlot2CodeButton.UseVisualStyleBackColor = true;
+			this.CopySlot2CodeButton.Click += new System.EventHandler(this.CopySlot2CodeButton_Click);
+			// 
+			// PasteSlot2CodeButton
+			// 
+			this.PasteSlot2CodeButton.Enabled = false;
+			this.PasteSlot2CodeButton.Location = new System.Drawing.Point(603, 373);
+			this.PasteSlot2CodeButton.Name = "PasteSlot2CodeButton";
+			this.PasteSlot2CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.PasteSlot2CodeButton.TabIndex = 83;
+			this.PasteSlot2CodeButton.Text = "Paste Slot 2 Gibbed Code";
+			this.PasteSlot2CodeButton.UseVisualStyleBackColor = true;
+			this.PasteSlot2CodeButton.Click += new System.EventHandler(this.PasteSlot2CodeButton_Click);
+			// 
+			// CopySlot3CodeButton
+			// 
+			this.CopySlot3CodeButton.Enabled = false;
+			this.CopySlot3CodeButton.Location = new System.Drawing.Point(455, 402);
+			this.CopySlot3CodeButton.Name = "CopySlot3CodeButton";
+			this.CopySlot3CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.CopySlot3CodeButton.TabIndex = 84;
+			this.CopySlot3CodeButton.Text = "Copy Slot 3 Gibbed Code";
+			this.CopySlot3CodeButton.UseVisualStyleBackColor = true;
+			this.CopySlot3CodeButton.Click += new System.EventHandler(this.CopySlot3CodeButton_Click);
+			// 
+			// PasteSlot3CodeButton
+			// 
+			this.PasteSlot3CodeButton.Enabled = false;
+			this.PasteSlot3CodeButton.Location = new System.Drawing.Point(603, 402);
+			this.PasteSlot3CodeButton.Name = "PasteSlot3CodeButton";
+			this.PasteSlot3CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.PasteSlot3CodeButton.TabIndex = 85;
+			this.PasteSlot3CodeButton.Text = "Paste Slot 3 Gibbed Code";
+			this.PasteSlot3CodeButton.UseVisualStyleBackColor = true;
+			this.PasteSlot3CodeButton.Click += new System.EventHandler(this.PasteSlot3CodeButton_Click);
+			// 
+			// CopySlot4CodeButton
+			// 
+			this.CopySlot4CodeButton.Enabled = false;
+			this.CopySlot4CodeButton.Location = new System.Drawing.Point(455, 431);
+			this.CopySlot4CodeButton.Name = "CopySlot4CodeButton";
+			this.CopySlot4CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.CopySlot4CodeButton.TabIndex = 86;
+			this.CopySlot4CodeButton.Text = "Copy Slot 4 Gibbed Code";
+			this.CopySlot4CodeButton.UseVisualStyleBackColor = true;
+			this.CopySlot4CodeButton.Click += new System.EventHandler(this.CopySlot4CodeButton_Click);
+			// 
+			// PasteSlot4CodeButton
+			// 
+			this.PasteSlot4CodeButton.Enabled = false;
+			this.PasteSlot4CodeButton.Location = new System.Drawing.Point(603, 431);
+			this.PasteSlot4CodeButton.Name = "PasteSlot4CodeButton";
+			this.PasteSlot4CodeButton.Size = new System.Drawing.Size(141, 23);
+			this.PasteSlot4CodeButton.TabIndex = 87;
+			this.PasteSlot4CodeButton.Text = "Paste Slot 4 Gibbed Code";
+			this.PasteSlot4CodeButton.UseVisualStyleBackColor = true;
+			this.PasteSlot4CodeButton.Click += new System.EventHandler(this.PasteSlot4CodeButton_Click);
+			// 
+			// ClaptrapsStashLabel
+			// 
+			this.ClaptrapsStashLabel.AutoSize = true;
+			this.ClaptrapsStashLabel.Location = new System.Drawing.Point(453, 306);
+			this.ClaptrapsStashLabel.Name = "ClaptrapsStashLabel";
+			this.ClaptrapsStashLabel.Size = new System.Drawing.Size(120, 13);
+			this.ClaptrapsStashLabel.TabIndex = 0;
+			this.ClaptrapsStashLabel.Text = "Claptrap\'s Secret Stash:";
+			// 
+			// DeleteSlot1Button
+			// 
+			this.DeleteSlot1Button.Enabled = false;
+			this.DeleteSlot1Button.Location = new System.Drawing.Point(455, 472);
+			this.DeleteSlot1Button.Name = "DeleteSlot1Button";
+			this.DeleteSlot1Button.Size = new System.Drawing.Size(141, 23);
+			this.DeleteSlot1Button.TabIndex = 88;
+			this.DeleteSlot1Button.Text = "Delete Slot 1";
+			this.DeleteSlot1Button.UseVisualStyleBackColor = true;
+			this.DeleteSlot1Button.Click += new System.EventHandler(this.DeleteSlot1Button_Click);
+			// 
+			// DeleteSlot2Button
+			// 
+			this.DeleteSlot2Button.Enabled = false;
+			this.DeleteSlot2Button.Location = new System.Drawing.Point(603, 472);
+			this.DeleteSlot2Button.Name = "DeleteSlot2Button";
+			this.DeleteSlot2Button.Size = new System.Drawing.Size(141, 23);
+			this.DeleteSlot2Button.TabIndex = 89;
+			this.DeleteSlot2Button.Text = "Delete Slot 2";
+			this.DeleteSlot2Button.UseVisualStyleBackColor = true;
+			this.DeleteSlot2Button.Click += new System.EventHandler(this.DeleteSlot2Button_Click);
+			// 
+			// DeleteSlot3Button
+			// 
+			this.DeleteSlot3Button.Enabled = false;
+			this.DeleteSlot3Button.Location = new System.Drawing.Point(455, 501);
+			this.DeleteSlot3Button.Name = "DeleteSlot3Button";
+			this.DeleteSlot3Button.Size = new System.Drawing.Size(141, 23);
+			this.DeleteSlot3Button.TabIndex = 90;
+			this.DeleteSlot3Button.Text = "Delete Slot 3";
+			this.DeleteSlot3Button.UseVisualStyleBackColor = true;
+			this.DeleteSlot3Button.Click += new System.EventHandler(this.DeleteSlot3Button_Click);
+			// 
+			// DeleteSlot4Button
+			// 
+			this.DeleteSlot4Button.Enabled = false;
+			this.DeleteSlot4Button.Location = new System.Drawing.Point(603, 501);
+			this.DeleteSlot4Button.Name = "DeleteSlot4Button";
+			this.DeleteSlot4Button.Size = new System.Drawing.Size(141, 23);
+			this.DeleteSlot4Button.TabIndex = 91;
+			this.DeleteSlot4Button.Text = "Delete Slot 4";
+			this.DeleteSlot4Button.UseVisualStyleBackColor = true;
+			this.DeleteSlot4Button.Click += new System.EventHandler(this.DeleteSlot4Button_Click);
+			// 
+			// BadassTokensInvestedLabel
+			// 
+			this.BadassTokensInvestedLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+			this.BadassTokensInvestedLabel.Location = new System.Drawing.Point(371, 93);
+			this.BadassTokensInvestedLabel.Name = "BadassTokensInvestedLabel";
+			this.BadassTokensInvestedLabel.Size = new System.Drawing.Size(76, 13);
+			this.BadassTokensInvestedLabel.TabIndex = 92;
+			this.BadassTokensInvestedLabel.Text = "0";
+			this.BadassTokensInvestedLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.BadassTokensInvestedLabel.MouseHover += new System.EventHandler(this.BadassTokensInvestedLabel_MouseHover);
+			// 
+			// BadassTokensUsedToolTip
+			// 
+			this.BadassTokensUsedToolTip.AutoPopDelay = 10000;
+			this.BadassTokensUsedToolTip.InitialDelay = 100;
+			this.BadassTokensUsedToolTip.ReshowDelay = 100;
+			// 
 			// GoldenKeysTotalInput
 			// 
 			this.GoldenKeysTotalInput.Enabled = false;
@@ -1235,7 +1408,6 @@
             0,
             0});
 			this.BadassRankInput.Name = "BadassRankInput";
-			this.BadassRankInput.ReadOnly = true;
 			this.BadassRankInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassRankInput.TabIndex = 1;
 			this.BadassRankInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1245,6 +1417,20 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(765, 551);
+			this.Controls.Add(this.BadassTokensInvestedLabel);
+			this.Controls.Add(this.DeleteSlot4Button);
+			this.Controls.Add(this.DeleteSlot3Button);
+			this.Controls.Add(this.DeleteSlot2Button);
+			this.Controls.Add(this.DeleteSlot1Button);
+			this.Controls.Add(this.ClaptrapsStashLabel);
+			this.Controls.Add(this.PasteSlot4CodeButton);
+			this.Controls.Add(this.CopySlot4CodeButton);
+			this.Controls.Add(this.PasteSlot3CodeButton);
+			this.Controls.Add(this.CopySlot3CodeButton);
+			this.Controls.Add(this.PasteSlot2CodeButton);
+			this.Controls.Add(this.CopySlot2CodeButton);
+			this.Controls.Add(this.PasteSlot1CodeButton);
+			this.Controls.Add(this.CopySlot1CodeButton);
 			this.Controls.Add(this.CriticalHitDamageIgnoreCheckBox);
 			this.Controls.Add(this.ElementalEffectDamageIgnoreCheckBox);
 			this.Controls.Add(this.ElementalEffectChanceIgnoreCheckBox);
@@ -1336,7 +1522,7 @@
 			this.Margin = new System.Windows.Forms.Padding(6);
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
-			this.Text = "Borderlands 2 - Profile Editor";
+			this.Text = "Borderlands 2 - Profile Editor 2.0";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.MainMenuBar.ResumeLayout(false);
@@ -1477,5 +1663,20 @@
 		private System.Windows.Forms.CheckBox ElementalEffectDamageIgnoreCheckBox;
 		private System.Windows.Forms.CheckBox CriticalHitDamageIgnoreCheckBox;
 		private System.Windows.Forms.ToolTip IgnoreBonusStatLabelToolTip;
+		private System.Windows.Forms.Button CopySlot1CodeButton;
+		private System.Windows.Forms.Button PasteSlot1CodeButton;
+		private System.Windows.Forms.Button CopySlot2CodeButton;
+		private System.Windows.Forms.Button PasteSlot2CodeButton;
+		private System.Windows.Forms.Button CopySlot3CodeButton;
+		private System.Windows.Forms.Button PasteSlot3CodeButton;
+		private System.Windows.Forms.Button CopySlot4CodeButton;
+		private System.Windows.Forms.Button PasteSlot4CodeButton;
+		private System.Windows.Forms.Label ClaptrapsStashLabel;
+		private System.Windows.Forms.Button DeleteSlot1Button;
+		private System.Windows.Forms.Button DeleteSlot2Button;
+		private System.Windows.Forms.Button DeleteSlot3Button;
+		private System.Windows.Forms.Button DeleteSlot4Button;
+		private System.Windows.Forms.ToolTip BadassTokensUsedToolTip;
+		public System.Windows.Forms.Label BadassTokensInvestedLabel;
 	}
 }

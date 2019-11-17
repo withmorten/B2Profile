@@ -6,6 +6,8 @@ namespace B2ProfileGUI
 {
 	public class BadassRankUpDown : NumericUpDown
 	{
+		public decimal PrevValue;
+
 		public void Inc()
 		{
 			decimal nextRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
@@ -13,6 +15,8 @@ namespace B2ProfileGUI
 			base.Increment = nextRank - base.Value;
 
 			base.UpButton();
+
+			PrevValue = base.Value;
 		}
 
 		public override void UpButton()
@@ -25,6 +29,8 @@ namespace B2ProfileGUI
 			base.Increment = nextRank - base.Value;
 
 			base.UpButton();
+
+			PrevValue = base.Value;
 		}
 
 		public void Dec()
@@ -41,6 +47,8 @@ namespace B2ProfileGUI
 			}
 
 			base.DownButton();
+
+			PrevValue = base.Value;
 		}
 
 		public override void DownButton()
@@ -60,6 +68,33 @@ namespace B2ProfileGUI
 			}
 
 			base.DownButton();
+
+			PrevValue = base.Value;
+		}
+
+		protected override void OnValueChanged(EventArgs e)
+		{
+			base.OnValueChanged(e);
+
+			if (base.UserEdit == true)
+			{
+				if (base.Value != PrevValue)
+				{
+					switch (MessageBox.Show("Editing this value manually can result in a weird state and will NOT be synced with the earned Badass Tokens value.\r\n\r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+					{
+					case DialogResult.Yes:
+
+						break;
+
+					case DialogResult.No:
+						base.Value = PrevValue;
+
+						break;
+					}
+				}
+			}
+
+			PrevValue = base.Value;
 		}
 	}
 
@@ -101,13 +136,6 @@ namespace B2ProfileGUI
 			PrevValue = base.Value;
 		}
 
-		protected override void OnLostFocus(EventArgs e)
-		{
-			PrevValue = base.Value;
-
-			base.OnLostFocus(e);
-		}
-
 		protected override void OnValueChanged(EventArgs e)
 		{
 			base.OnValueChanged(e);
@@ -120,9 +148,11 @@ namespace B2ProfileGUI
 
 				if (base.Value > PrevValue)
 				{
-					Program.MainForm.BadassTokensAvailableInput.Value += (base.Value - PrevValue) - Program.Profile.GetBadassTokensInvested();
+					Program.MainForm.BadassTokensAvailableInput.Value += (base.Value - PrevValue);
 				}
 			}
+
+			PrevValue = base.Value;
 		}
 	}
 
@@ -169,13 +199,6 @@ namespace B2ProfileGUI
 			PrevValue = base.Value;
 		}
 
-		protected override void OnLostFocus(EventArgs e)
-		{
-			PrevValue = base.Value;
-
-			base.OnLostFocus(e);
-		}
-
 		protected override void OnValueChanged(EventArgs e)
 		{
 			base.OnValueChanged(e);
@@ -192,6 +215,8 @@ namespace B2ProfileGUI
 					}
 				}
 			}
+
+			PrevValue = base.Value;
 		}
 	}
 
@@ -263,6 +288,8 @@ namespace B2ProfileGUI
 
 		public void Inc()
 		{
+			if (base.Value < base.Maximum) Program.MainForm.UpdateBadassTokensInvested(1);
+
 			base.UpButton();
 
 			PrevValue = base.Value;
@@ -283,6 +310,8 @@ namespace B2ProfileGUI
 				}
 			}
 
+			if (base.Value < base.Maximum) Program.MainForm.UpdateBadassTokensInvested(1);
+
 			base.UpButton();
 
 			PercentUpDown.Inc();
@@ -292,6 +321,8 @@ namespace B2ProfileGUI
 
 		public void Dec()
 		{
+			if (base.Value > base.Minimum) Program.MainForm.UpdateBadassTokensInvested(-1);
+
 			base.DownButton();
 
 			PrevValue = base.Value;
@@ -304,18 +335,13 @@ namespace B2ProfileGUI
 				Program.MainForm.BadassTokensAvailableInput.Inc();
 			}
 
+			if (base.Value > base.Minimum) Program.MainForm.UpdateBadassTokensInvested(-1);
+
 			base.DownButton();
 
 			PercentUpDown.Dec();
 
 			PrevValue = base.Value;
-		}
-
-		protected override void OnLostFocus(EventArgs e)
-		{
-			PrevValue = base.Value;
-
-			base.OnLostFocus(e);
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -325,6 +351,8 @@ namespace B2ProfileGUI
 			if (base.UserEdit == true)
 			{
 				PercentUpDown.Value = (decimal)Profile.GetBonusPercentFromTokens((uint)base.Value);
+
+				Program.MainForm.UpdateBadassTokensInvested(base.Value - PrevValue);
 
 				if (PrevValue > base.Value)
 				{
@@ -359,68 +387,132 @@ namespace B2ProfileGUI
 					}
 				}
 			}
+
+			PrevValue = base.Value;
 		}
 	}
 
 	public class GoldenKeysUpDown : NumericUpDown
 	{
+		public GoldenKeysUsedUpDown KeysUsedUpDown;
+
+		public decimal PrevValue;
+
 		public void Inc()
 		{
 			base.UpButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Inc();
+			PrevValue = base.Value;
 		}
 
 		public override void UpButton()
 		{
+			if (base.Value < base.Maximum) Program.MainForm.GoldenKeysTotalInput.Inc();
+
 			base.UpButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Inc();
+			PrevValue = base.Value;
 		}
 
 		public void Dec()
 		{
 			base.DownButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Dec();
+			PrevValue = base.Value;
 		}
 
 		public override void DownButton()
 		{
+			if (base.Value > base.Minimum) Program.MainForm.GoldenKeysTotalInput.Dec();
+
+			if (base.Value == KeysUsedUpDown.Value) KeysUsedUpDown.Dec();
+
 			base.DownButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Dec();
+			PrevValue = base.Value;
+		}
+
+		protected override void OnValueChanged(EventArgs e)
+		{
+			base.OnValueChanged(e);
+
+			if (base.UserEdit == true)
+			{
+				if (base.Value < KeysUsedUpDown.Value)
+				{
+					Program.MainForm.GoldenKeysTotalInput.Value += (KeysUsedUpDown.Value - PrevValue);
+
+					KeysUsedUpDown.Value = base.Value;
+				}
+				else
+				{
+					Program.MainForm.GoldenKeysTotalInput.Value += (PrevValue - base.Value);
+				}
+			}
+
+			PrevValue = base.Value;
 		}
 	}
 
 	public class GoldenKeysUsedUpDown : NumericUpDown
 	{
+		public GoldenKeysUpDown KeysUpDown;
+
+		public decimal PrevValue;
+
 		public void Inc()
 		{
 			base.UpButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Dec();
+			PrevValue = base.Value;
 		}
 
 		public override void UpButton()
 		{
+			if (base.Value < base.Maximum) Program.MainForm.GoldenKeysTotalInput.Dec();
+
+			if (base.Value == KeysUpDown.Value) KeysUpDown.Inc();
+
 			base.UpButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Dec();
+			PrevValue = base.Value;
 		}
 
 		public void Dec()
 		{
 			base.DownButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Inc();
+			PrevValue = base.Value;
 		}
 
 		public override void DownButton()
 		{
+			if (base.Value > base.Minimum) Program.MainForm.GoldenKeysTotalInput.Inc();
+
 			base.DownButton();
 
-			Program.MainForm.GoldenKeysTotalInput.Inc();
+			PrevValue = base.Value;
+		}
+
+		protected override void OnValueChanged(EventArgs e)
+		{
+			base.OnValueChanged(e);
+
+			if (base.UserEdit == true)
+			{
+				if (base.Value > KeysUpDown.Value)
+				{
+					Program.MainForm.GoldenKeysTotalInput.Value += (PrevValue - KeysUpDown.Value);
+
+					KeysUpDown.Value = base.Value;
+				}
+				else
+				{
+					Program.MainForm.GoldenKeysTotalInput.Value += (PrevValue - base.Value);
+				}
+			}
+
+			PrevValue = base.Value;
 		}
 	}
 
@@ -433,7 +525,52 @@ namespace B2ProfileGUI
 
 		public override void UpButton()
 		{
-			// base.UpButton();
+			if (base.Value < base.Maximum)
+			{
+				base.UpButton();
+
+				if (Program.MainForm.GoldenKeysPOPremierClubInput.Value < 255)
+				{
+					Program.MainForm.GoldenKeysPOPremierClubInput.Inc();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysPOPremierClubUsedInput.Value > 0)
+				{
+					Program.MainForm.GoldenKeysPOPremierClubUsedInput.Dec();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysTulipInput.Value < 255)
+				{
+					Program.MainForm.GoldenKeysTulipInput.Inc();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysTulipUsedInput.Value > 0)
+				{
+					Program.MainForm.GoldenKeysTulipUsedInput.Dec();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysShiftInput.Value < 255)
+				{
+					Program.MainForm.GoldenKeysShiftInput.Inc();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysShiftUsedInput.Value > 0)
+				{
+					Program.MainForm.GoldenKeysShiftUsedInput.Dec();
+
+					return;
+				}
+			}
 		}
 
 		public void Dec()
@@ -443,7 +580,52 @@ namespace B2ProfileGUI
 
 		public override void DownButton()
 		{
-			// base.DownButton();
+			if (base.Value > base.Minimum)
+			{
+				base.DownButton();
+
+				if (Program.MainForm.GoldenKeysPOPremierClubInput.Value > 0)
+				{
+					Program.MainForm.GoldenKeysPOPremierClubInput.Dec();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysPOPremierClubUsedInput.Value < 255)
+				{
+					Program.MainForm.GoldenKeysPOPremierClubUsedInput.Inc();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysTulipInput.Value > 0)
+				{
+					Program.MainForm.GoldenKeysTulipInput.Dec();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysTulipUsedInput.Value < 255)
+				{
+					Program.MainForm.GoldenKeysTulipUsedInput.Inc();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysShiftInput.Value > 0)
+				{
+					Program.MainForm.GoldenKeysShiftInput.Dec();
+
+					return;
+				}
+
+				if (Program.MainForm.GoldenKeysShiftUsedInput.Value < 255)
+				{
+					Program.MainForm.GoldenKeysShiftUsedInput.Inc();
+
+					return;
+				}
+			}
 		}
 	}
 }

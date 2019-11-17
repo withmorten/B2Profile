@@ -1,9 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using B2Profile;
 
 namespace B2ProfileCMD
@@ -72,6 +67,34 @@ namespace B2ProfileCMD
 
 			profile.GetGoldenKeysShiftEntry().SetNumKeys(255);
 			profile.GetGoldenKeysShiftEntry().SetNumKeysUsed(0);
+#endif
+
+#if false
+			// Entry WeaponEntryOne = profile.GetWeaponOneEntry();
+			// Entry WeaponEntryTwo = profile.GetWeaponTwoEntry();
+			// Entry WeaponEntryThree = profile.GetWeaponThreeEntry();
+			// Entry WeaponEntryFour = profile.GetWeaponFourEntry();
+
+			// Console.WriteLine(WeaponEntryOne.GetBinData().Length);
+			// Console.WriteLine(WeaponEntryTwo.GetBinData().Length);
+			// Console.WriteLine(WeaponEntryThree.GetBinData().Length);
+			// Console.WriteLine(WeaponEntryFour.GetBinData().Length);
+
+			string GibbedCodeWeaponOne = profile.GetWeaponGibbedCode(1);
+			string GibbedCodeWeaponTwo = profile.GetWeaponGibbedCode(2);
+			string GibbedCodeWeaponThree = profile.GetWeaponGibbedCode(3);
+			string GibbedCodeWeaponFour = profile.GetWeaponGibbedCode(4);
+
+			Console.WriteLine(GibbedCodeWeaponOne);
+			// Console.WriteLine(GibbedCodeWeaponTwo);
+			// Console.WriteLine(GibbedCodeWeaponThree);
+			// Console.WriteLine(GibbedCodeWeaponFour);
+
+			profile.SetWeaponGibbedCode(1, GibbedCodeWeaponFour);
+
+			GibbedCodeWeaponOne = profile.GetWeaponGibbedCode(1);
+
+			Console.WriteLine(GibbedCodeWeaponOne);
 #endif
 
 #if false

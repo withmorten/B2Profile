@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 using B2Profile;
 
 namespace B2ProfileGUI
@@ -18,6 +19,8 @@ namespace B2ProfileGUI
 			BadassRankInput.Value = Program.Profile.GetBadassRank();
 			BadassTokensEarnedInput.Value = Program.Profile.GetBadassTokensEarned();
 			BadassTokensAvailableInput.Value = Program.Profile.GetBadassTokensAvailable();
+
+			BadassTokensInvestedLabel.Text = Program.Profile.GetBadassTokensInvested().ToString();
 
 			MaximumHealthBonusPercentInput.Value = (decimal)Program.Profile.GetMaximumHealthBonus();
 			MaximumHealthBonusTokensInput.Value = Program.Profile.GetMaximumHealthTokens();
@@ -111,25 +114,35 @@ namespace B2ProfileGUI
 		{
 			Program.Profile = new Profile(ProfileFilePath);
 
-			BadassTokensEarnedInput.PrevValue = 0;
-			BadassTokensAvailableInput.PrevValue = 0;
-
-			MaximumHealthBonusTokensInput.PrevValue = 0;
-			ShieldCapacityBonusTokensInput.PrevValue = 0;
-			ShieldRechargeDelayBonusTokensInput.PrevValue = 0;
-			ShieldRechargeRateBonusTokensInput.PrevValue = 0;
-			MeleeDamageBonusTokensInput.PrevValue = 0;
-			GrenadeDamageBonusTokensInput.PrevValue = 0;
-			GunAccuracyBonusTokensInput.PrevValue = 0;
-			GunDamageBonusTokensInput.PrevValue = 0;
-			FireRateBonusTokensInput.PrevValue = 0;
-			RecoilReductionBonusTokensInput.PrevValue = 0;
-			ReloadSpeedBonusTokensInput.PrevValue = 0;
-			ElementalEffectChanceBonusTokensInput.PrevValue = 0;
-			ElementalEffectDamageBonusTokensInput.PrevValue = 0;
-			CriticalHitDamageBonusTokensInput.PrevValue = 0;
-
 			TransferFromProfile();
+
+			BadassRankInput.PrevValue = BadassRankInput.Value;
+			BadassTokensEarnedInput.PrevValue = BadassTokensEarnedInput.Value;
+			BadassTokensAvailableInput.PrevValue = BadassTokensAvailableInput.Value;
+
+			MaximumHealthBonusTokensInput.PrevValue = MaximumHealthBonusTokensInput.Value;
+			ShieldCapacityBonusTokensInput.PrevValue = ShieldCapacityBonusTokensInput.Value;
+			ShieldRechargeDelayBonusTokensInput.PrevValue = ShieldRechargeDelayBonusTokensInput.Value;
+			ShieldRechargeRateBonusTokensInput.PrevValue = ShieldRechargeRateBonusTokensInput.Value;
+			MeleeDamageBonusTokensInput.PrevValue = MeleeDamageBonusTokensInput.Value;
+			GrenadeDamageBonusTokensInput.PrevValue = GrenadeDamageBonusTokensInput.Value;
+			GunAccuracyBonusTokensInput.PrevValue = GunAccuracyBonusTokensInput.Value;
+			GunDamageBonusTokensInput.PrevValue = GunDamageBonusTokensInput.Value;
+			FireRateBonusTokensInput.PrevValue = FireRateBonusTokensInput.Value;
+			RecoilReductionBonusTokensInput.PrevValue = RecoilReductionBonusTokensInput.Value;
+			ReloadSpeedBonusTokensInput.PrevValue = ReloadSpeedBonusTokensInput.Value;
+			ElementalEffectChanceBonusTokensInput.PrevValue = ElementalEffectChanceBonusTokensInput.Value;
+			ElementalEffectDamageBonusTokensInput.PrevValue = ElementalEffectDamageBonusTokensInput.Value;
+			CriticalHitDamageBonusTokensInput.PrevValue = CriticalHitDamageBonusTokensInput.Value;
+
+			GoldenKeysPOPremierClubInput.PrevValue = GoldenKeysPOPremierClubInput.Value;
+			GoldenKeysPOPremierClubUsedInput.PrevValue = GoldenKeysPOPremierClubUsedInput.Value;
+
+			GoldenKeysTulipInput.PrevValue = GoldenKeysTulipInput.Value;
+			GoldenKeysTulipUsedInput.PrevValue = GoldenKeysTulipUsedInput.Value;
+
+			GoldenKeysShiftInput.PrevValue = GoldenKeysShiftInput.Value;
+			GoldenKeysShiftUsedInput.PrevValue = GoldenKeysShiftUsedInput.Value;
 		}
 
 		private void SaveProfile()
@@ -156,6 +169,8 @@ namespace B2ProfileGUI
 			BadassTokensEarnedInput.Enabled = true;
 
 			SyncedModeCheckBox.Enabled = true;
+
+			BadassTokensInvestedLabel.ForeColor = SystemColors.ControlText;
 
 			MaximumHealthBonusPercentInput.Enabled = true;
 			ShieldCapacityBonusPercentInput.Enabled = true;
@@ -212,6 +227,30 @@ namespace B2ProfileGUI
 			GoldenKeysPOPremierClubUsedInput.Enabled = true;
 
 			GoldenKeysTotalInput.Enabled = true;
+
+			if (Program.Profile.IsWeaponEntryValid(1) == true) CopySlot1CodeButton.Enabled = true;
+			if (Program.Profile.IsWeaponEntryValid(2) == true) CopySlot2CodeButton.Enabled = true;
+			if (Program.Profile.IsWeaponEntryValid(3) == true) CopySlot3CodeButton.Enabled = true;
+			if (Program.Profile.IsWeaponEntryValid(4) == true) CopySlot4CodeButton.Enabled = true;
+
+			PasteSlot1CodeButton.Enabled = true;
+			PasteSlot2CodeButton.Enabled = true;
+			PasteSlot3CodeButton.Enabled = true;
+			PasteSlot4CodeButton.Enabled = true;
+
+			if (Program.Profile.IsWeaponEntryValid(1) == true) DeleteSlot1Button.Enabled = true;
+			if (Program.Profile.IsWeaponEntryValid(2) == true) DeleteSlot2Button.Enabled = true;
+			if (Program.Profile.IsWeaponEntryValid(3) == true) DeleteSlot3Button.Enabled = true;
+			if (Program.Profile.IsWeaponEntryValid(4) == true) DeleteSlot4Button.Enabled = true;
+		}
+
+		public void UpdateBadassTokensInvested(decimal inc)
+		{
+			decimal t = Decimal.Parse(BadassTokensInvestedLabel.Text);
+
+			t += inc;
+
+			BadassTokensInvestedLabel.Text = t.ToString();
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -284,6 +323,15 @@ namespace B2ProfileGUI
 
 			CriticalHitDamageBonusPercentInput.TokenUpDown = CriticalHitDamageBonusTokensInput;
 			CriticalHitDamageBonusTokensInput.PercentUpDown = CriticalHitDamageBonusPercentInput;
+
+			GoldenKeysPOPremierClubInput.KeysUsedUpDown = GoldenKeysPOPremierClubUsedInput;
+			GoldenKeysPOPremierClubUsedInput.KeysUpDown = GoldenKeysPOPremierClubInput;
+
+			GoldenKeysTulipInput.KeysUsedUpDown = GoldenKeysTulipUsedInput;
+			GoldenKeysTulipUsedInput.KeysUpDown = GoldenKeysTulipInput;
+
+			GoldenKeysShiftInput.KeysUsedUpDown = GoldenKeysShiftUsedInput;
+			GoldenKeysShiftUsedInput.KeysUpDown = GoldenKeysShiftInput;
 	}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -360,7 +408,7 @@ namespace B2ProfileGUI
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Borderlands 2 - Profile Editor\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 - Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO)\r\n\r\nHover over \"Synced Mode\" and \"Ignore\" for additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("Borderlands 2 - Profile Editor 2.0\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 - Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO and his Borderlands 2 Save Editor)\r\n\r\nHover over \"Synced Mode\", the number next to it and \"Ignore\"\r\nfor additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)
@@ -451,7 +499,7 @@ namespace B2ProfileGUI
 
 		private void EvenlyDistributeTokensButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will overwrite the current bonus stats, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			switch (MessageBox.Show("This will spend all available tokens, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
 				Program.Profile.SetIgnoreMaximumHealth(MaximumHealthIgnoreCheckBox.Checked);
@@ -488,7 +536,7 @@ namespace B2ProfileGUI
 			if (SyncedModeToolTip.GetToolTip(SyncedModeCheckBox).Length == 0)
 			{
 				SyncedModeToolTip.SetToolTip(SyncedModeCheckBox,
-					"Checking this will increase the badass rank automatically\r\nwhen you run out of available tokens");
+					"Checking this will increase the Badass Rank automatically\r\nwhen you run out of available tokens");
 			}
 		}
 
@@ -498,6 +546,223 @@ namespace B2ProfileGUI
 			{
 				IgnoreBonusStatLabelToolTip.SetToolTip(IgnoreBonusStatLabel,
 					"Checking the checkboxes below will make \r\n\"Evenly Distribute Tokens\"ignore the corresponding bonus stat");
+			}
+		}
+
+		private void BadassTokensInvestedLabel_MouseHover(object sender, EventArgs e)
+		{
+			if (BadassTokensUsedToolTip.GetToolTip(BadassTokensInvestedLabel).Length == 0)
+			{
+				BadassTokensUsedToolTip.SetToolTip(BadassTokensInvestedLabel,
+					"This shows the total number of Badass Tokens currently invested");
+			}
+		}
+
+		private void CopySlot1CodeButton_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(1));
+
+			MessageBox.Show("Slot 1 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void CopySlot2CodeButton_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(2));
+
+			MessageBox.Show("Slot 2 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void CopySlot3CodeButton_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(3));
+
+			MessageBox.Show("Slot 3 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void CopySlot4CodeButton_Click(object sender, EventArgs e)
+		{
+			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(4));
+
+			MessageBox.Show("Slot 4 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void PasteSlot1CodeButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will overwrite the current item in slot 1 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				if (Program.Profile.SetWeaponGibbedCode(1, Clipboard.GetText()) == true)
+				{
+					MessageBox.Show("Slot 1 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					CopySlot1CodeButton.Enabled = true;
+					DeleteSlot1Button.Enabled = true;
+				}
+				else
+				{
+					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void PasteSlot2CodeButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will overwrite the current item in slot 2 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				if (Program.Profile.SetWeaponGibbedCode(2, Clipboard.GetText()) == true)
+				{
+					MessageBox.Show("Slot 2 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					CopySlot2CodeButton.Enabled = true;
+					DeleteSlot2Button.Enabled = true;
+				}
+				else
+				{
+					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void PasteSlot3CodeButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will overwrite the current item in slot 3 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				if (Program.Profile.SetWeaponGibbedCode(3, Clipboard.GetText()) == true)
+				{
+					MessageBox.Show("Slot 3 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					CopySlot3CodeButton.Enabled = true;
+					DeleteSlot3Button.Enabled = true;
+				}
+				else
+				{
+					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void PasteSlot4CodeButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will overwrite the current item in slot 4 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				if (Program.Profile.SetWeaponGibbedCode(4, Clipboard.GetText()) == true)
+				{
+					MessageBox.Show("Slot 4 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					CopySlot4CodeButton.Enabled = true;
+					DeleteSlot4Button.Enabled = true;
+				}
+				else
+				{
+					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void DeleteSlot1Button_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will delete the current item in slot 1, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				Program.Profile.DeleteWeapon(1);
+
+				MessageBox.Show("Slot 1 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				CopySlot1CodeButton.Enabled = false;
+				DeleteSlot1Button.Enabled = false;
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void DeleteSlot2Button_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will delete the current item in slot 2, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				Program.Profile.DeleteWeapon(2);
+
+				MessageBox.Show("Slot 2 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				CopySlot2CodeButton.Enabled = false;
+				DeleteSlot2Button.Enabled = false;
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void DeleteSlot3Button_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will delete the current item in slot 3, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				Program.Profile.DeleteWeapon(3);
+
+				MessageBox.Show("Slot 3 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				CopySlot3CodeButton.Enabled = false;
+				DeleteSlot3Button.Enabled = false;
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private void DeleteSlot4Button_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will delete the current item in slot 4, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				Program.Profile.DeleteWeapon(4);
+
+				MessageBox.Show("Slot 4 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				CopySlot4CodeButton.Enabled = false;
+				DeleteSlot4Button.Enabled = false;
+
+				break;
+
+			case DialogResult.No:
+
+				break;
 			}
 		}
 	}
