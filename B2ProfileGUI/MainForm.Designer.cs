@@ -472,7 +472,7 @@
 			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(603, 260);
 			this.LockAllCustomizationsButton.Name = "LockAllCustomizationsButton";
 			this.LockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
-			this.LockAllCustomizationsButton.TabIndex = 71;
+			this.LockAllCustomizationsButton.TabIndex = 81;
 			this.LockAllCustomizationsButton.Text = "Lock All Customizations";
 			this.LockAllCustomizationsButton.UseVisualStyleBackColor = true;
 			this.LockAllCustomizationsButton.Click += new System.EventHandler(this.LockAllCustomizationsButton_Click);
@@ -492,7 +492,7 @@
 			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(455, 260);
 			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
 			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
-			this.UnlockAllCustomizationsButton.TabIndex = 70;
+			this.UnlockAllCustomizationsButton.TabIndex = 80;
 			this.UnlockAllCustomizationsButton.Text = "Unlock All Customizations";
 			this.UnlockAllCustomizationsButton.UseVisualStyleBackColor = true;
 			this.UnlockAllCustomizationsButton.Click += new System.EventHandler(this.UnlockAllCustomizationsButton_Click);
@@ -564,7 +564,7 @@
 			this.ShieldCapacityIgnoreCheckBox.Location = new System.Drawing.Point(404, 189);
 			this.ShieldCapacityIgnoreCheckBox.Name = "ShieldCapacityIgnoreCheckBox";
 			this.ShieldCapacityIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.ShieldCapacityIgnoreCheckBox.TabIndex = 72;
+			this.ShieldCapacityIgnoreCheckBox.TabIndex = 51;
 			this.ShieldCapacityIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ShieldRechargeDelayIgnoreCheckBox
@@ -574,7 +574,7 @@
 			this.ShieldRechargeDelayIgnoreCheckBox.Location = new System.Drawing.Point(404, 216);
 			this.ShieldRechargeDelayIgnoreCheckBox.Name = "ShieldRechargeDelayIgnoreCheckBox";
 			this.ShieldRechargeDelayIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.ShieldRechargeDelayIgnoreCheckBox.TabIndex = 73;
+			this.ShieldRechargeDelayIgnoreCheckBox.TabIndex = 52;
 			this.ShieldRechargeDelayIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ShieldRechargeRateIgnoreCheckBox
@@ -584,7 +584,7 @@
 			this.ShieldRechargeRateIgnoreCheckBox.Location = new System.Drawing.Point(404, 243);
 			this.ShieldRechargeRateIgnoreCheckBox.Name = "ShieldRechargeRateIgnoreCheckBox";
 			this.ShieldRechargeRateIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.ShieldRechargeRateIgnoreCheckBox.TabIndex = 74;
+			this.ShieldRechargeRateIgnoreCheckBox.TabIndex = 53;
 			this.ShieldRechargeRateIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// MeleeDamageIgnoreCheckBox
@@ -594,7 +594,7 @@
 			this.MeleeDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 270);
 			this.MeleeDamageIgnoreCheckBox.Name = "MeleeDamageIgnoreCheckBox";
 			this.MeleeDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.MeleeDamageIgnoreCheckBox.TabIndex = 75;
+			this.MeleeDamageIgnoreCheckBox.TabIndex = 54;
 			this.MeleeDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// GrenadeDamageIgnoreCheckBox
@@ -604,7 +604,7 @@
 			this.GrenadeDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 297);
 			this.GrenadeDamageIgnoreCheckBox.Name = "GrenadeDamageIgnoreCheckBox";
 			this.GrenadeDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.GrenadeDamageIgnoreCheckBox.TabIndex = 76;
+			this.GrenadeDamageIgnoreCheckBox.TabIndex = 55;
 			this.GrenadeDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// GunAccuracyIgnoreCheckBox
@@ -614,7 +614,7 @@
 			this.GunAccuracyIgnoreCheckBox.Location = new System.Drawing.Point(404, 324);
 			this.GunAccuracyIgnoreCheckBox.Name = "GunAccuracyIgnoreCheckBox";
 			this.GunAccuracyIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.GunAccuracyIgnoreCheckBox.TabIndex = 77;
+			this.GunAccuracyIgnoreCheckBox.TabIndex = 56;
 			this.GunAccuracyIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// GunDamageIgnoreCheckBox
@@ -624,7 +624,7 @@
 			this.GunDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 351);
 			this.GunDamageIgnoreCheckBox.Name = "GunDamageIgnoreCheckBox";
 			this.GunDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.GunDamageIgnoreCheckBox.TabIndex = 78;
+			this.GunDamageIgnoreCheckBox.TabIndex = 57;
 			this.GunDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// FireRateIgnoreCheckBox
@@ -634,7 +634,7 @@
 			this.FireRateIgnoreCheckBox.Location = new System.Drawing.Point(404, 378);
 			this.FireRateIgnoreCheckBox.Name = "FireRateIgnoreCheckBox";
 			this.FireRateIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.FireRateIgnoreCheckBox.TabIndex = 79;
+			this.FireRateIgnoreCheckBox.TabIndex = 58;
 			this.FireRateIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// RecoilReductionIgnoreCheckBox
@@ -644,7 +644,7 @@
 			this.RecoilReductionIgnoreCheckBox.Location = new System.Drawing.Point(404, 405);
 			this.RecoilReductionIgnoreCheckBox.Name = "RecoilReductionIgnoreCheckBox";
 			this.RecoilReductionIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.RecoilReductionIgnoreCheckBox.TabIndex = 80;
+			this.RecoilReductionIgnoreCheckBox.TabIndex = 59;
 			this.RecoilReductionIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ReloadSpeedIgnoreCheckBox
@@ -654,7 +654,7 @@
 			this.ReloadSpeedIgnoreCheckBox.Location = new System.Drawing.Point(404, 432);
 			this.ReloadSpeedIgnoreCheckBox.Name = "ReloadSpeedIgnoreCheckBox";
 			this.ReloadSpeedIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.ReloadSpeedIgnoreCheckBox.TabIndex = 81;
+			this.ReloadSpeedIgnoreCheckBox.TabIndex = 60;
 			this.ReloadSpeedIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ElementalEffectChanceIgnoreCheckBox
@@ -664,7 +664,7 @@
 			this.ElementalEffectChanceIgnoreCheckBox.Location = new System.Drawing.Point(404, 459);
 			this.ElementalEffectChanceIgnoreCheckBox.Name = "ElementalEffectChanceIgnoreCheckBox";
 			this.ElementalEffectChanceIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.ElementalEffectChanceIgnoreCheckBox.TabIndex = 82;
+			this.ElementalEffectChanceIgnoreCheckBox.TabIndex = 61;
 			this.ElementalEffectChanceIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// ElementalEffectDamageIgnoreCheckBox
@@ -674,7 +674,7 @@
 			this.ElementalEffectDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 486);
 			this.ElementalEffectDamageIgnoreCheckBox.Name = "ElementalEffectDamageIgnoreCheckBox";
 			this.ElementalEffectDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.ElementalEffectDamageIgnoreCheckBox.TabIndex = 83;
+			this.ElementalEffectDamageIgnoreCheckBox.TabIndex = 62;
 			this.ElementalEffectDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// CriticalHitDamageIgnoreCheckBox
@@ -684,7 +684,7 @@
 			this.CriticalHitDamageIgnoreCheckBox.Location = new System.Drawing.Point(404, 513);
 			this.CriticalHitDamageIgnoreCheckBox.Name = "CriticalHitDamageIgnoreCheckBox";
 			this.CriticalHitDamageIgnoreCheckBox.Size = new System.Drawing.Size(15, 14);
-			this.CriticalHitDamageIgnoreCheckBox.TabIndex = 84;
+			this.CriticalHitDamageIgnoreCheckBox.TabIndex = 63;
 			this.CriticalHitDamageIgnoreCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// IgnoreBonusStatLabelToolTip
@@ -699,7 +699,7 @@
 			this.CopySlot1CodeButton.Location = new System.Drawing.Point(455, 344);
 			this.CopySlot1CodeButton.Name = "CopySlot1CodeButton";
 			this.CopySlot1CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.CopySlot1CodeButton.TabIndex = 80;
+			this.CopySlot1CodeButton.TabIndex = 90;
 			this.CopySlot1CodeButton.Text = "Copy Slot 1 Gibbed Code";
 			this.CopySlot1CodeButton.UseVisualStyleBackColor = true;
 			this.CopySlot1CodeButton.Click += new System.EventHandler(this.CopySlot1CodeButton_Click);
@@ -710,7 +710,7 @@
 			this.PasteSlot1CodeButton.Location = new System.Drawing.Point(603, 344);
 			this.PasteSlot1CodeButton.Name = "PasteSlot1CodeButton";
 			this.PasteSlot1CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.PasteSlot1CodeButton.TabIndex = 81;
+			this.PasteSlot1CodeButton.TabIndex = 91;
 			this.PasteSlot1CodeButton.Text = "Paste Slot 1 Gibbed Code";
 			this.PasteSlot1CodeButton.UseVisualStyleBackColor = true;
 			this.PasteSlot1CodeButton.Click += new System.EventHandler(this.PasteSlot1CodeButton_Click);
@@ -721,7 +721,7 @@
 			this.CopySlot2CodeButton.Location = new System.Drawing.Point(455, 373);
 			this.CopySlot2CodeButton.Name = "CopySlot2CodeButton";
 			this.CopySlot2CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.CopySlot2CodeButton.TabIndex = 82;
+			this.CopySlot2CodeButton.TabIndex = 92;
 			this.CopySlot2CodeButton.Text = "Copy Slot 2 Gibbed Code";
 			this.CopySlot2CodeButton.UseVisualStyleBackColor = true;
 			this.CopySlot2CodeButton.Click += new System.EventHandler(this.CopySlot2CodeButton_Click);
@@ -732,7 +732,7 @@
 			this.PasteSlot2CodeButton.Location = new System.Drawing.Point(603, 373);
 			this.PasteSlot2CodeButton.Name = "PasteSlot2CodeButton";
 			this.PasteSlot2CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.PasteSlot2CodeButton.TabIndex = 83;
+			this.PasteSlot2CodeButton.TabIndex = 93;
 			this.PasteSlot2CodeButton.Text = "Paste Slot 2 Gibbed Code";
 			this.PasteSlot2CodeButton.UseVisualStyleBackColor = true;
 			this.PasteSlot2CodeButton.Click += new System.EventHandler(this.PasteSlot2CodeButton_Click);
@@ -743,7 +743,7 @@
 			this.CopySlot3CodeButton.Location = new System.Drawing.Point(455, 402);
 			this.CopySlot3CodeButton.Name = "CopySlot3CodeButton";
 			this.CopySlot3CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.CopySlot3CodeButton.TabIndex = 84;
+			this.CopySlot3CodeButton.TabIndex = 94;
 			this.CopySlot3CodeButton.Text = "Copy Slot 3 Gibbed Code";
 			this.CopySlot3CodeButton.UseVisualStyleBackColor = true;
 			this.CopySlot3CodeButton.Click += new System.EventHandler(this.CopySlot3CodeButton_Click);
@@ -754,7 +754,7 @@
 			this.PasteSlot3CodeButton.Location = new System.Drawing.Point(603, 402);
 			this.PasteSlot3CodeButton.Name = "PasteSlot3CodeButton";
 			this.PasteSlot3CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.PasteSlot3CodeButton.TabIndex = 85;
+			this.PasteSlot3CodeButton.TabIndex = 95;
 			this.PasteSlot3CodeButton.Text = "Paste Slot 3 Gibbed Code";
 			this.PasteSlot3CodeButton.UseVisualStyleBackColor = true;
 			this.PasteSlot3CodeButton.Click += new System.EventHandler(this.PasteSlot3CodeButton_Click);
@@ -765,7 +765,7 @@
 			this.CopySlot4CodeButton.Location = new System.Drawing.Point(455, 431);
 			this.CopySlot4CodeButton.Name = "CopySlot4CodeButton";
 			this.CopySlot4CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.CopySlot4CodeButton.TabIndex = 86;
+			this.CopySlot4CodeButton.TabIndex = 96;
 			this.CopySlot4CodeButton.Text = "Copy Slot 4 Gibbed Code";
 			this.CopySlot4CodeButton.UseVisualStyleBackColor = true;
 			this.CopySlot4CodeButton.Click += new System.EventHandler(this.CopySlot4CodeButton_Click);
@@ -776,7 +776,7 @@
 			this.PasteSlot4CodeButton.Location = new System.Drawing.Point(603, 431);
 			this.PasteSlot4CodeButton.Name = "PasteSlot4CodeButton";
 			this.PasteSlot4CodeButton.Size = new System.Drawing.Size(141, 23);
-			this.PasteSlot4CodeButton.TabIndex = 87;
+			this.PasteSlot4CodeButton.TabIndex = 97;
 			this.PasteSlot4CodeButton.Text = "Paste Slot 4 Gibbed Code";
 			this.PasteSlot4CodeButton.UseVisualStyleBackColor = true;
 			this.PasteSlot4CodeButton.Click += new System.EventHandler(this.PasteSlot4CodeButton_Click);
@@ -796,7 +796,7 @@
 			this.DeleteSlot1Button.Location = new System.Drawing.Point(455, 472);
 			this.DeleteSlot1Button.Name = "DeleteSlot1Button";
 			this.DeleteSlot1Button.Size = new System.Drawing.Size(141, 23);
-			this.DeleteSlot1Button.TabIndex = 88;
+			this.DeleteSlot1Button.TabIndex = 98;
 			this.DeleteSlot1Button.Text = "Delete Slot 1";
 			this.DeleteSlot1Button.UseVisualStyleBackColor = true;
 			this.DeleteSlot1Button.Click += new System.EventHandler(this.DeleteSlot1Button_Click);
@@ -807,7 +807,7 @@
 			this.DeleteSlot2Button.Location = new System.Drawing.Point(603, 472);
 			this.DeleteSlot2Button.Name = "DeleteSlot2Button";
 			this.DeleteSlot2Button.Size = new System.Drawing.Size(141, 23);
-			this.DeleteSlot2Button.TabIndex = 89;
+			this.DeleteSlot2Button.TabIndex = 99;
 			this.DeleteSlot2Button.Text = "Delete Slot 2";
 			this.DeleteSlot2Button.UseVisualStyleBackColor = true;
 			this.DeleteSlot2Button.Click += new System.EventHandler(this.DeleteSlot2Button_Click);
@@ -818,7 +818,7 @@
 			this.DeleteSlot3Button.Location = new System.Drawing.Point(455, 501);
 			this.DeleteSlot3Button.Name = "DeleteSlot3Button";
 			this.DeleteSlot3Button.Size = new System.Drawing.Size(141, 23);
-			this.DeleteSlot3Button.TabIndex = 90;
+			this.DeleteSlot3Button.TabIndex = 100;
 			this.DeleteSlot3Button.Text = "Delete Slot 3";
 			this.DeleteSlot3Button.UseVisualStyleBackColor = true;
 			this.DeleteSlot3Button.Click += new System.EventHandler(this.DeleteSlot3Button_Click);
@@ -829,7 +829,7 @@
 			this.DeleteSlot4Button.Location = new System.Drawing.Point(603, 501);
 			this.DeleteSlot4Button.Name = "DeleteSlot4Button";
 			this.DeleteSlot4Button.Size = new System.Drawing.Size(141, 23);
-			this.DeleteSlot4Button.TabIndex = 91;
+			this.DeleteSlot4Button.TabIndex = 101;
 			this.DeleteSlot4Button.Text = "Delete Slot 4";
 			this.DeleteSlot4Button.UseVisualStyleBackColor = true;
 			this.DeleteSlot4Button.Click += new System.EventHandler(this.DeleteSlot4Button_Click);
@@ -840,7 +840,7 @@
 			this.BadassTokensInvestedLabel.Location = new System.Drawing.Point(371, 93);
 			this.BadassTokensInvestedLabel.Name = "BadassTokensInvestedLabel";
 			this.BadassTokensInvestedLabel.Size = new System.Drawing.Size(76, 13);
-			this.BadassTokensInvestedLabel.TabIndex = 92;
+			this.BadassTokensInvestedLabel.TabIndex = 0;
 			this.BadassTokensInvestedLabel.Text = "0";
 			this.BadassTokensInvestedLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			this.BadassTokensInvestedLabel.MouseHover += new System.EventHandler(this.BadassTokensInvestedLabel_MouseHover);
@@ -863,7 +863,7 @@
 			this.GoldenKeysTotalInput.Name = "GoldenKeysTotalInput";
 			this.GoldenKeysTotalInput.ReadOnly = true;
 			this.GoldenKeysTotalInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTotalInput.TabIndex = 66;
+			this.GoldenKeysTotalInput.TabIndex = 76;
 			this.GoldenKeysTotalInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysShiftUsedInput
@@ -877,7 +877,7 @@
             0});
 			this.GoldenKeysShiftUsedInput.Name = "GoldenKeysShiftUsedInput";
 			this.GoldenKeysShiftUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftUsedInput.TabIndex = 65;
+			this.GoldenKeysShiftUsedInput.TabIndex = 75;
 			this.GoldenKeysShiftUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysShiftInput
@@ -891,7 +891,7 @@
             0});
 			this.GoldenKeysShiftInput.Name = "GoldenKeysShiftInput";
 			this.GoldenKeysShiftInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysShiftInput.TabIndex = 64;
+			this.GoldenKeysShiftInput.TabIndex = 74;
 			this.GoldenKeysShiftInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTulipUsedInput
@@ -905,7 +905,7 @@
             0});
 			this.GoldenKeysTulipUsedInput.Name = "GoldenKeysTulipUsedInput";
 			this.GoldenKeysTulipUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipUsedInput.TabIndex = 63;
+			this.GoldenKeysTulipUsedInput.TabIndex = 73;
 			this.GoldenKeysTulipUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysTulipInput
@@ -919,7 +919,7 @@
             0});
 			this.GoldenKeysTulipInput.Name = "GoldenKeysTulipInput";
 			this.GoldenKeysTulipInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysTulipInput.TabIndex = 62;
+			this.GoldenKeysTulipInput.TabIndex = 72;
 			this.GoldenKeysTulipInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysPOPremierClubUsedInput
@@ -933,7 +933,7 @@
             0});
 			this.GoldenKeysPOPremierClubUsedInput.Name = "GoldenKeysPOPremierClubUsedInput";
 			this.GoldenKeysPOPremierClubUsedInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 61;
+			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 71;
 			this.GoldenKeysPOPremierClubUsedInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// GoldenKeysPOPremierClubInput
@@ -947,7 +947,7 @@
             0});
 			this.GoldenKeysPOPremierClubInput.Name = "GoldenKeysPOPremierClubInput";
 			this.GoldenKeysPOPremierClubInput.Size = new System.Drawing.Size(81, 20);
-			this.GoldenKeysPOPremierClubInput.TabIndex = 60;
+			this.GoldenKeysPOPremierClubInput.TabIndex = 70;
 			this.GoldenKeysPOPremierClubInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// CriticalHitDamageBonusTokensInput
