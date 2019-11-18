@@ -18,6 +18,9 @@ namespace B2ProfileCMD
 				return 1;
 			}
 
+			// Just some examples what you can do with this ...
+
+			// Dump some data before editing ...
 #if false
 			Console.WriteLine("Input:");
 			Console.WriteLine();
@@ -38,7 +41,7 @@ namespace B2ProfileCMD
 			Console.WriteLine();
 
 			Console.WriteLine("Badass Rank: " + profile.GetBadassRank());
-			Console.WriteLine("Badass Tokens: " + profile.GetBadassTokens());
+			Console.WriteLine("Badass Tokens: " + profile.GetBadassTokensAvailable());
 			Console.WriteLine("Earned Badass Tokens: " + profile.GetBadassTokensEarned());
 			Console.WriteLine();
 
@@ -58,6 +61,7 @@ namespace B2ProfileCMD
 			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamageBonus());
 #endif
 
+			// Set all key entries to max (765 keys total)
 #if false
 			profile.GetGoldenKeysPOPremierClubEntry().SetNumKeys(255);
 			profile.GetGoldenKeysPOPremierClubEntry().SetNumKeysUsed(0);
@@ -69,34 +73,7 @@ namespace B2ProfileCMD
 			profile.GetGoldenKeysShiftEntry().SetNumKeysUsed(0);
 #endif
 
-#if false
-			// Entry WeaponEntryOne = profile.GetWeaponOneEntry();
-			// Entry WeaponEntryTwo = profile.GetWeaponTwoEntry();
-			// Entry WeaponEntryThree = profile.GetWeaponThreeEntry();
-			// Entry WeaponEntryFour = profile.GetWeaponFourEntry();
-
-			// Console.WriteLine(WeaponEntryOne.GetBinData().Length);
-			// Console.WriteLine(WeaponEntryTwo.GetBinData().Length);
-			// Console.WriteLine(WeaponEntryThree.GetBinData().Length);
-			// Console.WriteLine(WeaponEntryFour.GetBinData().Length);
-
-			string GibbedCodeWeaponOne = profile.GetWeaponGibbedCode(1);
-			string GibbedCodeWeaponTwo = profile.GetWeaponGibbedCode(2);
-			string GibbedCodeWeaponThree = profile.GetWeaponGibbedCode(3);
-			string GibbedCodeWeaponFour = profile.GetWeaponGibbedCode(4);
-
-			Console.WriteLine(GibbedCodeWeaponOne);
-			// Console.WriteLine(GibbedCodeWeaponTwo);
-			// Console.WriteLine(GibbedCodeWeaponThree);
-			// Console.WriteLine(GibbedCodeWeaponFour);
-
-			profile.SetWeaponGibbedCode(1, GibbedCodeWeaponFour);
-
-			GibbedCodeWeaponOne = profile.GetWeaponGibbedCode(1);
-
-			Console.WriteLine(GibbedCodeWeaponOne);
-#endif
-
+			// Dump some data after editing ...
 #if false
 			Console.WriteLine();
 

@@ -110,6 +110,24 @@ namespace B2ProfileGUI
 			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeysUsed((byte)GoldenKeysShiftUsedInput.Value);
 		}
 
+		private void TransferIgnoresToProfile()
+		{
+			Program.Profile.SetIgnoreMaximumHealth(MaximumHealthIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreShieldCapacity(ShieldCapacityIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreShieldRechargeDelay(ShieldRechargeDelayIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreShieldRechargeRate(ShieldRechargeRateIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreMeleeDamage(MeleeDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreGrenadeDamage(GrenadeDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreGunAccuracy(GunAccuracyIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreGunDamage(GunDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreFireRate(FireRateIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreRecoilReduction(RecoilReductionIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreReloadSpeed(ReloadSpeedIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreElementalEffectChance(ElementalEffectChanceIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreElementalEffectDamage(ElementalEffectDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreCriticalHitDamage(CriticalHitDamageIgnoreCheckBox.Checked);
+		}
+
 		private void LoadProfile()
 		{
 			Program.Profile = new Profile(ProfileFilePath);
@@ -228,20 +246,20 @@ namespace B2ProfileGUI
 
 			GoldenKeysTotalInput.Enabled = true;
 
-			if (Program.Profile.IsWeaponEntryValid(1) == true) CopySlot1CodeButton.Enabled = true;
-			if (Program.Profile.IsWeaponEntryValid(2) == true) CopySlot2CodeButton.Enabled = true;
-			if (Program.Profile.IsWeaponEntryValid(3) == true) CopySlot3CodeButton.Enabled = true;
-			if (Program.Profile.IsWeaponEntryValid(4) == true) CopySlot4CodeButton.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(1) == true) CopySlot1CodeButton.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(2) == true) CopySlot2CodeButton.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(3) == true) CopySlot3CodeButton.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(4) == true) CopySlot4CodeButton.Enabled = true;
 
 			PasteSlot1CodeButton.Enabled = true;
 			PasteSlot2CodeButton.Enabled = true;
 			PasteSlot3CodeButton.Enabled = true;
 			PasteSlot4CodeButton.Enabled = true;
 
-			if (Program.Profile.IsWeaponEntryValid(1) == true) DeleteSlot1Button.Enabled = true;
-			if (Program.Profile.IsWeaponEntryValid(2) == true) DeleteSlot2Button.Enabled = true;
-			if (Program.Profile.IsWeaponEntryValid(3) == true) DeleteSlot3Button.Enabled = true;
-			if (Program.Profile.IsWeaponEntryValid(4) == true) DeleteSlot4Button.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(1) == true) DeleteSlot1Button.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(2) == true) DeleteSlot2Button.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(3) == true) DeleteSlot3Button.Enabled = true;
+			if (Program.Profile.IsClaptrapsStashSlotValid(4) == true) DeleteSlot4Button.Enabled = true;
 		}
 
 		public void UpdateBadassTokensInvested(decimal inc)
@@ -483,6 +501,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will reset all bonus stats, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
+				TransferIgnoresToProfile();
 				TransferToProfile();
 
 				Program.Profile.ResetBonusStats();
@@ -502,21 +521,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will spend all available tokens, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				Program.Profile.SetIgnoreMaximumHealth(MaximumHealthIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreShieldCapacity(ShieldCapacityIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreShieldRechargeDelay(ShieldRechargeDelayIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreShieldRechargeRate(ShieldRechargeRateIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreMeleeDamage(MeleeDamageIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreGrenadeDamage(GrenadeDamageIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreGunAccuracy(GunAccuracyIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreGunDamage(GunDamageIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreFireRate(FireRateIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreRecoilReduction(RecoilReductionIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreReloadSpeed(ReloadSpeedIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreElementalEffectChance(ElementalEffectChanceIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreElementalEffectDamage(ElementalEffectDamageIgnoreCheckBox.Checked);
-				Program.Profile.SetIgnoreCriticalHitDamage(CriticalHitDamageIgnoreCheckBox.Checked);
-
+				TransferIgnoresToProfile();
 				TransferToProfile();
 
 				Program.Profile.EvenlyDistributeTokens();
@@ -545,7 +550,7 @@ namespace B2ProfileGUI
 			if (IgnoreBonusStatLabelToolTip.GetToolTip(IgnoreBonusStatLabel).Length == 0)
 			{
 				IgnoreBonusStatLabelToolTip.SetToolTip(IgnoreBonusStatLabel,
-					"Checking the checkboxes below will make \r\n\"Evenly Distribute Tokens\"ignore the corresponding bonus stat");
+					"Checking the checkboxes below will make \r\n\"Reset Bonus Stats\" and \"Evenly Distribute Tokens\"\r\nignore the corresponding bonus stat");
 			}
 		}
 
@@ -560,28 +565,28 @@ namespace B2ProfileGUI
 
 		private void CopySlot1CodeButton_Click(object sender, EventArgs e)
 		{
-			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(1));
+			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(1));
 
 			MessageBox.Show("Slot 1 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void CopySlot2CodeButton_Click(object sender, EventArgs e)
 		{
-			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(2));
+			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(2));
 
 			MessageBox.Show("Slot 2 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void CopySlot3CodeButton_Click(object sender, EventArgs e)
 		{
-			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(3));
+			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(3));
 
 			MessageBox.Show("Slot 3 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void CopySlot4CodeButton_Click(object sender, EventArgs e)
 		{
-			Clipboard.SetText(Program.Profile.GetWeaponGibbedCode(4));
+			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(4));
 
 			MessageBox.Show("Slot 4 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
@@ -591,7 +596,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will overwrite the current item in slot 1 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				if (Program.Profile.SetWeaponGibbedCode(1, Clipboard.GetText()) == true)
+				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(1, Clipboard.GetText()) == true)
 				{
 					MessageBox.Show("Slot 1 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -616,7 +621,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will overwrite the current item in slot 2 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				if (Program.Profile.SetWeaponGibbedCode(2, Clipboard.GetText()) == true)
+				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(2, Clipboard.GetText()) == true)
 				{
 					MessageBox.Show("Slot 2 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -641,7 +646,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will overwrite the current item in slot 3 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				if (Program.Profile.SetWeaponGibbedCode(3, Clipboard.GetText()) == true)
+				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(3, Clipboard.GetText()) == true)
 				{
 					MessageBox.Show("Slot 3 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -666,7 +671,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will overwrite the current item in slot 4 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				if (Program.Profile.SetWeaponGibbedCode(4, Clipboard.GetText()) == true)
+				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(4, Clipboard.GetText()) == true)
 				{
 					MessageBox.Show("Slot 4 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -691,7 +696,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will delete the current item in slot 1, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				Program.Profile.DeleteWeapon(1);
+				Program.Profile.DeleteClaptrapsStashSlot(1);
 
 				MessageBox.Show("Slot 1 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -711,7 +716,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will delete the current item in slot 2, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				Program.Profile.DeleteWeapon(2);
+				Program.Profile.DeleteClaptrapsStashSlot(2);
 
 				MessageBox.Show("Slot 2 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -731,7 +736,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will delete the current item in slot 3, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				Program.Profile.DeleteWeapon(3);
+				Program.Profile.DeleteClaptrapsStashSlot(3);
 
 				MessageBox.Show("Slot 3 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -751,7 +756,7 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will delete the current item in slot 4, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				Program.Profile.DeleteWeapon(4);
+				Program.Profile.DeleteClaptrapsStashSlot(4);
 
 				MessageBox.Show("Slot 4 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

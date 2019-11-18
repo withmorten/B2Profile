@@ -403,16 +403,21 @@ namespace B2Profile
 		{
 			for (int i = 0; i < Profile.NumBonusStats; i++)
 			{
-				BadassTokensAvailable += (int)BonusStats[i];
+				if (IgnoreBonusStats[i] == false)
+				{
+					BadassTokensAvailable += (int)BonusStats[i];
 
-				if (BadassTokensAvailable > BadassTokensEarned) BadassTokensAvailable = BadassTokensEarned;
+					if (BadassTokensAvailable > BadassTokensEarned) BadassTokensAvailable = BadassTokensEarned;
 
-				BonusStats[i] = 0;
+					BonusStats[i] = 0;
+				}
 			}
 		}
 
 		public void EvenlyDistributeTokens()
 		{
+			// to prevent an infinite loop, check if every stat is ignored first
+
 			bool allIsIgnored = true;
 
 			for (int i = 0; i < Profile.NumBonusStats; i++)
@@ -815,49 +820,51 @@ namespace B2Profile
 		}
 
 		// Bin
-		public ref Entry GetWeaponOneEntry()
+		public ref Entry GetClaptrapsStashSlotOneEntry()
 		{
 			return ref GetEntryFromID(130);
 		}
 
 		// Bin
-		public ref Entry GetWeaponTwoEntry()
+		public ref Entry GetClaptrapsStashSlotTwoEntry()
 		{
 			return ref GetEntryFromID(131);
 		}
 
 		// Bin
-		public ref Entry GetWeaponThreeEntry()
+		public ref Entry GetClaptrapsStashSlotThreeEntry()
 		{
 			return ref GetEntryFromID(132);
 		}
 
 		// Bin
-		public ref Entry GetWeaponFourEntry()
+		public ref Entry GetClaptrapsStashSlotFourEntry()
 		{
 			return ref GetEntryFromID(133);
 		}
 
 		// Bin
-		public ref Entry GetWeaponEntry(int numWeapon)
+		public ref Entry GetClaptrapsStashSlotEntry(int slot)
 		{
-			switch (numWeapon)
+			switch (slot)
 			{
 			case 1:
-				return ref GetWeaponOneEntry();
+				return ref GetClaptrapsStashSlotOneEntry();
+
+				break;
 
 			case 2:
-				return ref GetWeaponTwoEntry();
+				return ref GetClaptrapsStashSlotTwoEntry();
 
 				break;
 
 			case 3:
-				return ref GetWeaponThreeEntry();
+				return ref GetClaptrapsStashSlotThreeEntry();
 
 				break;
 
 			case 4:
-				return ref GetWeaponFourEntry();
+				return ref GetClaptrapsStashSlotFourEntry();
 
 				break;
 
@@ -868,24 +875,24 @@ namespace B2Profile
 			}
 		}
 
-		public bool IsWeaponEntryValid(int numWeapon)
+		public bool IsClaptrapsStashSlotValid(int slot)
 		{
-			byte[] weaponData = GetWeaponEntry(numWeapon).GetBinData();
+			byte[] slotData = GetClaptrapsStashSlotEntry(slot).GetBinData();
 
-			for (int i = 0; i < weaponData.Length; i++)
+			for (int i = 0; i < slotData.Length; i++)
 			{
-				if (weaponData[i] != 0x00) return true;
+				if (slotData[i] != 0x00) return true;
 			}
 
 			return false;
 		}
 
-		public string GetWeaponGibbedCode(int numWeapon)
+		public string GetClaptrapsStashSlotGibbedCode(int slot)
 		{
-			return "BL2(" + Convert.ToBase64String(GetWeaponEntry(numWeapon).GetBinData()) + ")";
+			return "BL2(" + Convert.ToBase64String(GetClaptrapsStashSlotEntry(slot).GetBinData()) + ")";
 		}
 
-		public bool SetWeaponGibbedCode(int numWeapon, string gibbedCode)
+		public bool SetClaptrapsStashSlotGibbedCode(int slot, string gibbedCode)
 		{
 			if (gibbedCode == string.Empty) return false;
 
@@ -893,25 +900,25 @@ namespace B2Profile
 
 			if (gibbedCode.Substring(0, 4) != "BL2(" && gibbedCode[gibbedCode.Length - 1] != ')') return false;
 
-			byte[] weaponData;
+			byte[] slotData;
 
 			try
 			{
-				weaponData = Convert.FromBase64String(gibbedCode.Substring(4, gibbedCode.Length - 4 - 1));
+				slotData = Convert.FromBase64String(gibbedCode.Substring(4, gibbedCode.Length - 4 - 1));
 			}
 			catch (Exception)
 			{
 				return false;
 			}
 
-			GetWeaponEntry(numWeapon).SetBinData(weaponData);
+			GetClaptrapsStashSlotEntry(slot).SetBinData(slotData);
 
 			return true;
 		}
 
-		public void DeleteWeapon(int numWeapon)
+		public void DeleteClaptrapsStashSlot(int slot)
 		{
-			SetWeaponGibbedCode(numWeapon, "BL2(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
+			SetClaptrapsStashSlotGibbedCode(slot, "BL2(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
 		}
 
 		public ref GoldenKeyEntry GetGoldenKeysPOPremierClubEntry()
