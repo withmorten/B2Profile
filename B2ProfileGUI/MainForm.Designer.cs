@@ -99,6 +99,8 @@
 			this.DeleteSlot4Button = new System.Windows.Forms.Button();
 			this.BadassTokensInvestedLabel = new System.Windows.Forms.Label();
 			this.BadassTokensUsedToolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.MaxGoldenKeysButton = new System.Windows.Forms.Button();
+			this.RandomQuoteLabel = new System.Windows.Forms.Label();
 			this.GoldenKeysTotalInput = new B2ProfileGUI.GoldenKeysTotalUpDown();
 			this.GoldenKeysShiftUsedInput = new B2ProfileGUI.GoldenKeysUsedUpDown();
 			this.GoldenKeysShiftInput = new B2ProfileGUI.GoldenKeysUpDown();
@@ -187,7 +189,7 @@
             this.MainMenuCloseButton});
 			this.MainMenuBar.Location = new System.Drawing.Point(0, 0);
 			this.MainMenuBar.Name = "MainMenuBar";
-			this.MainMenuBar.Size = new System.Drawing.Size(765, 25);
+			this.MainMenuBar.Size = new System.Drawing.Size(758, 25);
 			this.MainMenuBar.TabIndex = 0;
 			this.MainMenuBar.Text = "Main Menu";
 			// 
@@ -469,7 +471,7 @@
 			// LockAllCustomizationsButton
 			// 
 			this.LockAllCustomizationsButton.Enabled = false;
-			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(603, 260);
+			this.LockAllCustomizationsButton.Location = new System.Drawing.Point(603, 304);
 			this.LockAllCustomizationsButton.Name = "LockAllCustomizationsButton";
 			this.LockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
 			this.LockAllCustomizationsButton.TabIndex = 81;
@@ -489,7 +491,7 @@
 			// UnlockAllCustomizationsButton
 			// 
 			this.UnlockAllCustomizationsButton.Enabled = false;
-			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(455, 260);
+			this.UnlockAllCustomizationsButton.Location = new System.Drawing.Point(455, 304);
 			this.UnlockAllCustomizationsButton.Name = "UnlockAllCustomizationsButton";
 			this.UnlockAllCustomizationsButton.Size = new System.Drawing.Size(141, 23);
 			this.UnlockAllCustomizationsButton.TabIndex = 80;
@@ -696,7 +698,7 @@
 			// CopySlot1CodeButton
 			// 
 			this.CopySlot1CodeButton.Enabled = false;
-			this.CopySlot1CodeButton.Location = new System.Drawing.Point(455, 344);
+			this.CopySlot1CodeButton.Location = new System.Drawing.Point(455, 388);
 			this.CopySlot1CodeButton.Name = "CopySlot1CodeButton";
 			this.CopySlot1CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.CopySlot1CodeButton.TabIndex = 90;
@@ -707,7 +709,7 @@
 			// PasteSlot1CodeButton
 			// 
 			this.PasteSlot1CodeButton.Enabled = false;
-			this.PasteSlot1CodeButton.Location = new System.Drawing.Point(603, 344);
+			this.PasteSlot1CodeButton.Location = new System.Drawing.Point(603, 388);
 			this.PasteSlot1CodeButton.Name = "PasteSlot1CodeButton";
 			this.PasteSlot1CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.PasteSlot1CodeButton.TabIndex = 91;
@@ -718,7 +720,7 @@
 			// CopySlot2CodeButton
 			// 
 			this.CopySlot2CodeButton.Enabled = false;
-			this.CopySlot2CodeButton.Location = new System.Drawing.Point(455, 373);
+			this.CopySlot2CodeButton.Location = new System.Drawing.Point(455, 417);
 			this.CopySlot2CodeButton.Name = "CopySlot2CodeButton";
 			this.CopySlot2CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.CopySlot2CodeButton.TabIndex = 92;
@@ -729,7 +731,7 @@
 			// PasteSlot2CodeButton
 			// 
 			this.PasteSlot2CodeButton.Enabled = false;
-			this.PasteSlot2CodeButton.Location = new System.Drawing.Point(603, 373);
+			this.PasteSlot2CodeButton.Location = new System.Drawing.Point(603, 417);
 			this.PasteSlot2CodeButton.Name = "PasteSlot2CodeButton";
 			this.PasteSlot2CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.PasteSlot2CodeButton.TabIndex = 93;
@@ -740,7 +742,7 @@
 			// CopySlot3CodeButton
 			// 
 			this.CopySlot3CodeButton.Enabled = false;
-			this.CopySlot3CodeButton.Location = new System.Drawing.Point(455, 402);
+			this.CopySlot3CodeButton.Location = new System.Drawing.Point(455, 446);
 			this.CopySlot3CodeButton.Name = "CopySlot3CodeButton";
 			this.CopySlot3CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.CopySlot3CodeButton.TabIndex = 94;
@@ -751,7 +753,7 @@
 			// PasteSlot3CodeButton
 			// 
 			this.PasteSlot3CodeButton.Enabled = false;
-			this.PasteSlot3CodeButton.Location = new System.Drawing.Point(603, 402);
+			this.PasteSlot3CodeButton.Location = new System.Drawing.Point(603, 446);
 			this.PasteSlot3CodeButton.Name = "PasteSlot3CodeButton";
 			this.PasteSlot3CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.PasteSlot3CodeButton.TabIndex = 95;
@@ -762,7 +764,7 @@
 			// CopySlot4CodeButton
 			// 
 			this.CopySlot4CodeButton.Enabled = false;
-			this.CopySlot4CodeButton.Location = new System.Drawing.Point(455, 431);
+			this.CopySlot4CodeButton.Location = new System.Drawing.Point(455, 475);
 			this.CopySlot4CodeButton.Name = "CopySlot4CodeButton";
 			this.CopySlot4CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.CopySlot4CodeButton.TabIndex = 96;
@@ -773,7 +775,7 @@
 			// PasteSlot4CodeButton
 			// 
 			this.PasteSlot4CodeButton.Enabled = false;
-			this.PasteSlot4CodeButton.Location = new System.Drawing.Point(603, 431);
+			this.PasteSlot4CodeButton.Location = new System.Drawing.Point(603, 475);
 			this.PasteSlot4CodeButton.Name = "PasteSlot4CodeButton";
 			this.PasteSlot4CodeButton.Size = new System.Drawing.Size(141, 23);
 			this.PasteSlot4CodeButton.TabIndex = 97;
@@ -784,7 +786,7 @@
 			// ClaptrapsStashLabel
 			// 
 			this.ClaptrapsStashLabel.AutoSize = true;
-			this.ClaptrapsStashLabel.Location = new System.Drawing.Point(453, 306);
+			this.ClaptrapsStashLabel.Location = new System.Drawing.Point(453, 350);
 			this.ClaptrapsStashLabel.Name = "ClaptrapsStashLabel";
 			this.ClaptrapsStashLabel.Size = new System.Drawing.Size(120, 13);
 			this.ClaptrapsStashLabel.TabIndex = 0;
@@ -793,7 +795,7 @@
 			// DeleteSlot1Button
 			// 
 			this.DeleteSlot1Button.Enabled = false;
-			this.DeleteSlot1Button.Location = new System.Drawing.Point(455, 472);
+			this.DeleteSlot1Button.Location = new System.Drawing.Point(455, 516);
 			this.DeleteSlot1Button.Name = "DeleteSlot1Button";
 			this.DeleteSlot1Button.Size = new System.Drawing.Size(141, 23);
 			this.DeleteSlot1Button.TabIndex = 98;
@@ -804,7 +806,7 @@
 			// DeleteSlot2Button
 			// 
 			this.DeleteSlot2Button.Enabled = false;
-			this.DeleteSlot2Button.Location = new System.Drawing.Point(603, 472);
+			this.DeleteSlot2Button.Location = new System.Drawing.Point(603, 516);
 			this.DeleteSlot2Button.Name = "DeleteSlot2Button";
 			this.DeleteSlot2Button.Size = new System.Drawing.Size(141, 23);
 			this.DeleteSlot2Button.TabIndex = 99;
@@ -815,7 +817,7 @@
 			// DeleteSlot3Button
 			// 
 			this.DeleteSlot3Button.Enabled = false;
-			this.DeleteSlot3Button.Location = new System.Drawing.Point(455, 501);
+			this.DeleteSlot3Button.Location = new System.Drawing.Point(455, 545);
 			this.DeleteSlot3Button.Name = "DeleteSlot3Button";
 			this.DeleteSlot3Button.Size = new System.Drawing.Size(141, 23);
 			this.DeleteSlot3Button.TabIndex = 100;
@@ -826,7 +828,7 @@
 			// DeleteSlot4Button
 			// 
 			this.DeleteSlot4Button.Enabled = false;
-			this.DeleteSlot4Button.Location = new System.Drawing.Point(603, 501);
+			this.DeleteSlot4Button.Location = new System.Drawing.Point(603, 545);
 			this.DeleteSlot4Button.Name = "DeleteSlot4Button";
 			this.DeleteSlot4Button.Size = new System.Drawing.Size(141, 23);
 			this.DeleteSlot4Button.TabIndex = 101;
@@ -850,6 +852,25 @@
 			this.BadassTokensUsedToolTip.AutoPopDelay = 10000;
 			this.BadassTokensUsedToolTip.InitialDelay = 100;
 			this.BadassTokensUsedToolTip.ReshowDelay = 100;
+			// 
+			// MaxGoldenKeysButton
+			// 
+			this.MaxGoldenKeysButton.Enabled = false;
+			this.MaxGoldenKeysButton.Location = new System.Drawing.Point(529, 260);
+			this.MaxGoldenKeysButton.Name = "MaxGoldenKeysButton";
+			this.MaxGoldenKeysButton.Size = new System.Drawing.Size(141, 23);
+			this.MaxGoldenKeysButton.TabIndex = 77;
+			this.MaxGoldenKeysButton.Text = "Max Golden Keys";
+			this.MaxGoldenKeysButton.UseVisualStyleBackColor = true;
+			this.MaxGoldenKeysButton.Click += new System.EventHandler(this.MaxGoldenKeysButton_Click);
+			// 
+			// RandomQuoteLabel
+			// 
+			this.RandomQuoteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.RandomQuoteLabel.Location = new System.Drawing.Point(12, 547);
+			this.RandomQuoteLabel.Name = "RandomQuoteLabel";
+			this.RandomQuoteLabel.Size = new System.Drawing.Size(437, 13);
+			this.RandomQuoteLabel.TabIndex = 0;
 			// 
 			// GoldenKeysTotalInput
 			// 
@@ -1416,7 +1437,9 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(765, 551);
+			this.ClientSize = new System.Drawing.Size(758, 580);
+			this.Controls.Add(this.RandomQuoteLabel);
+			this.Controls.Add(this.MaxGoldenKeysButton);
 			this.Controls.Add(this.BadassTokensInvestedLabel);
 			this.Controls.Add(this.DeleteSlot4Button);
 			this.Controls.Add(this.DeleteSlot3Button);
@@ -1678,5 +1701,7 @@
 		private System.Windows.Forms.Button DeleteSlot4Button;
 		private System.Windows.Forms.ToolTip BadassTokensUsedToolTip;
 		public System.Windows.Forms.Label BadassTokensInvestedLabel;
+		private System.Windows.Forms.Button MaxGoldenKeysButton;
+		private System.Windows.Forms.Label RandomQuoteLabel;
 	}
 }

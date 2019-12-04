@@ -246,6 +246,8 @@ namespace B2ProfileGUI
 
 			GoldenKeysTotalInput.Enabled = true;
 
+			MaxGoldenKeysButton.Enabled = true;
+
 			if (Program.Profile.IsClaptrapsStashSlotValid(1) == true) CopySlot1CodeButton.Enabled = true;
 			if (Program.Profile.IsClaptrapsStashSlotValid(2) == true) CopySlot2CodeButton.Enabled = true;
 			if (Program.Profile.IsClaptrapsStashSlotValid(3) == true) CopySlot3CodeButton.Enabled = true;
@@ -350,6 +352,8 @@ namespace B2ProfileGUI
 
 			GoldenKeysShiftInput.KeysUsedUpDown = GoldenKeysShiftUsedInput;
 			GoldenKeysShiftUsedInput.KeysUpDown = GoldenKeysShiftInput;
+
+			RandomQuoteLabel.Text = GetRandomQuote();
 	}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -769,6 +773,147 @@ namespace B2ProfileGUI
 
 				break;
 			}
+		}
+
+		private void MaxGoldenKeysButton_Click(object sender, EventArgs e)
+		{
+			switch (MessageBox.Show("This will set all golden keys to max, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			{
+			case DialogResult.Yes:
+				GoldenKeysPOPremierClubInput.Value = 255;
+				GoldenKeysPOPremierClubUsedInput.Value = 0;
+
+				GoldenKeysTulipInput.Value = 255;
+				GoldenKeysTulipUsedInput.Value = 0;
+
+				GoldenKeysShiftInput.Value = 255;
+				GoldenKeysShiftUsedInput.Value = 0;
+
+				GoldenKeysTotalInput.Value = 765;
+
+				break;
+
+			case DialogResult.No:
+
+				break;
+			}
+		}
+
+		private static string[] RandomQuotes;
+
+		private void InitializeRandomQuotes()
+		{
+			Array.Resize(ref RandomQuotes, 100);
+
+			RandomQuotes[0]  = "A golden mallet for the meat pounding!";
+			RandomQuotes[1]  = "How can I snap your neck if you don't have one?!";
+			RandomQuotes[2]  = "I LOOKED INTO THE HEART OF DARKNESS, AND I ATE IT ALL!!!";
+			RandomQuotes[3]  = "Why did your blood stop singing its sweet song...";
+			RandomQuotes[4]  = "NIPPLE SALADS! Nipple salads... NIPPLE SALADS!";
+			RandomQuotes[5]  = "Uhh... the choices are pretzeling my inner lobes!";
+			RandomQuotes[6]  = "Your liver is a hood ornament!";
+			RandomQuotes[7]  = "What's the hold up? / Is someone in the bathroom? / Are you on the phone?";
+			RandomQuotes[8]  = "Your eyes deceive you / An illusion fools you all / I move for the kill.";
+			RandomQuotes[9]  = "How hilarious / You just set off my trap card / Your death approaches.";
+			RandomQuotes[10] = "The true world revealed / Weaknesses now known to me / Time to go to work.";
+			RandomQuotes[11] = "And I disappear / A ghost amidst the combat / Preparing to strike.";
+			RandomQuotes[12] = "Assassinated / What a satisfying word / With five syllables.";
+			RandomQuotes[13] = "This is the story / All about how my life got / Flipped, turned upside-down.";
+			RandomQuotes[14] = "This is interesting technology. I wonder how it -- oh God, I sound atrocious.";
+			RandomQuotes[15] = "But, we let her live. Because that's what heroes do. They show mercy.";
+			RandomQuotes[16] = "Hey, Slab!";
+			RandomQuotes[17] = "OH GOD IN HEAVEN, I CAN TASTE MY OWN MELTING FLESH!";
+			RandomQuotes[18] = "That's the sound of progress, baby.";
+			RandomQuotes[19] = "And THAT'S how Handsome Jack pays ransoms!";
+			RandomQuotes[20] = "You think a door can stop me, Jack?! I was MADE to open doors! HAHAHAHA!";
+			RandomQuotes[21] = "Gotta keep those Bullymongs at bay, or they’ll rip your eyes out!";
+			RandomQuotes[22] = "So, if you could just do me a favour and off yourself, that’d be great.";
+			RandomQuotes[23] = "Oh GOD! They’re coming outta the wall-sphincters!";
+			RandomQuotes[24] = "Spectacular -- first Captain Flynt’s bandits attack, then Claptrap shows up!";
+			RandomQuotes[25] = "When Claptrap speaks, I can feel my brain cells committing suicide, one by one.";
+			RandomQuotes[26] = "Bah – I’m spouting exposition again, aren’t I? Apologies!";
+			RandomQuotes[27] = "If you shot the gate now, that could cause SERIOUS damage to me.";
+			RandomQuotes[28] = "IT WAS JUST A QUESTION, MISTER FLYNT!!";
+			RandomQuotes[29] = "Salt... good god where's my salt?!";
+			RandomQuotes[30] = "Standing on immobile platforms is one of my top three favorite pastimes!";
+			RandomQuotes[31] = "Executing phase shift.";
+			RandomQuotes[32] = "I'm just gonna take a nap -- wake me up when I'm not on Pandora anymore.";
+			RandomQuotes[33] = "Where are you Skrappy? Skrappy-y-y-y!";
+			RandomQuotes[34] = "Ho-ly crap, somebody actually PAID for that?";
+			RandomQuotes[35] = "Come back now! I get a little lonely! Heh, a lil' lonely.";
+			RandomQuotes[36] = "He ate one of my cars once. Yeahhhh. The whole car. Just... like, with a fork.";
+			RandomQuotes[37] = "Try not to die!";
+			RandomQuotes[38] = "I am legally obligated to tell you that I ain't a real doctor.";
+			RandomQuotes[39] = "I love the way you Vault Hunters just up and trusted Angel.";
+			RandomQuotes[40] = "I just shut off the moonbase's oxygen supply.";
+			RandomQuotes[41] = "What? Hell no. It's a miracle I didn't phase us into a mountain.";
+			RandomQuotes[42] = "I'm an even better shot when I'm drunk!";
+			RandomQuotes[43] = "Nobody steals Mushy Snugglebites' badonkadonk and lives!";
+			RandomQuotes[44] = "WHO THE HELL IS MUSHY SNUGGLEBITES?!";
+			RandomQuotes[45] = "Lady's got a gut fulla' dynamite and a booty like POWWW!";
+			RandomQuotes[46] = "Ha ha! Man, this is one of them moments. CATCH A RIIIIDE!!!";
+			RandomQuotes[47] = "EXPLOSIONS?!";
+			RandomQuotes[48] = "THAT SENTENCE HAD TOO MANY SYLLABLES! APOLOGIZE!";
+			RandomQuotes[49] = "NOTHING IS MORE BADASS THAN TREATING A WOMAN WITH RESPECT!";
+			RandomQuotes[50] = "KIDS THESE DAYS AND THEIR CRAZY LANGUAGE AM I RIGHT!?";
+			RandomQuotes[51] = "FANTASY STUFF! YEAH!";
+			RandomQuotes[52] = "Squishy. Squishy squishy squishy.";
+			RandomQuotes[53] = "BURN ALL THE BABIES!!!!!";
+			RandomQuotes[54] = "Always love a good tip.";
+			RandomQuotes[55] = "Thanks for the tips, sugar. I think it's time your generosity was... rewarded.";
+			RandomQuotes[56] = "Hah, Clappy's havin' a shindig? You know, I'd go, but... I ain't gonna.";
+			RandomQuotes[57] = "Oh my god, shut up, Dave.";
+			RandomQuotes[58] = "Now, let's try that with the shield on. ";
+			RandomQuotes[59] = "You know my favorite thing about Dave? He's dead.";
+			RandomQuotes[60] = "You don't have all the guns, dear.";
+			RandomQuotes[61] = "We're all broken because of them.";
+			RandomQuotes[62] = "TIME TO COMPENSATE!";
+			RandomQuotes[63] = "SOMETHING CLEVER!";
+			RandomQuotes[64] = "We gotta get moving. I'm starting to think about stuff!";
+			RandomQuotes[65] = "Ha! Did you see his face?";
+			RandomQuotes[66] = "Sorry, boys, I've got turret syndrome! Get it? 'Cause of the turret...? Sorry.";
+			RandomQuotes[67] = "YOU get a bullet! And YOU get a bullet! EVERYBODY gets a bullet!";
+			RandomQuotes[68] = "Please excuse Madame Von Bartlesby's disposition. She's Welsh.";
+			RandomQuotes[69] = "HAHAHA! I bet your mommy and daddy screamed as they died!";
+			RandomQuotes[70] = "They're called 'Bonerfarts' now! Just go kill some or something.";
+			RandomQuotes[71] = "My publisher says I can't call them 'Bonerfarts.'";
+			RandomQuotes[72] = "That is mathematically HILARIOUS!";
+			RandomQuotes[73] = "SHOOT ME IN THE FACE! IN THE FAAAAAAAACE!";
+			RandomQuotes[74] = "And... ah, damn, I forgot the last one. What the hell was that, again?";
+			RandomQuotes[75] = "Oh, now I remember! EXPLOSIIIIIIVE!";
+			RandomQuotes[76] = "BLAKE! WHERE'S THE BLOODY VIOLIN?!";
+			RandomQuotes[77] = "What do you MEAN they ain't from Hyperion?";
+			RandomQuotes[78] = "We're all sooooo proud that you managed to kill off our friends and brothers.";
+			RandomQuotes[79] = "Don't feel bad about killin' 'em. I never do.";
+			RandomQuotes[80] = "Aaaaand kiss each other.";
+			RandomQuotes[81] = "That Slab just blew up my buzzard without even lookin' at the explosion!";
+			RandomQuotes[82] = "And, uh, make sure you don't look at Moxxi's footage.";
+			RandomQuotes[83] = "Now that you've got the laxative, it's time to find some explosives.";
+			RandomQuotes[84] = "Did you know that littering in Opportunity is punishable by death?";
+			RandomQuotes[85] = "Remember, we should all love our parents, but love me more.";
+			RandomQuotes[86] = "Did that thresher just eat the beacon? Uh... you'll need to get that back.";
+			RandomQuotes[87] = "This jackhole rushes me with a spoon. A fricking spoon!";
+			RandomQuotes[88] = "The moral is: you're a total bitch.";
+			RandomQuotes[89] = "I am the conductor of the poop train!";
+			RandomQuotes[90] = "I say MECHRO, you say MANCER. MECHRO! ...You guys suck!";
+			RandomQuotes[91] = "Super Robot Violence Fun Time!";
+			RandomQuotes[92] = "To hell with the First Law!";
+			RandomQuotes[93] = "Meedly-meedly-mowwww...I know, I'm so bad at this.";
+			RandomQuotes[94] = "BITCHIN AIR GUITAR SOLO! MEEYOWEYOWYOWYOWEEYOW!";
+			RandomQuotes[95] = "ALLEN WRITE SOME DIALOGUE HERE!";
+			RandomQuotes[96] = "STAIRS?! NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!";
+			RandomQuotes[97] = "Uh-oh. Math. Hope we don't pop a blood vessel.";
+			RandomQuotes[98] = "We can use that to kill the deserving, grab it...";
+			RandomQuotes[99] = "Look at me when I scream at your soul!";
+		}
+
+		private string GetRandomQuote()
+		{
+			if (RandomQuotes == null) InitializeRandomQuotes();
+
+			Random random = new Random();
+
+			return RandomQuotes[random.Next(0, 99)];
 		}
 	}
 }

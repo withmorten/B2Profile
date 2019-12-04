@@ -689,6 +689,7 @@ namespace B2Profile
 				}
 			}
 
+#if false
 			// the next bonus tokens you'll be offered, same indexes as the bonus stats list, very weird encoding
 			if (GetNextBonusStatsEntry().Length > 0)
 			{
@@ -710,6 +711,7 @@ namespace B2Profile
 					NextBonusStats.Add(nextBonusStat);
 				}
 			}
+#endif
 		}
 
 		private unsafe void SaveEntryData()
