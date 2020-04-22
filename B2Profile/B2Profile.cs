@@ -500,7 +500,7 @@ namespace B2Profile
 
 		private static string EncodeString(List<uint> list)
 		{
-			String code = "";
+			string code = "";
 
 			uint index = 0;
 			int shift = 0;
