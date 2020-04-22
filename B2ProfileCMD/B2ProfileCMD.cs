@@ -7,7 +7,9 @@ namespace B2ProfileCMD
 	{
 		static int Main(string[] args)
 		{
-			if (args.Length < 1) return 1;
+			// B2ProfileGUI <profile.bin> <FOV>
+
+			if (args.Length < 2) return 1;
 
 			Profile profile = new Profile();
 
@@ -115,6 +117,10 @@ namespace B2ProfileCMD
 			Console.WriteLine("Bonus Elemental Effect Damage: " + profile.GetElementalEffectDamageBonus());
 			Console.WriteLine("Bonus Critical Hit Damage: " + profile.GetCriticalHitDamageBonus());
 #endif
+
+			Entry FOVEntry = profile.GetEntryFromID(129);
+
+			FOVEntry.SetInt32Data(Int32.Parse(args[1]));
 
 			if (profile.Save("profile.bin", true) == false)
 			{
