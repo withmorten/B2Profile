@@ -31,6 +31,8 @@ namespace B2ProfileGUI
 			base.UpButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -70,6 +72,8 @@ namespace B2ProfileGUI
 			base.DownButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -83,6 +87,7 @@ namespace B2ProfileGUI
 					switch (MessageBox.Show("Editing this value manually can result in a weird state and will NOT be synced with the earned Badass Tokens value.\r\n\r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 					{
 					case DialogResult.Yes:
+						Program.MainForm.ProfileDirty = true;
 
 						break;
 
@@ -117,6 +122,8 @@ namespace B2ProfileGUI
 			Program.MainForm.BadassTokensAvailableInput.Inc();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -134,6 +141,8 @@ namespace B2ProfileGUI
 			Program.MainForm.BadassTokensAvailableInput.Dec();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -150,6 +159,8 @@ namespace B2ProfileGUI
 				{
 					Program.MainForm.BadassTokensAvailableInput.Value += (base.Value - PrevValue);
 				}
+
+				Program.MainForm.ProfileDirty = true;
 			}
 
 			PrevValue = base.Value;
@@ -183,6 +194,8 @@ namespace B2ProfileGUI
 			}
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -197,6 +210,8 @@ namespace B2ProfileGUI
 			base.DownButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -214,6 +229,8 @@ namespace B2ProfileGUI
 						Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
 					}
 				}
+
+				Program.MainForm.ProfileDirty = true;
 			}
 
 			PrevValue = base.Value;
@@ -252,6 +269,8 @@ namespace B2ProfileGUI
 			base.Increment = nextPercent - base.Value;
 
 			base.UpButton();
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -277,6 +296,8 @@ namespace B2ProfileGUI
 			base.Increment = base.Value - prevPercent;
 
 			base.DownButton();
+
+			Program.MainForm.ProfileDirty = true;
 		}
 	}
 
@@ -317,6 +338,8 @@ namespace B2ProfileGUI
 			PercentUpDown.Inc();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -342,6 +365,8 @@ namespace B2ProfileGUI
 			PercentUpDown.Dec();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -386,6 +411,8 @@ namespace B2ProfileGUI
 						}
 					}
 				}
+
+				Program.MainForm.ProfileDirty = true;
 			}
 
 			PrevValue = base.Value;
@@ -412,6 +439,8 @@ namespace B2ProfileGUI
 			base.UpButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -430,6 +459,8 @@ namespace B2ProfileGUI
 			base.DownButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -448,6 +479,8 @@ namespace B2ProfileGUI
 				{
 					Program.MainForm.GoldenKeysTotalInput.Value += (PrevValue - base.Value);
 				}
+
+				Program.MainForm.ProfileDirty = true;
 			}
 
 			PrevValue = base.Value;
@@ -476,6 +509,8 @@ namespace B2ProfileGUI
 			base.UpButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -492,6 +527,8 @@ namespace B2ProfileGUI
 			base.DownButton();
 
 			PrevValue = base.Value;
+
+			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -510,6 +547,8 @@ namespace B2ProfileGUI
 				{
 					Program.MainForm.GoldenKeysTotalInput.Value += (PrevValue - base.Value);
 				}
+
+				Program.MainForm.ProfileDirty = true;
 			}
 
 			PrevValue = base.Value;
@@ -528,6 +567,8 @@ namespace B2ProfileGUI
 			if (base.Value < base.Maximum)
 			{
 				base.UpButton();
+
+				Program.MainForm.ProfileDirty = true;
 
 				if (Program.MainForm.GoldenKeysPOPremierClubInput.Value < 255)
 				{
@@ -583,6 +624,8 @@ namespace B2ProfileGUI
 			if (base.Value > base.Minimum)
 			{
 				base.DownButton();
+
+				Program.MainForm.ProfileDirty = true;
 
 				if (Program.MainForm.GoldenKeysPOPremierClubInput.Value > 0)
 				{
