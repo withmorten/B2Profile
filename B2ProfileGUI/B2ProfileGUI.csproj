@@ -41,9 +41,6 @@
     <Reference Include="B2Profile">
       <HintPath>..\B2Profile\bin\Release\B2Profile.dll</HintPath>
     </Reference>
-    <Reference Include="B2ProfileGUIHelpers">
-      <HintPath>..\B2ProfileGUIHelpers\bin\Release\B2ProfileGUIHelpers.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
