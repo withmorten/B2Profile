@@ -59,6 +59,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy /Y B2Profile.dll "C:\users\morten\My Documents\bin"</PostBuildEvent>
+    <PostBuildEvent>copy /Y B2Profile.dll "%BIN%"</PostBuildEvent>
   </PropertyGroup>
 </Project>

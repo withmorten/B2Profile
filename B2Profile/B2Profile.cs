@@ -15,6 +15,24 @@ namespace B2Profile
         Int8 = 8
     }
 
+	public enum EntryID
+	{
+		NumProfileSaved = 27,
+		FOV = 129,
+		ClaptrapsStathSlot1 = 130,
+		ClaptrapsStathSlot2 = 131,
+		ClaptrapsStathSlot3 = 132,
+		ClaptrapsStathSlot4 = 133,
+		BadassRank1 = 136,
+		BadassRank2 = 137,
+		BadassTokens = 138,
+		BadassTokensEarned = 139,
+		BonusStats = 143,
+		GoldenKeys = 162,
+		NextBonusStats = 164,
+		Customizations = 300,
+	}
+
     unsafe public struct Entry
     {
         public uint ID;
@@ -399,6 +417,11 @@ namespace B2Profile
 			throw new Exception("Entry with ID " + ID + " not found!");
 		}
 
+		public ref Entry GetEntryFromID(EntryID ID)
+		{
+			return ref GetEntryFromID(((uint)ID));
+		}
+
 		public void ResetBonusStats()
 		{
 			for (int i = 0; i < Profile.NumBonusStats; i++)
@@ -449,7 +472,7 @@ namespace B2Profile
 
 			for (int i = 0; i < customizationsBin.Length; i++)
 			{
-				customizationsBin[i] = 255;
+				customizationsBin[i] = byte.MaxValue;
 			}
 
 			GetCustomizationsEntry().SetBinData(customizationsBin);
@@ -461,7 +484,7 @@ namespace B2Profile
 
 			for (int i = 0; i < customizationsBin.Length; i++)
 			{
-				customizationsBin[i] = 0;
+				customizationsBin[i] = byte.MinValue;
 			}
 
 			GetCustomizationsEntry().SetBinData(customizationsBin);
@@ -776,73 +799,73 @@ namespace B2Profile
 		// String (Encoded)
 		public ref Entry GetBonusStatsEntry()
 		{
-			return ref GetEntryFromID(143);
+			return ref GetEntryFromID(EntryID.BonusStats);
 		}
 
 		// String (Encoded)
 		public ref Entry GetNextBonusStatsEntry()
 		{
-			return ref GetEntryFromID(164);
+			return ref GetEntryFromID(EntryID.NextBonusStats);
 		}
 
 		// Bin (GoldenKeyEntry)
 		public ref Entry GetGoldenKeysEntry()
 		{
-			return ref GetEntryFromID(162);
+			return ref GetEntryFromID(EntryID.GoldenKeys);
 		}
 
 		// Int32
 		public ref Entry GetBadassRank1Entry()
 		{
-			return ref GetEntryFromID(136);
+			return ref GetEntryFromID(EntryID.BadassRank1);
 		}
 
 		// Int32
 		public ref Entry GetBadassRank2Entry()
 		{
-			return ref GetEntryFromID(137);
+			return ref GetEntryFromID(EntryID.BadassRank2);
 		}
 
 		// Int32
 		public ref Entry GetBadassTokensEntry()
 		{
-			return ref GetEntryFromID(138);
+			return ref GetEntryFromID(EntryID.BadassTokens);
 		}
 
 		// Int32
 		public ref Entry GetBadassTokensEarnedEntry()
 		{
-			return ref GetEntryFromID(139);
+			return ref GetEntryFromID(EntryID.BadassTokensEarned);
 		}
 
 		// Bin
 		public ref Entry GetCustomizationsEntry()
 		{
-			return ref GetEntryFromID(300);
+			return ref GetEntryFromID(EntryID.Customizations);
 		}
 
 		// Bin
 		public ref Entry GetClaptrapsStashSlotOneEntry()
 		{
-			return ref GetEntryFromID(130);
+			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot1);
 		}
 
 		// Bin
 		public ref Entry GetClaptrapsStashSlotTwoEntry()
 		{
-			return ref GetEntryFromID(131);
+			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot2);
 		}
 
 		// Bin
 		public ref Entry GetClaptrapsStashSlotThreeEntry()
 		{
-			return ref GetEntryFromID(132);
+			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot3);
 		}
 
 		// Bin
 		public ref Entry GetClaptrapsStashSlotFourEntry()
 		{
-			return ref GetEntryFromID(133);
+			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot4);
 		}
 
 		// Bin

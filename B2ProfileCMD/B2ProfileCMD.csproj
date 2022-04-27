@@ -57,6 +57,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y B2ProfileCMD.exe "C:\users\morten\My Documents\bin" &amp; copy /Y B2ProfileCMD.exe.config "C:\users\morten\My Documents\bin"</PostBuildEvent>
+    <PostBuildEvent>copy /Y B2ProfileCMD.exe "%BIN%" &amp; copy /Y B2ProfileCMD.exe.config "%BIN%"</PostBuildEvent>
   </PropertyGroup>
 </Project>
