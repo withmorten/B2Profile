@@ -845,51 +845,27 @@ namespace B2Profile
 		}
 
 		// Bin
-		public ref Entry GetClaptrapsStashSlotOneEntry()
-		{
-			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot1);
-		}
-
-		// Bin
-		public ref Entry GetClaptrapsStashSlotTwoEntry()
-		{
-			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot2);
-		}
-
-		// Bin
-		public ref Entry GetClaptrapsStashSlotThreeEntry()
-		{
-			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot3);
-		}
-
-		// Bin
-		public ref Entry GetClaptrapsStashSlotFourEntry()
-		{
-			return ref GetEntryFromID(EntryID.ClaptrapsStathSlot4);
-		}
-
-		// Bin
 		public ref Entry GetClaptrapsStashSlotEntry(int slot)
 		{
 			switch (slot)
 			{
 			case 1:
-				return ref GetClaptrapsStashSlotOneEntry();
+				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot1);
 
 				break;
 
 			case 2:
-				return ref GetClaptrapsStashSlotTwoEntry();
+				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot2);
 
 				break;
 
 			case 3:
-				return ref GetClaptrapsStashSlotThreeEntry();
+				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot3);
 
 				break;
 
 			case 4:
-				return ref GetClaptrapsStashSlotFourEntry();
+				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot4);
 
 				break;
 
