@@ -15,24 +15,6 @@ namespace B2Profile
         Int8 = 8
     }
 
-	public enum EntryID
-	{
-		NumProfileSaved = 27,
-		FOV = 129,
-		ClaptrapsStathSlot1 = 130,
-		ClaptrapsStathSlot2 = 131,
-		ClaptrapsStathSlot3 = 132,
-		ClaptrapsStathSlot4 = 133,
-		BadassRank1 = 136,
-		BadassRank2 = 137,
-		BadassTokens = 138,
-		BadassTokensEarned = 139,
-		BonusStats = 143,
-		GoldenKeys = 162,
-		NextBonusStats = 164,
-		Customizations = 300,
-	}
-
     unsafe public struct Entry
     {
         public uint ID;
@@ -214,8 +196,44 @@ namespace B2Profile
 
 	public class Profile
 	{
+		public enum BonusStat
+		{
+			MaximumHealth,
+			ShieldCapacity,
+			ShieldRechargeDelay,
+			ShieldRechargeRate,
+			MeleeDamage,
+			GrenadeDamage,
+			GunAccuracy,
+			GunDamage,
+			FireRate,
+			RecoilReduction,
+			ReloadSpeed,
+			ElementalEffectChance,
+			ElementalEffectDamage,
+			CriticalHitDamage,
+		}
+
 		private static int NumBonusStats = 14;
 		private static int NumNextBonusStats = 5;
+
+		public enum EntryID
+		{
+			NumProfileSaved = 27,
+			FOV = 129,
+			ClaptrapsStathSlot1 = 130,
+			ClaptrapsStathSlot2 = 131,
+			ClaptrapsStathSlot3 = 132,
+			ClaptrapsStathSlot4 = 133,
+			BadassRank1 = 136,
+			BadassRank2 = 137,
+			BadassTokens = 138,
+			BadassTokensEarned = 139,
+			BonusStats = 143,
+			GoldenKeys = 162,
+			NextBonusStats = 164,
+			Customizations = 300,
+		}
 
 		private Entry[] Entries;
 
@@ -947,284 +965,24 @@ namespace B2Profile
 			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
 
-		public void SetMaximumHealthTokens(uint t)
+		public void SetBonusStatTokens(BonusStat s, uint t)
 		{
-			BonusStats[0] = t;
+			BonusStats[(int)s] = t;
 		}
 
-		public uint GetMaximumHealthTokens()
+		public uint GetBonusStatTokens(BonusStat s)
 		{
-			return BonusStats[0];
+			return BonusStats[(int)s];
 		}
 
-		public double GetMaximumHealthBonus()
+		public double GetBonusStatusBonus(BonusStat s)
 		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[0]);
+			return Profile.GetBonusPercentFromTokens(BonusStats[(int)s]);
 		}
 
-		public void SetIgnoreMaximumHealth(bool b)
+		public void SetIgnoreBonusStat(BonusStat s, bool b)
 		{
-			IgnoreBonusStats[0] = b;
-		}
-
-		public void SetShieldCapacityTokens(uint t)
-		{
-			BonusStats[1] = t;
-		}
-
-		public uint GetShieldCapacityTokens()
-		{
-			return BonusStats[1];
-		}
-
-		public double GetShieldCapacityBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[1]);
-		}
-
-		public void SetIgnoreShieldCapacity(bool b)
-		{
-			IgnoreBonusStats[1] = b;
-		}
-
-		public void SetShieldRechargeDelayTokens(uint t)
-		{
-			BonusStats[2] = t;
-		}
-
-		public uint GetShieldRechargeDelayTokens()
-		{
-			return BonusStats[2];
-		}
-
-		public double GetShieldRechargeDelayBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[2]);
-		}
-
-		public void SetIgnoreShieldRechargeDelay(bool b)
-		{
-			IgnoreBonusStats[2] = b;
-		}
-
-		public void SetShieldRechargeRateTokens(uint t)
-		{
-			BonusStats[3] = t;
-		}
-
-		public uint GetShieldRechargeRateTokens()
-		{
-			return BonusStats[3];
-		}
-
-		public double GetShieldRechargeRateBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[3]);
-		}
-
-		public void SetIgnoreShieldRechargeRate(bool b)
-		{
-			IgnoreBonusStats[3] = b;
-		}
-
-		public void SetMeleeDamageTokens(uint t)
-		{
-			BonusStats[4] = t;
-		}
-
-		public uint GetMeleeDamageTokens()
-		{
-			return BonusStats[4];
-		}
-
-		public double GetMeleeDamageBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[4]);
-		}
-
-		public void SetIgnoreMeleeDamage(bool b)
-		{
-			IgnoreBonusStats[4] = b;
-		}
-
-		public void SetGrenadeDamageTokens(uint t)
-		{
-			BonusStats[5] = t;
-		}
-
-		public uint GetGrenadeDamageTokens()
-		{
-			return BonusStats[5];
-		}
-
-		public double GetGrenadeDamageBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[5]);
-		}
-
-		public void SetIgnoreGrenadeDamage(bool b)
-		{
-			IgnoreBonusStats[5] = b;
-		}
-
-		public void SetGunAccuracyTokens(uint t)
-		{
-			BonusStats[6] = t;
-		}
-
-		public uint GetGunAccuracyTokens()
-		{
-			return BonusStats[6];
-		}
-
-		public double GetGunAccuracyBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[6]);
-		}
-
-		public void SetIgnoreGunAccuracy(bool b)
-		{
-			IgnoreBonusStats[6] = b;
-		}
-
-		public void SetGunDamageTokens(uint t)
-		{
-			BonusStats[7] = t;
-		}
-
-		public uint GetGunDamageTokens()
-		{
-			return BonusStats[7];
-		}
-
-		public double GetGunDamageBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[7]);
-		}
-
-		public void SetIgnoreGunDamage(bool b)
-		{
-			IgnoreBonusStats[7] = b;
-		}
-
-		public void SetFireRateTokens(uint t)
-		{
-			BonusStats[8] = t;
-		}
-
-		public uint GetFireRateTokens()
-		{
-			return BonusStats[8];
-		}
-
-		public double GetFireRateBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[8]);
-		}
-
-		public void SetIgnoreFireRate(bool b)
-		{
-			IgnoreBonusStats[8] = b;
-		}
-
-		public void SetRecoilReductionTokens(uint t)
-		{
-			BonusStats[9] = t;
-		}
-
-		public uint GetRecoilReductionTokens()
-		{
-			return BonusStats[9];
-		}
-
-		public double GetRecoilReductionBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[9]);
-		}
-
-		public void SetIgnoreRecoilReduction(bool b)
-		{
-			IgnoreBonusStats[9] = b;
-		}
-
-		public void SetReloadSpeedTokens(uint t)
-		{
-			BonusStats[10] = t;
-		}
-
-		public uint GetReloadSpeedTokens()
-		{
-			return BonusStats[10];
-		}
-
-		public double GetReloadSpeedBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[10]);
-		}
-
-		public void SetIgnoreReloadSpeed(bool b)
-		{
-			IgnoreBonusStats[10] = b;
-		}
-
-		public void SetElementalEffectChanceTokens(uint t)
-		{
-			BonusStats[11] = t;
-		}
-
-		public uint GetElementalEffectChanceTokens()
-		{
-			return BonusStats[11];
-		}
-
-		public double GetElementalEffectChanceBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[11]);
-		}
-
-		public void SetIgnoreElementalEffectChance(bool b)
-		{
-			IgnoreBonusStats[11] = b;
-		}
-
-		public void SetElementalEffectDamageTokens(uint t)
-		{
-			BonusStats[12] = t;
-		}
-
-		public uint GetElementalEffectDamageTokens()
-		{
-			return BonusStats[12];
-		}
-
-		public double GetElementalEffectDamageBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[12]);
-		}
-
-		public void SetIgnoreElementalEffectDamage(bool b)
-		{
-			IgnoreBonusStats[12] = b;
-		}
-
-		public void SetCriticalHitDamageTokens(uint t)
-		{
-			BonusStats[13] = t;
-		}
-
-		public uint GetCriticalHitDamageTokens()
-		{
-			return BonusStats[13];
-		}
-
-		public double GetCriticalHitDamageBonus()
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[13]);
-		}
-
-		public void SetIgnoreCriticalHitDamage(bool b)
-		{
-			IgnoreBonusStats[13] = b;
+			IgnoreBonusStats[(int)s] = b;
 		}
 	}
 }
