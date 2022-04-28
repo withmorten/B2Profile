@@ -66,6 +66,34 @@ namespace B2ProfileGUI
 				= (GoldenKeysPOPremierClubInput.Value - GoldenKeysPOPremierClubUsedInput.Value)
 				+ (GoldenKeysTulipInput.Value - GoldenKeysTulipUsedInput.Value)
 				+ (GoldenKeysShiftInput.Value - GoldenKeysShiftUsedInput.Value);
+
+			BadassRankInput.PrevValue = BadassRankInput.Value;
+			BadassTokensEarnedInput.PrevValue = BadassTokensEarnedInput.Value;
+			BadassTokensAvailableInput.PrevValue = BadassTokensAvailableInput.Value;
+
+			MaximumHealthBonusTokensInput.PrevValue = MaximumHealthBonusTokensInput.Value;
+			ShieldCapacityBonusTokensInput.PrevValue = ShieldCapacityBonusTokensInput.Value;
+			ShieldRechargeDelayBonusTokensInput.PrevValue = ShieldRechargeDelayBonusTokensInput.Value;
+			ShieldRechargeRateBonusTokensInput.PrevValue = ShieldRechargeRateBonusTokensInput.Value;
+			MeleeDamageBonusTokensInput.PrevValue = MeleeDamageBonusTokensInput.Value;
+			GrenadeDamageBonusTokensInput.PrevValue = GrenadeDamageBonusTokensInput.Value;
+			GunAccuracyBonusTokensInput.PrevValue = GunAccuracyBonusTokensInput.Value;
+			GunDamageBonusTokensInput.PrevValue = GunDamageBonusTokensInput.Value;
+			FireRateBonusTokensInput.PrevValue = FireRateBonusTokensInput.Value;
+			RecoilReductionBonusTokensInput.PrevValue = RecoilReductionBonusTokensInput.Value;
+			ReloadSpeedBonusTokensInput.PrevValue = ReloadSpeedBonusTokensInput.Value;
+			ElementalEffectChanceBonusTokensInput.PrevValue = ElementalEffectChanceBonusTokensInput.Value;
+			ElementalEffectDamageBonusTokensInput.PrevValue = ElementalEffectDamageBonusTokensInput.Value;
+			CriticalHitDamageBonusTokensInput.PrevValue = CriticalHitDamageBonusTokensInput.Value;
+
+			GoldenKeysPOPremierClubInput.PrevValue = GoldenKeysPOPremierClubInput.Value;
+			GoldenKeysPOPremierClubUsedInput.PrevValue = GoldenKeysPOPremierClubUsedInput.Value;
+
+			GoldenKeysTulipInput.PrevValue = GoldenKeysTulipInput.Value;
+			GoldenKeysTulipUsedInput.PrevValue = GoldenKeysTulipUsedInput.Value;
+
+			GoldenKeysShiftInput.PrevValue = GoldenKeysShiftInput.Value;
+			GoldenKeysShiftUsedInput.PrevValue = GoldenKeysShiftUsedInput.Value;
 		}
 
 		public void TransferToProfile()
@@ -122,34 +150,6 @@ namespace B2ProfileGUI
 			Program.Profile = new Profile(ProfileFilePath);
 
 			TransferFromProfile();
-
-			BadassRankInput.PrevValue = BadassRankInput.Value;
-			BadassTokensEarnedInput.PrevValue = BadassTokensEarnedInput.Value;
-			BadassTokensAvailableInput.PrevValue = BadassTokensAvailableInput.Value;
-
-			MaximumHealthBonusTokensInput.PrevValue = MaximumHealthBonusTokensInput.Value;
-			ShieldCapacityBonusTokensInput.PrevValue = ShieldCapacityBonusTokensInput.Value;
-			ShieldRechargeDelayBonusTokensInput.PrevValue = ShieldRechargeDelayBonusTokensInput.Value;
-			ShieldRechargeRateBonusTokensInput.PrevValue = ShieldRechargeRateBonusTokensInput.Value;
-			MeleeDamageBonusTokensInput.PrevValue = MeleeDamageBonusTokensInput.Value;
-			GrenadeDamageBonusTokensInput.PrevValue = GrenadeDamageBonusTokensInput.Value;
-			GunAccuracyBonusTokensInput.PrevValue = GunAccuracyBonusTokensInput.Value;
-			GunDamageBonusTokensInput.PrevValue = GunDamageBonusTokensInput.Value;
-			FireRateBonusTokensInput.PrevValue = FireRateBonusTokensInput.Value;
-			RecoilReductionBonusTokensInput.PrevValue = RecoilReductionBonusTokensInput.Value;
-			ReloadSpeedBonusTokensInput.PrevValue = ReloadSpeedBonusTokensInput.Value;
-			ElementalEffectChanceBonusTokensInput.PrevValue = ElementalEffectChanceBonusTokensInput.Value;
-			ElementalEffectDamageBonusTokensInput.PrevValue = ElementalEffectDamageBonusTokensInput.Value;
-			CriticalHitDamageBonusTokensInput.PrevValue = CriticalHitDamageBonusTokensInput.Value;
-
-			GoldenKeysPOPremierClubInput.PrevValue = GoldenKeysPOPremierClubInput.Value;
-			GoldenKeysPOPremierClubUsedInput.PrevValue = GoldenKeysPOPremierClubUsedInput.Value;
-
-			GoldenKeysTulipInput.PrevValue = GoldenKeysTulipInput.Value;
-			GoldenKeysTulipUsedInput.PrevValue = GoldenKeysTulipUsedInput.Value;
-
-			GoldenKeysShiftInput.PrevValue = GoldenKeysShiftInput.Value;
-			GoldenKeysShiftUsedInput.PrevValue = GoldenKeysShiftUsedInput.Value;
 		}
 
 		private void SaveProfile()
