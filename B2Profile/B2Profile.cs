@@ -914,10 +914,5 @@ namespace B2Profile
 		{
 			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
-
-		public void SetIgnoreBonusStat(int s, bool b)
-		{
-			IgnoreBonusStats[s] = b;
-		}
 	}
 }

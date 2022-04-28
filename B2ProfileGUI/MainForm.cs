@@ -101,20 +101,20 @@ namespace B2ProfileGUI
 
 		private void TransferIgnoresToProfile()
 		{
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.MaximumHealth, MaximumHealthIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ShieldCapacity, ShieldCapacityIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ShieldRechargeDelay, ShieldRechargeDelayIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ShieldRechargeRate, ShieldRechargeRateIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.MeleeDamage, MeleeDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.GrenadeDamage, GrenadeDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.GunAccuracy, GunAccuracyIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.GunDamage, GunDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.FireRate, FireRateIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.RecoilReduction, RecoilReductionIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ReloadSpeed, ReloadSpeedIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ElementalEffectChance, ElementalEffectChanceIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ElementalEffectDamage, ElementalEffectDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.CriticalHitDamage, CriticalHitDamageIgnoreCheckBox.Checked);
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.MaximumHealth] = MaximumHealthIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.ShieldCapacity] = ShieldCapacityIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.ShieldRechargeDelay] = ShieldRechargeDelayIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.ShieldRechargeRate] = ShieldRechargeRateIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.MeleeDamage] = MeleeDamageIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.GrenadeDamage] = GrenadeDamageIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.GunAccuracy] = GunAccuracyIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.GunDamage] = GunDamageIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.FireRate] = FireRateIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.RecoilReduction] = RecoilReductionIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.ReloadSpeed] = ReloadSpeedIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.ElementalEffectChance] = ElementalEffectChanceIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.ElementalEffectDamage] = ElementalEffectDamageIgnoreCheckBox.Checked;
+			Program.Profile.IgnoreBonusStats[Profile.BonusStatID.CriticalHitDamage] = CriticalHitDamageIgnoreCheckBox.Checked;
 		}
 
 		private void LoadProfile()
@@ -793,7 +793,7 @@ namespace B2ProfileGUI
 
 		private void MaxGoldenKeysButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will set all golden keys to max, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			switch (MessageBox.Show("This will set golden keys to max, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
 				GoldenKeysPOPremierClubInput.Value = 255;
