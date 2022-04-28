@@ -238,7 +238,7 @@ namespace B2Profile
 		public GoldenKeyEntry GoldenKeysTulip;
 		public GoldenKeyEntry GoldenKeysShift;
 
-		public int BadassRank;
+		public long BadassRank;
 		public int BadassTokensAvailable;
 		public int BadassTokensEarned;
 
@@ -782,7 +782,7 @@ namespace B2Profile
 		private unsafe void SaveEntryData()
 		{
 			// "split" the badass rank again ... no idea why this was done
-			int badassRankData = (BadassRank * 10) / 2;
+			int badassRankData = (int)((BadassRank * 10) / 2);
 			GetEntry(EntryID.BadassRank1).SetInt32Data(badassRankData);
 			GetEntry(EntryID.BadassRank2).SetInt32Data(badassRankData);
 

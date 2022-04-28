@@ -70,7 +70,7 @@ namespace B2ProfileGUI
 
 		public void TransferToProfile()
 		{
-			Program.Profile.BadassRank = (int)BadassRankInput.Value;
+			Program.Profile.BadassRank = (long)BadassRankInput.Value;
 			Program.Profile.BadassTokensEarned = (int)BadassTokensEarnedInput.Value;
 			Program.Profile.BadassTokensAvailable = (int)BadassTokensAvailableInput.Value;
 
