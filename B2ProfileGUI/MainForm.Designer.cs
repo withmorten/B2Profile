@@ -1422,7 +1422,7 @@
 			// BadassRankInput
 			// 
 			this.BadassRankInput.Enabled = false;
-			this.BadassRankInput.Location = new System.Drawing.Point(169, 34);
+			this.BadassRankInput.Location = new System.Drawing.Point(169, 36);
 			this.BadassRankInput.Maximum = new decimal(new int[] {
             0,
             1,
