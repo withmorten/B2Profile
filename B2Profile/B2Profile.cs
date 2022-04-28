@@ -217,7 +217,7 @@ namespace B2Profile
 		private static int NumBonusStats = 14;
 		private static int NumNextBonusStats = 5;
 
-		public enum EntryID
+		public enum EntryID : uint
 		{
 			NumProfileSaved = 27,
 			FOV = 129,
@@ -663,6 +663,62 @@ namespace B2Profile
 				}
 
 				writer.WriteByte(Entries[i].EndByte);
+			}
+		}
+
+		public void PrintEntries()
+		{
+			Console.WriteLine("numEntries: " + Entries.Length);
+			Console.WriteLine();
+
+			for (int i = 0; i < Entries.Length; i++)
+			{
+				Console.WriteLine("Entry nr: " + i);
+				Console.WriteLine("Position: " + Entries[i].Offset);
+
+				Console.Write("ID: " + Entries[i].ID);
+
+				if (Enum.IsDefined(typeof(EntryID), Entries[i].ID))
+				{
+					Console.Write(" (" + Enum.GetName(typeof(EntryID), Entries[i].ID) + ")");
+				}
+
+				Console.WriteLine();
+
+				Console.WriteLine("DataType: " + Entries[i].DataType.ToString());
+
+				switch (Entries[i].DataType)
+				{
+				case DataType.Int32:
+					Console.WriteLine("Value: " + Entries[i].Int32);
+
+					break;
+				case DataType.String:
+					Console.WriteLine("Value: " + Entries[i].String);
+
+					break;
+				case DataType.Single:
+					Console.WriteLine("Value: " + Entries[i].Single);
+
+					break;
+				case DataType.Binary:
+					Console.Write("Value:");
+
+					for (int j = 0; j < Entries[i].Length; j++)
+					{
+						Console.Write(" " + Entries[i].Bin[j]);
+					}
+
+					Console.WriteLine();
+
+					break;
+				case DataType.Int8:
+					Console.WriteLine("Value: " + Entries[i].Int8);
+
+					break;
+				}
+
+				Console.WriteLine();
 			}
 		}
 

@@ -20,6 +20,13 @@ namespace B2ProfileCMD
 
 			// Just some examples what you can do with this ...
 
+			// default we just dump the profile.bin contents to stdout and exit
+#if true
+			profile.PrintEntries();
+
+			return 0;
+#endif
+
 			// Dump some data before editing ...
 #if false
 			Console.WriteLine("Input:");
