@@ -413,9 +413,9 @@ namespace B2ProfileGUI
 
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 
-			openFileDialog.Title = "Select BL2 profile";
-			openFileDialog.Filter = "BL2 profile|*.bin";
-			openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Borderlands 2\\WillowGame\\SaveData";
+			openFileDialog.Title = "Select Borderlands 2/The Pre-Sequel profile";
+			openFileDialog.Filter = "profile|*.bin";
+			openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
@@ -434,7 +434,7 @@ namespace B2ProfileGUI
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Borderlands 2 - Profile Editor 2.0\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 - Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO and his Borderlands 2 Save Editor)\r\n\r\nHover over \"Synced Mode\", the number next to it and \"Ignore\"\r\nfor additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("Borderlands 2/The Pre-Sequel Profile Editor\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO and his Borderlands 2 Save Editor)\r\n\r\nHover over \"Synced Mode\", the number next to it and \"Ignore\"\r\nfor additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)

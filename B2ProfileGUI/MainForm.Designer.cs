@@ -1545,7 +1545,7 @@
 			this.Margin = new System.Windows.Forms.Padding(6);
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
-			this.Text = "Borderlands 2 - Profile Editor 2.0";
+			this.Text = "Borderlands 2/The Pre-Sequel Profile Editor";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.MainMenuBar.ResumeLayout(false);
