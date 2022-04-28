@@ -796,16 +796,16 @@ namespace B2ProfileGUI
 			switch (MessageBox.Show("This will set golden keys to max, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
 			{
 			case DialogResult.Yes:
-				GoldenKeysPOPremierClubInput.Value = 255;
+				GoldenKeysPOPremierClubInput.Value = Profile.MaxGoldenKeys;
 				GoldenKeysPOPremierClubUsedInput.Value = 0;
 
-				GoldenKeysTulipInput.Value = 255;
+				GoldenKeysTulipInput.Value = Profile.MaxGoldenKeys;
 				GoldenKeysTulipUsedInput.Value = 0;
 
-				GoldenKeysShiftInput.Value = 255;
+				GoldenKeysShiftInput.Value = Profile.MaxGoldenKeys;
 				GoldenKeysShiftUsedInput.Value = 0;
 
-				GoldenKeysTotalInput.Value = 765;
+				GoldenKeysTotalInput.Value = Profile.MaxGoldenKeysTotal;
 
 				ProfileDirty = true;
 

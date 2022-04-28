@@ -234,6 +234,9 @@ namespace B2Profile
 
 		private Entry[] Entries;
 
+		public const int MaxGoldenKeys = 255;
+		public const int MaxGoldenKeysTotal = MaxGoldenKeys * 3;
+
 		public GoldenKeyEntry GoldenKeysPOPremierClub;
 		public GoldenKeyEntry GoldenKeysTulip;
 		public GoldenKeyEntry GoldenKeysShift;

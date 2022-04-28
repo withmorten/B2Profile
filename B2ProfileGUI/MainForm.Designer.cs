@@ -877,7 +877,7 @@
 			this.GoldenKeysTotalInput.Enabled = false;
 			this.GoldenKeysTotalInput.Location = new System.Drawing.Point(662, 222);
 			this.GoldenKeysTotalInput.Maximum = new decimal(new int[] {
-            765,
+            B2Profile.Profile.MaxGoldenKeysTotal,
             0,
             0,
             0});
@@ -892,7 +892,7 @@
 			this.GoldenKeysShiftUsedInput.Enabled = false;
 			this.GoldenKeysShiftUsedInput.Location = new System.Drawing.Point(662, 187);
 			this.GoldenKeysShiftUsedInput.Maximum = new decimal(new int[] {
-            255,
+            B2Profile.Profile.MaxGoldenKeys,
             0,
             0,
             0});
@@ -906,7 +906,7 @@
 			this.GoldenKeysShiftInput.Enabled = false;
 			this.GoldenKeysShiftInput.Location = new System.Drawing.Point(662, 160);
 			this.GoldenKeysShiftInput.Maximum = new decimal(new int[] {
-            255,
+            B2Profile.Profile.MaxGoldenKeys,
             0,
             0,
             0});
@@ -920,7 +920,7 @@
 			this.GoldenKeysTulipUsedInput.Enabled = false;
 			this.GoldenKeysTulipUsedInput.Location = new System.Drawing.Point(662, 125);
 			this.GoldenKeysTulipUsedInput.Maximum = new decimal(new int[] {
-            255,
+            B2Profile.Profile.MaxGoldenKeys,
             0,
             0,
             0});
@@ -934,7 +934,7 @@
 			this.GoldenKeysTulipInput.Enabled = false;
 			this.GoldenKeysTulipInput.Location = new System.Drawing.Point(662, 98);
 			this.GoldenKeysTulipInput.Maximum = new decimal(new int[] {
-            255,
+            B2Profile.Profile.MaxGoldenKeys,
             0,
             0,
             0});
@@ -948,7 +948,7 @@
 			this.GoldenKeysPOPremierClubUsedInput.Enabled = false;
 			this.GoldenKeysPOPremierClubUsedInput.Location = new System.Drawing.Point(662, 65);
 			this.GoldenKeysPOPremierClubUsedInput.Maximum = new decimal(new int[] {
-            255,
+            B2Profile.Profile.MaxGoldenKeys,
             0,
             0,
             0});
@@ -962,7 +962,7 @@
 			this.GoldenKeysPOPremierClubInput.Enabled = false;
 			this.GoldenKeysPOPremierClubInput.Location = new System.Drawing.Point(662, 36);
 			this.GoldenKeysPOPremierClubInput.Maximum = new decimal(new int[] {
-            255,
+            B2Profile.Profile.MaxGoldenKeys,
             0,
             0,
             0});

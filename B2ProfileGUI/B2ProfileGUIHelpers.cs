@@ -570,7 +570,7 @@ namespace B2ProfileGUI
 
 				Program.MainForm.ProfileDirty = true;
 
-				if (Program.MainForm.GoldenKeysPOPremierClubInput.Value < 255)
+				if (Program.MainForm.GoldenKeysPOPremierClubInput.Value < Profile.MaxGoldenKeys)
 				{
 					Program.MainForm.GoldenKeysPOPremierClubInput.Inc();
 
@@ -584,7 +584,7 @@ namespace B2ProfileGUI
 					return;
 				}
 
-				if (Program.MainForm.GoldenKeysTulipInput.Value < 255)
+				if (Program.MainForm.GoldenKeysTulipInput.Value < Profile.MaxGoldenKeys)
 				{
 					Program.MainForm.GoldenKeysTulipInput.Inc();
 
@@ -598,7 +598,7 @@ namespace B2ProfileGUI
 					return;
 				}
 
-				if (Program.MainForm.GoldenKeysShiftInput.Value < 255)
+				if (Program.MainForm.GoldenKeysShiftInput.Value < Profile.MaxGoldenKeys)
 				{
 					Program.MainForm.GoldenKeysShiftInput.Inc();
 
@@ -634,7 +634,7 @@ namespace B2ProfileGUI
 					return;
 				}
 
-				if (Program.MainForm.GoldenKeysPOPremierClubUsedInput.Value < 255)
+				if (Program.MainForm.GoldenKeysPOPremierClubUsedInput.Value < Profile.MaxGoldenKeys)
 				{
 					Program.MainForm.GoldenKeysPOPremierClubUsedInput.Inc();
 
@@ -648,7 +648,7 @@ namespace B2ProfileGUI
 					return;
 				}
 
-				if (Program.MainForm.GoldenKeysTulipUsedInput.Value < 255)
+				if (Program.MainForm.GoldenKeysTulipUsedInput.Value < Profile.MaxGoldenKeys)
 				{
 					Program.MainForm.GoldenKeysTulipUsedInput.Inc();
 
@@ -662,7 +662,7 @@ namespace B2ProfileGUI
 					return;
 				}
 
-				if (Program.MainForm.GoldenKeysShiftUsedInput.Value < 255)
+				if (Program.MainForm.GoldenKeysShiftUsedInput.Value < Profile.MaxGoldenKeys)
 				{
 					Program.MainForm.GoldenKeysShiftUsedInput.Inc();
 

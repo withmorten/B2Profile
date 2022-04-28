@@ -28,7 +28,7 @@ namespace B2ProfileCMD
 #endif
 
 			// Dump some data before editing ...
-#if true
+#if false
 			Console.WriteLine("Input:");
 			Console.WriteLine();
 
@@ -69,19 +69,19 @@ namespace B2ProfileCMD
 #endif
 
 			// Set all key entries to max (765 keys total)
-#if true
-			profile.GoldenKeysPOPremierClub.SetNumKeys(255);
+#if false
+			profile.GoldenKeysPOPremierClub.SetNumKeys(Profile.MaxGoldenKeys);
 			profile.GoldenKeysPOPremierClub.SetNumKeysUsed(0);
 
-			profile.GoldenKeysTulip.SetNumKeys(255);
+			profile.GoldenKeysTulip.SetNumKeys(Profile.MaxGoldenKeys);
 			profile.GoldenKeysTulip.SetNumKeysUsed(0);
 
-			profile.GoldenKeysShift.SetNumKeys(255);
+			profile.GoldenKeysShift.SetNumKeys(Profile.MaxGoldenKeys);
 			profile.GoldenKeysShift.SetNumKeysUsed(0);
 #endif
 
 			// Dump some data after editing ...
-#if true
+#if false
 			Console.WriteLine();
 
 			Console.WriteLine("Output:");
