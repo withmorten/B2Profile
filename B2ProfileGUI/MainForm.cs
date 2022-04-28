@@ -17,62 +17,50 @@ namespace B2ProfileGUI
 
 		public void TransferFromProfile()
 		{
-			BadassRankInput.Value = Program.Profile.GetBadassRank();
-			BadassTokensEarnedInput.Value = Program.Profile.GetBadassTokensEarned();
-			BadassTokensAvailableInput.Value = Program.Profile.GetBadassTokensAvailable();
+			BadassRankInput.Value = Program.Profile.BadassRank;
+			BadassTokensEarnedInput.Value = Program.Profile.BadassTokensEarned;
+			BadassTokensAvailableInput.Value = Program.Profile.BadassTokensAvailable;
 
 			BadassTokensInvestedLabel.Text = Program.Profile.GetBadassTokensInvested().ToString();
 
-			MaximumHealthBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.MaximumHealth);
-			MaximumHealthBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.MaximumHealth);
+			MaximumHealthBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.MaximumHealth]);
+			ShieldCapacityBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ShieldCapacity]);
+			ShieldRechargeDelayBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeDelay]);
+			ShieldRechargeRateBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeRate]);
+			MeleeDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.MeleeDamage]);
+			GrenadeDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.GrenadeDamage]);
+			GunAccuracyBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.GunAccuracy]);
+			GunDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.GunDamage]);
+			FireRateBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.FireRate]);
+			RecoilReductionBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.RecoilReduction]);
+			ReloadSpeedBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ReloadSpeed]);
+			ElementalEffectChanceBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectChance]);
+			ElementalEffectDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectDamage]);
+			CriticalHitDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.CriticalHitDamage]);
 
-			ShieldCapacityBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.ShieldCapacity);
-			ShieldCapacityBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.ShieldCapacity);
+			MaximumHealthBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.MaximumHealth];
+			ShieldCapacityBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ShieldCapacity];
+			ShieldRechargeDelayBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeDelay];
+			ShieldRechargeRateBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeRate];
+			MeleeDamageBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.MeleeDamage];
+			GrenadeDamageBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.GrenadeDamage];
+			GunAccuracyBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.GunAccuracy];
+			GunDamageBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.GunDamage];
+			FireRateBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.FireRate];
+			RecoilReductionBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.RecoilReduction];
+			ReloadSpeedBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ReloadSpeed];
+			ElementalEffectChanceBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectChance];
+			ElementalEffectDamageBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectDamage];
+			CriticalHitDamageBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.CriticalHitDamage];
 
-			ShieldRechargeDelayBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.ShieldRechargeDelay);
-			ShieldRechargeDelayBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.ShieldRechargeDelay);
+			GoldenKeysPOPremierClubInput.Value = Program.Profile.GoldenKeysPOPremierClub.GetNumKeys();
+			GoldenKeysPOPremierClubUsedInput.Value = Program.Profile.GoldenKeysPOPremierClub.GetNumKeysUsed();
 
-			ShieldRechargeRateBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.ShieldRechargeRate);
-			ShieldRechargeRateBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.ShieldRechargeRate);
+			GoldenKeysTulipInput.Value = Program.Profile.GoldenKeysTulip.GetNumKeys();
+			GoldenKeysTulipUsedInput.Value = Program.Profile.GoldenKeysTulip.GetNumKeysUsed();
 
-			MeleeDamageBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.MeleeDamage);
-			MeleeDamageBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.MeleeDamage);
-
-			GrenadeDamageBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.GrenadeDamage);
-			GrenadeDamageBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.GrenadeDamage);
-
-			GunAccuracyBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.GunAccuracy);
-			GunAccuracyBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.GunAccuracy);
-
-			GunDamageBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.GunDamage);
-			GunDamageBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.GunDamage);
-
-			FireRateBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.FireRate);
-			FireRateBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.FireRate);
-
-			RecoilReductionBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.RecoilReduction);
-			RecoilReductionBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.RecoilReduction);
-
-			ReloadSpeedBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.ReloadSpeed);
-			ReloadSpeedBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.ReloadSpeed);
-
-			ElementalEffectChanceBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.ElementalEffectChance);
-			ElementalEffectChanceBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.ElementalEffectChance);
-
-			ElementalEffectDamageBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.ElementalEffectDamage);
-			ElementalEffectDamageBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.ElementalEffectDamage);
-
-			CriticalHitDamageBonusPercentInput.Value = (decimal)Program.Profile.GetBonusStatusBonus(Profile.BonusStat.CriticalHitDamage);
-			CriticalHitDamageBonusTokensInput.Value = Program.Profile.GetBonusStatTokens(Profile.BonusStat.CriticalHitDamage);
-
-			GoldenKeysPOPremierClubInput.Value = Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeys();
-			GoldenKeysPOPremierClubUsedInput.Value = Program.Profile.GetGoldenKeysPOPremierClubEntry().GetNumKeysUsed();
-
-			GoldenKeysTulipInput.Value = Program.Profile.GetGoldenKeysTulipEntry().GetNumKeys();
-			GoldenKeysTulipUsedInput.Value = Program.Profile.GetGoldenKeysTulipEntry().GetNumKeysUsed();
-
-			GoldenKeysShiftInput.Value = Program.Profile.GetGoldenKeysShiftEntry().GetNumKeys();
-			GoldenKeysShiftUsedInput.Value = Program.Profile.GetGoldenKeysShiftEntry().GetNumKeysUsed();
+			GoldenKeysShiftInput.Value = Program.Profile.GoldenKeysShift.GetNumKeys();
+			GoldenKeysShiftUsedInput.Value = Program.Profile.GoldenKeysShift.GetNumKeysUsed();
 
 			GoldenKeysTotalInput.Value
 				= (GoldenKeysPOPremierClubInput.Value - GoldenKeysPOPremierClubUsedInput.Value)
@@ -82,51 +70,51 @@ namespace B2ProfileGUI
 
 		public void TransferToProfile()
 		{
-			Program.Profile.SetBadassRank((int)BadassRankInput.Value);
-			Program.Profile.SetBadassTokensEarned((int)BadassTokensEarnedInput.Value);
-			Program.Profile.SetBadassTokensAvailable((int)BadassTokensAvailableInput.Value);
+			Program.Profile.BadassRank = (int)BadassRankInput.Value;
+			Program.Profile.BadassTokensEarned = (int)BadassTokensEarnedInput.Value;
+			Program.Profile.BadassTokensAvailable = (int)BadassTokensAvailableInput.Value;
 
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.MaximumHealth, (uint)MaximumHealthBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.ShieldCapacity, (uint)ShieldCapacityBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.ShieldRechargeDelay, (uint)ShieldRechargeDelayBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.ShieldRechargeRate, (uint)ShieldRechargeRateBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.MeleeDamage, (uint)MeleeDamageBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.GrenadeDamage, (uint)GrenadeDamageBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.GunAccuracy, (uint)GunAccuracyBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.GunDamage, (uint)GunDamageBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.FireRate, (uint)FireRateBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.RecoilReduction, (uint)RecoilReductionBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.ReloadSpeed, (uint)ReloadSpeedBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.ElementalEffectChance, (uint)ElementalEffectChanceBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.ElementalEffectDamage, (uint)ElementalEffectDamageBonusTokensInput.Value);
-			Program.Profile.SetBonusStatTokens(Profile.BonusStat.CriticalHitDamage, (uint)CriticalHitDamageBonusTokensInput.Value);
+			Program.Profile.BonusStats[Profile.BonusStatID.MaximumHealth] = (uint)MaximumHealthBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.ShieldCapacity] = (uint)ShieldCapacityBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeDelay] = (uint)ShieldRechargeDelayBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeRate] = (uint)ShieldRechargeRateBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.MeleeDamage] = (uint)MeleeDamageBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.GrenadeDamage] = (uint)GrenadeDamageBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.GunAccuracy] = (uint)GunAccuracyBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.GunDamage] = (uint)GunDamageBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.FireRate] = (uint)FireRateBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.RecoilReduction] = (uint)RecoilReductionBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.ReloadSpeed] = (uint)ReloadSpeedBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectChance] = (uint)ElementalEffectChanceBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectDamage] = (uint)ElementalEffectDamageBonusTokensInput.Value;
+			Program.Profile.BonusStats[Profile.BonusStatID.CriticalHitDamage] = (uint)CriticalHitDamageBonusTokensInput.Value;
 
-			Program.Profile.GetGoldenKeysPOPremierClubEntry().SetNumKeys((byte)GoldenKeysPOPremierClubInput.Value);
-			Program.Profile.GetGoldenKeysPOPremierClubEntry().SetNumKeysUsed((byte)GoldenKeysPOPremierClubUsedInput.Value);
+			Program.Profile.GoldenKeysPOPremierClub.SetNumKeys((byte)GoldenKeysPOPremierClubInput.Value);
+			Program.Profile.GoldenKeysPOPremierClub.SetNumKeysUsed((byte)GoldenKeysPOPremierClubUsedInput.Value);
 
-			Program.Profile.GetGoldenKeysTulipEntry().SetNumKeys((byte)GoldenKeysTulipInput.Value);
-			Program.Profile.GetGoldenKeysTulipEntry().SetNumKeysUsed((byte)GoldenKeysTulipUsedInput.Value);
+			Program.Profile.GoldenKeysTulip.SetNumKeys((byte)GoldenKeysTulipInput.Value);
+			Program.Profile.GoldenKeysTulip.SetNumKeysUsed((byte)GoldenKeysTulipUsedInput.Value);
 
-			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeys((byte)GoldenKeysShiftInput.Value);
-			Program.Profile.GetGoldenKeysShiftEntry().SetNumKeysUsed((byte)GoldenKeysShiftUsedInput.Value);
+			Program.Profile.GoldenKeysShift.SetNumKeys((byte)GoldenKeysShiftInput.Value);
+			Program.Profile.GoldenKeysShift.SetNumKeysUsed((byte)GoldenKeysShiftUsedInput.Value);
 		}
 
 		private void TransferIgnoresToProfile()
 		{
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.MaximumHealth, MaximumHealthIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.ShieldCapacity, ShieldCapacityIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.ShieldRechargeDelay, ShieldRechargeDelayIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.ShieldRechargeRate, ShieldRechargeRateIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.MeleeDamage, MeleeDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.GrenadeDamage, GrenadeDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.GunAccuracy, GunAccuracyIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.GunDamage, GunDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.FireRate, FireRateIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.RecoilReduction, RecoilReductionIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.ReloadSpeed, ReloadSpeedIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.ElementalEffectChance, ElementalEffectChanceIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.ElementalEffectDamage, ElementalEffectDamageIgnoreCheckBox.Checked);
-			Program.Profile.SetIgnoreBonusStat(Profile.BonusStat.CriticalHitDamage, CriticalHitDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.MaximumHealth, MaximumHealthIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ShieldCapacity, ShieldCapacityIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ShieldRechargeDelay, ShieldRechargeDelayIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ShieldRechargeRate, ShieldRechargeRateIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.MeleeDamage, MeleeDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.GrenadeDamage, GrenadeDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.GunAccuracy, GunAccuracyIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.GunDamage, GunDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.FireRate, FireRateIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.RecoilReduction, RecoilReductionIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ReloadSpeed, ReloadSpeedIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ElementalEffectChance, ElementalEffectChanceIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.ElementalEffectDamage, ElementalEffectDamageIgnoreCheckBox.Checked);
+			Program.Profile.SetIgnoreBonusStat(Profile.BonusStatID.CriticalHitDamage, CriticalHitDamageIgnoreCheckBox.Checked);
 		}
 
 		private void LoadProfile()

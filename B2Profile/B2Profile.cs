@@ -196,59 +196,59 @@ namespace B2Profile
 
 	public class Profile
 	{
-		public enum BonusStat
+		public static class BonusStatID
 		{
-			MaximumHealth,
-			ShieldCapacity,
-			ShieldRechargeDelay,
-			ShieldRechargeRate,
-			MeleeDamage,
-			GrenadeDamage,
-			GunAccuracy,
-			GunDamage,
-			FireRate,
-			RecoilReduction,
-			ReloadSpeed,
-			ElementalEffectChance,
-			ElementalEffectDamage,
-			CriticalHitDamage,
+			public const int MaximumHealth = 0;
+			public const int ShieldCapacity = 1;
+			public const int ShieldRechargeDelay = 2;
+			public const int ShieldRechargeRate = 3;
+			public const int MeleeDamage = 4;
+			public const int GrenadeDamage = 5;
+			public const int GunAccuracy = 6;
+			public const int GunDamage = 7;
+			public const int FireRate = 8;
+			public const int RecoilReduction = 9;
+			public const int ReloadSpeed = 10;
+			public const int ElementalEffectChance = 11;
+			public const int ElementalEffectDamage = 12;
+			public const int CriticalHitDamage = 13;
 		}
-
-		private static int NumBonusStats = 14;
-		private static int NumNextBonusStats = 5;
 
 		public enum EntryID : uint
 		{
-			NumProfileSaved = 27,
-			FOV = 129,
-			ClaptrapsStathSlot1 = 130,
-			ClaptrapsStathSlot2 = 131,
-			ClaptrapsStathSlot3 = 132,
-			ClaptrapsStathSlot4 = 133,
-			BadassRank1 = 136,
-			BadassRank2 = 137,
-			BadassTokens = 138,
-			BadassTokensEarned = 139,
-			BonusStats = 143,
-			GoldenKeys = 162,
-			NextBonusStats = 164,
-			Customizations = 300,
+			NumProfileSaved = 27, // Int32
+			FOV = 129, // Int32
+			ClaptrapsStathSlot1 = 130, // Bin
+			ClaptrapsStathSlot2 = 131, // Bin
+			ClaptrapsStathSlot3 = 132, // Bin
+			ClaptrapsStathSlot4 = 133, // Bin
+			BadassRank1 = 136, // Int32
+			BadassRank2 = 137, // Int32
+			BadassTokens = 138, // Int32
+			BadassTokensEarned = 139, // Int32
+			BonusStats = 143, // String (Encoded)
+			GoldenKeys = 162, // Bin (GoldenKeyEntry)
+			NextBonusStats = 164, // String (Encoded)
+			Customizations = 300, // Bin
 		}
 
 		private Entry[] Entries;
 
-		private GoldenKeyEntry GoldenKeysPOPremierClub;
-		private GoldenKeyEntry GoldenKeysTulip;
-		private GoldenKeyEntry GoldenKeysShift;
+		public GoldenKeyEntry GoldenKeysPOPremierClub;
+		public GoldenKeyEntry GoldenKeysTulip;
+		public GoldenKeyEntry GoldenKeysShift;
 
-		private int BadassRank;
-		private int BadassTokensAvailable;
-		private int BadassTokensEarned;
+		public int BadassRank;
+		public int BadassTokensAvailable;
+		public int BadassTokensEarned;
 
-		private List<uint> BonusStats;
-		private List<uint> NextBonusStats;
+		public const int NumBonusStats = 14;
+		public const int NumNextBonusStats = 5;
 
-		private List<bool> IgnoreBonusStats;
+		public List<uint> BonusStats;
+		public List<uint> NextBonusStats;
+
+		public List<bool> IgnoreBonusStats;
 
 		public Profile()
 		{
@@ -261,9 +261,9 @@ namespace B2Profile
 			BonusStats = new List<uint>();
 			NextBonusStats = new List<uint>();
 
-			IgnoreBonusStats = new List<bool>(Profile.NumBonusStats);
+			IgnoreBonusStats = new List<bool>(NumBonusStats);
 
-			for (int i = 0; i < Profile.NumBonusStats; i++)
+			for (int i = 0; i < NumBonusStats; i++)
 			{
 				IgnoreBonusStats.Add(false);
 			}
@@ -373,36 +373,6 @@ namespace B2Profile
 			return true;
 		}
 
-		public void SetBadassRank(int i)
-		{
-			BadassRank = i;
-		}
-
-		public int GetBadassRank()
-		{
-			return BadassRank;
-		}
-
-		public void SetBadassTokensAvailable(int i)
-		{
-			BadassTokensAvailable = i;
-		}
-
-		public int GetBadassTokensAvailable()
-		{
-			return BadassTokensAvailable;
-		}
-
-		public void SetBadassTokensEarned(int i)
-		{
-			BadassTokensEarned = i;
-		}
-
-		public int GetBadassTokensEarned()
-		{
-			return BadassTokensEarned;
-		}
-
 		public int GetBadassTokensInvested()
 		{
 			int t = 0;
@@ -415,17 +385,7 @@ namespace B2Profile
 			return t;
 		}
 
-		public ref List<uint> GetBonusStats()
-		{
-			return ref BonusStats;
-		}
-
-		public ref List<uint> GetNextBonusStats()
-		{
-			return ref NextBonusStats;
-		}
-
-		public ref Entry GetEntryFromID(uint ID)
+		public ref Entry GetEntry(uint ID)
 		{
 			for (int i = 0; i < Entries.Length; i++)
 			{
@@ -435,9 +395,9 @@ namespace B2Profile
 			throw new Exception("Entry with ID " + ID + " not found!");
 		}
 
-		public ref Entry GetEntryFromID(EntryID ID)
+		public ref Entry GetEntry(EntryID ID)
 		{
-			return ref GetEntryFromID(((uint)ID));
+			return ref GetEntry(((uint)ID));
 		}
 
 		public void ResetBonusStats()
@@ -486,26 +446,28 @@ namespace B2Profile
 
 		public void UnlockAllCustomizations()
 		{
-			byte[] customizationsBin = GetCustomizationsEntry().GetBinData();
+			Entry customizationsEntry = GetEntry(EntryID.Customizations);
+			byte[] customizationsBin = customizationsEntry.GetBinData();
 
 			for (int i = 0; i < customizationsBin.Length; i++)
 			{
 				customizationsBin[i] = byte.MaxValue;
 			}
 
-			GetCustomizationsEntry().SetBinData(customizationsBin);
+			customizationsEntry.SetBinData(customizationsBin);
 		}
 
 		public void LockAllCustomizations()
 		{
-			byte[] customizationsBin = GetCustomizationsEntry().GetBinData();
+			Entry customizationsEntry = GetEntry(EntryID.Customizations);
+			byte[] customizationsBin = customizationsEntry.GetBinData();
 
 			for (int i = 0; i < customizationsBin.Length; i++)
 			{
 				customizationsBin[i] = byte.MinValue;
 			}
 
-			GetCustomizationsEntry().SetBinData(customizationsBin);
+			customizationsEntry.SetBinData(customizationsBin);
 		}
 
 		private static string Alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
@@ -725,13 +687,13 @@ namespace B2Profile
 		private unsafe void LoadEntryData()
 		{
 			// the badass rank seems to be stored in two entries and the final result calculated like this
-			BadassRank = (GetBadassRank1Entry().GetInt32Data() + GetBadassRank2Entry().GetInt32Data()) / 10;
+			BadassRank = (GetEntry(EntryID.BadassRank1).GetInt32Data() + GetEntry(EntryID.BadassRank2).GetInt32Data()) / 10;
 
 			// the current badass tokens available to invest
-			BadassTokensAvailable = GetBadassTokensEntry().GetInt32Data();
+			BadassTokensAvailable = GetEntry(EntryID.BadassTokens).GetInt32Data();
 
 			// the badass tokens earned from increasing the badass rank
-			BadassTokensEarned = GetBadassTokensEarnedEntry().GetInt32Data();
+			BadassTokensEarned = GetEntry(EntryID.BadassTokensEarned).GetInt32Data();
 
 			// golden keys:
 			// there can be any number of entries
@@ -739,9 +701,11 @@ namespace B2Profile
 			// ID   0: shift keys (SHiFT)
 			// ID 173: mechromancer dlc (Tulip)
 			// ID 254: preorder keys (POPremierClub)
-			if (GetGoldenKeysEntry().Length > 0)
+			Entry goldenKeysEntry = GetEntry(EntryID.GoldenKeys);
+
+			if (goldenKeysEntry.Length > 0)
 			{
-				byte[] goldenKeysBin = GetGoldenKeysEntry().GetBinData();
+				byte[] goldenKeysBin = goldenKeysEntry.GetBinData();
 
 				int numKeyEntries = goldenKeysBin.Length / 3;
 
@@ -774,35 +738,39 @@ namespace B2Profile
 			}
 
 			// the invested bonus tokens, always 14 stats, fixed order, very weird encoding
-			if (GetBonusStatsEntry().Length > 0)
+			Entry bonusStatsEntry = GetEntry(EntryID.BonusStats);
+
+			if (bonusStatsEntry.Length > 0)
 			{
-				BonusStats = Profile.DecodeString(GetBonusStatsEntry().GetStringData());
+				BonusStats = DecodeString(bonusStatsEntry.GetStringData());
 			}
 			else
 			{
-				for (int i = 0; i < Profile.NumBonusStats; i++)
+				for (int i = 0; i < NumBonusStats; i++)
 				{
 					BonusStats.Add(0);
 				}
 			}
 
-#if false
+#if true
 			// the next bonus tokens you'll be offered, same indexes as the bonus stats list, very weird encoding
-			if (GetNextBonusStatsEntry().Length > 0)
+			Entry nextBonusStatsEntry = GetEntry(EntryID.NextBonusStats);
+
+			if (nextBonusStatsEntry.Length > 0)
 			{
-				NextBonusStats = Profile.DecodeString(GetNextBonusStatsEntry().GetStringData());
+				NextBonusStats = DecodeString(nextBonusStatsEntry.GetStringData());
 			}
 			else
 			{
 				Random random = new Random();
 
-				for (int i = 0; i < Profile.NumNextBonusStats; i++)
+				for (int i = 0; i < NumNextBonusStats; i++)
 				{
-					uint nextBonusStat = (uint)random.Next(0, Profile.NumBonusStats);
+					uint nextBonusStat = (uint)random.Next(0, NumBonusStats);
 
 					while (NextBonusStats.Contains(nextBonusStat) == true)
 					{
-						nextBonusStat = (uint)random.Next(0, Profile.NumBonusStats);
+						nextBonusStat = (uint)random.Next(0, NumBonusStats);
 					}
 
 					NextBonusStats.Add(nextBonusStat);
@@ -815,11 +783,11 @@ namespace B2Profile
 		{
 			// "split" the badass rank again ... no idea why this was done
 			int badassRankData = (BadassRank * 10) / 2;
-			GetBadassRank1Entry().SetInt32Data(badassRankData);
-			GetBadassRank2Entry().SetInt32Data(badassRankData);
+			GetEntry(EntryID.BadassRank1).SetInt32Data(badassRankData);
+			GetEntry(EntryID.BadassRank2).SetInt32Data(badassRankData);
 
-			GetBadassTokensEntry().SetInt32Data(BadassTokensAvailable);
-			GetBadassTokensEarnedEntry().SetInt32Data(BadassTokensEarned);
+			GetEntry(EntryID.BadassTokens).SetInt32Data(BadassTokensAvailable);
+			GetEntry(EntryID.BadassTokensEarned).SetInt32Data(BadassTokensEarned);
 
 			byte[] goldenKeysBin = new byte[0];
 			int numKeyEntries = 0;
@@ -857,96 +825,37 @@ namespace B2Profile
 				numKeyEntries++;
 			}
 
-			GetGoldenKeysEntry().SetBinData(goldenKeysBin);
+			GetEntry(EntryID.GoldenKeys).SetBinData(goldenKeysBin);
 
-			if (BonusStats.Count == Profile.NumBonusStats)
+			if (BonusStats.Count == NumBonusStats)
 			{
-				GetBonusStatsEntry().SetStringData(Profile.EncodeString(BonusStats));
+				GetEntry(EntryID.BonusStats).SetStringData(EncodeString(BonusStats));
 			}
 
-			if (NextBonusStats.Count == Profile.NumNextBonusStats)
+			if (NextBonusStats.Count == NumNextBonusStats)
 			{
-				GetNextBonusStatsEntry().SetStringData(Profile.EncodeString(NextBonusStats));
+				GetEntry(EntryID.NextBonusStats).SetStringData(EncodeString(NextBonusStats));
 			}
 		}
 
-		// String (Encoded)
-		public ref Entry GetBonusStatsEntry()
-		{
-			return ref GetEntryFromID(EntryID.BonusStats);
-		}
-
-		// String (Encoded)
-		public ref Entry GetNextBonusStatsEntry()
-		{
-			return ref GetEntryFromID(EntryID.NextBonusStats);
-		}
-
-		// Bin (GoldenKeyEntry)
-		public ref Entry GetGoldenKeysEntry()
-		{
-			return ref GetEntryFromID(EntryID.GoldenKeys);
-		}
-
-		// Int32
-		public ref Entry GetBadassRank1Entry()
-		{
-			return ref GetEntryFromID(EntryID.BadassRank1);
-		}
-
-		// Int32
-		public ref Entry GetBadassRank2Entry()
-		{
-			return ref GetEntryFromID(EntryID.BadassRank2);
-		}
-
-		// Int32
-		public ref Entry GetBadassTokensEntry()
-		{
-			return ref GetEntryFromID(EntryID.BadassTokens);
-		}
-
-		// Int32
-		public ref Entry GetBadassTokensEarnedEntry()
-		{
-			return ref GetEntryFromID(EntryID.BadassTokensEarned);
-		}
-
-		// Bin
-		public ref Entry GetCustomizationsEntry()
-		{
-			return ref GetEntryFromID(EntryID.Customizations);
-		}
-
-		// Bin
 		public ref Entry GetClaptrapsStashSlotEntry(int slot)
 		{
 			switch (slot)
 			{
 			case 1:
-				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot1);
-
-				break;
+				return ref GetEntry(EntryID.ClaptrapsStathSlot1);
 
 			case 2:
-				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot2);
-
-				break;
+				return ref GetEntry(EntryID.ClaptrapsStathSlot2);
 
 			case 3:
-				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot3);
-
-				break;
+				return ref GetEntry(EntryID.ClaptrapsStathSlot3);
 
 			case 4:
-				return ref GetEntryFromID(EntryID.ClaptrapsStathSlot4);
-
-				break;
+				return ref GetEntry(EntryID.ClaptrapsStathSlot4);
 
 			default:
 				throw new Exception("Invalid weapon index!");
-
-				break;
 			}
 		}
 
@@ -996,21 +905,6 @@ namespace B2Profile
 			SetClaptrapsStashSlotGibbedCode(slot, "BL2(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
 		}
 
-		public ref GoldenKeyEntry GetGoldenKeysPOPremierClubEntry()
-		{
-			return ref GoldenKeysPOPremierClub;
-		}
-
-		public ref GoldenKeyEntry GetGoldenKeysTulipEntry()
-		{
-			return ref GoldenKeysTulip;
-		}
-
-		public ref GoldenKeyEntry GetGoldenKeysShiftEntry()
-		{
-			return ref GoldenKeysShift;
-		}
-
 		public static int GetBadassRankFromTokens(uint t)
 		{
 			return (int)Math.Floor(Math.Pow(t, 1.8));
@@ -1021,24 +915,9 @@ namespace B2Profile
 			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
 
-		public void SetBonusStatTokens(BonusStat s, uint t)
+		public void SetIgnoreBonusStat(int s, bool b)
 		{
-			BonusStats[(int)s] = t;
-		}
-
-		public uint GetBonusStatTokens(BonusStat s)
-		{
-			return BonusStats[(int)s];
-		}
-
-		public double GetBonusStatusBonus(BonusStat s)
-		{
-			return Profile.GetBonusPercentFromTokens(BonusStats[(int)s]);
-		}
-
-		public void SetIgnoreBonusStat(BonusStat s, bool b)
-		{
-			IgnoreBonusStats[(int)s] = b;
+			IgnoreBonusStats[s] = b;
 		}
 	}
 }
