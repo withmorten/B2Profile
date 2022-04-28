@@ -12,3 +12,7 @@ Partially reverse engineered from the previous Borderlands 2 Profile Editor by P
 This editor also works with The Pre-Sequel.
 
 Also check out [B1Profile](https://github.com/withmorten/B1Profile/), which uses the same file format.
+
+Screenshot:
+
+![Screenshot of GUI](B2ProfileGUI.png)
