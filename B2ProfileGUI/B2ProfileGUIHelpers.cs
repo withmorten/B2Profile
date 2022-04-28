@@ -477,7 +477,7 @@ namespace B2ProfileGUI
 				}
 				else
 				{
-					Program.MainForm.GoldenKeysTotalInput.Value += (PrevValue - base.Value);
+					Program.MainForm.GoldenKeysTotalInput.Value += (base.Value - PrevValue);
 				}
 
 				Program.MainForm.ProfileDirty = true;
