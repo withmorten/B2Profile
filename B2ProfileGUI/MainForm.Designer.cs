@@ -876,11 +876,6 @@
 			// 
 			this.GoldenKeysTotalInput.Enabled = false;
 			this.GoldenKeysTotalInput.Location = new System.Drawing.Point(662, 222);
-			this.GoldenKeysTotalInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeysTotal,
-            0,
-            0,
-            0});
 			this.GoldenKeysTotalInput.Name = "GoldenKeysTotalInput";
 			this.GoldenKeysTotalInput.ReadOnly = true;
 			this.GoldenKeysTotalInput.Size = new System.Drawing.Size(81, 20);
@@ -891,11 +886,6 @@
 			// 
 			this.GoldenKeysShiftUsedInput.Enabled = false;
 			this.GoldenKeysShiftUsedInput.Location = new System.Drawing.Point(662, 187);
-			this.GoldenKeysShiftUsedInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeys,
-            0,
-            0,
-            0});
 			this.GoldenKeysShiftUsedInput.Name = "GoldenKeysShiftUsedInput";
 			this.GoldenKeysShiftUsedInput.Size = new System.Drawing.Size(81, 20);
 			this.GoldenKeysShiftUsedInput.TabIndex = 75;
@@ -905,11 +895,6 @@
 			// 
 			this.GoldenKeysShiftInput.Enabled = false;
 			this.GoldenKeysShiftInput.Location = new System.Drawing.Point(662, 160);
-			this.GoldenKeysShiftInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeys,
-            0,
-            0,
-            0});
 			this.GoldenKeysShiftInput.Name = "GoldenKeysShiftInput";
 			this.GoldenKeysShiftInput.Size = new System.Drawing.Size(81, 20);
 			this.GoldenKeysShiftInput.TabIndex = 74;
@@ -919,11 +904,6 @@
 			// 
 			this.GoldenKeysTulipUsedInput.Enabled = false;
 			this.GoldenKeysTulipUsedInput.Location = new System.Drawing.Point(662, 125);
-			this.GoldenKeysTulipUsedInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeys,
-            0,
-            0,
-            0});
 			this.GoldenKeysTulipUsedInput.Name = "GoldenKeysTulipUsedInput";
 			this.GoldenKeysTulipUsedInput.Size = new System.Drawing.Size(81, 20);
 			this.GoldenKeysTulipUsedInput.TabIndex = 73;
@@ -933,11 +913,6 @@
 			// 
 			this.GoldenKeysTulipInput.Enabled = false;
 			this.GoldenKeysTulipInput.Location = new System.Drawing.Point(662, 98);
-			this.GoldenKeysTulipInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeys,
-            0,
-            0,
-            0});
 			this.GoldenKeysTulipInput.Name = "GoldenKeysTulipInput";
 			this.GoldenKeysTulipInput.Size = new System.Drawing.Size(81, 20);
 			this.GoldenKeysTulipInput.TabIndex = 72;
@@ -947,11 +922,6 @@
 			// 
 			this.GoldenKeysPOPremierClubUsedInput.Enabled = false;
 			this.GoldenKeysPOPremierClubUsedInput.Location = new System.Drawing.Point(662, 65);
-			this.GoldenKeysPOPremierClubUsedInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeys,
-            0,
-            0,
-            0});
 			this.GoldenKeysPOPremierClubUsedInput.Name = "GoldenKeysPOPremierClubUsedInput";
 			this.GoldenKeysPOPremierClubUsedInput.Size = new System.Drawing.Size(81, 20);
 			this.GoldenKeysPOPremierClubUsedInput.TabIndex = 71;
@@ -961,11 +931,6 @@
 			// 
 			this.GoldenKeysPOPremierClubInput.Enabled = false;
 			this.GoldenKeysPOPremierClubInput.Location = new System.Drawing.Point(662, 36);
-			this.GoldenKeysPOPremierClubInput.Maximum = new decimal(new int[] {
-            B2Profile.Profile.MaxGoldenKeys,
-            0,
-            0,
-            0});
 			this.GoldenKeysPOPremierClubInput.Name = "GoldenKeysPOPremierClubInput";
 			this.GoldenKeysPOPremierClubInput.Size = new System.Drawing.Size(81, 20);
 			this.GoldenKeysPOPremierClubInput.TabIndex = 70;
@@ -975,11 +940,6 @@
 			// 
 			this.CriticalHitDamageBonusTokensInput.Enabled = false;
 			this.CriticalHitDamageBonusTokensInput.Location = new System.Drawing.Point(297, 511);
-			this.CriticalHitDamageBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.CriticalHitDamageBonusTokensInput.Name = "CriticalHitDamageBonusTokensInput";
 			this.CriticalHitDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.CriticalHitDamageBonusTokensInput.TabIndex = 43;
@@ -990,11 +950,6 @@
 			this.CriticalHitDamageBonusPercentInput.DecimalPlaces = 1;
 			this.CriticalHitDamageBonusPercentInput.Enabled = false;
 			this.CriticalHitDamageBonusPercentInput.Location = new System.Drawing.Point(169, 511);
-			this.CriticalHitDamageBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.CriticalHitDamageBonusPercentInput.Name = "CriticalHitDamageBonusPercentInput";
 			this.CriticalHitDamageBonusPercentInput.ReadOnly = true;
 			this.CriticalHitDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1005,11 +960,6 @@
 			// 
 			this.ElementalEffectDamageBonusTokensInput.Enabled = false;
 			this.ElementalEffectDamageBonusTokensInput.Location = new System.Drawing.Point(297, 484);
-			this.ElementalEffectDamageBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.ElementalEffectDamageBonusTokensInput.Name = "ElementalEffectDamageBonusTokensInput";
 			this.ElementalEffectDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.ElementalEffectDamageBonusTokensInput.TabIndex = 42;
@@ -1020,11 +970,6 @@
 			this.ElementalEffectDamageBonusPercentInput.DecimalPlaces = 1;
 			this.ElementalEffectDamageBonusPercentInput.Enabled = false;
 			this.ElementalEffectDamageBonusPercentInput.Location = new System.Drawing.Point(169, 484);
-			this.ElementalEffectDamageBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.ElementalEffectDamageBonusPercentInput.Name = "ElementalEffectDamageBonusPercentInput";
 			this.ElementalEffectDamageBonusPercentInput.ReadOnly = true;
 			this.ElementalEffectDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1035,11 +980,6 @@
 			// 
 			this.ElementalEffectChanceBonusTokensInput.Enabled = false;
 			this.ElementalEffectChanceBonusTokensInput.Location = new System.Drawing.Point(297, 457);
-			this.ElementalEffectChanceBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.ElementalEffectChanceBonusTokensInput.Name = "ElementalEffectChanceBonusTokensInput";
 			this.ElementalEffectChanceBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.ElementalEffectChanceBonusTokensInput.TabIndex = 41;
@@ -1050,11 +990,6 @@
 			this.ElementalEffectChanceBonusPercentInput.DecimalPlaces = 1;
 			this.ElementalEffectChanceBonusPercentInput.Enabled = false;
 			this.ElementalEffectChanceBonusPercentInput.Location = new System.Drawing.Point(169, 457);
-			this.ElementalEffectChanceBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.ElementalEffectChanceBonusPercentInput.Name = "ElementalEffectChanceBonusPercentInput";
 			this.ElementalEffectChanceBonusPercentInput.ReadOnly = true;
 			this.ElementalEffectChanceBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1065,11 +1000,6 @@
 			// 
 			this.ReloadSpeedBonusTokensInput.Enabled = false;
 			this.ReloadSpeedBonusTokensInput.Location = new System.Drawing.Point(297, 430);
-			this.ReloadSpeedBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.ReloadSpeedBonusTokensInput.Name = "ReloadSpeedBonusTokensInput";
 			this.ReloadSpeedBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.ReloadSpeedBonusTokensInput.TabIndex = 40;
@@ -1080,11 +1010,6 @@
 			this.ReloadSpeedBonusPercentInput.DecimalPlaces = 1;
 			this.ReloadSpeedBonusPercentInput.Enabled = false;
 			this.ReloadSpeedBonusPercentInput.Location = new System.Drawing.Point(169, 430);
-			this.ReloadSpeedBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.ReloadSpeedBonusPercentInput.Name = "ReloadSpeedBonusPercentInput";
 			this.ReloadSpeedBonusPercentInput.ReadOnly = true;
 			this.ReloadSpeedBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1095,11 +1020,6 @@
 			// 
 			this.RecoilReductionBonusTokensInput.Enabled = false;
 			this.RecoilReductionBonusTokensInput.Location = new System.Drawing.Point(297, 403);
-			this.RecoilReductionBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.RecoilReductionBonusTokensInput.Name = "RecoilReductionBonusTokensInput";
 			this.RecoilReductionBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.RecoilReductionBonusTokensInput.TabIndex = 39;
@@ -1110,11 +1030,6 @@
 			this.RecoilReductionBonusPercentInput.DecimalPlaces = 1;
 			this.RecoilReductionBonusPercentInput.Enabled = false;
 			this.RecoilReductionBonusPercentInput.Location = new System.Drawing.Point(169, 403);
-			this.RecoilReductionBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.RecoilReductionBonusPercentInput.Name = "RecoilReductionBonusPercentInput";
 			this.RecoilReductionBonusPercentInput.ReadOnly = true;
 			this.RecoilReductionBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1125,11 +1040,6 @@
 			// 
 			this.FireRateBonusTokensInput.Enabled = false;
 			this.FireRateBonusTokensInput.Location = new System.Drawing.Point(297, 376);
-			this.FireRateBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.FireRateBonusTokensInput.Name = "FireRateBonusTokensInput";
 			this.FireRateBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.FireRateBonusTokensInput.TabIndex = 38;
@@ -1140,11 +1050,6 @@
 			this.FireRateBonusPercentInput.DecimalPlaces = 1;
 			this.FireRateBonusPercentInput.Enabled = false;
 			this.FireRateBonusPercentInput.Location = new System.Drawing.Point(169, 376);
-			this.FireRateBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.FireRateBonusPercentInput.Name = "FireRateBonusPercentInput";
 			this.FireRateBonusPercentInput.ReadOnly = true;
 			this.FireRateBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1155,11 +1060,6 @@
 			// 
 			this.GunDamageBonusTokensInput.Enabled = false;
 			this.GunDamageBonusTokensInput.Location = new System.Drawing.Point(297, 349);
-			this.GunDamageBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.GunDamageBonusTokensInput.Name = "GunDamageBonusTokensInput";
 			this.GunDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.GunDamageBonusTokensInput.TabIndex = 37;
@@ -1170,11 +1070,6 @@
 			this.GunDamageBonusPercentInput.DecimalPlaces = 1;
 			this.GunDamageBonusPercentInput.Enabled = false;
 			this.GunDamageBonusPercentInput.Location = new System.Drawing.Point(169, 349);
-			this.GunDamageBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.GunDamageBonusPercentInput.Name = "GunDamageBonusPercentInput";
 			this.GunDamageBonusPercentInput.ReadOnly = true;
 			this.GunDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1185,11 +1080,6 @@
 			// 
 			this.GunAccuracyBonusTokensInput.Enabled = false;
 			this.GunAccuracyBonusTokensInput.Location = new System.Drawing.Point(297, 322);
-			this.GunAccuracyBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.GunAccuracyBonusTokensInput.Name = "GunAccuracyBonusTokensInput";
 			this.GunAccuracyBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.GunAccuracyBonusTokensInput.TabIndex = 36;
@@ -1200,11 +1090,6 @@
 			this.GunAccuracyBonusPercentInput.DecimalPlaces = 1;
 			this.GunAccuracyBonusPercentInput.Enabled = false;
 			this.GunAccuracyBonusPercentInput.Location = new System.Drawing.Point(169, 322);
-			this.GunAccuracyBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.GunAccuracyBonusPercentInput.Name = "GunAccuracyBonusPercentInput";
 			this.GunAccuracyBonusPercentInput.ReadOnly = true;
 			this.GunAccuracyBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1215,11 +1100,6 @@
 			// 
 			this.GrenadeDamageBonusTokensInput.Enabled = false;
 			this.GrenadeDamageBonusTokensInput.Location = new System.Drawing.Point(297, 295);
-			this.GrenadeDamageBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.GrenadeDamageBonusTokensInput.Name = "GrenadeDamageBonusTokensInput";
 			this.GrenadeDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.GrenadeDamageBonusTokensInput.TabIndex = 35;
@@ -1230,11 +1110,6 @@
 			this.GrenadeDamageBonusPercentInput.DecimalPlaces = 1;
 			this.GrenadeDamageBonusPercentInput.Enabled = false;
 			this.GrenadeDamageBonusPercentInput.Location = new System.Drawing.Point(169, 295);
-			this.GrenadeDamageBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.GrenadeDamageBonusPercentInput.Name = "GrenadeDamageBonusPercentInput";
 			this.GrenadeDamageBonusPercentInput.ReadOnly = true;
 			this.GrenadeDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1245,11 +1120,6 @@
 			// 
 			this.MeleeDamageBonusTokensInput.Enabled = false;
 			this.MeleeDamageBonusTokensInput.Location = new System.Drawing.Point(297, 268);
-			this.MeleeDamageBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.MeleeDamageBonusTokensInput.Name = "MeleeDamageBonusTokensInput";
 			this.MeleeDamageBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.MeleeDamageBonusTokensInput.TabIndex = 34;
@@ -1260,11 +1130,6 @@
 			this.MeleeDamageBonusPercentInput.DecimalPlaces = 1;
 			this.MeleeDamageBonusPercentInput.Enabled = false;
 			this.MeleeDamageBonusPercentInput.Location = new System.Drawing.Point(169, 268);
-			this.MeleeDamageBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.MeleeDamageBonusPercentInput.Name = "MeleeDamageBonusPercentInput";
 			this.MeleeDamageBonusPercentInput.ReadOnly = true;
 			this.MeleeDamageBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1275,11 +1140,6 @@
 			// 
 			this.ShieldRechargeRateBonusTokensInput.Enabled = false;
 			this.ShieldRechargeRateBonusTokensInput.Location = new System.Drawing.Point(297, 241);
-			this.ShieldRechargeRateBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.ShieldRechargeRateBonusTokensInput.Name = "ShieldRechargeRateBonusTokensInput";
 			this.ShieldRechargeRateBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.ShieldRechargeRateBonusTokensInput.TabIndex = 33;
@@ -1290,11 +1150,6 @@
 			this.ShieldRechargeRateBonusPercentInput.DecimalPlaces = 1;
 			this.ShieldRechargeRateBonusPercentInput.Enabled = false;
 			this.ShieldRechargeRateBonusPercentInput.Location = new System.Drawing.Point(169, 241);
-			this.ShieldRechargeRateBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.ShieldRechargeRateBonusPercentInput.Name = "ShieldRechargeRateBonusPercentInput";
 			this.ShieldRechargeRateBonusPercentInput.ReadOnly = true;
 			this.ShieldRechargeRateBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1305,11 +1160,6 @@
 			// 
 			this.ShieldRechargeDelayBonusTokensInput.Enabled = false;
 			this.ShieldRechargeDelayBonusTokensInput.Location = new System.Drawing.Point(297, 214);
-			this.ShieldRechargeDelayBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.ShieldRechargeDelayBonusTokensInput.Name = "ShieldRechargeDelayBonusTokensInput";
 			this.ShieldRechargeDelayBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.ShieldRechargeDelayBonusTokensInput.TabIndex = 32;
@@ -1320,11 +1170,6 @@
 			this.ShieldRechargeDelayBonusPercentInput.DecimalPlaces = 1;
 			this.ShieldRechargeDelayBonusPercentInput.Enabled = false;
 			this.ShieldRechargeDelayBonusPercentInput.Location = new System.Drawing.Point(169, 214);
-			this.ShieldRechargeDelayBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.ShieldRechargeDelayBonusPercentInput.Name = "ShieldRechargeDelayBonusPercentInput";
 			this.ShieldRechargeDelayBonusPercentInput.ReadOnly = true;
 			this.ShieldRechargeDelayBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1335,11 +1180,6 @@
 			// 
 			this.ShieldCapacityBonusTokensInput.Enabled = false;
 			this.ShieldCapacityBonusTokensInput.Location = new System.Drawing.Point(297, 187);
-			this.ShieldCapacityBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.ShieldCapacityBonusTokensInput.Name = "ShieldCapacityBonusTokensInput";
 			this.ShieldCapacityBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.ShieldCapacityBonusTokensInput.TabIndex = 31;
@@ -1350,11 +1190,6 @@
 			this.ShieldCapacityBonusPercentInput.DecimalPlaces = 1;
 			this.ShieldCapacityBonusPercentInput.Enabled = false;
 			this.ShieldCapacityBonusPercentInput.Location = new System.Drawing.Point(169, 187);
-			this.ShieldCapacityBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.ShieldCapacityBonusPercentInput.Name = "ShieldCapacityBonusPercentInput";
 			this.ShieldCapacityBonusPercentInput.ReadOnly = true;
 			this.ShieldCapacityBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1365,11 +1200,6 @@
 			// 
 			this.MaximumHealthBonusTokensInput.Enabled = false;
 			this.MaximumHealthBonusTokensInput.Location = new System.Drawing.Point(297, 160);
-			this.MaximumHealthBonusTokensInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.MaximumHealthBonusTokensInput.Name = "MaximumHealthBonusTokensInput";
 			this.MaximumHealthBonusTokensInput.Size = new System.Drawing.Size(81, 20);
 			this.MaximumHealthBonusTokensInput.TabIndex = 30;
@@ -1380,11 +1210,6 @@
 			this.MaximumHealthBonusPercentInput.DecimalPlaces = 1;
 			this.MaximumHealthBonusPercentInput.Enabled = false;
 			this.MaximumHealthBonusPercentInput.Location = new System.Drawing.Point(169, 160);
-			this.MaximumHealthBonusPercentInput.Maximum = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
 			this.MaximumHealthBonusPercentInput.Name = "MaximumHealthBonusPercentInput";
 			this.MaximumHealthBonusPercentInput.ReadOnly = true;
 			this.MaximumHealthBonusPercentInput.Size = new System.Drawing.Size(81, 20);
@@ -1395,11 +1220,6 @@
 			// 
 			this.BadassTokensEarnedInput.Enabled = false;
 			this.BadassTokensEarnedInput.Location = new System.Drawing.Point(169, 63);
-			this.BadassTokensEarnedInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.BadassTokensEarnedInput.Name = "BadassTokensEarnedInput";
 			this.BadassTokensEarnedInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassTokensEarnedInput.TabIndex = 2;
@@ -1409,11 +1229,6 @@
 			// 
 			this.BadassTokensAvailableInput.Enabled = false;
 			this.BadassTokensAvailableInput.Location = new System.Drawing.Point(169, 90);
-			this.BadassTokensAvailableInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.BadassTokensAvailableInput.Name = "BadassTokensAvailableInput";
 			this.BadassTokensAvailableInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassTokensAvailableInput.TabIndex = 3;
@@ -1423,11 +1238,6 @@
 			// 
 			this.BadassRankInput.Enabled = false;
 			this.BadassRankInput.Location = new System.Drawing.Point(169, 36);
-			this.BadassRankInput.Maximum = new decimal(new int[] {
-            0,
-            1,
-            0,
-            0});
 			this.BadassRankInput.Name = "BadassRankInput";
 			this.BadassRankInput.Size = new System.Drawing.Size(81, 20);
 			this.BadassRankInput.TabIndex = 1;

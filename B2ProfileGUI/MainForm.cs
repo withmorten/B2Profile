@@ -294,6 +294,54 @@ namespace B2ProfileGUI
 			ProfileFilePath = null;
 			ProfileDirty = false;
 
+			BadassRankInput.Maximum = long.MaxValue;
+			BadassTokensAvailableInput.Maximum = int.MaxValue;
+			BadassTokensEarnedInput.Maximum = int.MaxValue;
+
+			MaximumHealthBonusTokensInput.Maximum = int.MaxValue;
+			ShieldCapacityBonusTokensInput.Maximum = int.MaxValue;
+			ShieldRechargeDelayBonusTokensInput.Maximum = int.MaxValue;
+			ShieldRechargeRateBonusTokensInput.Maximum = int.MaxValue;
+			MeleeDamageBonusTokensInput.Maximum = int.MaxValue;
+			GrenadeDamageBonusTokensInput.Maximum = int.MaxValue;
+			GunAccuracyBonusTokensInput.Maximum = int.MaxValue;
+			GunDamageBonusTokensInput.Maximum = int.MaxValue;
+			FireRateBonusTokensInput.Maximum = int.MaxValue;
+			RecoilReductionBonusTokensInput.Maximum = int.MaxValue;
+			ReloadSpeedBonusTokensInput.Maximum = int.MaxValue;
+			ElementalEffectChanceBonusTokensInput.Maximum = int.MaxValue;
+			ElementalEffectDamageBonusTokensInput.Maximum = int.MaxValue;
+			CriticalHitDamageBonusTokensInput.Maximum = int.MaxValue;
+
+			// just some arbitrary maximum
+			decimal percentMaximum = ((decimal)uint.MaxValue + 1) / 256;
+
+			MaximumHealthBonusPercentInput.Maximum = percentMaximum;
+			ShieldCapacityBonusPercentInput.Maximum = percentMaximum;
+			ShieldRechargeDelayBonusPercentInput.Maximum = percentMaximum;
+			ShieldRechargeRateBonusPercentInput.Maximum = percentMaximum;
+			MeleeDamageBonusPercentInput.Maximum = percentMaximum;
+			GrenadeDamageBonusPercentInput.Maximum = percentMaximum;
+			GunAccuracyBonusPercentInput.Maximum = percentMaximum;
+			GunDamageBonusPercentInput.Maximum = percentMaximum;
+			FireRateBonusPercentInput.Maximum = percentMaximum;
+			RecoilReductionBonusPercentInput.Maximum = percentMaximum;
+			ReloadSpeedBonusPercentInput.Maximum = percentMaximum;
+			ElementalEffectChanceBonusPercentInput.Maximum = percentMaximum;
+			ElementalEffectDamageBonusPercentInput.Maximum = percentMaximum;
+			CriticalHitDamageBonusPercentInput.Maximum = percentMaximum;
+
+			GoldenKeysTotalInput.Maximum = Profile.MaxGoldenKeysTotal;
+
+			GoldenKeysPOPremierClubInput.Maximum = Profile.MaxGoldenKeys;
+			GoldenKeysPOPremierClubUsedInput.Maximum = Profile.MaxGoldenKeys;
+
+			GoldenKeysTulipInput.Maximum = Profile.MaxGoldenKeys;
+			GoldenKeysTulipUsedInput.Maximum = Profile.MaxGoldenKeys;
+
+			GoldenKeysShiftInput.Maximum = Profile.MaxGoldenKeys;
+			GoldenKeysShiftUsedInput.Maximum = Profile.MaxGoldenKeys;
+
 			MaximumHealthBonusPercentInput.TokenUpDown = MaximumHealthBonusTokensInput;
 			MaximumHealthBonusTokensInput.PercentUpDown = MaximumHealthBonusPercentInput;
 
