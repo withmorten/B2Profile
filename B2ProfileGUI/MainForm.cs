@@ -622,223 +622,171 @@ namespace B2ProfileGUI
 		{
 			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(1));
 
-			MessageBox.Show("Slot 1 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			ClaptrapsStashNotifyLabel.Text = "Slot 1 gibbed code copied!";
 		}
 
 		private void CopySlot2CodeButton_Click(object sender, EventArgs e)
 		{
 			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(2));
 
-			MessageBox.Show("Slot 2 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			ClaptrapsStashNotifyLabel.Text = "Slot 2 gibbed code copied!";
 		}
 
 		private void CopySlot3CodeButton_Click(object sender, EventArgs e)
 		{
 			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(3));
 
-			MessageBox.Show("Slot 3 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			ClaptrapsStashNotifyLabel.Text = "Slot 3 gibbed code copied!";
 		}
 
 		private void CopySlot4CodeButton_Click(object sender, EventArgs e)
 		{
 			Clipboard.SetText(Program.Profile.GetClaptrapsStashSlotGibbedCode(4));
 
-			MessageBox.Show("Slot 4 gibbed code copied to clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			ClaptrapsStashNotifyLabel.Text = "Slot 4 gibbed code copied!";
 		}
 
 		private void PasteSlot1CodeButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will overwrite the current item in slot 1 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (Program.Profile.IsClaptrapsStashSlotValid(1) == false ||
+				MessageBox.Show("This will overwrite the current item in slot 1 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(1, Clipboard.GetText()) == true)
 				{
 					ProfileDirty = true;
 
-					MessageBox.Show("Slot 1 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClaptrapsStashNotifyLabel.Text = "Slot 1 gibbed code pasted!";
 
 					CopySlot1CodeButton.Enabled = true;
 					DeleteSlot1Button.Enabled = true;
 				}
 				else
 				{
-					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					ClaptrapsStashNotifyLabel.Text = "Not a valid gibbed code!";
 				}
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void PasteSlot2CodeButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will overwrite the current item in slot 2 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (Program.Profile.IsClaptrapsStashSlotValid(2) == false ||
+				MessageBox.Show("This will overwrite the current item in slot 2 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(2, Clipboard.GetText()) == true)
 				{
 					ProfileDirty = true;
 
-					MessageBox.Show("Slot 2 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClaptrapsStashNotifyLabel.Text = "Slot 2 gibbed code pasted!";
 
 					CopySlot2CodeButton.Enabled = true;
 					DeleteSlot2Button.Enabled = true;
 				}
 				else
 				{
-					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					ClaptrapsStashNotifyLabel.Text = "Not a valid gibbed code!";
 				}
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void PasteSlot3CodeButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will overwrite the current item in slot 3 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (Program.Profile.IsClaptrapsStashSlotValid(3) == false ||
+				MessageBox.Show("This will overwrite the current item in slot 3 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(3, Clipboard.GetText()) == true)
 				{
 					ProfileDirty = true;
 
-					MessageBox.Show("Slot 3 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClaptrapsStashNotifyLabel.Text = "Slot 3 gibbed code pasted!";
 
 					CopySlot3CodeButton.Enabled = true;
 					DeleteSlot3Button.Enabled = true;
 				}
 				else
 				{
-					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					ClaptrapsStashNotifyLabel.Text = "Not a valid gibbed code!";
 				}
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void PasteSlot4CodeButton_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will overwrite the current item in slot 4 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (Program.Profile.IsClaptrapsStashSlotValid(4) == false ||
+				MessageBox.Show("This will overwrite the current item in slot 4 with the code in the clipboard, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				if (Program.Profile.SetClaptrapsStashSlotGibbedCode(4, Clipboard.GetText()) == true)
 				{
 					ProfileDirty = true;
 
-					MessageBox.Show("Slot 4 gibbed code pasted from clipboard!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					ClaptrapsStashNotifyLabel.Text = "Slot 4 gibbed code pasted!";
 
 					CopySlot4CodeButton.Enabled = true;
 					DeleteSlot4Button.Enabled = true;
 				}
 				else
 				{
-					MessageBox.Show("Not a valid gibbed code!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					ClaptrapsStashNotifyLabel.Text = "Not a valid gibbed code!";
 				}
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void DeleteSlot1Button_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will delete the current item in slot 1, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (MessageBox.Show("This will delete the current item in slot 1, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				Program.Profile.DeleteClaptrapsStashSlot(1);
 
 				ProfileDirty = true;
 
-				MessageBox.Show("Slot 1 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				ClaptrapsStashNotifyLabel.Text = "Slot 1 deleted!";
 
 				CopySlot1CodeButton.Enabled = false;
 				DeleteSlot1Button.Enabled = false;
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void DeleteSlot2Button_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will delete the current item in slot 2, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (MessageBox.Show("This will delete the current item in slot 2, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				Program.Profile.DeleteClaptrapsStashSlot(2);
 
 				ProfileDirty = true;
 
-				MessageBox.Show("Slot 2 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				ClaptrapsStashNotifyLabel.Text = "Slot 2 deleted!";
 
 				CopySlot2CodeButton.Enabled = false;
 				DeleteSlot2Button.Enabled = false;
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void DeleteSlot3Button_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will delete the current item in slot 3, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (MessageBox.Show("This will delete the current item in slot 3, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				Program.Profile.DeleteClaptrapsStashSlot(3);
 
 				ProfileDirty = true;
 
-				MessageBox.Show("Slot 3 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				ClaptrapsStashNotifyLabel.Text = "Slot 3 deleted!";
 
 				CopySlot3CodeButton.Enabled = false;
 				DeleteSlot3Button.Enabled = false;
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 
 		private void DeleteSlot4Button_Click(object sender, EventArgs e)
 		{
-			switch (MessageBox.Show("This will delete the current item in slot 4, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+			if (MessageBox.Show("This will delete the current item in slot 4, do you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
-			case DialogResult.Yes:
 				Program.Profile.DeleteClaptrapsStashSlot(4);
 
 				ProfileDirty = true;
 
-				MessageBox.Show("Slot 4 deleted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				ClaptrapsStashNotifyLabel.Text = "Slot 4 deleted!";
 
 				CopySlot4CodeButton.Enabled = false;
 				DeleteSlot4Button.Enabled = false;
-
-				break;
-
-			case DialogResult.No:
-
-				break;
 			}
 		}
 

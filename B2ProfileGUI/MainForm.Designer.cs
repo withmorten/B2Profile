@@ -92,6 +92,7 @@
 			this.CopySlot4CodeButton = new System.Windows.Forms.Button();
 			this.PasteSlot4CodeButton = new System.Windows.Forms.Button();
 			this.ClaptrapsStashLabel = new System.Windows.Forms.Label();
+			this.ClaptrapsStashNotifyLabel = new System.Windows.Forms.Label();
 			this.DeleteSlot1Button = new System.Windows.Forms.Button();
 			this.DeleteSlot2Button = new System.Windows.Forms.Button();
 			this.DeleteSlot3Button = new System.Windows.Forms.Button();
@@ -791,6 +792,14 @@
 			this.ClaptrapsStashLabel.TabIndex = 0;
 			this.ClaptrapsStashLabel.Text = "Claptrap\'s Secret Stash:";
 			// 
+			// ClaptrapsStashNotifyLabel
+			// 
+			this.ClaptrapsStashNotifyLabel.AutoSize = true;
+			this.ClaptrapsStashNotifyLabel.Location = new System.Drawing.Point(609, 350);
+			this.ClaptrapsStashNotifyLabel.Name = "ClaptrapsStashNotifyLabel";
+			this.ClaptrapsStashNotifyLabel.Size = new System.Drawing.Size(62, 13);
+			this.ClaptrapsStashNotifyLabel.TabIndex = 0;
+			// 
 			// DeleteSlot1Button
 			// 
 			this.DeleteSlot1Button.Enabled = false;
@@ -1247,6 +1256,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(758, 580);
+			this.Controls.Add(this.ClaptrapsStashNotifyLabel);
 			this.Controls.Add(this.RandomQuoteLabel);
 			this.Controls.Add(this.MaxGoldenKeysButton);
 			this.Controls.Add(this.BadassTokensInvestedLabel);
@@ -1502,6 +1512,7 @@
 		private System.Windows.Forms.Button CopySlot4CodeButton;
 		private System.Windows.Forms.Button PasteSlot4CodeButton;
 		private System.Windows.Forms.Label ClaptrapsStashLabel;
+		private System.Windows.Forms.Label ClaptrapsStashNotifyLabel;
 		private System.Windows.Forms.Button DeleteSlot1Button;
 		private System.Windows.Forms.Button DeleteSlot2Button;
 		private System.Windows.Forms.Button DeleteSlot3Button;
