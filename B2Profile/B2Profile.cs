@@ -253,6 +253,8 @@ namespace B2Profile
 
 		public List<bool> IgnoreBonusStats;
 
+		public bool IsPreSequel = false;
+
 		public Profile()
 		{
 			Array.Resize(ref Entries, 0);
@@ -874,24 +876,31 @@ namespace B2Profile
 			return false;
 		}
 
+		private string GetGibbedPrefix()
+		{
+			return IsPreSequel == false ? "BL2" : "BLOZ";
+		}
+
 		public string GetClaptrapsStashSlotGibbedCode(int slot)
 		{
-			return "BL2(" + Convert.ToBase64String(GetClaptrapsStashSlotEntry(slot).GetBinData()) + ")";
+			return GetGibbedPrefix() + "(" + Convert.ToBase64String(GetClaptrapsStashSlotEntry(slot).GetBinData()) + ")";
 		}
 
 		public bool SetClaptrapsStashSlotGibbedCode(int slot, string gibbedCode)
 		{
+			string prefix = GetGibbedPrefix();
+
 			if (gibbedCode == string.Empty) return false;
 
-			if (gibbedCode.Length < 5) return false;
+			if (gibbedCode.Length < prefix.Length + 1 + 1) return false;
 
-			if (gibbedCode.Substring(0, 4) != "BL2(" && gibbedCode[gibbedCode.Length - 1] != ')') return false;
+			if (gibbedCode.Substring(0, prefix.Length + 1) != prefix + "(" && gibbedCode[gibbedCode.Length - 1] != ')') return false;
 
 			byte[] slotData;
 
 			try
 			{
-				slotData = Convert.FromBase64String(gibbedCode.Substring(4, gibbedCode.Length - 4 - 1));
+				slotData = Convert.FromBase64String(gibbedCode.Substring(prefix.Length + 1, gibbedCode.Length - (prefix.Length + 1 + 1)));
 			}
 			catch (Exception)
 			{
@@ -905,7 +914,7 @@ namespace B2Profile
 
 		public void DeleteClaptrapsStashSlot(int slot)
 		{
-			SetClaptrapsStashSlotGibbedCode(slot, "BL2(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
+			SetClaptrapsStashSlotGibbedCode(slot, GetGibbedPrefix() + "(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
 		}
 
 		public static int GetBadassRankFromTokens(uint t)

@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.MainMenuBar = new System.Windows.Forms.ToolStrip();
 			this.MainMenuOpenButton = new System.Windows.Forms.ToolStripButton();
 			this.MainMenuSaveButton = new System.Windows.Forms.ToolStripButton();
@@ -1351,11 +1350,9 @@
 			this.Controls.Add(this.BadassRankLabel);
 			this.Controls.Add(this.MainMenuBar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(6);
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
-			this.Text = "Borderlands 2/The Pre-Sequel Profile Editor";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.MainMenuBar.ResumeLayout(false);

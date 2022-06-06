@@ -294,6 +294,9 @@ namespace B2ProfileGUI
 			ProfileFilePath = null;
 			ProfileDirty = false;
 
+			Icon = Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.FriendlyName);
+			Text = "Borderlands 2 Profile Editor";
+
 			BadassRankInput.Maximum = long.MaxValue;
 			BadassTokensAvailableInput.Maximum = int.MaxValue;
 			BadassTokensEarnedInput.Maximum = int.MaxValue;
@@ -449,9 +452,9 @@ namespace B2ProfileGUI
 
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 
-			openFileDialog.Title = "Select Borderlands 2/The Pre-Sequel profile";
+			openFileDialog.Title = "Select Borderlands 2 profile";
 			openFileDialog.Filter = "profile|*.bin";
-			openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Borderlands 2\\WillowGame\\SaveData";
 
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
@@ -470,7 +473,7 @@ namespace B2ProfileGUI
 
 		private void MainMenuAboutButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Borderlands 2/The Pre-Sequel Profile Editor\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO and his Borderlands 2 Save Editor)\r\n\r\nHover over \"Synced Mode\", the number next to it and \"Ignore\"\r\nfor additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show(Text + "\r\nby withmorten\r\n\r\nThanks to:\r\nPhilymaster (for the original Borderlands 2 Profile Editor)\r\nFeudalnate (for PackageIO)\r\ngibbed (for MiniLZO and his Borderlands 2 Save Editor)\r\n\r\nHover over \"Synced Mode\", the number next to it and \"Ignore\"\r\nfor additional info", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MainMenuCloseButton_Click(object sender, EventArgs e)
@@ -979,7 +982,7 @@ namespace B2ProfileGUI
 
 			Random random = new Random();
 
-			return RandomQuotes[random.Next(0, 99)];
+			return RandomQuotes[random.Next(0, RandomQuotes.Length - 1)];
 		}
 	}
 }
