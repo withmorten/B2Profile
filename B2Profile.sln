@@ -6,10 +6,19 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2Profile", "B2Profile\B2Profile.csproj", "{A710714B-F990-49A7-BC06-EC0084761C20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2ProfileCMD", "B2ProfileCMD\B2ProfileCMD.csproj", "{5517D7BB-37C8-497F-90B4-0C32CA7B8FEB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A710714B-F990-49A7-BC06-EC0084761C20} = {A710714B-F990-49A7-BC06-EC0084761C20}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B2ProfileGUI", "B2ProfileGUI\B2ProfileGUI.csproj", "{731207D3-E97E-40BD-BDE8-976B0446B11F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A710714B-F990-49A7-BC06-EC0084761C20} = {A710714B-F990-49A7-BC06-EC0084761C20}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPSProfileGUI", "BPSProfileGUI\BPSProfileGUI.csproj", "{5EC503CA-D12D-4F10-853B-21D0357A6CAB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A710714B-F990-49A7-BC06-EC0084761C20} = {A710714B-F990-49A7-BC06-EC0084761C20}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
