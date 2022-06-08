@@ -10,7 +10,7 @@ namespace BPSProfileGUI
 
 		public void Inc()
 		{
-			decimal nextRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+			decimal nextRank = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 
 			base.Increment = nextRank - base.Value;
 
@@ -21,29 +21,32 @@ namespace BPSProfileGUI
 
 		public override void UpButton()
 		{
-			Program.MainForm.BadassTokensEarnedInput.Inc();
-			Program.MainForm.BadassTokensAvailableInput.Inc();
+			if (base.Value != base.Maximum)
+			{
+				Program.MainForm.BadassTokensEarnedInput.Inc();
+				Program.MainForm.BadassTokensAvailableInput.Inc();
 
-			decimal nextRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+				decimal nextRank = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 
-			base.Increment = nextRank - base.Value;
+				base.Increment = nextRank - base.Value;
 
-			base.UpButton();
+				base.UpButton();
 
-			PrevValue = base.Value;
+				PrevValue = base.Value;
 
-			Program.MainForm.ProfileDirty = true;
+				Program.MainForm.ProfileDirty = true;
+			}
 		}
 
 		public void Dec()
 		{
-			decimal prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+			decimal prevRank = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 
 			base.Increment = base.Value - prevRank;
 
 			if (prevRank == base.Value)
 			{
-				prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+				prevRank = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 
 				base.Increment = base.Value - prevRank;
 			}
@@ -55,25 +58,28 @@ namespace BPSProfileGUI
 
 		public override void DownButton()
 		{
-			decimal prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
-
-			base.Increment = base.Value - prevRank;
-
-			if (prevRank == base.Value)
+			if (base.Value != base.Minimum)
 			{
-				Program.MainForm.BadassTokensEarnedInput.Dec();
-				Program.MainForm.BadassTokensAvailableInput.Dec();
-
-				prevRank = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+				decimal prevRank = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 
 				base.Increment = base.Value - prevRank;
+
+				if (prevRank == base.Value)
+				{
+					Program.MainForm.BadassTokensEarnedInput.Dec();
+					Program.MainForm.BadassTokensAvailableInput.Dec();
+
+					prevRank = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
+
+					base.Increment = base.Value - prevRank;
+				}
+
+				base.DownButton();
+
+				PrevValue = base.Value;
+
+				Program.MainForm.ProfileDirty = true;
 			}
-
-			base.DownButton();
-
-			PrevValue = base.Value;
-
-			Program.MainForm.ProfileDirty = true;
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -82,19 +88,33 @@ namespace BPSProfileGUI
 
 			if (base.UserEdit == true)
 			{
-				if (base.Value != PrevValue)
+				Program.MainForm.TransferToProfile();
+
+				if (base.Value > PrevValue && Program.Profile.BadassRanksAreSane())
 				{
-					switch (MessageBox.Show("Editing this value manually can result in a weird state and will NOT be synced with the earned Badass Tokens value.\r\n\r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+					Program.MainForm.ProfileDirty = true;
+
+					Program.Profile.BadassTokensEarned = Program.Profile.GetTokensFromRank(Program.Profile.BadassRank);
+					Program.Profile.BadassTokensAvailable = Program.Profile.BadassTokensEarned - Program.Profile.GetBadassTokensInvested();
+
+					Program.MainForm.TransferFromProfile();
+				}
+				else
+				{
+					if (base.Value != PrevValue)
 					{
-					case DialogResult.Yes:
-						Program.MainForm.ProfileDirty = true;
+						switch (MessageBox.Show("Editing this value manually can result in a weird state and will NOT be synced with the earned Badass Tokens value.\r\n\r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+						{
+						case DialogResult.Yes:
+							Program.MainForm.ProfileDirty = true;
 
-						break;
+							break;
 
-					case DialogResult.No:
-						base.Value = PrevValue;
+						case DialogResult.No:
+							base.Value = PrevValue;
 
-						break;
+							break;
+						}
 					}
 				}
 			}
@@ -116,14 +136,17 @@ namespace BPSProfileGUI
 
 		public override void UpButton()
 		{
-			base.UpButton();
+			if (base.Value != base.Maximum)
+			{
+				base.UpButton();
 
-			Program.MainForm.BadassRankInput.Inc();
-			Program.MainForm.BadassTokensAvailableInput.Inc();
+				Program.MainForm.BadassRankInput.Inc();
+				Program.MainForm.BadassTokensAvailableInput.Inc();
 
-			PrevValue = base.Value;
+				PrevValue = base.Value;
 
-			Program.MainForm.ProfileDirty = true;
+				Program.MainForm.ProfileDirty = true;
+			}
 		}
 
 		public void Dec()
@@ -135,14 +158,17 @@ namespace BPSProfileGUI
 
 		public override void DownButton()
 		{
-			base.DownButton();
+			if (base.Value != base.Minimum)
+			{
+				base.DownButton();
 
-			Program.MainForm.BadassRankInput.Dec();
-			Program.MainForm.BadassTokensAvailableInput.Dec();
+				Program.MainForm.BadassRankInput.Dec();
+				Program.MainForm.BadassTokensAvailableInput.Dec();
 
-			PrevValue = base.Value;
+				PrevValue = base.Value;
 
-			Program.MainForm.ProfileDirty = true;
+				Program.MainForm.ProfileDirty = true;
+			}
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -151,7 +177,7 @@ namespace BPSProfileGUI
 
 			if (base.UserEdit == true)
 			{
-				Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)base.Value);
+				Program.MainForm.BadassRankInput.Value = Profile.BadassRankLUT[(int)base.Value];
 
 				Program.MainForm.TransferToProfile();
 
@@ -180,22 +206,25 @@ namespace BPSProfileGUI
 
 		public override void UpButton()
 		{
-			base.UpButton();
-
-			Program.MainForm.TransferToProfile();
-
-			if ((base.Value + Program.Profile.GetBadassTokensInvested()) > Program.MainForm.BadassTokensEarnedInput.Value)
+			if (base.Value != base.Maximum)
 			{
-				if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+				base.UpButton();
+
+				Program.MainForm.TransferToProfile();
+
+				if ((base.Value + Program.Profile.GetBadassTokensInvested()) > Program.MainForm.BadassTokensEarnedInput.Value)
 				{
-					Program.MainForm.BadassTokensEarnedInput.Inc();
-					Program.MainForm.BadassRankInput.Inc();
+					if (Program.MainForm.SyncedModeCheckBox.Checked == true)
+					{
+						Program.MainForm.BadassTokensEarnedInput.Inc();
+						Program.MainForm.BadassRankInput.Inc();
+					}
 				}
+
+				PrevValue = base.Value;
+
+				Program.MainForm.ProfileDirty = true;
 			}
-
-			PrevValue = base.Value;
-
-			Program.MainForm.ProfileDirty = true;
 		}
 
 		public void Dec()
@@ -207,11 +236,14 @@ namespace BPSProfileGUI
 
 		public override void DownButton()
 		{
-			base.DownButton();
+			if (base.Value != base.Minimum)
+			{
+				base.DownButton();
 
-			PrevValue = base.Value;
+				PrevValue = base.Value;
 
-			Program.MainForm.ProfileDirty = true;
+				Program.MainForm.ProfileDirty = true;
+			}
 		}
 
 		protected override void OnValueChanged(EventArgs e)
@@ -226,7 +258,7 @@ namespace BPSProfileGUI
 					{
 						Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue);
 
-						Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+						Program.MainForm.BadassRankInput.Value = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 					}
 				}
 
@@ -375,7 +407,7 @@ namespace BPSProfileGUI
 
 			if (base.UserEdit == true)
 			{
-				PercentUpDown.Value = (decimal)Profile.GetBonusPercentFromTokens((uint)base.Value);
+				PercentUpDown.Value = (decimal)Profile.BonusPercentLUT[(int)base.Value];
 
 				Program.MainForm.UpdateBadassTokensInvested(base.Value - PrevValue);
 
@@ -392,7 +424,7 @@ namespace BPSProfileGUI
 							if (Program.MainForm.SyncedModeCheckBox.Checked == true)
 							{
 								Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue) - Program.MainForm.BadassTokensAvailableInput.Value;
-								Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+								Program.MainForm.BadassRankInput.Value = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 							}
 
 							Program.MainForm.BadassTokensAvailableInput.Value = 0;
@@ -407,7 +439,7 @@ namespace BPSProfileGUI
 						if (Program.MainForm.SyncedModeCheckBox.Checked == true)
 						{
 							Program.MainForm.BadassTokensEarnedInput.Value += (base.Value - PrevValue);
-							Program.MainForm.BadassRankInput.Value = Profile.GetBadassRankFromTokens((uint)Program.MainForm.BadassTokensEarnedInput.Value);
+							Program.MainForm.BadassRankInput.Value = Profile.BadassRankLUT[(int)Program.MainForm.BadassTokensEarnedInput.Value];
 						}
 					}
 				}

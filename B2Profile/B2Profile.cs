@@ -241,9 +241,13 @@ namespace B2Profile
 		public GoldenKeyEntry GoldenKeysTulip;
 		public GoldenKeyEntry GoldenKeysShift;
 
-		public long BadassRank;
+		public const int MaxBadassTokens = 62530;
+		public int BadassRank;
 		public int BadassTokensAvailable;
 		public int BadassTokensEarned;
+
+		public static int[] BadassRankLUT;
+		public static double[] BonusPercentLUT;
 
 		public const int NumBonusStats = 14;
 		public const int NumNextBonusStats = 5;
@@ -254,6 +258,18 @@ namespace B2Profile
 		public List<bool> IgnoreBonusStats;
 
 		public bool IsPreSequel = false;
+
+		static Profile()
+		{
+			Array.Resize(ref BadassRankLUT, MaxBadassTokens + 1);
+			Array.Resize(ref BonusPercentLUT, MaxBadassTokens + 1);
+
+			for (int i = 0; i < MaxBadassTokens + 1; i++)
+			{
+				BadassRankLUT[i] = GetBadassRankFromTokens((uint)i);
+				BonusPercentLUT[i] = GetBonusPercentFromTokens((uint)i);
+			}
+		}
 
 		public Profile()
 		{
@@ -388,6 +404,34 @@ namespace B2Profile
 			}
 
 			return t;
+		}
+
+		public bool BadassRanksAreSane()
+		{
+			return GetBadassTokensInvested() + BadassTokensAvailable == BadassTokensEarned;
+		}
+
+		public int GetTokensFromRank(int r)
+		{
+			for (int i = 0; i < MaxBadassTokens; i++)
+			{
+				if (BadassRankLUT[i] > r)
+				{
+					return i;
+				}
+			}
+
+			return MaxBadassTokens;
+		}
+
+		private static int GetBadassRankFromTokens(uint t)
+		{
+			return (int)Math.Floor(Math.Pow(t, 1.8));
+		}
+
+		private static double GetBonusPercentFromTokens(uint t)
+		{
+			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
 
 		public ref Entry GetEntry(uint ID)
@@ -915,16 +959,6 @@ namespace B2Profile
 		public void DeleteClaptrapsStashSlot(int slot)
 		{
 			SetClaptrapsStashSlotGibbedCode(slot, GetGibbedPrefix() + "(AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==)");
-		}
-
-		public static int GetBadassRankFromTokens(uint t)
-		{
-			return (int)Math.Floor(Math.Pow(t, 1.8));
-		}
-
-		public static double GetBonusPercentFromTokens(uint t)
-		{
-			return Math.Round(Math.Pow(t, 0.75), 1);
 		}
 	}
 }

@@ -23,20 +23,20 @@ namespace BPSProfileGUI
 
 			BadassTokensInvestedLabel.Text = Program.Profile.GetBadassTokensInvested().ToString();
 
-			MaximumHealthBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.MaximumHealth]);
-			ShieldCapacityBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ShieldCapacity]);
-			ShieldRechargeDelayBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeDelay]);
-			ShieldRechargeRateBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeRate]);
-			MeleeDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.MeleeDamage]);
-			GrenadeDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.GrenadeDamage]);
-			GunAccuracyBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.GunAccuracy]);
-			GunDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.GunDamage]);
-			FireRateBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.FireRate]);
-			RecoilReductionBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.RecoilReduction]);
-			ReloadSpeedBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ReloadSpeed]);
-			ElementalEffectChanceBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectChance]);
-			ElementalEffectDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectDamage]);
-			CriticalHitDamageBonusPercentInput.Value = (decimal)Profile.GetBonusPercentFromTokens(Program.Profile.BonusStats[Profile.BonusStatID.CriticalHitDamage]);
+			MaximumHealthBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.MaximumHealth]];
+			ShieldCapacityBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.ShieldCapacity]];
+			ShieldRechargeDelayBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeDelay]];
+			ShieldRechargeRateBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.ShieldRechargeRate]];
+			MeleeDamageBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.MeleeDamage]];
+			GrenadeDamageBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.GrenadeDamage]];
+			GunAccuracyBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.GunAccuracy]];
+			GunDamageBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.GunDamage]];
+			FireRateBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.FireRate]];
+			RecoilReductionBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.RecoilReduction]];
+			ReloadSpeedBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.ReloadSpeed]];
+			ElementalEffectChanceBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectChance]];
+			ElementalEffectDamageBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.ElementalEffectDamage]];
+			CriticalHitDamageBonusPercentInput.Value = (decimal)Profile.BonusPercentLUT[Program.Profile.BonusStats[Profile.BonusStatID.CriticalHitDamage]];
 
 			MaximumHealthBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.MaximumHealth];
 			ShieldCapacityBonusTokensInput.Value = Program.Profile.BonusStats[Profile.BonusStatID.ShieldCapacity];
@@ -98,7 +98,7 @@ namespace BPSProfileGUI
 
 		public void TransferToProfile()
 		{
-			Program.Profile.BadassRank = (long)BadassRankInput.Value;
+			Program.Profile.BadassRank = (int)BadassRankInput.Value;
 			Program.Profile.BadassTokensEarned = (int)BadassTokensEarnedInput.Value;
 			Program.Profile.BadassTokensAvailable = (int)BadassTokensAvailableInput.Value;
 
@@ -299,27 +299,26 @@ namespace BPSProfileGUI
 			Icon = Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.FriendlyName);
 			Text = "Borderlands: The Pre-Sequel Profile Editor";
 
-			BadassRankInput.Maximum = long.MaxValue;
-			BadassTokensAvailableInput.Maximum = int.MaxValue;
-			BadassTokensEarnedInput.Maximum = int.MaxValue;
+			BadassRankInput.Maximum = Profile.BadassRankLUT[Profile.MaxBadassTokens];
+			BadassTokensAvailableInput.Maximum = Profile.MaxBadassTokens;
+			BadassTokensEarnedInput.Maximum = Profile.MaxBadassTokens;
 
-			MaximumHealthBonusTokensInput.Maximum = int.MaxValue;
-			ShieldCapacityBonusTokensInput.Maximum = int.MaxValue;
-			ShieldRechargeDelayBonusTokensInput.Maximum = int.MaxValue;
-			ShieldRechargeRateBonusTokensInput.Maximum = int.MaxValue;
-			MeleeDamageBonusTokensInput.Maximum = int.MaxValue;
-			GrenadeDamageBonusTokensInput.Maximum = int.MaxValue;
-			GunAccuracyBonusTokensInput.Maximum = int.MaxValue;
-			GunDamageBonusTokensInput.Maximum = int.MaxValue;
-			FireRateBonusTokensInput.Maximum = int.MaxValue;
-			RecoilReductionBonusTokensInput.Maximum = int.MaxValue;
-			ReloadSpeedBonusTokensInput.Maximum = int.MaxValue;
-			ElementalEffectChanceBonusTokensInput.Maximum = int.MaxValue;
-			ElementalEffectDamageBonusTokensInput.Maximum = int.MaxValue;
-			CriticalHitDamageBonusTokensInput.Maximum = int.MaxValue;
+			MaximumHealthBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			ShieldCapacityBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			ShieldRechargeDelayBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			ShieldRechargeRateBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			MeleeDamageBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			GrenadeDamageBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			GunAccuracyBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			GunDamageBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			FireRateBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			RecoilReductionBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			ReloadSpeedBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			ElementalEffectChanceBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			ElementalEffectDamageBonusTokensInput.Maximum = Profile.MaxBadassTokens;
+			CriticalHitDamageBonusTokensInput.Maximum = Profile.MaxBadassTokens;
 
-			// just some arbitrary maximum
-			decimal percentMaximum = ((decimal)uint.MaxValue + 1) / 256;
+			decimal percentMaximum = (decimal)Profile.BonusPercentLUT[Profile.MaxBadassTokens];
 
 			MaximumHealthBonusPercentInput.Maximum = percentMaximum;
 			ShieldCapacityBonusPercentInput.Maximum = percentMaximum;

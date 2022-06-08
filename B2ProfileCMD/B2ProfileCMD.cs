@@ -20,6 +20,11 @@ namespace B2ProfileCMD
 
 			// Just some examples what you can do with this ...
 
+			// if we want to edit a pre-sequel profile
+#if false
+			profile.IsPreSequel = true;
+#endif
+
 			// default we just dump the profile.bin contents to stdout and exit
 #if true
 			profile.PrintEntries();
