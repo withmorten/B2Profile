@@ -411,13 +411,13 @@ namespace B2Profile
 			return GetBadassTokensInvested() + BadassTokensAvailable == BadassTokensEarned;
 		}
 
-		public int GetTokensFromRank(int r)
+		public static int GetTokensFromRank(int r)
 		{
-			for (int i = 0; i < MaxBadassTokens; i++)
+			for (int i = 1; i < MaxBadassTokens + 1; i++)
 			{
-				if (BadassRankLUT[i] > r)
+				if (r >= BadassRankLUT[i - 1] && r < BadassRankLUT[i])
 				{
-					return i;
+					return i - 1;
 				}
 			}
 

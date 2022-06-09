@@ -94,7 +94,7 @@ namespace B2ProfileGUI
 				{
 					Program.MainForm.ProfileDirty = true;
 
-					Program.Profile.BadassTokensEarned = Program.Profile.GetTokensFromRank(Program.Profile.BadassRank);
+					Program.Profile.BadassTokensEarned = Profile.GetTokensFromRank(Program.Profile.BadassRank);
 					Program.Profile.BadassTokensAvailable = Program.Profile.BadassTokensEarned - Program.Profile.GetBadassTokensInvested();
 
 					Program.MainForm.TransferFromProfile();
