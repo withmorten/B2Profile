@@ -396,6 +396,8 @@ namespace BPSProfileGUI
 
 			GoldenKeysShiftInput.KeysUsedUpDown = GoldenKeysShiftUsedInput;
 			GoldenKeysShiftUsedInput.KeysUpDown = GoldenKeysShiftInput;
+
+			RandomQuoteLabel.Text = GetRandomQuote();
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -813,6 +815,73 @@ namespace BPSProfileGUI
 
 				break;
 			}
+		}
+
+		private static string[] RandomQuotes;
+
+		private void InitializeRandomQuotes()
+		{
+			Array.Resize(ref RandomQuotes, 50);
+
+			RandomQuotes[0]  = "Does this container have restraints, or -- It does not. Great.";
+			RandomQuotes[1]  = "Damn my psychosomatic need for oxygen!";
+			RandomQuotes[2]  = "Uh, the sky's the limit? Or something?";
+			RandomQuotes[3]  = "... They killed her.";
+			RandomQuotes[4]  = "Then Baby Kraggon ran away like a little b***h, stupid piece of s**t.";
+			RandomQuotes[5]  = "Oh, and Athena? You're real pretty. Just throwing that out.";
+			RandomQuotes[6]  = "Entry papers -- and make it snappy! CHOP CHOP!";
+			RandomQuotes[7]  = "OK, that's far enough, buster!";
+			RandomQuotes[8]  = "You're in violation of the Verbal Space Morality Statute. You just got a ticket!";
+			RandomQuotes[9]  = "Oh, you just got another! I love rules. They make me feel powerful!";
+			RandomQuotes[10] = "Follow me or you'll get a THIRD ticket!";
+			RandomQuotes[11] = "We're on vacation. Together.";
+			RandomQuotes[12] = "Too many tentacles.";
+			RandomQuotes[13] = "Hello again, Moxxi. Jack sent me.";
+			RandomQuotes[14] = "What? Nah! I just look like that guy. I'm in off the street.";
+			RandomQuotes[15] = "Oh, that's right! I had the Moonstones all along! Heheheh -- classic, huh?!";
+			RandomQuotes[16] = "That Janey Springs keeps trying to use it as a place to \"accidentally\" run into me.";
+			RandomQuotes[17] = "I'm a bloody stress volcano right now and could do with the uh, with the um... relief.";
+			RandomQuotes[18] = "Great! Cause if you spilled, my son would have to bury you alive in a shallow grave.";
+			RandomQuotes[19] = "Sorry, am I being passive-aggressive? My bad. That must be a symptom of almost dying.";
+			RandomQuotes[20] = "I called you an asshole cause I thought I hung up? My bad.";
+			RandomQuotes[21] = "I dunno. Be a pretty cool way to die, though, huh?";
+			RandomQuotes[22] = "Uh... kill that guy, I guess?";
+			RandomQuotes[23] = "Yeah. Our story just began with is getting off a bus. This sounds all explosive and stuff.";
+			RandomQuotes[24] = "Stop complimenting the prisoner.";
+			RandomQuotes[25] = "Eh, no big deal, though, they can't feel pain. Just bash him outta there.";
+			RandomQuotes[26] = "People think robots can't feel pain, but we actually feel it in slow motion, with great intensity!";
+			RandomQuotes[27] = "Did that claptrap die? Ha, that's awesome!";
+			RandomQuotes[28] = "Whoa! How did they know about... yeah, uh, I'll get back to ya.";
+			RandomQuotes[29] = "Reckon there's only one thing to do, yep! Make 'em a cuppa!";
+			RandomQuotes[30] = "Vault Hunter's still coming, Red! Just in time for tea! What? Death. I said death.";
+			RandomQuotes[31] = "Come back here – I am the LAW! The law doesn't make mistakes!";
+			RandomQuotes[32] = "Hey, I'm with you, pal! Word is, he's got another appointment booked with Sereena right now.";
+			RandomQuotes[33] = "I don't take orders from civilians! However, as I was already going to do that...";
+			RandomQuotes[34] = "RRGRGGHHH, I was gonna let you live, you DUMB BASTARD! What is WRONG with you?!";
+			RandomQuotes[35] = "There was an \"f\", but it fell off.";
+			RandomQuotes[36] = "Gave me a sexy scar on my stomach. EXTREMELY sexy. Athena.";
+			RandomQuotes[37] = "What? I -- I'm going to, uh... keep shooting things. And focus on that exclusively.";
+			RandomQuotes[38] = "Aw, it's okay... people like explosions!";
+			RandomQuotes[39] = "Please go away, Torgue.";
+			RandomQuotes[40] = "Ah, colorful locals! Don't let them discourage you -- onward!";
+			RandomQuotes[41] = "You could send me an ECHOnet version because... ...pretend I said something witty.";
+			RandomQuotes[42] = "Brrp-brrp-brrp-brrrrrrrp, brrp-brrlrp brp-brp brrrrrp...";
+			RandomQuotes[43] = "Salute support... required...";
+			RandomQuotes[44] = "By jove, that was a close one! Took me back to the great salute collapse of '42!";
+			RandomQuotes[45] = "Broom! Get my... broom! Must maintain... salute!";
+			RandomQuotes[46] = "KNOCK OVER THAT TRASH BIN TO CREATE A MESS.";
+			RandomQuotes[47] = "WERE THIS ANY OTHER SITUATION, I WOULD MURDER YOUR FAMILY FOR THAT.";
+			RandomQuotes[48] = "Right away. Ass.";
+			RandomQuotes[49] = "ERADICATE VAULT HUNTERS!";
+		}
+
+		private string GetRandomQuote()
+		{
+			if (RandomQuotes == null) InitializeRandomQuotes();
+
+			Random random = new Random();
+
+			return RandomQuotes[random.Next(0, RandomQuotes.Length - 1)];
 		}
 	}
 }
